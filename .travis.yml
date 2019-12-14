@@ -11,8 +11,15 @@ addons:
     packages:
       - cmake
       - libsfml-dev
+      - g++-7
+
+before_install:
+  - mkdir cmake-dist
+  - travis_retry wget -qO- https://cmake.org/files/v3.12/cmake-3.12.1-Linux-x86_64.tar.gz | sudo tar --strip-components=1 -C cmake-dist -xz
+  - export PATH=$PWD/cmake-dist/bin:$PATH;
 
 install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" CC="gcc-7"; fi
   - cd /usr/local
   - sudo wget https://www.sfml-dev.org/files/SFML-2.4.2-linux-gcc-64-bit.tar.gz
   - sudo tar -xzf SFML-2.4.2-linux-gcc-64-bit.tar.gz
@@ -28,7 +35,7 @@ before_script:
   - gcc -v && g++ -v && cmake --version
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER ..
 
 script:
   - make
