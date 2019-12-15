@@ -51,8 +51,8 @@ namespace spaceinvaders {
             clock.reset();
 
             // The game loop itself
-//            gameController->checkInput();
-//            gameModel->update(elapsedSeconds);
+            gameController.checkInput();
+            gameModel.update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
         }
     }

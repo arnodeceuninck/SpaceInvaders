@@ -4,16 +4,19 @@
 
 #include "Observable.h"
 
-void observer::Observable::addObserver(std::shared_ptr<Observer> observer) {
+template<class T>
+void observer::Observable<T>::addObserver(std::shared_ptr<Observer<T>> observer) {
     observers.insert(observer);
 }
 
-void observer::Observable::removeObserver(std::shared_ptr<Observer> observer) {
+template<class T>
+void observer::Observable<T>::removeObserver(std::shared_ptr<Observer<T>> observer) {
     observers.erase(observer);
 }
 
-void observer::Observable::notifyObservers() {
+template<class T>
+void observer::Observable<T>::notifyObservers(T &t) {
     for (auto observer: observers) {
-        observer->handleEvent();
+        observer->handleEvent(t);
     }
 }

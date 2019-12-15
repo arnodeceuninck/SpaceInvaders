@@ -8,6 +8,8 @@
 namespace spaceinvaders::model {
     class GameModel {
 
+    public:
+        void update(double elapsedSeconds);
     };
 }
 

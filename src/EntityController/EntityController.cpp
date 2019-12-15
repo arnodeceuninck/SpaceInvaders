@@ -3,3 +3,8 @@
 //
 
 #include "EntityController.h"
+
+
+void spaceinvaders::controller::EntityController::handleEvent(sf::Event &event) {
+
+}

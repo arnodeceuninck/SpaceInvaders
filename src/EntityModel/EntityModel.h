@@ -7,9 +7,13 @@
 
 #include "../Observer/Observer.h"
 #include "../Observer/Observable.h"
+#include "../EntityController/ControllerEvent.h"
+#include "ModelChangedEvent.h"
 
 namespace spaceinvaders::model {
-    class EntityModel : public observer::Observer, public observer::Observable {
+    class EntityModel
+            : public observer::Observer<spaceinvaders::controller::ControllerEvent>,
+              public observer::Observable<spaceinvaders::model::ModelChangedEvent> {
 
     };
 }

@@ -6,9 +6,10 @@
 #define SPACEINVADERS_OBSERVER_H
 
 namespace observer {
+    template<class T>
     class Observer {
     public:
-        virtual void handleEvent() = 0;
+        virtual void handleEvent(T &t) = 0;
     };
 }
 

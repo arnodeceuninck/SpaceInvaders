@@ -11,18 +11,22 @@
 #include "Observer.h"
 
 namespace observer {
+
     // aka Subject
+    // Virtual function couldn't use a template, but is required, because a subject must be able to notify different events
+    template<class T>
     class Observable {
-        std::set<std::shared_ptr<Observer>> observers;
+        std::set<std::shared_ptr<Observer<T>>> observers;
 
     public:
 
-        virtual void addObserver(std::shared_ptr<Observer> observer) = 0;
+        void addObserver(std::shared_ptr<Observer<T>> observer);
 
-        virtual void removeObserver(std::shared_ptr<Observer> observer) = 0;
+        void removeObserver(std::shared_ptr<Observer<T>> observer);
 
-        virtual void notifyObservers() = 0;
+        void notifyObservers(T &t);
     };
+
 }
 
 

@@ -3,3 +3,7 @@
 //
 
 #include "GameModel.h"
+
+void spaceinvaders::model::GameModel::update(double elapsedSeconds) {
+
+}
