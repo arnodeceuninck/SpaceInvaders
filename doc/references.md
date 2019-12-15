@@ -11,3 +11,5 @@
 1. Rogue Wave Software (s.d.). *The MVC Design Pattern*. Visited on December 14, 2019 via https://docs.roguewave.com/stingray/11.2/html/sflug/8-2.html.
 1. s.n. (2019). *Date and time utilities*. Visited on December 15, 2019 via https://en.cppreference.com/w/cpp/chrono. 
 1. s.n. (2019). *std::make_shared*. Visited on December 15, 2019 via http://www.cplusplus.com/reference/memory/make_shared/.
+1. Gomila, L. (s.d.). *Sprites and textures*. Visited on December 15, 2019 via https://www.sfml-dev.org/tutorials/2.4/graphics-sprite.php.
+1. Nicole (2014). *Here's my collection of pixel backgrounds tile*. Visited on December 15, 2019 via https://tenshiikisu.tumblr.com/post/79015021080/heres-my-collection-of-pixel-backgrounds-tile. 

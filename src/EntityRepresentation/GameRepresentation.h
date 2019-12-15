@@ -9,6 +9,8 @@
 #include <memory>
 #include "../Observer/Observable.h"
 #include "../EntityModel/ModelChangedEvent.h"
+#include "SFML/Graphics.hpp"
+#include "Window.h"
 
 namespace sf {
     class RenderWindow;
@@ -22,7 +24,7 @@ namespace spaceinvaders::view {
         void checkEvent();
 
     private:
-        std::shared_ptr<sf::RenderWindow> window;
+        Window window;
     };
 }
 
