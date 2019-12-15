@@ -2,20 +2,22 @@
 // Created by arno on 14/12/2019.
 //
 
-#include <chrono>
 #include "Game.h"
 #include "Clock.h"
 
 #define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
-#define MIN_TIME_PER_CYCLE 1.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
+#define MIN_TIME_PER_CYCLE 1000000000.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
 
 namespace spaceinvaders {
 
     void Game::Start() {
+
         // Initialise the game Model, View & Controller
         initModel();
         initView();
         initController();
+
+        gameRunning = true;
 
         gameLoop();
     }
@@ -25,7 +27,7 @@ namespace spaceinvaders {
     }
 
     void Game::initView() {
-
+        gameRepresentation = view::GameRepresentation();
     }
 
     void Game::initController() {
@@ -45,7 +47,7 @@ namespace spaceinvaders {
             }
 
             // Remember the elapsed time for the calculations
-            double elapsedSeconds = clock.elapsedTime();
+            double elapsedSeconds = clock.elapsedTime() / 1000000000;
 
             // Restart the timer
             clock.reset();
@@ -55,6 +57,10 @@ namespace spaceinvaders {
             gameModel.update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
         }
+    }
+
+    Game::Game() {
+        Start();
     }
 
 }

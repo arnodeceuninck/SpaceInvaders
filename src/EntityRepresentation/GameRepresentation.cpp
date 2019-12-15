@@ -7,7 +7,7 @@
 
 
 spaceinvaders::view::GameRepresentation::GameRepresentation() {
-
+    window = std::make_shared<sf::RenderWindow>(sf::VideoMode(512, 256), "Space Invaders");
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {

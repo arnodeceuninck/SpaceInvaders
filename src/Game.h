@@ -15,9 +15,9 @@ namespace spaceinvaders {
 
     class Game {
     public:
-        void Start();
-
+        Game();
     private:
+        void Start();
 
         model::GameModel gameModel;
         view::GameRepresentation gameRepresentation;
