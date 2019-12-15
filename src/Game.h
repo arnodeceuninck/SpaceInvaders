@@ -7,28 +7,33 @@
 
 #include <SFML/Graphics.hpp>
 #include "EntityModel/WorldModel.h"
+#include "EntityModel/GameModel.h"
+#include "EntityRepresentation/GameRepresentation.h"
+#include "EntityController/GameController.h"
 
 namespace spaceinvaders {
 
     class Game {
     public:
-        static void Start();
+        void Start();
 
     private:
 
-//        model::WorldModel worldModel;
+        model::GameModel gameModel;
+        view::GameRepresentation gameRepresentation;
+        controller::GameController gameController;
 
         std::shared_ptr<sf::RenderWindow> window;
 
-        static void initModel();
+        void initModel();
 
-        static void initView();
+        void initView();
 
-        static void initController();
+        void initController();
 
-        static bool gameRunning;
+        bool gameRunning;
 
-        static void gameLoop();
+        void gameLoop();
     };
 
 }

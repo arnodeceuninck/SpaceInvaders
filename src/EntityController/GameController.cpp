@@ -9,4 +9,16 @@ namespace spaceinvaders::controller {
     void GameController::update() {
         sf::Event event;
     }
+
+    void GameController::addObserver(std::shared_ptr<observer::Observer> observer) {
+
+    }
+
+    void GameController::removeObserver(std::shared_ptr<observer::Observer> observer) {
+
+    }
+
+    void GameController::notifyObservers() {
+
+    }
 }

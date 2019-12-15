@@ -11,6 +11,13 @@
 namespace spaceinvaders::controller {
     class GameController : public EntityController {
         void update() override;
+
+    public:
+        void addObserver(std::shared_ptr<observer::Observer> observer) override;
+
+        void removeObserver(std::shared_ptr<observer::Observer> observer) override;
+
+        void notifyObservers() override;
     };
 }
 

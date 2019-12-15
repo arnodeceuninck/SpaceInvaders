@@ -15,6 +15,8 @@ namespace observer {
     class Observable {
         std::set<std::shared_ptr<Observer>> observers;
 
+    public:
+
         virtual void addObserver(std::shared_ptr<Observer> observer) = 0;
 
         virtual void removeObserver(std::shared_ptr<Observer> observer) = 0;
