@@ -7,3 +7,7 @@
 void spaceinvaders::model::GameModel::update(double elapsedSeconds) {
 
 }
+
+const std::shared_ptr<spaceinvaders::Dimensions> &spaceinvaders::model::GameModel::getDimensions() const {
+    return dimensions;
+}

@@ -9,13 +9,14 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <memory>
 #include "EntityRepresentation.h"
+#include "../GameWindow.h"
 
 namespace spaceinvaders::view {
     class BackgroundTiles : public EntityRepresentation {
     public:
         BackgroundTiles(std::string filename);
 
-        void draw(sf::RenderWindow &sfmlWindow);
+        void draw(GameWindow &window);
 
     private:
         sf::Texture texture;

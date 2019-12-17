@@ -10,15 +10,21 @@
 #include "EntityModel/GameModel.h"
 #include "EntityRepresentation/GameRepresentation.h"
 #include "EntityController/GameController.h"
+#include "Observer/Observer.h"
+#include "EntityController/WindowCloseListener.h"
 
 namespace spaceinvaders {
 
-    class Game {
+    class Game : public observer::Observer<sf::Event> {
     public:
         Game();
+
+        void handleEvent(sf::Event &event) override;
+
     private:
         void Start();
 
+        controller::WindowCloseListener wcl;
         model::GameModel gameModel;
         view::GameRepresentation gameRepresentation;
         controller::GameController gameController;

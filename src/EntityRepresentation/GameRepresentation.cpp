@@ -9,10 +9,10 @@
 #include <cmath>
 
 
-spaceinvaders::view::GameRepresentation::GameRepresentation() : window(Window(800, 600)) {
+spaceinvaders::view::GameRepresentation::GameRepresentation() : window(GameWindow(800, 600)) {
 
     BackgroundTiles background{"res/BGTile.jpg"};
-    window.setBackground(background);
+    background.draw(window);
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {
@@ -20,4 +20,8 @@ void spaceinvaders::view::GameRepresentation::checkEvent() {
 //    while (window->pollEvent(event)){
 //        // Notify the observers of this event
 //    };
+}
+
+const spaceinvaders::view::GameWindow &spaceinvaders::view::GameRepresentation::getWindow() const {
+    return window;
 }

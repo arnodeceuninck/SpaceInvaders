@@ -3,7 +3,7 @@
 //
 
 #include "Game.h"
-#include "Clock.h"
+#include "Stopwatch.h"
 
 #define MAX_CYCLES_PER_SECOND 3 // The number of max game loops allowed in one second
 #define MIN_TIME_PER_CYCLE 1000000000.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
@@ -31,13 +31,14 @@ namespace spaceinvaders {
     }
 
     void Game::initController() {
-
+        wcl.addObserver(this);
+//        gameWindow.addObserver();
     }
 
     void Game::gameLoop() {
 
         // Keep track of the elapsed time after each loop
-        Clock clock{};
+        Stopwatch clock{};
 
         while (gameRunning) {
 
@@ -61,6 +62,10 @@ namespace spaceinvaders {
 
     Game::Game() {
         Start();
+    }
+
+    void Game::handleEvent(sf::Event &event) {
+        gameRunning = false;
     }
 
 }

@@ -2,19 +2,21 @@
 // Created by arno on 15/12/2019.
 //
 
-#ifndef SPACEINVADERS_CLOCK_H
-#define SPACEINVADERS_CLOCK_H
+#ifndef SPACEINVADERS_STOPWATCH_H
+#define SPACEINVADERS_STOPWATCH_H
 
 
 #include <chrono>
 
+// TODO: Singelton pattern
+
 namespace spaceinvaders {
-    class Clock {
+    class Stopwatch {
     public:
         /**
          *  Start a new clock at the current time
          */
-        Clock();
+        Stopwatch();
 
         /**
          * Change the time from which the clock calculates it's duration to the currentTime
@@ -35,4 +37,4 @@ namespace spaceinvaders {
 }
 
 
-#endif //SPACEINVADERS_CLOCK_H
+#endif //SPACEINVADERS_STOPWATCH_H

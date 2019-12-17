@@ -10,7 +10,7 @@
 #include "../Observer/Observable.h"
 #include "../EntityModel/ModelChangedEvent.h"
 #include "SFML/Graphics.hpp"
-#include "Window.h"
+#include "../GameWindow.h"
 
 namespace sf {
     class RenderWindow;
@@ -23,8 +23,10 @@ namespace spaceinvaders::view {
 
         void checkEvent();
 
+        const GameWindow &getWindow() const;
+
     private:
-        Window window;
+        GameWindow window;
     };
 }
 
