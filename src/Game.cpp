@@ -3,6 +3,11 @@
 //
 
 #include "Game.h"
+
+#include "EntityRepresentation/GameRepresentation.h"
+#include "EntityController/GameController.h"
+#include "EntityModel/GameModel.h"
+
 #include "Stopwatch.h"
 
 #define MAX_CYCLES_PER_SECOND 3 // The number of max game loops allowed in one second
@@ -27,11 +32,12 @@ namespace spaceinvaders {
     }
 
     void Game::initView() {
-        gameRepresentation = view::GameRepresentation();
+        gameRepresentation = std::make_shared<view::GameRepresentation>();
     }
 
     void Game::initController() {
-        wcl.addObserver(this);
+        // TODO: Is it possible to cast raw pointer (this) to shared pointer?
+//        wcl.addObserver(static_cast<const std::shared_ptr<Observer < sf::Event>>>(this));
 //        gameWindow.addObserver();
     }
 
@@ -54,8 +60,8 @@ namespace spaceinvaders {
             clock.reset();
 
             // The game loop itself
-            gameController.checkInput();
-            gameModel.update(elapsedSeconds);
+            gameController->checkInput();
+            gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
         }
     }
@@ -64,7 +70,7 @@ namespace spaceinvaders {
         Start();
     }
 
-    void Game::handleEvent(sf::Event &event) {
+    void Game::handleEvent(std::shared_ptr<spaceinvaders::Event> &event) {
         gameRunning = false;
     }
 

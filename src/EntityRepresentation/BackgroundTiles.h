@@ -5,11 +5,8 @@
 #ifndef SPACEINVADERS_BACKGROUNDTILES_H
 #define SPACEINVADERS_BACKGROUNDTILES_H
 
-
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <memory>
 #include "EntityRepresentation.h"
-#include "../GameWindow.h"
+#include <string>
 
 namespace spaceinvaders::view {
     class BackgroundTiles : public EntityRepresentation {

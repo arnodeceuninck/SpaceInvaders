@@ -5,13 +5,11 @@
 #ifndef SPACEINVADERS_GAMEWINDOW_H
 #define SPACEINVADERS_GAMEWINDOW_H
 
-
-#include <memory>
-#include "SFML/Graphics.hpp"
 #include "Observer/Observable.h"
+#include "SFML/Graphics.hpp"
 
 namespace spaceinvaders {
-    class GameWindow : public observer::Observable<sf::Event> {
+    class GameWindow : public observer::Observable {
     public:
         GameWindow(int width, int height);
 

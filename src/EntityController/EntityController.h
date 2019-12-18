@@ -5,18 +5,20 @@
 #ifndef SPACEINVADERS_ENTITYCONTROLLER_H
 #define SPACEINVADERS_ENTITYCONTROLLER_H
 
-#include <SFML/Window/Event.hpp>
 #include "../Observer/Observable.h"
-#include "../Observer/Observer.h"
-#include "ControllerEvent.h"
+
+namespace sf {
+    class Event;
+}
 
 namespace spaceinvaders::controller {
+    class ControllerEvent;
 
-    class EntityController : public observer::Observer<sf::Event>, public observer::Observable<ControllerEvent> {
+    class EntityController : public observer::Observer, public observer::Observable {
         virtual void checkInput() = 0;
 
     public:
-        void handleEvent(sf::Event &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
     };
 
 }

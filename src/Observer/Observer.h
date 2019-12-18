@@ -5,11 +5,16 @@
 #ifndef SPACEINVADERS_OBSERVER_H
 #define SPACEINVADERS_OBSERVER_H
 
+#include <memory>
+
+namespace spaceinvaders {
+    class Event;
+}
+
 namespace observer {
-    template<class T>
     class Observer {
     public:
-        virtual void handleEvent(T &t) = 0;
+        virtual void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) = 0;
     };
 }
 

@@ -4,10 +4,7 @@
 
 #include "GameRepresentation.h"
 #include "BackgroundTiles.h"
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <cmath>
-
+#include "SFML/Graphics.hpp"
 
 spaceinvaders::view::GameRepresentation::GameRepresentation() : window(GameWindow(800, 600)) {
 
@@ -22,6 +19,6 @@ void spaceinvaders::view::GameRepresentation::checkEvent() {
 //    };
 }
 
-const spaceinvaders::view::GameWindow &spaceinvaders::view::GameRepresentation::getWindow() const {
+const spaceinvaders::GameWindow &spaceinvaders::view::GameRepresentation::getWindow() const {
     return window;
 }

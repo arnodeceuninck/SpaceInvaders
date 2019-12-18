@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_GAMECONTROLLER_H
 #define SPACEINVADERS_GAMECONTROLLER_H
 
-
 #include "EntityController.h"
 
 namespace spaceinvaders::controller {

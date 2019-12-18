@@ -5,10 +5,11 @@
 #ifndef SPACEINVADERS_TRANSFORMATION_H
 #define SPACEINVADERS_TRANSFORMATION_H
 
+#include "../EntityModel/Dimensions.h"
+#include <memory>
+
 // TODO: singleton pattern
 
-#include "../GameWindow.h"
-#include "../EntityModel/GameModel.h"
 
 namespace spaceinvaders::view {
     class Transformation {

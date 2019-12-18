@@ -5,19 +5,19 @@
 #ifndef SPACEINVADERS_GAMEREPRESENTATION_H
 #define SPACEINVADERS_GAMEREPRESENTATION_H
 
-
-#include <memory>
 #include "../Observer/Observable.h"
-#include "../EntityModel/ModelChangedEvent.h"
-#include "SFML/Graphics.hpp"
-#include "../GameWindow.h"
+#include "EntityRepresentation.h"
 
 namespace sf {
     class RenderWindow;
 }
 
+namespace spaceinvaders::model {
+    class ModelChangedEvent;
+}
+
 namespace spaceinvaders::view {
-    class GameRepresentation : public observer::Observable<spaceinvaders::model::ModelChangedEvent> {
+    class GameRepresentation : public observer::Observable, public EntityRepresentation {
     public:
         GameRepresentation();
 

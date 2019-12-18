@@ -6,11 +6,10 @@
 #define SPACEINVADERS_GAMEMODEL_H
 
 
-#include <memory>
-#include "Dimensions.h"
+#include "EntityModel.h"
 
 namespace spaceinvaders::model {
-    class GameModel {
+    class GameModel : public EntityModel {
 
     public:
         void update(double elapsedSeconds);
@@ -18,7 +17,7 @@ namespace spaceinvaders::model {
         const std::shared_ptr<Dimensions> &getDimensions() const;
 
     private:
-        std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(-4, 4, -3, 3);
+        std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(Coordinate(-4, -3), Coordinate(4, 3));
     };
 }
 

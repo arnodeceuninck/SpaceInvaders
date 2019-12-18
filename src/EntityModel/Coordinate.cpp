@@ -39,3 +39,5 @@ spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*=(const int &k) {
     return *this * k;
 }
 
+spaceinvaders::Coordinate::Coordinate(double x, double y) : x(x), y(y) {}
+

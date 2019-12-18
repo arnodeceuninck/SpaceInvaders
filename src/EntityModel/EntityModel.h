@@ -5,15 +5,21 @@
 #ifndef SPACEINVADERS_ENTITYMODEL_H
 #define SPACEINVADERS_ENTITYMODEL_H
 
-#include "../Observer/Observer.h"
+#include "Dimensions.h"
 #include "../Observer/Observable.h"
-#include "../EntityController/ControllerEvent.h"
-#include "ModelChangedEvent.h"
 
+#include <memory>
+
+namespace spaceinvaders::controller {
+    class ControllerEvent;
+}
 namespace spaceinvaders::model {
+
+    class ModelChangedEvent;
+
     class EntityModel
-            : public observer::Observer<spaceinvaders::controller::ControllerEvent>,
-              public observer::Observable<spaceinvaders::model::ModelChangedEvent> {
+            : public observer::Observer,
+              public observer::Observable {
 
     };
 }

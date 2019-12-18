@@ -2,8 +2,6 @@
 // Created by arno on 14/12/2019.
 //
 
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Sprite.hpp>
 #include "BackgroundTiles.h"
 
 

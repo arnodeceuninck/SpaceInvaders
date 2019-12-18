@@ -9,6 +9,8 @@
 namespace spaceinvaders {
     class Coordinate {
     public:
+        Coordinate(double x, double y);
+
         double getX() const;
 
         double getY() const;

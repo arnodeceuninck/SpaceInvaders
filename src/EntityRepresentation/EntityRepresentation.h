@@ -5,6 +5,8 @@
 #ifndef SPACEINVADERS_ENTITYREPRESENTATION_H
 #define SPACEINVADERS_ENTITYREPRESENTATION_H
 
+#include "../GameWindow.h"
+
 namespace spaceinvaders::view {
     class EntityRepresentation {
 

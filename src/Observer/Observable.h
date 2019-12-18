@@ -6,25 +6,22 @@
 #define SPACEINVADERS_OBSERVABLE_H
 
 #include <set>
-#include <memory>
 
 #include "Observer.h"
 
 namespace observer {
 
     // aka Subject
-    // Virtual function couldn't use a template, but is required, because a subject must be able to notify different events
-    template<class T>
     class Observable {
-        std::set<std::shared_ptr<Observer<T>>> observers;
+        std::set<std::shared_ptr<Observer>> observers;
 
     public:
 
-        void addObserver(std::shared_ptr<Observer<T>> observer);
+        void addObserver(std::shared_ptr<Observer> observer);
 
-        void removeObserver(std::shared_ptr<Observer<T>> observer);
+        void removeObserver(std::shared_ptr<Observer> observer);
 
-        void notifyObservers(T &t);
+        void notifyObservers(std::shared_ptr<spaceinvaders::Event> &event);
     };
 
 }

@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_DIMENSIONS_H
 #define SPACEINVADERS_DIMENSIONS_H
 
-
 #include "Coordinate.h"
 
 namespace spaceinvaders {

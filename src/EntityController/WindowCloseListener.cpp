@@ -3,8 +3,9 @@
 //
 
 #include "WindowCloseListener.h"
+#include "SFML/Graphics.hpp"
 
-void spaceinvaders::controller::WindowCloseListener::handleEvent(sf::Event &event) {
-    if (event.type == sf::Event::Closed)
-        notifyObservers(event);
+void spaceinvaders::controller::WindowCloseListener::handleEvent(std::shared_ptr<spaceinvaders::Event> &event) {
+//    if (event.type == sf::Event::Closed)
+//        notifyObservers(event);
 }
