@@ -6,6 +6,7 @@
 #define SPACEINVADERS_ENTITYCONTROLLER_H
 
 #include "../Observer/Observable.h"
+#include "ControllerEvent.h"
 
 namespace sf {
     class Event;

@@ -12,6 +12,8 @@ namespace spaceinvaders::controller {
     public:
         void checkInput() override;
 
+        void testObserverPattern();
+
     private:
     };
 }

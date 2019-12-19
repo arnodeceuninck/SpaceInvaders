@@ -3,3 +3,7 @@
 //
 
 #include "Event.h"
+
+spaceinvaders::Event::Event() {
+
+}

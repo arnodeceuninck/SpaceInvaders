@@ -5,10 +5,12 @@
 #ifndef SPACEINVADERS_EVENT_H
 #define SPACEINVADERS_EVENT_H
 
-
-class Event {
-
-};
+namespace spaceinvaders {
+    class Event {
+    public:
+        Event();
+    };
+}
 
 
 #endif //SPACEINVADERS_EVENT_H

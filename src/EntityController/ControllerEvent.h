@@ -5,9 +5,12 @@
 #ifndef SPACEINVADERS_CONTROLLEREVENT_H
 #define SPACEINVADERS_CONTROLLEREVENT_H
 
-namespace spaceinvaders::controller {
-    class ControllerEvent {
+#include "../Event.h"
 
+namespace spaceinvaders {
+    class ControllerEvent : public spaceinvaders::Event {
+    public:
+        ControllerEvent();
     };
 }
 

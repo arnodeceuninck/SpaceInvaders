@@ -3,3 +3,8 @@
 //
 
 #include "ControllerEvent.h"
+
+
+spaceinvaders::ControllerEvent::ControllerEvent() {
+
+}

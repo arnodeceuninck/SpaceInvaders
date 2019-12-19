@@ -12,6 +12,8 @@ namespace spaceinvaders::model {
     class GameModel : public EntityModel {
 
     public:
+        void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
+
         void update(double elapsedSeconds);
 
         const std::shared_ptr<Dimensions> &getDimensions() const;

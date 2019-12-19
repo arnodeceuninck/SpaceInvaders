@@ -5,7 +5,7 @@
 #ifndef SPACEINVADERS_OBSERVABLE_H
 #define SPACEINVADERS_OBSERVABLE_H
 
-#include <set>
+#include <vector>
 
 #include "Observer.h"
 
@@ -13,11 +13,11 @@ namespace observer {
 
     // aka Subject
     class Observable {
-        std::set<std::shared_ptr<Observer>> observers;
+        std::vector<std::weak_ptr<Observer>> observers; // Can't be placed in a set, since wp's don't have operator<
 
     public:
 
-        void addObserver(std::shared_ptr<Observer> observer);
+        void addObserver(std::weak_ptr<Observer> observer);
 
         void removeObserver(std::shared_ptr<Observer> observer);
 
