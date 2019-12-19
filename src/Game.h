@@ -28,17 +28,17 @@ namespace spaceinvaders {
         class GameController;
     }
 
-    class Game : public observer::Observer {
-    public:
-        Game();
+class Game : public observer::Observer, public std::enable_shared_from_this<Game> {
+public:
+    Game();
 
-        void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
+    void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
 
-    private:
-        void Start();
+private:
+    void Start();
 
-        std::shared_ptr<model::GameModel> gameModel;
-        std::shared_ptr<view::GameRepresentation> gameRepresentation;
+    std::shared_ptr<model::GameModel> gameModel;
+    std::shared_ptr<view::GameRepresentation> gameRepresentation;
         std::shared_ptr<controller::GameController> gameController;
 
         std::shared_ptr<sf::RenderWindow> window;
