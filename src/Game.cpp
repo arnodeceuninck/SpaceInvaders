@@ -10,8 +10,9 @@
 #include "EntityModel/GameModel.h"
 
 #include "Stopwatch.h"
+#include "EntityController/ShipController.h"
 
-#define MAX_CYCLES_PER_SECOND 3 // The number of max game loops allowed in one second
+#define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
 #define MIN_TIME_PER_CYCLE 1000000000.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
 
 namespace spaceinvaders {
@@ -38,10 +39,10 @@ namespace spaceinvaders {
 
     void Game::initController() {
         gameController = std::make_shared<controller::GameController>();
-        gameController->addObserver(
-                weak_from_this()); // Because appearently there isn't an immediate way to convert a raw pointer to a weak pointer
+//        gameController->addObserver(
+//                weak_from_this()); // Because appearently there isn't an immediate way to convert a raw pointer to a weak pointer
         // TODO: Is it possible to cast raw pointer (this) to shared pointer?
-//        gameRepresentation->getWindow()->addObserver();
+        gameRepresentation->getWindow()->addObserver(std::make_shared<spaceinvaders::controller::ShipController>());
 //        wcl.addObserver(static_cast<const std::shared_ptr<Observer < sf::Event>>>(this));
 //        gameWindow.addObserver();
     }
@@ -70,6 +71,10 @@ namespace spaceinvaders {
             gameRepresentation->getWindow()->checkInput();
             gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
+
+            if (i >= 150) {
+                gameRunning = false; // TODO: Remove this line
+            }
         }
     }
 

@@ -13,11 +13,11 @@ namespace observer {
 
     // aka Subject
     class Observable {
-        std::vector<std::weak_ptr<Observer>> observers; // Can't be placed in a set, since wp's don't have operator<
+        std::vector<std::shared_ptr<Observer>> observers; // Can't be placed in a set, since wp's don't have operator<
 
     public:
 
-        void addObserver(std::weak_ptr<Observer> observer);
+        void addObserver(std::shared_ptr<Observer> observer);
 
         void removeObserver(std::shared_ptr<Observer> observer);
 

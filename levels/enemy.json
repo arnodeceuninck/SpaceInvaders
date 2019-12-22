@@ -1,0 +1,7 @@
+{
+  "width": 0.5,
+  "height": 0.5,
+  "sprite": "Enemy.png",
+  "health": 20,
+  "damage": 10
+}
