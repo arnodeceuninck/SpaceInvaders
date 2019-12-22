@@ -9,7 +9,11 @@
 
 namespace spaceinvaders::view {
     class EntityRepresentation {
+        std::string spriteFile;
+    public:
+        const std::string &getSpriteFile() const;
 
+        void setSpriteFile(const std::string &spriteFile);
     };
 }
 

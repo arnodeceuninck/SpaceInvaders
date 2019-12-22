@@ -9,7 +9,26 @@
 
 namespace spaceinvaders::model {
     class Ship : public EntityModel {
+        double width;
+        double height;
+        double health;
+        double damage;
+    public:
+        double getWidth() const;
 
+        void setWidth(double width);
+
+        double getHeight() const;
+
+        void setHeight(double height);
+
+        double getHealth() const;
+
+        void setHealth(double health);
+
+        double getDamage() const;
+
+        void setDamage(double damage);
     };
 }
 
