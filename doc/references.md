@@ -16,4 +16,4 @@
 1. Hapax (2014). *Re: Infinitely repeated tile as background sprite*. Visited on December 15, 2019 via https://en.sfml-dev.org/forums/index.php?topic=14382.0.
 1. s.n. (2019). *std::weak_ptr*. Visited on December 19, 2019 via https://en.cppreference.com/w/cpp/memory/weak_ptr. 
 1. Kilochek, Y. (2012). *std::shared_ptr of this*. Visited on December 19, 2019 via https://stackoverflow.com/questions/11711034/stdshared-ptr-of-this. 
-
+1. Dave, s. (2011). *Can't downcast because class is not polymorphic?*. Visited on December 22, 2019 via https://stackoverflow.com/questions/8469900/cant-downcast-because-class-is-not-polymorphic.

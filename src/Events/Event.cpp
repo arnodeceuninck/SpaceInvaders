@@ -7,3 +7,7 @@
 spaceinvaders::event::Event::Event() {
 
 }
+
+spaceinvaders::event::Event::~Event() {
+
+}

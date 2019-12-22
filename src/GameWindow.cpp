@@ -3,6 +3,7 @@
 //
 
 #include "GameWindow.h"
+#include "Events/WindowInteractionEvent.h"
 
 spaceinvaders::GameWindow::GameWindow(int width, int height) : width(width), height(height) {
     sfmlWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Space Invaders");
@@ -23,6 +24,8 @@ const std::shared_ptr<sf::RenderWindow> &spaceinvaders::GameWindow::getSfmlWindo
 
 void spaceinvaders::GameWindow::checkInput() {
     while (sfmlWindow->pollEvent(lastEvent)) {
-        notifyObservers(lastEvent);
+        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::WindowInteractionEvent>(
+                lastEvent);
+        notifyObservers(event);
     }
 }

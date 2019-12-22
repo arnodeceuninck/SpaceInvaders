@@ -9,6 +9,8 @@ namespace spaceinvaders::event {
     class Event {
     public:
         Event();
+
+        virtual ~Event();
     };
 }
 
