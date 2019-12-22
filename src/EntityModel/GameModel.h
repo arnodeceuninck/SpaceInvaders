@@ -12,7 +12,7 @@ namespace spaceinvaders::model {
     class GameModel : public EntityModel {
 
     public:
-        void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
         void update(double elapsedSeconds);
 

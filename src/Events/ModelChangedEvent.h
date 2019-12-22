@@ -5,7 +5,7 @@
 #ifndef SPACEINVADERS_MODELCHANGEDEVENT_H
 #define SPACEINVADERS_MODELCHANGEDEVENT_H
 
-namespace spaceinvaders::model {
+namespace spaceinvaders::event {
     class ModelChangedEvent {
 
     };

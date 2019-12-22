@@ -5,6 +5,6 @@
 #include "EntityController.h"
 
 
-void spaceinvaders::controller::EntityController::handleEvent(std::shared_ptr<spaceinvaders::Event> &event) {
+void spaceinvaders::controller::EntityController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
 
 }

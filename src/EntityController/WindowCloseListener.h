@@ -13,7 +13,7 @@ namespace sf {
 
 namespace spaceinvaders::controller {
     class WindowCloseListener : public observer::Observer, public observer::Observable {
-        void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }
 

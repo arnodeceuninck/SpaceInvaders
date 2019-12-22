@@ -5,6 +5,6 @@
 #include "ControllerEvent.h"
 
 
-spaceinvaders::ControllerEvent::ControllerEvent() {
+spaceinvaders::event::ControllerEvent::ControllerEvent() {
 
 }

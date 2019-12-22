@@ -4,6 +4,6 @@
 
 #include "Event.h"
 
-spaceinvaders::Event::Event() {
+spaceinvaders::event::Event::Event() {
 
 }

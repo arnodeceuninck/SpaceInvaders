@@ -6,7 +6,7 @@
 
 namespace spaceinvaders::controller {
     void GameController::checkInput() {
-        std::shared_ptr<spaceinvaders::Event> controlEvent = std::make_shared<spaceinvaders::ControllerEvent>();
+        std::shared_ptr<spaceinvaders::event::Event> controlEvent = std::make_shared<spaceinvaders::event::ControllerEvent>();
         notifyObservers(controlEvent);
     }
 }

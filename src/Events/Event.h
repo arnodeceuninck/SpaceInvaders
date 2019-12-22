@@ -5,7 +5,7 @@
 #ifndef SPACEINVADERS_EVENT_H
 #define SPACEINVADERS_EVENT_H
 
-namespace spaceinvaders {
+namespace spaceinvaders::event {
     class Event {
     public:
         Event();

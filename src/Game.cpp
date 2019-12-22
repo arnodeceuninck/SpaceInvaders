@@ -76,7 +76,7 @@ namespace spaceinvaders {
         Start();
     }
 
-    void Game::handleEvent(std::shared_ptr<spaceinvaders::Event> &event) {
+    void Game::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
         gameRunning = false;
     }
 

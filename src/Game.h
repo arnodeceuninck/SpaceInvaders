@@ -32,7 +32,7 @@ class Game : public observer::Observer, public std::enable_shared_from_this<Game
 public:
     Game();
 
-    void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
+    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
 private:
     void Start();

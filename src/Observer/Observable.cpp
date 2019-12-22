@@ -16,7 +16,7 @@ void observer::Observable::removeObserver(std::shared_ptr<Observer> observer) {
 
 }
 
-void observer::Observable::notifyObservers(std::shared_ptr<spaceinvaders::Event> &event) {
+void observer::Observable::notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event) {
     for (auto observer: observers) {
         if (auto observerSP = observer.lock()) {
             observerSP->handleEvent(event);

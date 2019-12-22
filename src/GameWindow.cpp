@@ -23,6 +23,6 @@ const std::shared_ptr<sf::RenderWindow> &spaceinvaders::GameWindow::getSfmlWindo
 
 void spaceinvaders::GameWindow::checkInput() {
     while (sfmlWindow->pollEvent(lastEvent)) {
-//        notifyObservers(lastEvent);
+        notifyObservers(lastEvent);
     }
 }

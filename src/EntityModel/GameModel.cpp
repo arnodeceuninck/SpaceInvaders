@@ -12,6 +12,6 @@ const std::shared_ptr<spaceinvaders::Dimensions> &spaceinvaders::model::GameMode
     return dimensions;
 }
 
-void spaceinvaders::model::GameModel::handleEvent(std::shared_ptr<spaceinvaders::Event> &event) {
+void spaceinvaders::model::GameModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     // std::cout << "Event received" << std::endl;
 }

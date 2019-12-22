@@ -6,7 +6,7 @@
 #define SPACEINVADERS_ENTITYCONTROLLER_H
 
 #include "../Observer/Observable.h"
-#include "ControllerEvent.h"
+#include "../Events/ControllerEvent.h"
 
 namespace sf {
     class Event;
@@ -16,10 +16,10 @@ namespace spaceinvaders::controller {
     class ControllerEvent;
 
     class EntityController : public observer::Observer, public observer::Observable {
-        virtual void checkInput() = 0;
+//        virtual void checkInput() = 0; // TODO: checkinput should be runned on GameWindow from game loop
 
     public:
-        void handleEvent(std::shared_ptr<spaceinvaders::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 
 }
