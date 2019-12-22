@@ -10,7 +10,7 @@
 namespace spaceinvaders::controller {
     class GameController : public EntityController {
     public:
-        void checkInput(); // TODO: Remove
+        void checkInput();
 
     private:
     };

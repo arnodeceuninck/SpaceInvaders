@@ -41,6 +41,7 @@ namespace spaceinvaders {
         gameController->addObserver(
                 weak_from_this()); // Because appearently there isn't an immediate way to convert a raw pointer to a weak pointer
         // TODO: Is it possible to cast raw pointer (this) to shared pointer?
+//        gameRepresentation->getWindow()->addObserver();
 //        wcl.addObserver(static_cast<const std::shared_ptr<Observer < sf::Event>>>(this));
 //        gameWindow.addObserver();
     }
@@ -66,7 +67,7 @@ namespace spaceinvaders {
             clock.reset();
 
             // The game loop itself
-            gameController->checkInput();
+            gameRepresentation->getWindow()->checkInput();
             gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
         }

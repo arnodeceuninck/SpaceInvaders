@@ -21,12 +21,14 @@ namespace spaceinvaders::view {
     public:
         GameRepresentation();
 
+        void checkInput();
+
         void checkEvent();
 
-        const GameWindow &getWindow() const;
+        const std::shared_ptr<GameWindow> &getWindow() const;
 
     private:
-        GameWindow window;
+        std::shared_ptr<GameWindow> window;
     };
 }
 

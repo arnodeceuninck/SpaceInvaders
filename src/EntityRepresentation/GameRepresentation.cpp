@@ -6,10 +6,10 @@
 #include "BackgroundTiles.h"
 #include "SFML/Graphics.hpp"
 
-spaceinvaders::view::GameRepresentation::GameRepresentation() : window(GameWindow(800, 600)) {
+spaceinvaders::view::GameRepresentation::GameRepresentation() : window(std::make_shared<GameWindow>(800, 600)) {
 
     BackgroundTiles background{"res/BGTile.jpg"};
-    background.draw(window);
+    background.draw(*window);
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {
@@ -19,6 +19,10 @@ void spaceinvaders::view::GameRepresentation::checkEvent() {
 //    };
 }
 
-const spaceinvaders::GameWindow &spaceinvaders::view::GameRepresentation::getWindow() const {
+void spaceinvaders::view::GameRepresentation::checkInput() {
+    window->checkInput();
+}
+
+const std::shared_ptr<spaceinvaders::GameWindow> &spaceinvaders::view::GameRepresentation::getWindow() const {
     return window;
 }
