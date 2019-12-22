@@ -8,7 +8,7 @@
 
 spaceinvaders::view::GameRepresentation::GameRepresentation() : window(std::make_shared<GameWindow>(800, 600)) {
 
-    BackgroundTiles background{"res/BGTile.jpg"};
+    BackgroundTiles background{"res/Background.jpg"};
     background.draw(*window);
 }
 
