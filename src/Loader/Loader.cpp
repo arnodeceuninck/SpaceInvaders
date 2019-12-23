@@ -4,8 +4,22 @@
 
 #include "Loader.h"
 
+#include <fstream>
+
+#include "../../rapidjson/stringbuffer.h"
+#include "../../rapidjson/istreamwrapper.h"
+
+
 spaceinvaders::loader::Loader::Loader(const std::string &filename) : filename(filename) {}
 
 const std::string &spaceinvaders::loader::Loader::getFilename() const {
     return filename;
+}
+
+rapidjson::Document spaceinvaders::loader::Loader::getDocument() const {
+    std::ifstream inputStream(this->getFilename());
+    rapidjson::IStreamWrapper inputStreamWrapper(inputStream);
+    rapidjson::Document input;
+    input.ParseStream(inputStreamWrapper);
+    return input;
 }

@@ -26,3 +26,7 @@ void spaceinvaders::view::GameRepresentation::checkInput() {
 const std::shared_ptr<spaceinvaders::GameWindow> &spaceinvaders::view::GameRepresentation::getWindow() const {
     return window;
 }
+
+void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+
+}

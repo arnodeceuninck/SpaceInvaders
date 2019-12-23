@@ -3,3 +3,7 @@
 //
 
 #include "Observer.h"
+
+observer::Observer::~Observer() {
+
+}

@@ -7,9 +7,17 @@
 
 #include "EntityRepresentation.h"
 
-namespace spaceinvaders::view {
-    class ShipRepresentation : public EntityRepresentation {
+namespace spaceinvaders::model {
+    class Ship;
+}
 
+namespace spaceinvaders::view {
+    class ShipRepresentation : public EntityRepresentation, public std::enable_shared_from_this<ShipRepresentation> {
+
+    public:
+        ShipRepresentation(std::shared_ptr<spaceinvaders::model::Ship> sharedPtr);
+
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }
 

@@ -19,6 +19,9 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::view {
     class GameRepresentation : public observer::Observable, public EntityRepresentation {
     public:
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
+    public:
         GameRepresentation();
 
         void checkInput();

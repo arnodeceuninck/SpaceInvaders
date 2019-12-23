@@ -28,3 +28,7 @@ void spaceinvaders::view::BackgroundTiles::draw(GameWindow &window) {
     sfmlWindow->draw(Sprite);
     sfmlWindow->display();
 }
+
+void spaceinvaders::view::BackgroundTiles::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+
+}

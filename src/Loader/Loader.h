@@ -7,12 +7,16 @@
 
 #include <string>
 
+#include "../../rapidjson/document.h"
+
 namespace spaceinvaders::loader {
     class Loader {
     private:
         std::string filename;
     public:
         Loader(const std::string &filename);
+
+        rapidjson::Document getDocument() const;
 
         const std::string &getFilename() const;
     };

@@ -15,6 +15,8 @@ namespace observer {
     class Observer {
     public:
         virtual void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) = 0;
+
+        virtual ~Observer();
     };
 }
 

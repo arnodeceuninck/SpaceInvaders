@@ -13,6 +13,8 @@ namespace spaceinvaders::view {
     public:
         BackgroundTiles(std::string filename);
 
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
         void draw(GameWindow &window);
 
     private:

@@ -8,7 +8,7 @@
 #include "../GameWindow.h"
 
 namespace spaceinvaders::view {
-    class EntityRepresentation {
+    class EntityRepresentation : public observer::Observer {
         std::string spriteFile;
     public:
         const std::string &getSpriteFile() const;

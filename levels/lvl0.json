@@ -1,6 +1,6 @@
 {
   "player": "player.json",
-  "Enemies": [
+  "enemies": [
     {
       "enemy": "enemy.json",
       "x": "-1",

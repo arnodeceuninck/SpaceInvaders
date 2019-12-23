@@ -3,3 +3,7 @@
 //
 
 #include "PlayerShip.h"
+
+void spaceinvaders::model::PlayerShip::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+
+}
