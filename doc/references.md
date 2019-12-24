@@ -19,8 +19,9 @@
 1. Dave, s. (2011). *Can't downcast because class is not polymorphic?*. Visited on December 22, 2019 via https://stackoverflow.com/questions/8469900/cant-downcast-because-class-is-not-polymorphic.
 1. Zozulinskyi (2019). *Space background, night sky and stars*. Visited on December 22, 2019 via https://365psd.com/istock/space-background-night-sky-and-stars-998878.
 1. Sehe (2014). *shared_from_this causing bad_weak_ptr*. Visited on December 24, 2019 via https://stackoverflow.com/questions/27697973/shared-from-this-causing-bad-weak-ptr. 
-
-
+1. Gomila, L. (s.d.). *https://www.sfml-dev.org/tutorials/2.5/graphics-draw.php*. Visited on December 24, 2019 via https://www.sfml-dev.org/tutorials/2.5/graphics-draw.php.
+1. s.n. (2019). *std::exception*. Visited on December 24, 2019 via http://www.cplusplus.com/reference/exception/exception/.
+1. s.n. (2019). *std::ios_base::failure*. Visited on December 24, 2019 via http://www.cplusplus.com/reference/ios/ios_base/failure/.
 
 
 

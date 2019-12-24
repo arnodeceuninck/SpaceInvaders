@@ -13,7 +13,13 @@ namespace spaceinvaders::model {
         double height;
         double health;
         double damage;
+        double x;
+        double y;
     public:
+        double getX() const;
+
+        double getY() const;
+
         double getWidth() const;
 
         void setWidth(double width);

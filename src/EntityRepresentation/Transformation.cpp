@@ -23,3 +23,8 @@ spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spacein
     return coordinate;
 }
 
+void spaceinvaders::view::Transformation::transform(float &width, float &height) {
+    width *= viewDimensions->getWidth() / gameDimensions->getWidth();
+    height *= viewDimensions->getHeight() / gameDimensions->getHeight();
+}
+

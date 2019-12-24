@@ -7,6 +7,7 @@
 
 #include "Observer/Observable.h"
 #include "SFML/Graphics.hpp"
+#include "EntityModel/Dimensions.h"
 
 namespace spaceinvaders {
     class GameWindow : public observer::Observable {
@@ -16,6 +17,8 @@ namespace spaceinvaders {
         int getWidth() const;
 
         int getHeight() const;
+
+        std::shared_ptr<Dimensions> getDimensions();
 
         void checkInput();
 

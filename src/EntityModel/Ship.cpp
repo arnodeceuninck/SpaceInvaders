@@ -35,3 +35,11 @@ double spaceinvaders::model::Ship::getDamage() const {
 void spaceinvaders::model::Ship::setDamage(double damage) {
     Ship::damage = damage;
 }
+
+double spaceinvaders::model::Ship::getX() const {
+    return x;
+}
+
+double spaceinvaders::model::Ship::getY() const {
+    return y;
+}

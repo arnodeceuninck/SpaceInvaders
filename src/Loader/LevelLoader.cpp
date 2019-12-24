@@ -17,12 +17,16 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
         ShipLoader shipLoader{playerFile};
         std::shared_ptr<spaceinvaders::model::PlayerShip> playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
         std::shared_ptr<spaceinvaders::view::ShipRepresentation> playerRepresentation = std::make_shared<spaceinvaders::view::ShipRepresentation>(
-                gameRepresentation->getWindow());
+                gameRepresentation->getWindow(), gameRepresentation->getTransformation());
         shipLoader.loadInto(playerShip, playerRepresentation);
 
         std::shared_ptr<observer::Observer> observerPlayerRepr = std::dynamic_pointer_cast<observer::Observer>(
                 playerRepresentation);
         playerShip->addObserver(observerPlayerRepr);
+
+        std::shared_ptr<spaceinvaders::view::EntityRepresentation> entity = std::dynamic_pointer_cast<spaceinvaders::view::EntityRepresentation>(
+                playerRepresentation);
+        gameRepresentation->addObserver(entity);
 
         std::shared_ptr<spaceinvaders::event::Event> entityCreatedEvent = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
                 playerShip);

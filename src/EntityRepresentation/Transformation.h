@@ -18,6 +18,8 @@ namespace spaceinvaders::view {
 
         Coordinate transform(spaceinvaders::Coordinate coordinate);
 
+        void transform(float &width, float &height);
+
         std::shared_ptr<Dimensions> gameDimensions;
         std::shared_ptr<Dimensions> viewDimensions;
     };

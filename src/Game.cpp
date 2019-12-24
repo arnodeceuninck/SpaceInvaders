@@ -21,9 +21,13 @@ namespace spaceinvaders {
     void Game::Start() {
 
         // Initialise the game Model, View & Controller
-        initView();
         initModel();
+        initView();
         initController();
+
+
+        loader::LevelLoader loader{"lvl0.json"};
+        loader.loadInto(gameModel->getGameWorld(), gameRepresentation);
 
         gameRunning = true;
 
@@ -32,12 +36,10 @@ namespace spaceinvaders {
 
     void Game::initModel() {
         gameModel = std::make_shared<model::GameModel>();
-        loader::LevelLoader loader{"lvl0.json"};
-        loader.loadInto(gameModel->getGameWorld(), gameRepresentation);
     }
 
     void Game::initView() {
-        gameRepresentation = std::make_shared<view::GameRepresentation>();
+        gameRepresentation = std::make_shared<view::GameRepresentation>(gameModel);
     }
 
     void Game::initController() {
@@ -74,6 +76,8 @@ namespace spaceinvaders {
             gameRepresentation->getWindow()->checkInput();
             gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
+
+            gameRepresentation->update(); // Update the window
 
             if (i >= 150) {
                 gameRunning = false; // TODO: Remove this line

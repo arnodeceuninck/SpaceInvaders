@@ -17,7 +17,7 @@ namespace spaceinvaders::view {
     public:
         void draw() override;
 
-        ShipRepresentation(std::shared_ptr<GameWindow> window);
+        ShipRepresentation(std::shared_ptr<GameWindow> window, std::shared_ptr<Transformation> transformation);
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };

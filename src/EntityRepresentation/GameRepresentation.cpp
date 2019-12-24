@@ -5,12 +5,20 @@
 #include "GameRepresentation.h"
 #include "BackgroundTiles.h"
 #include "SFML/Graphics.hpp"
+#include "../Events/DrawUpdate.h"
+#include "../EntityModel/GameModel.h"
 
-spaceinvaders::view::GameRepresentation::GameRepresentation() : EntityRepresentation(
+spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel)
+        : EntityRepresentation(
         std::make_shared<GameWindow>(800, 600)) {
 
-    BackgroundTiles background{"res/Background.jpg", getWindow()};
-    background.draw();
+    auto gwD = getWindow()->getDimensions();
+    auto gmD = gameModel->getDimensions();
+    auto transf = std::make_shared<Transformation>(gwD, gmD);
+    setTransformation(transf);
+
+    auto background = std::make_shared<BackgroundTiles>("res/Background.jpg", getWindow());
+    addObserver(background);
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {
@@ -30,4 +38,17 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
 
 void spaceinvaders::view::GameRepresentation::draw() {
 
+
 }
+
+void spaceinvaders::view::GameRepresentation::update() {
+
+    getWindow()->getSfmlWindow()->clear();
+
+    std::shared_ptr<spaceinvaders::event::Event> updateV = std::make_shared<spaceinvaders::event::DrawUpdate>();
+    notifyObservers(updateV);
+
+    getWindow()->getSfmlWindow()->display();
+
+}
+

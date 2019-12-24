@@ -7,6 +7,7 @@
 
 #include "../Observer/Observable.h"
 #include "EntityRepresentation.h"
+#include "Transformation.h"
 
 namespace sf {
     class RenderWindow;
@@ -14,6 +15,8 @@ namespace sf {
 
 namespace spaceinvaders::model {
     class ModelChangedEvent;
+
+    class GameModel;
 }
 
 namespace spaceinvaders::view {
@@ -22,9 +25,14 @@ namespace spaceinvaders::view {
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
     public:
+
+        void clear();
+
         void draw() override;
 
-        GameRepresentation();
+        void update();
+
+        GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel);
 
         void checkInput();
 

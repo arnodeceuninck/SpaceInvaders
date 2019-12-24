@@ -6,16 +6,28 @@
 #define SPACEINVADERS_ENTITYREPRESENTATION_H
 
 #include "../GameWindow.h"
+#include "Transformation.h"
+#include <memory>
 
 namespace spaceinvaders::model {
     class EntityModel;
 }
 namespace spaceinvaders::view {
+    class GameRepresentation;
+
     class EntityRepresentation : public observer::Observer {
         std::string spriteFile;
         std::shared_ptr<spaceinvaders::model::EntityModel> entity;
         std::shared_ptr<GameWindow> window;
+        std::shared_ptr<Transformation> transformation;
     public:
+        const std::shared_ptr<Transformation> &getTransformation() const;
+
+        void setTransformation(const std::shared_ptr<Transformation> &transformation);
+
+    public:
+        EntityRepresentation(const std::shared_ptr<GameWindow> &window, std::shared_ptr<Transformation> transformation);
+
         EntityRepresentation(const std::shared_ptr<GameWindow> &window);
 
         const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;

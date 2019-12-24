@@ -29,3 +29,9 @@ void spaceinvaders::GameWindow::checkInput() {
         notifyObservers(event);
     }
 }
+
+std::shared_ptr<spaceinvaders::Dimensions> spaceinvaders::GameWindow::getDimensions() {
+    Coordinate min{0, static_cast<double>(-height)};
+    Coordinate max{static_cast<double>(width), 0};
+    return std::make_shared<spaceinvaders::Dimensions>(min, max);
+}
