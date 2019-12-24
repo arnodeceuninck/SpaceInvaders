@@ -7,3 +7,5 @@
 void spaceinvaders::model::PlayerShip::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
 
 }
+
+spaceinvaders::model::PlayerShip::PlayerShip() : Ship(0, -2) {}

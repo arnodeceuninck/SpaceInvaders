@@ -36,10 +36,9 @@ void spaceinvaders::model::Ship::setDamage(double damage) {
     Ship::damage = damage;
 }
 
-double spaceinvaders::model::Ship::getX() const {
-    return x;
-}
 
-double spaceinvaders::model::Ship::getY() const {
-    return y;
+spaceinvaders::model::Ship::Ship(double x, double y) : position(x, y) {}
+
+const spaceinvaders::Coordinate &spaceinvaders::model::Ship::getPosition() const {
+    return position;
 }

@@ -35,6 +35,9 @@ void spaceinvaders::view::ShipRepresentation::draw() {
         float shipHeight = ship->getHeight();
         getTransformation()->transform(shipWidth, shipHeight);
         sprite.scale(shipWidth / spriteWidth, shipHeight / spriteHeight);
+
+        Coordinate position = getTransformation()->transform(ship->getPosition());
+        sprite.setPosition(position.getX(), position.getY());
     } else {
         throw std::logic_error("Entity is not a ship");
     }

@@ -27,6 +27,8 @@ namespace spaceinvaders {
 
         Coordinate operator*=(const int &k);
 
+        void invertY();
+
 
     private:
         double x;

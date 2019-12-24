@@ -13,12 +13,12 @@ namespace spaceinvaders::model {
         double height;
         double health;
         double damage;
-        double x;
-        double y;
+        Coordinate position;
     public:
-        double getX() const;
 
-        double getY() const;
+        Ship(double x, double y);
+
+        const Coordinate &getPosition() const;
 
         double getWidth() const;
 

@@ -41,3 +41,7 @@ spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*=(const int &k) {
 
 spaceinvaders::Coordinate::Coordinate(double x, double y) : x(x), y(y) {}
 
+void spaceinvaders::Coordinate::invertY() {
+    y = -y;
+}
+

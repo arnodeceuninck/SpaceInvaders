@@ -10,6 +10,9 @@
 namespace spaceinvaders::model {
     class PlayerShip : public Ship {
     public:
+        PlayerShip();
+
+    public:
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }

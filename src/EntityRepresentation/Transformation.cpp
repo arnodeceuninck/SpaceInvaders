@@ -20,6 +20,9 @@ spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spacein
     // Change the (0, 0) starting point to the starting point of the view
     coordinate += viewDimensions->getMin();
 
+    // The y axis is inverted in sfml;
+    coordinate.invertY();
+
     return coordinate;
 }
 
