@@ -3,3 +3,10 @@
 //
 
 #include "RocketModel.h"
+
+spaceinvaders::model::RocketModel::RocketModel(double width, double height, double speed,
+                                               const spaceinvaders::Coordinate &speedDirection,
+                                               const spaceinvaders::Coordinate &position) : MovingEntity(width, height,
+                                                                                                         speed,
+                                                                                                         speedDirection,
+                                                                                                         position) {}

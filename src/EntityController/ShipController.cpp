@@ -31,6 +31,7 @@ void spaceinvaders::controller::ShipController::handleEvent(std::shared_ptr<spac
                 case sf::Keyboard::Space:
                 case sf::Keyboard::W:
                 case sf::Keyboard::S:
+                    fire();
                     std::cout << "Fire!" << std::endl;
                     break;
                 default:
@@ -74,5 +75,11 @@ spaceinvaders::controller::ShipController::ShipController(
 void spaceinvaders::controller::ShipController::go(spaceinvaders::Coordinate coordinate) {
     if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getModel())) {
         ship->setSpeedDirection(coordinate);
+    }
+}
+
+void spaceinvaders::controller::ShipController::fire() {
+    if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getModel())) {
+        ship->fire();
     }
 }

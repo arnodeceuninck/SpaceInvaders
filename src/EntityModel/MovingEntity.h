@@ -8,16 +8,16 @@
 #include "EntityModel.h"
 
 namespace spaceinvaders::model {
-    class MovingEntity : public EntityModel {
-    private:
-        double width;
-        double height;
-        double speed; // num per second, field is 8 num
-        Coordinate speedDirection;
-        Coordinate position;
-    public:
-        MovingEntity(double width, double height, double speed, const Coordinate &speedDirection,
-                     const Coordinate &position);
+class MovingEntity : public EntityModel {
+private:
+    double width;
+    double height;
+    double speed; // num per second, field is 8 num
+    Coordinate speedDirection;
+    Coordinate position;
+public:
+    MovingEntity(double width, double height, double speed, const Coordinate &speedDirection,
+                 const Coordinate &position);
 
         Coordinate &getPosition();
 
@@ -25,20 +25,22 @@ namespace spaceinvaders::model {
 
         double getWidth() const;
 
-        void setWidth(double width);
+    void setWidth(double width);
 
-        double getHeight() const;
+    double getHeight() const;
 
-        void setHeight(double height);
+    void setHeight(double height);
 
-        double getSpeed() const;
+    double getSpeed() const;
 
-        void setSpeed(double speed);
+    void setSpeed(double speed);
 
-        const Coordinate &getSpeedDirection() const;
+    void update(double elapsedSeconds) override;
 
-        void setSpeedDirection(const Coordinate &speedDirection);
-    };
+    const Coordinate &getSpeedDirection() const;
+
+    void setSpeedDirection(const Coordinate &speedDirection);
+};
 }
 
 

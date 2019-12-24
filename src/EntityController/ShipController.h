@@ -17,6 +17,8 @@ namespace spaceinvaders::controller {
 
         void go(Coordinate coordinate);
 
+        void fire();
+
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }

@@ -5,10 +5,10 @@
 #include "ShipLoader.h"
 
 #include "../EntityModel/Ship.h"
-#include "../EntityRepresentation/ShipRepresentation.h"
+#include "../EntityRepresentation/MovingEntityRepresentation.h"
 
 void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel,
-                                                 std::shared_ptr<spaceinvaders::view::ShipRepresentation> shipRepresentation) {
+                                                 std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> shipRepresentation) {
     // Read the file
     rapidjson::Document input = getDocument();
 

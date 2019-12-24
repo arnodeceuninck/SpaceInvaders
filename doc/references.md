@@ -23,7 +23,7 @@
 1. s.n. (2019). *std::exception*. Visited on December 24, 2019 via http://www.cplusplus.com/reference/exception/exception/.
 1. s.n. (2019). *std::ios_base::failure*. Visited on December 24, 2019 via http://www.cplusplus.com/reference/ios/ios_base/failure/.
 1. Yates, T. (2010). *https://stackoverflow.com/questions/3863567/in-c-check-if-two-instances-of-a-base-class-are-infact-of-the-same-subclass*. Visited on December 24, 2019 via https://stackoverflow.com/questions/3863567/in-c-check-if-two-instances-of-a-base-class-are-infact-of-the-same-subclass.
-
+1. XtremeJ (2017). *A Space Overflight*. Visited on December 24, 2019 via https://www.pixilart.com/art/a-space-overflight-28a1440957594b9.
 
 
 

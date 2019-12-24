@@ -6,10 +6,16 @@
 #define SPACEINVADERS_ROCKETMODEL_H
 
 #include "EntityModel.h"
+#include "MovingEntity.h"
 
 namespace spaceinvaders::model {
-    class RocketModel : public EntityModel {
+    class RocketModel : public MovingEntity {
 
+    public:
+        RocketModel();
+
+        RocketModel(double width, double height, double speed, const Coordinate &speedDirection,
+                    const Coordinate &position);
     };
 }
 

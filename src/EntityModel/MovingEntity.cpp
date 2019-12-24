@@ -53,3 +53,9 @@ spaceinvaders::model::MovingEntity::MovingEntity(double width, double height, do
                                                                                               speedDirection(
                                                                                                       speedDirection),
                                                                                               position(position) {}
+
+void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
+    double distance = getSpeed() * elapsedSeconds;
+    Coordinate directedDistance = getSpeedDirection() * distance;
+    setPosition(getPosition() + directedDistance);
+}

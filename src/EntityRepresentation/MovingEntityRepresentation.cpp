@@ -3,21 +3,21 @@
 //
 
 #include <iostream>
-#include "ShipRepresentation.h"
+#include "MovingEntityRepresentation.h"
 #include "../EntityModel/Ship.h"
 #include "Transformation.h"
 
-spaceinvaders::view::ShipRepresentation::ShipRepresentation(std::shared_ptr<GameWindow> window,
-                                                            std::shared_ptr<Transformation> transformation)
+spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(std::shared_ptr<GameWindow> window,
+                                                                            std::shared_ptr<Transformation> transformation)
         : EntityRepresentation(
         window, transformation) {}
 
 
-void spaceinvaders::view::ShipRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+void spaceinvaders::view::MovingEntityRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     EntityRepresentation::handleEvent(event);
 }
 
-void spaceinvaders::view::ShipRepresentation::draw() {
+void spaceinvaders::view::MovingEntityRepresentation::draw() {
 
     sf::Sprite sprite324 = getSprite();
     sf::Texture texture324 = getTexture();
@@ -32,7 +32,7 @@ void spaceinvaders::view::ShipRepresentation::draw() {
         sprite324.setTexture(texture324);
 //    sprite324.setOrigin(0.f, 0.f);
         sprite324.setOrigin(sprite324.getTextureRect().width / 2, sprite324.getTextureRect().height / 2);
-        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getEntity())) {
+        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(getEntity())) {
             float spriteWidth = sprite324.getTextureRect().width;
             float spriteHeight = sprite324.getTextureRect().height;
             float shipWidth = ship->getWidth();
@@ -48,7 +48,7 @@ void spaceinvaders::view::ShipRepresentation::draw() {
         setInit(true);
     }
 
-    if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getEntity())) {
+    if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(getEntity())) {
         Coordinate position = getTransformation()->transform(ship->getPosition());
         sprite324.setPosition(position.getX(), position.getY());
     }

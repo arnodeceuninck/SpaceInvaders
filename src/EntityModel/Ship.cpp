@@ -6,6 +6,8 @@
 #include "Ship.h"
 #include "../Events/UpdateEvent.h"
 #include "RocketModel.h"
+#include "../Events/BulletFired.h"
+#include "../Events/EntityCreatedEvent.h"
 
 spaceinvaders::model::Ship::Ship(double x, double y) : MovingEntity(0, 0, 2, Coordinate(0, 0), Coordinate(x, y)) {
 
@@ -13,9 +15,8 @@ spaceinvaders::model::Ship::Ship(double x, double y) : MovingEntity(0, 0, 2, Coo
 
 
 void spaceinvaders::model::Ship::update(double elapsedSeconds) {
-    double distance = getSpeed() * elapsedSeconds;
-    Coordinate directedDistance = getSpeedDirection() * distance;
-    setPosition(getPosition() + directedDistance);
+    MovingEntity::update(elapsedSeconds);
+    fireTimeout -= elapsedSeconds;
     if (getPosition().getX() > 4 - getWidth() / 2) {
         getPosition().setX(4 - getWidth() / 2);
     } else if (getPosition().getX() < -4 + getWidth() / 2) {
@@ -24,7 +25,20 @@ void spaceinvaders::model::Ship::update(double elapsedSeconds) {
 }
 
 void spaceinvaders::model::Ship::fire() {
-//    auto rocket = std::make_shared<RocketModel>(Coordinate(getPosition().getX(), getPosition().getY()+getHeight()/2));
+    if (readyToFire()) {
+        auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, Coordinate(0, 1), Coordinate(getPosition().getX(),
+                                                                                                getPosition().getY() +
+                                                                                                getHeight() / 2));
+        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::BulletFired>(
+                rocket);
+        notifyObservers(event);
+
+        std::shared_ptr<spaceinvaders::event::Event> entityCreatedEvent = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
+                rocket);
+        rocket->notifyObservers(entityCreatedEvent);
+
+        fireTimeout = 2; // Wait 2 seconds before you can fire again
+    }
 }
 
 void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
@@ -45,4 +59,8 @@ double spaceinvaders::model::Ship::getDamage() const {
 
 void spaceinvaders::model::Ship::setDamage(double damage) {
     Ship::damage = damage;
+}
+
+bool spaceinvaders::model::Ship::readyToFire() {
+    return fireTimeout <= 0;
 }

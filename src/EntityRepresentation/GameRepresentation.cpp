@@ -2,11 +2,15 @@
 // Created by arno on 14/12/2019.
 //
 
+#include <iostream>
 #include "GameRepresentation.h"
 #include "BackgroundTiles.h"
 #include "SFML/Graphics.hpp"
 #include "../Events/DrawUpdate.h"
 #include "../EntityModel/GameModel.h"
+#include "../Events/BulletFired.h"
+#include "MovingEntityRepresentation.h"
+#include "../Events/EntityCreatedEvent.h"
 
 spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel)
         : EntityRepresentation(
@@ -34,6 +38,16 @@ void spaceinvaders::view::GameRepresentation::checkInput() {
 
 void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     EntityRepresentation::handleEvent(event);
+    if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
+        std::shared_ptr<MovingEntityRepresentation> rocket = std::make_shared<MovingEntityRepresentation>(getWindow(),
+                                                                                                          getTransformation());
+        rocket->setSpriteFile("Bullet.png");
+        addObserver(rocket);
+        ev->getRocket()->addObserver(rocket);
+
+        std::cout << "FIREEEEEEEEEEEEEEEEEEEEBAAAALLLLL" << std::endl;
+//        std::shared_ptr<>();
+    }
 }
 
 void spaceinvaders::view::GameRepresentation::draw() {

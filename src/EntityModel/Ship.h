@@ -12,11 +12,14 @@ namespace spaceinvaders::model {
     class Ship : public MovingEntity {
         double health;
         double damage;
+        double fireTimeout = 0;
 
     private:
         void update(double elapsedSeconds) override;
 
     public:
+        bool readyToFire();
+
         double getHealth() const;
 
         void setHealth(double health);

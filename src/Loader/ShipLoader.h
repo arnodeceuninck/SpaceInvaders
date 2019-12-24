@@ -9,7 +9,7 @@
 #include "Loader.h"
 
 namespace spaceinvaders::view {
-    class ShipRepresentation;
+    class MovingEntityRepresentation;
 }
 
 namespace spaceinvaders::model {
@@ -20,7 +20,7 @@ namespace spaceinvaders::loader {
     class ShipLoader : public Loader {
     public:
         void loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel,
-                      std::shared_ptr<spaceinvaders::view::ShipRepresentation> shipRepresentation);
+                      std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> shipRepresentation);
 
         ShipLoader(const std::string &filename);
     };
