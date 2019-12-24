@@ -17,4 +17,11 @@
 1. s.n. (2019). *std::weak_ptr*. Visited on December 19, 2019 via https://en.cppreference.com/w/cpp/memory/weak_ptr. 
 1. Kilochek, Y. (2012). *std::shared_ptr of this*. Visited on December 19, 2019 via https://stackoverflow.com/questions/11711034/stdshared-ptr-of-this. 
 1. Dave, s. (2011). *Can't downcast because class is not polymorphic?*. Visited on December 22, 2019 via https://stackoverflow.com/questions/8469900/cant-downcast-because-class-is-not-polymorphic.
-1. Zozulinskyi (2019). *Space background, night sky and stars*. Visited onDecember 22, 2019 via https://365psd.com/istock/space-background-night-sky-and-stars-998878.
+1. Zozulinskyi (2019). *Space background, night sky and stars*. Visited on December 22, 2019 via https://365psd.com/istock/space-background-night-sky-and-stars-998878.
+1. Sehe (2014). *shared_from_this causing bad_weak_ptr*. Visited on December 24, 2019 via https://stackoverflow.com/questions/27697973/shared-from-this-causing-bad-weak-ptr. 
+
+
+
+
+
+

@@ -6,10 +6,11 @@
 #include "BackgroundTiles.h"
 #include "SFML/Graphics.hpp"
 
-spaceinvaders::view::GameRepresentation::GameRepresentation() : window(std::make_shared<GameWindow>(800, 600)) {
+spaceinvaders::view::GameRepresentation::GameRepresentation() : EntityRepresentation(
+        std::make_shared<GameWindow>(800, 600)) {
 
-    BackgroundTiles background{"res/Background.jpg"};
-    background.draw(*window);
+    BackgroundTiles background{"res/Background.jpg", getWindow()};
+    background.draw();
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {
@@ -20,13 +21,13 @@ void spaceinvaders::view::GameRepresentation::checkEvent() {
 }
 
 void spaceinvaders::view::GameRepresentation::checkInput() {
-    window->checkInput();
-}
-
-const std::shared_ptr<spaceinvaders::GameWindow> &spaceinvaders::view::GameRepresentation::getWindow() const {
-    return window;
+    getWindow()->checkInput();
 }
 
 void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+    EntityRepresentation::handleEvent(event);
+}
+
+void spaceinvaders::view::GameRepresentation::draw() {
 
 }

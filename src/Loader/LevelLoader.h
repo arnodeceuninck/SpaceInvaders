@@ -8,9 +8,17 @@
 #include "../EntityModel/WorldModel.h"
 #include "Loader.h"
 
+namespace spaceinvaders::view {
+    class GameRepresentation;
+}
+
 namespace spaceinvaders::loader {
     class LevelLoader : public Loader {
-        void loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel);
+    public:
+        LevelLoader(const std::string &filename);
+
+        void loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
+                      std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation);
     };
 }
 

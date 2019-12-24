@@ -5,13 +5,14 @@
 #include "ShipRepresentation.h"
 #include "../EntityModel/PlayerShip.h"
 
-spaceinvaders::view::ShipRepresentation::ShipRepresentation(
-        std::shared_ptr<spaceinvaders::model::Ship> ship) {
-    std::shared_ptr<observer::Observer> observerThis = std::dynamic_pointer_cast<observer::Observer>(
-            shared_from_this());
-    ship->addObserver(observerThis);
-}
+spaceinvaders::view::ShipRepresentation::ShipRepresentation(std::shared_ptr<GameWindow> window) : EntityRepresentation(
+        window) {}
+
 
 void spaceinvaders::view::ShipRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+    EntityRepresentation::handleEvent(event);
+}
+
+void spaceinvaders::view::ShipRepresentation::draw() {
 
 }

@@ -12,6 +12,7 @@ namespace spaceinvaders::event {
 }
 
 namespace observer {
+//    class Obsevable;
     class Observer {
     public:
         virtual void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) = 0;

@@ -34,6 +34,7 @@ public:
 
     void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
+
 private:
     void Start();
 

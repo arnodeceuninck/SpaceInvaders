@@ -22,16 +22,16 @@ namespace spaceinvaders::view {
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
     public:
+        void draw() override;
+
         GameRepresentation();
 
         void checkInput();
 
         void checkEvent();
 
-        const std::shared_ptr<GameWindow> &getWindow() const;
-
     private:
-        std::shared_ptr<GameWindow> window;
+
     };
 }
 

@@ -11,6 +11,7 @@
 
 #include "Stopwatch.h"
 #include "EntityController/ShipController.h"
+#include "Loader/LevelLoader.h"
 
 #define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
 #define MIN_TIME_PER_CYCLE 1000000000.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
@@ -20,8 +21,8 @@ namespace spaceinvaders {
     void Game::Start() {
 
         // Initialise the game Model, View & Controller
-        initModel();
         initView();
+        initModel();
         initController();
 
         gameRunning = true;
@@ -31,6 +32,8 @@ namespace spaceinvaders {
 
     void Game::initModel() {
         gameModel = std::make_shared<model::GameModel>();
+        loader::LevelLoader loader{"lvl0.json"};
+        loader.loadInto(gameModel->getGameWorld(), gameRepresentation);
     }
 
     void Game::initView() {

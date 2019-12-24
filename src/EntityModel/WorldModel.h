@@ -11,7 +11,10 @@
 namespace spaceinvaders::model {
 
     class WorldModel : public EntityModel {
-
+    private:
+//        std::set<std::shared_ptr<EntityModel>> entities;
+    public:
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 
 }

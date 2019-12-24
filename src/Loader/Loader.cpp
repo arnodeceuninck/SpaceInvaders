@@ -10,7 +10,7 @@
 #include "../../rapidjson/istreamwrapper.h"
 
 
-spaceinvaders::loader::Loader::Loader(const std::string &filename) : filename(filename) {}
+spaceinvaders::loader::Loader::Loader(const std::string &filename) : filename("levels/" + filename) {}
 
 const std::string &spaceinvaders::loader::Loader::getFilename() const {
     return filename;

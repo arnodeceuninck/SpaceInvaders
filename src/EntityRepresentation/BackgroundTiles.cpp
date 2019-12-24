@@ -5,14 +5,15 @@
 #include "BackgroundTiles.h"
 
 
-spaceinvaders::view::BackgroundTiles::BackgroundTiles(std::string filename) {
+spaceinvaders::view::BackgroundTiles::BackgroundTiles(std::string filename, std::shared_ptr<GameWindow> window)
+        : EntityRepresentation(window) {
     texture.loadFromFile(filename);
     texture.setRepeated(true);
 }
 
-void spaceinvaders::view::BackgroundTiles::draw(GameWindow &window) {
+void spaceinvaders::view::BackgroundTiles::draw() {
 
-    std::shared_ptr<sf::RenderWindow> sfmlWindow = window.getSfmlWindow();
+    std::shared_ptr<sf::RenderWindow> sfmlWindow = getWindow()->getSfmlWindow();
 
     // Define a rectangle to draw the background on
     sf::View view(sfmlWindow->getDefaultView());
@@ -30,5 +31,5 @@ void spaceinvaders::view::BackgroundTiles::draw(GameWindow &window) {
 }
 
 void spaceinvaders::view::BackgroundTiles::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-
+    EntityRepresentation::handleEvent(event);
 }

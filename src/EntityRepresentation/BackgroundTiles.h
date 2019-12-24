@@ -11,11 +11,11 @@
 namespace spaceinvaders::view {
     class BackgroundTiles : public EntityRepresentation {
     public:
-        BackgroundTiles(std::string filename);
+        BackgroundTiles(std::string filename, std::shared_ptr<GameWindow> window);
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        void draw(GameWindow &window);
+        void draw();
 
     private:
         sf::Texture texture;
