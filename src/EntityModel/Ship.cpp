@@ -72,6 +72,11 @@ void spaceinvaders::model::Ship::update(double elapsedSeconds) {
     double distance = speed * elapsedSeconds;
     Coordinate directedDistance = speedDirection * distance;
     position += directedDistance;
+    if (position.getX() > 4 - getWidth() / 2) {
+        position.setX(4 - getWidth() / 2);
+    } else if (position.getX() < -4 + getWidth() / 2) {
+        position.setX(-4 + getWidth() / 2);
+    }
 }
 
 void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {

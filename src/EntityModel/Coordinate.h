@@ -31,6 +31,9 @@ namespace spaceinvaders {
 
         void mulY(const double &k);
 
+        void setX(double x);
+
+        void setY(double y);
 
     private:
         double x;

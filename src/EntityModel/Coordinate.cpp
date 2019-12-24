@@ -58,4 +58,12 @@ void spaceinvaders::Coordinate::mulX(const double &k) {
     x *= k;
 }
 
+void spaceinvaders::Coordinate::setX(double x) {
+    Coordinate::x = x;
+}
+
+void spaceinvaders::Coordinate::setY(double y) {
+    Coordinate::y = y;
+}
+
 
