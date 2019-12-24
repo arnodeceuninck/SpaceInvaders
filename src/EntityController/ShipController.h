@@ -6,10 +6,17 @@
 #define SPACEINVADERS_SHIPCONTROLLER_H
 
 #include "EntityController.h"
+#include "../Events/MovingEntityEvent.h"
+#include "../EntityModel/Coordinate.h"
 
 namespace spaceinvaders::controller {
     class ShipController : public EntityController {
+        std::shared_ptr<spaceinvaders::event::MovingEntityEvent> lastEvent;
     public:
+        ShipController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
+
+        void go(Coordinate coordinate);
+
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }

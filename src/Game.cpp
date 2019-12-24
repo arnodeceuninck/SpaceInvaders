@@ -43,11 +43,11 @@ namespace spaceinvaders {
     }
 
     void Game::initController() {
-        gameController = std::make_shared<controller::GameController>();
+        gameController = std::make_shared<controller::GameController>(gameModel);
 //        gameController->addObserver(
 //                weak_from_this()); // Because appearently there isn't an immediate way to convert a raw pointer to a weak pointer
         // TODO: Is it possible to cast raw pointer (this) to shared pointer?
-        gameRepresentation->getWindow()->addObserver(std::make_shared<spaceinvaders::controller::ShipController>());
+//        gameRepresentation->getWindow()->addObserver(std::make_shared<spaceinvaders::controller::ShipController>());
 //        wcl.addObserver(static_cast<const std::shared_ptr<Observer < sf::Event>>>(this));
 //        gameWindow.addObserver();
     }
@@ -64,7 +64,8 @@ namespace spaceinvaders {
             if (clock.elapsedTime() < MIN_TIME_PER_CYCLE) {
                 continue;
             }
-            std::cout << ++i << std::endl;
+            i++;
+//            std::cout << ++i << std::endl;
 
             // Remember the elapsed time for the calculations
             double elapsedSeconds = clock.elapsedTime() / 1000000000;
@@ -79,7 +80,7 @@ namespace spaceinvaders {
 
             gameRepresentation->update(); // Update the window
 
-            if (i >= 150) {
+            if (i >= 300) {
                 gameRunning = false; // TODO: Remove this line
             }
         }

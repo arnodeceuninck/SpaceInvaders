@@ -19,15 +19,17 @@ namespace spaceinvaders {
 
         Coordinate operator-(const Coordinate &rhs);
 
-        Coordinate operator*(const int &k);
+        Coordinate operator*(const double &k);
 
         Coordinate operator+=(const Coordinate &rhs);
 
         Coordinate operator-=(const Coordinate &rhs);
 
-        Coordinate operator*=(const int &k);
+        Coordinate operator*=(const double &k);
 
-        void invertY();
+        void mulX(const double &k);
+
+        void mulY(const double &k);
 
 
     private:

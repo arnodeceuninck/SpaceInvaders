@@ -13,35 +13,49 @@ double spaceinvaders::Coordinate::getY() const {
 }
 
 spaceinvaders::Coordinate spaceinvaders::Coordinate::operator+(const spaceinvaders::Coordinate &rhs) {
-    x += rhs.getX();
-    y += rhs.getY();
+    double x2 = x + rhs.getX();
+    double y2 = y + rhs.getY();
+    return Coordinate(x2, y2);
 }
 
 spaceinvaders::Coordinate spaceinvaders::Coordinate::operator-(const spaceinvaders::Coordinate &rhs) {
-    x -= rhs.getX();
-    y -= rhs.getY();
+    double x2 = x - rhs.getX();
+    double y2 = y - rhs.getY();
+    return Coordinate(x2, y2);
 }
 
-spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*(const int &k) {
-    x *= k;
-    y *= k;
+spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*(const double &k) {
+    double x2 = x * k;
+    double y2 = y * k;
+    return Coordinate(x2, y2);
 }
 
 spaceinvaders::Coordinate spaceinvaders::Coordinate::operator+=(const spaceinvaders::Coordinate &rhs) {
-    return *this + rhs;
+    x += rhs.getX();
+    y += rhs.getY();
+    return *this;
 }
 
 spaceinvaders::Coordinate spaceinvaders::Coordinate::operator-=(const spaceinvaders::Coordinate &rhs) {
-    return *this - rhs;
+    x -= rhs.getX();
+    y -= rhs.getY();
+    return *this;
 }
 
-spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*=(const int &k) {
-    return *this * k;
+spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*=(const double &k) {
+    x *= k;
+    y *= k;
+    return *this;
 }
 
 spaceinvaders::Coordinate::Coordinate(double x, double y) : x(x), y(y) {}
 
-void spaceinvaders::Coordinate::invertY() {
-    y = -y;
+void spaceinvaders::Coordinate::mulY(const double &k) {
+    y *= k;
 }
+
+void spaceinvaders::Coordinate::mulX(const double &k) {
+    x *= k;
+}
+
 

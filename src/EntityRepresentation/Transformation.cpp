@@ -15,13 +15,14 @@ spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spacein
     coordinate -= gameDimensions->getMin();
 
     // Scale x and y to the viewDimensions
-    coordinate *= viewDimensions->getWidth() / gameDimensions->getWidth();
+    coordinate.mulX(viewDimensions->getWidth() / gameDimensions->getWidth());
+    coordinate.mulY(viewDimensions->getHeight() / gameDimensions->getHeight());
 
     // Change the (0, 0) starting point to the starting point of the view
     coordinate += viewDimensions->getMin();
 
-    // The y axis is inverted in sfml;
-    coordinate.invertY();
+    // Y axis is inverted in sfml
+    coordinate.mulY(-1);
 
     return coordinate;
 }

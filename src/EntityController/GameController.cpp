@@ -9,4 +9,7 @@ namespace spaceinvaders::controller {
         std::shared_ptr<spaceinvaders::event::Event> controlEvent = std::make_shared<spaceinvaders::event::ControllerEvent>();
         notifyObservers(controlEvent);
     }
+
+    GameController::GameController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model) : EntityController(
+            model) {}
 }

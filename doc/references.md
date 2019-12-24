@@ -22,6 +22,7 @@
 1. Gomila, L. (s.d.). *https://www.sfml-dev.org/tutorials/2.5/graphics-draw.php*. Visited on December 24, 2019 via https://www.sfml-dev.org/tutorials/2.5/graphics-draw.php.
 1. s.n. (2019). *std::exception*. Visited on December 24, 2019 via http://www.cplusplus.com/reference/exception/exception/.
 1. s.n. (2019). *std::ios_base::failure*. Visited on December 24, 2019 via http://www.cplusplus.com/reference/ios/ios_base/failure/.
+1. Yates, T. (2010). *https://stackoverflow.com/questions/3863567/in-c-check-if-two-instances-of-a-base-class-are-infact-of-the-same-subclass*. Visited on December 24, 2019 via https://stackoverflow.com/questions/3863567/in-c-check-if-two-instances-of-a-base-class-are-infact-of-the-same-subclass.
 
 
 

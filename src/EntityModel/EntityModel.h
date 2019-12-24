@@ -14,13 +14,16 @@ namespace spaceinvaders::controller {
     class ControllerEvent;
 }
 namespace spaceinvaders::model {
-
     class ModelChangedEvent;
 
     class EntityModel
             : public observer::Observer,
               public observer::Observable {
+    public:
+        virtual void update(double elapsedSeconds) = 0;
 
+    public:
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }
 

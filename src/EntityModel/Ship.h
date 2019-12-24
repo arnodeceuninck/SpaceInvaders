@@ -13,8 +13,27 @@ namespace spaceinvaders::model {
         double height;
         double health;
         double damage;
+        double speed; // num per second, field is 8 num
+        Coordinate speedDirection;
+    public:
+        const Coordinate &getSpeedDirection() const;
+
+    private:
         Coordinate position;
     public:
+        double getSpeed() const;
+
+        void setSpeed(double speed);
+
+        void setSpeedDirection(const Coordinate &speedDirection);
+
+    private:
+        void update(double elapsedSeconds) override;
+
+    public:
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
+        void setPosition(const Coordinate &position);
 
         Ship(double x, double y);
 

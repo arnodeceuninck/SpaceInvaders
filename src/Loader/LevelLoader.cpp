@@ -8,26 +8,43 @@
 #include "../EntityRepresentation/ShipRepresentation.h"
 #include "../Events/EntityCreatedEvent.h"
 #include "../EntityRepresentation/GameRepresentation.h"
+#include "../EntityController/ShipController.h"
 
 void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
                                                   std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation) {
     rapidjson::Document input = getDocument();
 
     if (auto playerFile = input["player"].GetString()) {
-        ShipLoader shipLoader{playerFile};
-        std::shared_ptr<spaceinvaders::model::PlayerShip> playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
-        std::shared_ptr<spaceinvaders::view::ShipRepresentation> playerRepresentation = std::make_shared<spaceinvaders::view::ShipRepresentation>(
+
+        // Create a player ship, it's representation and it's controller
+        auto playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
+        auto playerRepresentation = std::make_shared<spaceinvaders::view::ShipRepresentation>(
                 gameRepresentation->getWindow(), gameRepresentation->getTransformation());
+        auto shipController = std::make_shared<spaceinvaders::controller::ShipController>(playerShip);
+
+        // Load the contents of the player file to the ship
+        ShipLoader shipLoader{playerFile};
         shipLoader.loadInto(playerShip, playerRepresentation);
 
-        std::shared_ptr<observer::Observer> observerPlayerRepr = std::dynamic_pointer_cast<observer::Observer>(
-                playerRepresentation);
-        playerShip->addObserver(observerPlayerRepr);
+        // Link the view to the model
+//        std::shared_ptr<observer::Observer> observerPlayerRepr = std::dynamic_pointer_cast<observer::Observer>(
+//                playerRepresentation);
+        playerShip->addObserver(playerRepresentation);
 
-        std::shared_ptr<spaceinvaders::view::EntityRepresentation> entity = std::dynamic_pointer_cast<spaceinvaders::view::EntityRepresentation>(
-                playerRepresentation);
-        gameRepresentation->addObserver(entity);
+        // Link the model to the controller
+//        auto observerPlayerContr = std::dynamic_pointer_cast<observer::Observer>(playerShip);
+//        shipController->addObserver(playerShip);
+        worldModel->addObserver(playerShip);
 
+        // Link the entityRepresentation to the gameRepresentation
+//        auto entity = std::dynamic_pointer_cast<spaceinvaders::view::EntityRepresentation>(
+//                playerRepresentation);
+        gameRepresentation->addObserver(playerRepresentation);
+
+        // Link controller and gameRepresentation (required for notifying of WindowInteractions)
+        gameRepresentation->getWindow()->addObserver(shipController);
+
+        // Notify the view an entity has been created
         std::shared_ptr<spaceinvaders::event::Event> entityCreatedEvent = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
                 playerShip);
         playerShip->notifyObservers(entityCreatedEvent);

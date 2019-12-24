@@ -45,5 +45,5 @@ void spaceinvaders::view::ShipRepresentation::draw() {
 //    sprite.setScale(0.5);
 
     getWindow()->getSfmlWindow()->draw(sprite);
-    std::cout << "Drawing ship" << std::endl;
+//    std::cout << "Drawing ship" << std::endl;
 }

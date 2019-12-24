@@ -7,7 +7,7 @@
 #include "WorldModel.h"
 
 void spaceinvaders::model::GameModel::update(double elapsedSeconds) {
-
+    gameWorld->update(elapsedSeconds);
 }
 
 const std::shared_ptr<spaceinvaders::Dimensions> &spaceinvaders::model::GameModel::getDimensions() const {
