@@ -12,19 +12,19 @@ double spaceinvaders::Coordinate::getY() const {
     return y;
 }
 
-spaceinvaders::Coordinate spaceinvaders::Coordinate::operator+(const spaceinvaders::Coordinate &rhs) {
+spaceinvaders::Coordinate spaceinvaders::Coordinate::operator+(const spaceinvaders::Coordinate &rhs) const {
     double x2 = x + rhs.getX();
     double y2 = y + rhs.getY();
     return Coordinate(x2, y2);
 }
 
-spaceinvaders::Coordinate spaceinvaders::Coordinate::operator-(const spaceinvaders::Coordinate &rhs) {
+spaceinvaders::Coordinate spaceinvaders::Coordinate::operator-(const spaceinvaders::Coordinate &rhs) const {
     double x2 = x - rhs.getX();
     double y2 = y - rhs.getY();
     return Coordinate(x2, y2);
 }
 
-spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*(const double &k) {
+spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*(const double &k) const {
     double x2 = x * k;
     double y2 = y * k;
     return Coordinate(x2, y2);

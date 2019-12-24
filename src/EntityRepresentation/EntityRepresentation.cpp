@@ -48,3 +48,19 @@ spaceinvaders::view::EntityRepresentation::setTransformation(const std::shared_p
 
 spaceinvaders::view::EntityRepresentation::EntityRepresentation(const std::shared_ptr<GameWindow> &window) : window(
         window) {}
+
+bool spaceinvaders::view::EntityRepresentation::isInit() const {
+    return init;
+}
+
+void spaceinvaders::view::EntityRepresentation::setInit(bool init) {
+    EntityRepresentation::init = init;
+}
+
+sf::Texture &spaceinvaders::view::EntityRepresentation::getTexture() {
+    return texture;
+}
+
+sf::Sprite &spaceinvaders::view::EntityRepresentation::getSprite() {
+    return sprite;
+}

@@ -18,32 +18,42 @@ void spaceinvaders::view::ShipRepresentation::handleEvent(std::shared_ptr<spacei
 }
 
 void spaceinvaders::view::ShipRepresentation::draw() {
-    sf::Texture texture;
-    if (!texture.loadFromFile(getSpriteFile())) {
-        throw std::ios_base::failure("File not found: " + getSpriteFile());
-        // error...
+
+    sf::Sprite sprite324 = getSprite();
+    sf::Texture texture324 = getTexture();
+
+    if (!isInit() or true) {
+        if (!texture324.loadFromFile(getSpriteFile())) {
+            throw std::ios_base::failure("File not found: " + getSpriteFile());
+            // error...
+        }
+
+//    sf::Sprite sprite;
+        sprite324.setTexture(texture324);
+//    sprite324.setOrigin(0.f, 0.f);
+        sprite324.setOrigin(sprite324.getTextureRect().width / 2, sprite324.getTextureRect().height / 2);
+        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getEntity())) {
+            float spriteWidth = sprite324.getTextureRect().width;
+            float spriteHeight = sprite324.getTextureRect().height;
+            float shipWidth = ship->getWidth();
+            float shipHeight = ship->getHeight();
+            getTransformation()->transform(shipWidth, shipHeight);
+            sprite324.scale(shipWidth / spriteWidth, shipHeight / spriteHeight);
+
+
+        } else {
+            throw std::logic_error("Entity is not a ship");
+        }
+
+        setInit(true);
     }
 
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-//    sprite.setOrigin(0.f, 0.f);
-    sprite.setOrigin(sprite.getTextureRect().width / 2, sprite.getTextureRect().height / 2);
     if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getEntity())) {
-        float spriteWidth = sprite.getTextureRect().width;
-        float spriteHeight = sprite.getTextureRect().height;
-        float shipWidth = ship->getWidth();
-        float shipHeight = ship->getHeight();
-        getTransformation()->transform(shipWidth, shipHeight);
-        sprite.scale(shipWidth / spriteWidth, shipHeight / spriteHeight);
-
         Coordinate position = getTransformation()->transform(ship->getPosition());
-        sprite.setPosition(position.getX(), position.getY());
-    } else {
-        throw std::logic_error("Entity is not a ship");
+        sprite324.setPosition(position.getX(), position.getY());
     }
-
 //    sprite.setScale(0.5);
 
-    getWindow()->getSfmlWindow()->draw(sprite);
+    getWindow()->getSfmlWindow()->draw(sprite324);
 //    std::cout << "Drawing ship" << std::endl;
 }

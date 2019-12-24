@@ -1,6 +1,6 @@
 {
-  "width": 0.5,
-  "height": 0.5,
+  "width": 0.75,
+  "height": 0.75,
   "sprite": "Player.png",
   "health": 50,
   "damage": 20

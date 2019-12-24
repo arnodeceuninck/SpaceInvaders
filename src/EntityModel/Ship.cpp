@@ -5,21 +5,30 @@
 #include <iostream>
 #include "Ship.h"
 #include "../Events/UpdateEvent.h"
+#include "RocketModel.h"
 
-double spaceinvaders::model::Ship::getWidth() const {
-    return width;
+spaceinvaders::model::Ship::Ship(double x, double y) : MovingEntity(0, 0, 2, Coordinate(0, 0), Coordinate(x, y)) {
+
 }
 
-void spaceinvaders::model::Ship::setWidth(double width) {
-    Ship::width = width;
+
+void spaceinvaders::model::Ship::update(double elapsedSeconds) {
+    double distance = getSpeed() * elapsedSeconds;
+    Coordinate directedDistance = getSpeedDirection() * distance;
+    setPosition(getPosition() + directedDistance);
+    if (getPosition().getX() > 4 - getWidth() / 2) {
+        getPosition().setX(4 - getWidth() / 2);
+    } else if (getPosition().getX() < -4 + getWidth() / 2) {
+        getPosition().setX(-4 + getWidth() / 2);
+    }
 }
 
-double spaceinvaders::model::Ship::getHeight() const {
-    return height;
+void spaceinvaders::model::Ship::fire() {
+//    auto rocket = std::make_shared<RocketModel>(Coordinate(getPosition().getX(), getPosition().getY()+getHeight()/2));
 }
 
-void spaceinvaders::model::Ship::setHeight(double height) {
-    Ship::height = height;
+void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+    EntityModel::handleEvent(event);
 }
 
 double spaceinvaders::model::Ship::getHealth() const {
@@ -36,49 +45,4 @@ double spaceinvaders::model::Ship::getDamage() const {
 
 void spaceinvaders::model::Ship::setDamage(double damage) {
     Ship::damage = damage;
-}
-
-
-const spaceinvaders::Coordinate &spaceinvaders::model::Ship::getPosition() const {
-    return position;
-}
-
-spaceinvaders::model::Ship::Ship(double x, double y) : position(Coordinate(x, y)), speedDirection(Coordinate(0, 0)),
-                                                       speed(2) {
-
-}
-
-const spaceinvaders::Coordinate &spaceinvaders::model::Ship::getSpeedDirection() const {
-    return speedDirection;
-}
-
-double spaceinvaders::model::Ship::getSpeed() const {
-    return speed;
-}
-
-void spaceinvaders::model::Ship::setSpeed(double speed) {
-    Ship::speed = speed;
-}
-
-void spaceinvaders::model::Ship::setSpeedDirection(const spaceinvaders::Coordinate &speedDirection) {
-    Ship::speedDirection = speedDirection;
-}
-
-void spaceinvaders::model::Ship::setPosition(const spaceinvaders::Coordinate &position) {
-    Ship::position = position;
-}
-
-void spaceinvaders::model::Ship::update(double elapsedSeconds) {
-    double distance = speed * elapsedSeconds;
-    Coordinate directedDistance = speedDirection * distance;
-    position += directedDistance;
-    if (position.getX() > 4 - getWidth() / 2) {
-        position.setX(4 - getWidth() / 2);
-    } else if (position.getX() < -4 + getWidth() / 2) {
-        position.setX(-4 + getWidth() / 2);
-    }
-}
-
-void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-    EntityModel::handleEvent(event);
 }

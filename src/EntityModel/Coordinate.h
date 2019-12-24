@@ -15,11 +15,11 @@ namespace spaceinvaders {
 
         double getY() const;
 
-        Coordinate operator+(const Coordinate &rhs);
+        Coordinate operator+(const Coordinate &rhs) const;
 
-        Coordinate operator-(const Coordinate &rhs);
+        Coordinate operator-(const Coordinate &rhs) const;
 
-        Coordinate operator*(const double &k);
+        Coordinate operator*(const double &k) const;
 
         Coordinate operator+=(const Coordinate &rhs);
 

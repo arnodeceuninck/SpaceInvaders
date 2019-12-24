@@ -6,7 +6,7 @@
 #include "PlayerShip.h"
 
 
-spaceinvaders::model::PlayerShip::PlayerShip() : Ship(0, -2) {}
+spaceinvaders::model::PlayerShip::PlayerShip() : Ship(0, -2.5) {}
 
 void spaceinvaders::model::PlayerShip::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     Ship::handleEvent(event);
