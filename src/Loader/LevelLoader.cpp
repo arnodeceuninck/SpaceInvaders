@@ -9,6 +9,7 @@
 #include "../Events/EntityCreatedEvent.h"
 #include "../EntityRepresentation/GameRepresentation.h"
 #include "../EntityController/ShipController.h"
+#include "../EntityModel/EnemyShip.h"
 
 void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
                                                   std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation) {
@@ -30,7 +31,7 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
         std::shared_ptr<spaceinvaders::model::Ship> ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(
                 playerShip);
 
-        linkObservers(worldModel, gameRepresentation, ship, shipRepresentation, shipController);
+        linkObservers(worldModel, gameRepresentation, ship, shipRepresentation, shipController, true);
 
     }
 
@@ -44,17 +45,32 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
         double enemyX = enemyObj["x"].GetDouble();
         double enemyY = enemyObj["y"].GetDouble();
 
+        // Create a player ship, it's representation and it's controller
+        auto enemyShip = std::make_shared<spaceinvaders::model::EnemyShip>(enemyX, enemyY);
+
+        auto shipRepresentation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
+                gameRepresentation->getWindow(), gameRepresentation->getTransformation());
+        auto shipController = std::make_shared<spaceinvaders::controller::ShipController>(enemyShip);
+
+        // Load the contents of the player file to the ship
+        ShipLoader shipLoader{enemyJson};
+        shipLoader.loadInto(enemyShip, shipRepresentation);
+
+        std::shared_ptr<spaceinvaders::model::Ship> ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(
+                enemyShip);
+
+        linkObservers(worldModel, gameRepresentation, ship, shipRepresentation, shipController, false);
+
 
     }
-
-    // TODO: enemies
 }
 
 void spaceinvaders::loader::LevelLoader::linkObservers(std::shared_ptr<spaceinvaders::model::WorldModel> &worldModel,
                                                        std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
                                                        std::shared_ptr<spaceinvaders::model::Ship> &ship,
                                                        const std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> &shipRepresentation,
-                                                       const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController) const {// Link the view to the model
+                                                       const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController,
+                                                       bool playerShip) const {// Link the view to the model
 //        std::shared_ptr<observer::Observer> observerPlayerRepr = std::dynamic_pointer_cast<observer::Observer>(
 //                shipRepresentation);
     ship->addObserver(shipRepresentation);

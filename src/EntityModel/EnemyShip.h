@@ -9,7 +9,14 @@
 
 namespace spaceinvaders::model {
     class EnemyShip : public Ship {
+    public:
+        EnemyShip(double x, double y);
 
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
+        Coordinate getShootingDirection() override;
+
+        Coordinate getShipFront() override;
     };
 }
 

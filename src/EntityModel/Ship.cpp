@@ -25,9 +25,7 @@ void spaceinvaders::model::Ship::update(double elapsedSeconds) {
 
 void spaceinvaders::model::Ship::fire() {
     if (readyToFire()) {
-        auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, Coordinate(0, 1), Coordinate(getPosition().getX(),
-                                                                                                getPosition().getY() +
-                                                                                                getHeight() / 2));
+        auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, getShootingDirection(), getShipFront());
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::BulletFired>(
                 rocket);
         notifyObservers(event);

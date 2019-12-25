@@ -14,6 +14,10 @@ namespace spaceinvaders::model {
 
     public:
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
+        Coordinate getShipFront() override;
+
+        Coordinate getShootingDirection() override;
     };
 }
 

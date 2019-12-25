@@ -33,6 +33,10 @@ namespace spaceinvaders::model {
         Ship(double x, double y);
 
         void fire();
+
+        virtual Coordinate getShootingDirection() = 0;
+
+        virtual Coordinate getShipFront() = 0;
     };
 }
 

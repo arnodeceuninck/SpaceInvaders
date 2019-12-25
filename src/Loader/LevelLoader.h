@@ -34,7 +34,8 @@ namespace spaceinvaders::loader {
                            std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
                            std::shared_ptr<spaceinvaders::model::Ship> &ship,
                            const std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> &shipRepresentation,
-                           const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController) const;
+                           const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController,
+                           bool playerShip) const;
     };
 }
 
