@@ -38,6 +38,10 @@ namespace spaceinvaders::view {
 
 
     public:
+        void setTexture(const sf::Texture &texture);
+
+        void setSprite(const sf::Sprite &sprite);
+
         EntityRepresentation(const std::shared_ptr<GameWindow> &window, std::shared_ptr<Transformation> transformation);
 
         EntityRepresentation(const std::shared_ptr<GameWindow> &window);

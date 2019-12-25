@@ -13,7 +13,6 @@ spaceinvaders::model::Ship::Ship(double x, double y) : MovingEntity(0, 0, 2, Coo
 
 }
 
-
 void spaceinvaders::model::Ship::update(double elapsedSeconds) {
     MovingEntity::update(elapsedSeconds);
     fireTimeout -= elapsedSeconds;

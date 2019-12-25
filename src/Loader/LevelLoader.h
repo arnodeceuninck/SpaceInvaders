@@ -12,6 +12,16 @@ namespace spaceinvaders::view {
     class GameRepresentation;
 }
 
+namespace spaceinvaders::model {
+    class Ship;
+}
+namespace spaceinvaders::view {
+    class MovingEntityRepresentation;
+}
+namespace spaceinvaders::controller {
+    class ShipController;
+}
+
 namespace spaceinvaders::loader {
     class LevelLoader : public Loader {
     public:
@@ -19,6 +29,12 @@ namespace spaceinvaders::loader {
 
         void loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
                       std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation);
+
+        void linkObservers(std::shared_ptr<spaceinvaders::model::WorldModel> &worldModel,
+                           std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
+                           std::shared_ptr<spaceinvaders::model::Ship> &ship,
+                           const std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> &shipRepresentation,
+                           const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController) const;
     };
 }
 

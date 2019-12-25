@@ -64,3 +64,11 @@ sf::Texture &spaceinvaders::view::EntityRepresentation::getTexture() {
 sf::Sprite &spaceinvaders::view::EntityRepresentation::getSprite() {
     return sprite;
 }
+
+void spaceinvaders::view::EntityRepresentation::setTexture(const sf::Texture &texture) {
+    EntityRepresentation::texture = texture;
+}
+
+void spaceinvaders::view::EntityRepresentation::setSprite(const sf::Sprite &sprite) {
+    EntityRepresentation::sprite = sprite;
+}

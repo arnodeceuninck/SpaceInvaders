@@ -22,7 +22,7 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
     sf::Sprite sprite324 = getSprite();
     sf::Texture texture324 = getTexture();
 
-    if (!isInit() or true) {
+    if (!isInit()) {
         if (!texture324.loadFromFile(getSpriteFile())) {
             throw std::ios_base::failure("File not found: " + getSpriteFile());
             // error...
@@ -45,6 +45,8 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
             throw std::logic_error("Entity is not a ship");
         }
 
+        setSprite(sprite324);
+        setTexture(texture324);
         setInit(true);
     }
 
