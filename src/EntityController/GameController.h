@@ -12,6 +12,8 @@ namespace spaceinvaders::controller {
     public:
         void checkInput();
 
+        void update(double elapsedSeconds);
+
         GameController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
 
     private:
