@@ -6,6 +6,7 @@
 #include "../Events/UpdateEvent.h"
 #include "../Events/BulletFired.h"
 #include "../Events/RocketPositionUpdated.h"
+#include "../Events/DestroyedEvent.h"
 
 void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     if (auto bf = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
@@ -14,6 +15,8 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
         bf->getRocket()->addObserver(wm);
     } else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
         notifyObservers(event); // Let the observers check for collisions
+    } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(event)) {
+        removeObserver(de->getEntity());
     }
 }
 

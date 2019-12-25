@@ -100,6 +100,15 @@ void spaceinvaders::loader::LevelLoader::linkObservers(std::shared_ptr<spaceinva
                                                        std::shared_ptr<spaceinvaders::controller::GameController> gameController,
                                                        bool playerShip) const {// Link the view to the model
 
+    // NOTE: All observers also have a pointer to their observable, for easily removing themselves
+
+    // RequiredLinks: (observer -> observable)
+    // (x) EntityRepresentation -> GameRepresentation : Required for inside representation changes (e.g. windowResize, ...)
+    // (x) EntityRepresentation -> EntityModel : Required for inside model changes (e.g. modelDestroyed, position changed, ...)
+    // (x) EntityModel -> EntityController : Required for control events (e.g. moving left, ...)
+    // (x) EntityModel -> GameWorld : Required for inside model changes (e.g. update, ...) NOTE: GameModel is for controlling next level, ...
+    // (x) EntityController -> GameController : Required for internal control changes (e.g. update, ...)
+
     ship->addObserver(shipRepresentation);
 
     // Link the model to the controller

@@ -11,7 +11,10 @@ void observer::Observable::addObserver(std::shared_ptr<Observer> observer) {
 }
 
 void observer::Observable::removeObserver(std::shared_ptr<Observer> observer) {
-    // observers.erase(observer); // for a set
+    auto obs = std::find(observers.begin(), observers.end(), observer);
+    if (obs != observers.end()) {
+        observers.erase(obs); // for a set
+    }
 //    observers.erase(std::find(observers.begin(), observers.end(), observer)); // Also not possible, no operator== for weak ptr's
 
 }
@@ -19,7 +22,9 @@ void observer::Observable::removeObserver(std::shared_ptr<Observer> observer) {
 void observer::Observable::notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event) {
     for (auto observer: observers) {
 //        if (auto observerSP = observer.lock()) {
-        observer->handleEvent(event);
+        if (observer.get() != nullptr) {
+            observer->handleEvent(event);
+        }
 //        }
     }
 }

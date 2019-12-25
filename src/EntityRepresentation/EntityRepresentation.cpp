@@ -6,6 +6,7 @@
 #include "../Events/EntityCreatedEvent.h"
 #include "../Events/DrawUpdate.h"
 #include "GameRepresentation.h"
+#include "../Events/ReprDestroyEvent.h"
 #include "../Events/DestroyedEvent.h"
 
 const std::string &spaceinvaders::view::EntityRepresentation::getSpriteFile() const {
@@ -17,12 +18,17 @@ void spaceinvaders::view::EntityRepresentation::setSpriteFile(const std::string 
 }
 
 void spaceinvaders::view::EntityRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-    if (auto updateEvent = std::dynamic_pointer_cast<spaceinvaders::event::DrawUpdate>(event)) {
+    if (auto updateEvent = std::dynamic_pointer_cast<spaceinvaders::event::DrawUpdate>(
+            event)) { // From GameRepresentation
         draw();
-    } else if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(event)) {
+    } else if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
+            event)) { // From EntityModel
         entity = entityEvent->getEntity();
-    } else if (auto destroyEvent = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(event)) {
-
+    } else if (auto destroyEvent = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(
+            event)) { // From EntityModel
+        std::shared_ptr<EntityRepresentation> me = shared_from_this();
+        std::shared_ptr<spaceinvaders::event::Event> ev = std::make_shared<spaceinvaders::event::ReprDestroyEvent>(me);
+        notifyObservers(ev); // To GameRepresentation
     }
 }
 

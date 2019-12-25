@@ -18,6 +18,8 @@ namespace spaceinvaders::model {
 
         GameModel();
 
+        void gameLoop();
+
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
         void update(double elapsedSeconds);

@@ -25,3 +25,7 @@ spaceinvaders::model::GameModel::GameModel() {
 const std::shared_ptr<spaceinvaders::model::WorldModel> &spaceinvaders::model::GameModel::getGameWorld() const {
     return gameWorld;
 }
+
+void spaceinvaders::model::GameModel::gameLoop() {
+
+}

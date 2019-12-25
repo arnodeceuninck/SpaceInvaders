@@ -11,6 +11,7 @@
 #include "../Events/BulletFired.h"
 #include "MovingEntityRepresentation.h"
 #include "../Events/EntityCreatedEvent.h"
+#include "../Events/ReprDestroyEvent.h"
 
 spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel)
         : EntityRepresentation(
@@ -47,6 +48,8 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
 
         std::cout << "FIREEEEEEEEEEEEEEEEEEEEBAAAALLLLL" << std::endl;
 //        std::shared_ptr<>();
+    } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::ReprDestroyEvent>(event)) {
+        removeObserver(de->getEntity());
     }
 }
 

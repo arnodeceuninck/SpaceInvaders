@@ -82,4 +82,5 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
 void spaceinvaders::model::MovingEntity::selfDestroy() {
     std::shared_ptr<MovingEntity> me = shared_from_this();
     std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::DestroyedEvent>(me);
+    notifyObservers(event);
 }

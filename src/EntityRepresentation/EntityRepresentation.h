@@ -15,16 +15,17 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::view {
     class GameRepresentation;
 
-    class EntityRepresentation : public observer::Observer {
-        std::string spriteFile;
-        sf::Texture texture;
-        sf::Sprite sprite;
-        std::shared_ptr<spaceinvaders::model::EntityModel> entity;
-        std::shared_ptr<GameWindow> window;
-        std::shared_ptr<Transformation> transformation;
-        bool init = false;
-    public:
-        sf::Texture &getTexture();
+class EntityRepresentation : public observer::Observer, public std::enable_shared_from_this<EntityRepresentation>,
+                             public observer::Observable {
+    std::string spriteFile;
+    sf::Texture texture;
+    sf::Sprite sprite;
+    std::shared_ptr<spaceinvaders::model::EntityModel> entity;
+    std::shared_ptr<GameWindow> window;
+    std::shared_ptr<Transformation> transformation;
+    bool init = false;
+public:
+    sf::Texture &getTexture();
 
         sf::Sprite &getSprite();
 
