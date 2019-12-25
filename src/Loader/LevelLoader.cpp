@@ -11,6 +11,7 @@
 #include "../EntityController/PlayerController.h"
 #include "../EntityModel/EnemyShip.h"
 #include "../EntityController/GameController.h"
+#include "../EntityController/EnemiesController.h"
 #include "../EntityController/EnemyController.h"
 
 void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
@@ -45,6 +46,8 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
     double minPos = std::numeric_limits<double>::infinity();
     double maxPos = -std::numeric_limits<double>::infinity();
 
+    auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>(nullptr);
+
     for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
 
         rapidjson::Value &enemyObj = enemiesValue[i];
@@ -73,9 +76,7 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
             rightMostEnemy = enemyShip;
         }
 
-        // TODO: move outside loop
-        enemyController->setLeftMostEnemy(leftMostEnemy);
-        enemyController->setRightMostEnemy(rightMostEnemy);
+        enemiesController->addEnemy(enemyShip);
 
         std::shared_ptr<spaceinvaders::model::Ship> ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(
                 enemyShip);
@@ -83,8 +84,12 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
                 enemyController);
         linkObservers(worldModel, gameRepresentation, ship, shipRepresentation, shipController, gameController, false);
 
-
     }
+
+    gameController->addObserver(enemiesController);
+
+    enemiesController->setLeftMostEnemy(leftMostEnemy);
+    enemiesController->setRightMostEnemy(rightMostEnemy);
 }
 
 void spaceinvaders::loader::LevelLoader::linkObservers(std::shared_ptr<spaceinvaders::model::WorldModel> &worldModel,

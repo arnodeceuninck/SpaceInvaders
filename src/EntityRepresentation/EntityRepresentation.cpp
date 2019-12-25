@@ -6,6 +6,7 @@
 #include "../Events/EntityCreatedEvent.h"
 #include "../Events/DrawUpdate.h"
 #include "GameRepresentation.h"
+#include "../Events/DestroyedEvent.h"
 
 const std::string &spaceinvaders::view::EntityRepresentation::getSpriteFile() const {
     return spriteFile;
@@ -20,6 +21,8 @@ void spaceinvaders::view::EntityRepresentation::handleEvent(std::shared_ptr<spac
         draw();
     } else if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(event)) {
         entity = entityEvent->getEntity();
+    } else if (auto destroyEvent = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(event)) {
+
     }
 }
 

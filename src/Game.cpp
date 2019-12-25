@@ -13,7 +13,8 @@
 #include "EntityController/PlayerController.h"
 #include "Loader/LevelLoader.h"
 
-#define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
+//#define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
+#define MAX_CYCLES_PER_SECOND 30
 #define MIN_TIME_PER_CYCLE 1000000000.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
 
 namespace spaceinvaders {
@@ -26,7 +27,7 @@ namespace spaceinvaders {
         initController();
 
 
-        loader::LevelLoader loader{"lvl0.json"};
+        loader::LevelLoader loader{"lvl1.json"};
         loader.loadInto(gameModel->getGameWorld(), gameRepresentation, gameController);
 
         gameRunning = true;
@@ -81,7 +82,7 @@ namespace spaceinvaders {
 
             gameRepresentation->update(); // Update the window
 
-            if (i >= 300) {
+            if (i >= 3000) {
                 gameRunning = false; // TODO: Remove this line
             }
         }

@@ -9,14 +9,18 @@
 #include "MovingEntity.h"
 
 namespace spaceinvaders::model {
-    class RocketModel : public MovingEntity {
+class RocketModel : public MovingEntity {
 
-    public:
-        RocketModel();
+public:
+    void update(double elapsedSeconds) override;
 
-        RocketModel(double width, double height, double speed, const Coordinate &speedDirection,
-                    const Coordinate &position);
-    };
+    RocketModel();
+
+    RocketModel(double width, double height, double speed, const Coordinate &speedDirection,
+                const Coordinate &position);
+
+    Coordinate getTop();
+};
 }
 
 

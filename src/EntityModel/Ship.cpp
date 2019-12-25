@@ -39,7 +39,7 @@ void spaceinvaders::model::Ship::fire() {
 }
 
 void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-    EntityModel::handleEvent(event);
+    MovingEntity::handleEvent(event);
 }
 
 double spaceinvaders::model::Ship::getHealth() const {

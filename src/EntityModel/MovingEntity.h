@@ -8,7 +8,7 @@
 #include "EntityModel.h"
 
 namespace spaceinvaders::model {
-class MovingEntity : public EntityModel {
+class MovingEntity : public EntityModel, public std::enable_shared_from_this<MovingEntity> {
 private:
     double width;
     double height;
@@ -40,6 +40,10 @@ public:
     const Coordinate &getSpeedDirection() const;
 
     void setSpeedDirection(const Coordinate &speedDirection);
+
+    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
+    void selfDestroy();
 };
 }
 

@@ -2,7 +2,11 @@
 // Created by arno on 24/12/2019.
 //
 
+#include <iostream>
 #include "MovingEntity.h"
+#include "../Events/RocketPositionUpdated.h"
+#include "RocketModel.h"
+#include "../Events/DestroyedEvent.h"
 
 double spaceinvaders::model::MovingEntity::getWidth() const {
     return width;
@@ -58,4 +62,24 @@ void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
     double distance = getSpeed() * elapsedSeconds;
     Coordinate directedDistance = getSpeedDirection() * distance;
     setPosition(getPosition() + directedDistance);
+}
+
+void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+    EntityModel::handleEvent(event);
+    if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
+        Coordinate rocketTop{rpu->getRocket()->getTop()};
+        if (rocketTop.getX() > getPosition().getX() - getWidth() / 2 &&
+            rocketTop.getX() < getPosition().getX() + getWidth() / 2 &&
+            rocketTop.getY() > getPosition().getY() - getHeight() / 2 &&
+            rocketTop.getY() < getPosition().getY() + getHeight() / 2) {
+            std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
+            selfDestroy();
+        }
+
+    }
+}
+
+void spaceinvaders::model::MovingEntity::selfDestroy() {
+    std::shared_ptr<MovingEntity> me = shared_from_this();
+    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::DestroyedEvent>(me);
 }

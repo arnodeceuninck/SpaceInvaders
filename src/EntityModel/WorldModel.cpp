@@ -5,10 +5,15 @@
 #include "WorldModel.h"
 #include "../Events/UpdateEvent.h"
 #include "../Events/BulletFired.h"
+#include "../Events/RocketPositionUpdated.h"
 
 void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-    if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
-        addObserver(ev->getRocket());
+    if (auto bf = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
+        addObserver(bf->getRocket());
+        std::shared_ptr<WorldModel> wm = shared_from_this();
+        bf->getRocket()->addObserver(wm);
+    } else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
+        notifyObservers(event); // Let the observers check for collisions
     }
 }
 

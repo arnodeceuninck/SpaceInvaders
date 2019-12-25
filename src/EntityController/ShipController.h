@@ -11,9 +11,9 @@
 namespace spaceinvaders::controller {
     class ShipController : public EntityController {
     public:
-        void go(Coordinate coordinate);
+        virtual void go(Coordinate coordinate);
 
-        void fire();
+        virtual void fire();
 
         ShipController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
     };
