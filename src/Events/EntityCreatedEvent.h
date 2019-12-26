@@ -13,8 +13,14 @@ namespace spaceinvaders::event {
     class EntityCreatedEvent : public Event {
     private:
         std::shared_ptr<spaceinvaders::model::EntityModel> entity;
+        std::string prefferedSprite;
     public:
         const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
+
+        const std::string &getPrefferedSprite() const;
+
+        EntityCreatedEvent(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
+                           const std::string &prefferedSprite);
 
         EntityCreatedEvent(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity);
     };

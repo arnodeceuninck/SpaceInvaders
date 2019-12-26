@@ -9,18 +9,18 @@
 #include <memory>
 #include "Event.h"
 
-namespace spaceinvaders::view {
-    class EntityRepresentation;
+namespace spaceinvaders::observer {
+    class Observer;
 }
 namespace spaceinvaders::event {
     class ReprDestroyEvent : public Event {
     public:
-        ReprDestroyEvent(const std::shared_ptr<spaceinvaders::view::EntityRepresentation> &entity);
+        ReprDestroyEvent(std::shared_ptr<observer::Observer> entity);
 
     private:
-        std::shared_ptr<spaceinvaders::view::EntityRepresentation> entity;
+        std::shared_ptr<spaceinvaders::observer::Observer> entity;
     public:
-        const std::shared_ptr<spaceinvaders::view::EntityRepresentation> &getEntity() const;
+        const std::shared_ptr<spaceinvaders::observer::Observer> &getEntity() const;
     };
 }
 

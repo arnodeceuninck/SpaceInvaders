@@ -15,7 +15,7 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::view {
     class GameRepresentation;
 
-class EntityRepresentation : public observer::Observer, public std::enable_shared_from_this<EntityRepresentation>,
+class EntityRepresentation : public observer::Observer,
                              public observer::Observable {
     std::string spriteFile;
     sf::Texture texture;
@@ -27,38 +27,44 @@ class EntityRepresentation : public observer::Observer, public std::enable_share
 public:
     sf::Texture &getTexture();
 
-        sf::Sprite &getSprite();
+    sf::Sprite &getSprite();
 
-        const std::shared_ptr<Transformation> &getTransformation() const;
+    const std::shared_ptr<Transformation> &getTransformation() const;
 
-        bool isInit() const;
+    bool isInit() const;
 
-        void setInit(bool init);
+    void setInit(bool init);
 
-        void setTransformation(const std::shared_ptr<Transformation> &transformation);
+    void setTransformation(const std::shared_ptr<Transformation> &transformation);
+
+    void setEntity(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity);
 
 
-    public:
-        void setTexture(const sf::Texture &texture);
+public:
+    void setTexture(const sf::Texture &texture);
 
-        void setSprite(const sf::Sprite &sprite);
+    void setSprite(const sf::Sprite &sprite);
 
-        EntityRepresentation(const std::shared_ptr<GameWindow> &window, std::shared_ptr<Transformation> transformation);
+    EntityRepresentation(const std::shared_ptr<GameWindow> &window, std::shared_ptr<Transformation> transformation);
 
-        EntityRepresentation(const std::shared_ptr<GameWindow> &window);
+    EntityRepresentation(const std::shared_ptr<GameWindow> &window);
 
-        const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
+    const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
 
-        std::shared_ptr<GameWindow> &getWindow();
+    std::shared_ptr<GameWindow> &getWindow();
 
-        const std::string &getSpriteFile() const;
+    const std::string &getSpriteFile() const;
 
-        virtual void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+    virtual void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        void setSpriteFile(const std::string &spriteFile);
+    void setSpriteFile(const std::string &spriteFile);
 
-        virtual void draw() = 0;
-    };
+    virtual void draw() = 0;
+
+    EntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
+                         const std::shared_ptr<GameWindow> &window,
+                         const std::shared_ptr<Transformation> &transformation);
+};
 }
 
 

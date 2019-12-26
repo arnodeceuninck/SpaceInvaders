@@ -7,10 +7,10 @@
 #include "../EntityModel/Ship.h"
 #include "Transformation.h"
 
-spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(std::shared_ptr<GameWindow> window,
-                                                                            std::shared_ptr<Transformation> transformation)
-        : EntityRepresentation(
-        window, transformation) {}
+//spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(std::shared_ptr<GameWindow> window,
+//                                                                            std::shared_ptr<Transformation> transformation)
+//        : EntityRepresentation(
+//        window, transformation) {}
 
 
 void spaceinvaders::view::MovingEntityRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
@@ -59,3 +59,7 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
     getWindow()->getSfmlWindow()->draw(sprite324);
 //    std::cout << "Drawing ship" << std::endl;
 }
+
+spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(
+        const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, const std::shared_ptr<GameWindow> &window,
+        const std::shared_ptr<Transformation> &transformation) : EntityRepresentation(entity, window, transformation) {}

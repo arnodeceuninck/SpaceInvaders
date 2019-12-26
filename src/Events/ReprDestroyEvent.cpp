@@ -4,11 +4,11 @@
 
 #include "ReprDestroyEvent.h"
 
-const std::shared_ptr<spaceinvaders::view::EntityRepresentation> &
+const std::shared_ptr<spaceinvaders::observer::Observer> &
 spaceinvaders::event::ReprDestroyEvent::getEntity() const {
     return entity;
 }
 
 spaceinvaders::event::ReprDestroyEvent::ReprDestroyEvent(
-        const std::shared_ptr<spaceinvaders::view::EntityRepresentation> &entity)
+        std::shared_ptr<observer::Observer> entity)
         : entity(entity) {}

@@ -3,14 +3,15 @@
 //
 
 #include <SFML/Window/Event.hpp>
+#include <iostream>
 #include "Observable.h"
 
-void observer::Observable::addObserver(std::shared_ptr<Observer> observer) {
+void spaceinvaders::observer::Observable::addObserver(std::shared_ptr<spaceinvaders::observer::Observer> observer) {
     // observers.insert(observer); // for a set
     observers.push_back(observer); // for a vector
 }
 
-void observer::Observable::removeObserver(std::shared_ptr<Observer> observer) {
+void spaceinvaders::observer::Observable::removeObserver(std::shared_ptr<spaceinvaders::observer::Observer> observer) {
     auto obs = std::find(observers.begin(), observers.end(), observer);
     if (obs != observers.end()) {
         observers.erase(obs); // for a set
@@ -19,7 +20,7 @@ void observer::Observable::removeObserver(std::shared_ptr<Observer> observer) {
 
 }
 
-void observer::Observable::notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event) {
+void spaceinvaders::observer::Observable::notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event) {
     for (auto observer: observers) {
 //        if (auto observerSP = observer.lock()) {
         if (observer.get() != nullptr) {

@@ -29,17 +29,8 @@ namespace spaceinvaders::loader {
     public:
         LevelLoader(const std::string &filename);
 
-        void loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
-                      std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation,
+        void loadInto(std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation,
                       std::shared_ptr<spaceinvaders::controller::GameController> gameController);
-
-        void linkObservers(std::shared_ptr<spaceinvaders::model::WorldModel> &worldModel,
-                           std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
-                           std::shared_ptr<spaceinvaders::model::Ship> &ship,
-                           const std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> &shipRepresentation,
-                           const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController,
-                           std::shared_ptr<spaceinvaders::controller::GameController> gameController,
-                           bool playerShip) const;
     };
 }
 

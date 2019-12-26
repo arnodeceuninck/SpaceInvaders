@@ -8,9 +8,10 @@
 #include <string>
 
 #include "../../rapidjson/document.h"
+#include "../Observer/Observable.h"
 
 namespace spaceinvaders::loader {
-    class Loader {
+    class Loader : public observer::Observable {
     private:
         std::string filename;
     public:

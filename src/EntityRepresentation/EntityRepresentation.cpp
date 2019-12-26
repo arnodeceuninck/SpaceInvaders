@@ -21,13 +21,14 @@ void spaceinvaders::view::EntityRepresentation::handleEvent(std::shared_ptr<spac
     if (auto updateEvent = std::dynamic_pointer_cast<spaceinvaders::event::DrawUpdate>(
             event)) { // From GameRepresentation
         draw();
-    } else if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
-            event)) { // From EntityModel
-        entity = entityEvent->getEntity();
+//    } else if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
+//            event)) { // From EntityModel
+//        entity = entityEvent->getEntity();
     } else if (auto destroyEvent = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(
             event)) { // From EntityModel
-        std::shared_ptr<EntityRepresentation> me = shared_from_this();
-        std::shared_ptr<spaceinvaders::event::Event> ev = std::make_shared<spaceinvaders::event::ReprDestroyEvent>(me);
+        auto me = shared_from_this(); // Weird, there must exist one since it is an observer, and there is always a shared pointer from observable to observer
+        std::shared_ptr<spaceinvaders::event::Event> ev = std::make_shared<spaceinvaders::event::ReprDestroyEvent>(
+                std::dynamic_pointer_cast<observer::Observer>(me));
         notifyObservers(ev); // To GameRepresentation
     }
 }
@@ -81,3 +82,13 @@ void spaceinvaders::view::EntityRepresentation::setTexture(const sf::Texture &te
 void spaceinvaders::view::EntityRepresentation::setSprite(const sf::Sprite &sprite) {
     EntityRepresentation::sprite = sprite;
 }
+
+void
+spaceinvaders::view::EntityRepresentation::setEntity(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity) {
+    EntityRepresentation::entity = entity;
+}
+
+spaceinvaders::view::EntityRepresentation::EntityRepresentation(
+        const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, const std::shared_ptr<GameWindow> &window,
+        const std::shared_ptr<Transformation> &transformation) : entity(entity), window(window),
+                                                                 transformation(transformation) {}

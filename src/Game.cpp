@@ -28,7 +28,8 @@ namespace spaceinvaders {
 
 
         loader::LevelLoader loader{"lvl1.json"};
-        loader.loadInto(gameModel->getGameWorld(), gameRepresentation, gameController);
+        loader.addObserver(gameRepresentation);
+        loader.loadInto(gameRepresentation, gameController);
 
         gameRunning = true;
 

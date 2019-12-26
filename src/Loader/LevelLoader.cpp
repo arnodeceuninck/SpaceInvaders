@@ -5,7 +5,6 @@
 #include "LevelLoader.h"
 #include "ShipLoader.h"
 #include "../EntityModel/PlayerShip.h"
-#include "../EntityRepresentation/MovingEntityRepresentation.h"
 #include "../Events/EntityCreatedEvent.h"
 #include "../EntityRepresentation/GameRepresentation.h"
 #include "../EntityController/PlayerController.h"
@@ -14,39 +13,48 @@
 #include "../EntityController/EnemiesController.h"
 #include "../EntityController/EnemyController.h"
 
-void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders::model::WorldModel> worldModel,
-                                                  std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation,
-                                                  std::shared_ptr<spaceinvaders::controller::GameController> gameController) {
+// Linking scheme
+
+// NOTE: (Not anymore required, since observers will work with weak_ptr's) All observers also have a pointer to their observable, for easily removing themselves
+
+// RequiredLinks: (observer -> observable)
+// ( ) EntityRepresentation -> GameRepresentation : Required for inside representation changes (e.g. windowResize, ...) // Does Gamerepresentation
+// ( ) GameRepresentation -> EntityRepresentation // Does GameRepresentation
+// ( ) EntityRepresentation -> EntityModel : Required for inside model changes (e.g. modelDestroyed, position changed, ...) // Does ShipLoader
+// ( ) EntityModel -> EntityController : Required for control events (e.g. moving left, ...) // Does LevelLoader
+// ( ) EntityModel -> GameWorld : Required for inside model changes (e.g. update, ...) NOTE: GameModel is for controlling next level, ... // Does GameModel
+// ( ) GameWorld -> EntityModel // Does GameModel
+// ( ) EntityController -> GameController : Required for internal control changes (e.g. update, ...) // Does LevelLoader
+
+void spaceinvaders::loader::LevelLoader::loadInto(
+        std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation,
+        std::shared_ptr<spaceinvaders::controller::GameController> gameController) {
     rapidjson::Document input = getDocument();
 
     if (auto playerFile = input["player"].GetString()) {
 
         // Create a player ship, it's representation and it's controller
         auto playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
-
-        auto shipRepresentation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
-                gameRepresentation->getWindow(), gameRepresentation->getTransformation());
         auto shipController = std::make_shared<spaceinvaders::controller::PlayerController>(playerShip);
 
         // Load the contents of the player file to the ship
         ShipLoader shipLoader{playerFile};
-        shipLoader.loadInto(playerShip, shipRepresentation);
+        shipLoader.loadInto(playerShip, gameRepresentation);
 
-        std::shared_ptr<spaceinvaders::model::Ship> ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(
-                playerShip);
-
-        linkObservers(worldModel, gameRepresentation, ship, shipRepresentation, shipController, gameController, true);
-
+        gameController->addObserver(
+                shipController); // TODO: GameController should submit keyEvents to all their observers, meaning gameController is an observer of GameWindow
+        shipController->addObserver(playerShip);
     }
 
     rapidjson::Value &enemiesValue = input["enemies"];
 
-    std::shared_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy;
+    std::shared_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy; // TODO: add function findLeftMostEnemy to update these once an enemy get destroyed
     std::shared_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
     double minPos = std::numeric_limits<double>::infinity();
     double maxPos = -std::numeric_limits<double>::infinity();
 
-    auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>(nullptr);
+    auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>(
+            nullptr); // TODO: remvoe entity from controller, only work with events
 
     for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
 
@@ -58,14 +66,13 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
 
         // Create a player ship, it's representation and it's controller
         auto enemyShip = std::make_shared<spaceinvaders::model::EnemyShip>(enemyX, enemyY);
-
-        auto shipRepresentation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
-                gameRepresentation->getWindow(), gameRepresentation->getTransformation());
         auto enemyController = std::make_shared<spaceinvaders::controller::EnemyController>(enemyShip);
+        enemiesController->addObserver(enemyShip);
+        enemyController->addObserver(enemyShip);
 
         // Load the contents of the player file to the ship
         ShipLoader shipLoader{enemyJson};
-        shipLoader.loadInto(enemyShip, shipRepresentation);
+        shipLoader.loadInto(enemyShip, gameRepresentation);
 
         if (enemyX < minPos) {
             minPos = enemyX;
@@ -76,60 +83,18 @@ void spaceinvaders::loader::LevelLoader::loadInto(std::shared_ptr<spaceinvaders:
             rightMostEnemy = enemyShip;
         }
 
-        enemiesController->addEnemy(enemyShip);
-
-        std::shared_ptr<spaceinvaders::model::Ship> ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(
-                enemyShip);
-        std::shared_ptr<spaceinvaders::controller::ShipController> shipController = std::dynamic_pointer_cast<spaceinvaders::controller::ShipController>(
-                enemyController);
-        linkObservers(worldModel, gameRepresentation, ship, shipRepresentation, shipController, gameController, false);
+        gameController->addObserver(enemyController);
+        enemyController->addObserver(enemyShip);
 
     }
 
     gameController->addObserver(enemiesController);
+    enemiesController->addObserver(gameController);
 
     enemiesController->setLeftMostEnemy(leftMostEnemy);
     enemiesController->setRightMostEnemy(rightMostEnemy);
+
 }
 
-void spaceinvaders::loader::LevelLoader::linkObservers(std::shared_ptr<spaceinvaders::model::WorldModel> &worldModel,
-                                                       std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
-                                                       std::shared_ptr<spaceinvaders::model::Ship> &ship,
-                                                       const std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> &shipRepresentation,
-                                                       const std::shared_ptr<spaceinvaders::controller::ShipController> &shipController,
-                                                       std::shared_ptr<spaceinvaders::controller::GameController> gameController,
-                                                       bool playerShip) const {// Link the view to the model
-
-    // NOTE: All observers also have a pointer to their observable, for easily removing themselves
-
-    // RequiredLinks: (observer -> observable)
-    // (x) EntityRepresentation -> GameRepresentation : Required for inside representation changes (e.g. windowResize, ...)
-    // (x) EntityRepresentation -> EntityModel : Required for inside model changes (e.g. modelDestroyed, position changed, ...)
-    // (x) EntityModel -> EntityController : Required for control events (e.g. moving left, ...)
-    // (x) EntityModel -> GameWorld : Required for inside model changes (e.g. update, ...) NOTE: GameModel is for controlling next level, ...
-    // (x) EntityController -> GameController : Required for internal control changes (e.g. update, ...)
-
-    ship->addObserver(shipRepresentation);
-
-    // Link the model to the controller
-    worldModel->addObserver(ship);
-    ship->addObserver(worldModel);
-
-    gameRepresentation->addObserver(shipRepresentation); // Required for updating
-
-    // Link controller and gameRepresentation (required for notifying of WindowInteractions)
-    if (playerShip) {
-        gameRepresentation->getWindow()->addObserver(shipController);
-    } else {
-        gameController->addObserver(shipController);
-    }
-
-    ship->addObserver(gameRepresentation); // Required for creating bullets representations when bullet fired
-
-    // Notify the view an entity has been created
-    std::shared_ptr<spaceinvaders::event::Event> entityCreatedEvent = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
-            ship);
-    ship->notifyObservers(entityCreatedEvent);
-}
 
 spaceinvaders::loader::LevelLoader::LevelLoader(const std::string &filename) : Loader(filename) {}

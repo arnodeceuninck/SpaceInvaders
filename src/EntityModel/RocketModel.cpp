@@ -14,7 +14,7 @@ spaceinvaders::model::RocketModel::RocketModel(double width, double height, doub
 
 void spaceinvaders::model::RocketModel::update(double elapsedSeconds) {
     MovingEntity::update(elapsedSeconds);
-    std::shared_ptr<MovingEntity> rocket = shared_from_this();
+    std::shared_ptr<MovingEntity> rocket = std::dynamic_pointer_cast<MovingEntity>(shared_from_this());
     std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::RocketPositionUpdated>(
             std::dynamic_pointer_cast<RocketModel>(rocket));
     notifyObservers(event);

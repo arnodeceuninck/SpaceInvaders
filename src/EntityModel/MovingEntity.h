@@ -8,7 +8,7 @@
 #include "EntityModel.h"
 
 namespace spaceinvaders::model {
-class MovingEntity : public EntityModel, public std::enable_shared_from_this<MovingEntity> {
+class MovingEntity : public EntityModel {
 private:
     double width;
     double height;

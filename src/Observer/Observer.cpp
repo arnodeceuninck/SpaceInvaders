@@ -4,6 +4,6 @@
 
 #include "Observer.h"
 
-observer::Observer::~Observer() {
+spaceinvaders::observer::Observer::~Observer() {
 
 }

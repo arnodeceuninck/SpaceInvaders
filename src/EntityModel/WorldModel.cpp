@@ -7,11 +7,21 @@
 #include "../Events/BulletFired.h"
 #include "../Events/RocketPositionUpdated.h"
 #include "../Events/DestroyedEvent.h"
+#include "../Events/EntityCreatedEvent.h"
 
 void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-    if (auto bf = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
+    if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
+            event)) { // From EntityModel
+        if (auto entity = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entityEvent->getEntity())) {
+            addObserver(entity);
+            entity->addObserver(shared_from_this());
+            movingEntities.emplace_back(entity);
+        }
+
+    } else if (auto bf = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
+        // TODO: remove: should happen with entityCreated
         addObserver(bf->getRocket());
-        std::shared_ptr<WorldModel> wm = shared_from_this();
+        std::shared_ptr<WorldModel> wm = std::dynamic_pointer_cast<WorldModel>(shared_from_this());
         bf->getRocket()->addObserver(wm);
     } else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
         notifyObservers(event); // Let the observers check for collisions

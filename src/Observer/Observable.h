@@ -9,7 +9,7 @@
 
 #include "Observer.h"
 
-namespace observer {
+namespace spaceinvaders::observer {
 
     // aka Subject
     class Observable {
