@@ -39,7 +39,14 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
         // Load the contents of the player file to the ship
         ShipLoader shipLoader{playerFile};
-        shipLoader.loadInto(playerShip, gameRepresentation);
+        std::string spriteFile;
+        shipLoader.loadInto(playerShip, spriteFile);
+
+        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
+                playerShip, spriteFile);
+        notifyObservers(
+                event); // TODO: GameModel MUST observe LevelLoader, LevelLodader must observe shipLoader (for redirecting event to levelLoader),  worldModel & GameRepresentation must observe GameModel, so the eventCreated can be forwarded to all places requiring it
+
 
         gameController->addObserver(
                 shipController); // TODO: GameController should submit keyEvents to all their observers, meaning gameController is an observer of GameWindow
@@ -72,7 +79,13 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
         // Load the contents of the player file to the ship
         ShipLoader shipLoader{enemyJson};
-        shipLoader.loadInto(enemyShip, gameRepresentation);
+        std::string spriteFile;
+        shipLoader.loadInto(enemyShip, spriteFile);
+
+        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
+                enemyShip, spriteFile);
+        notifyObservers(
+                event);
 
         if (enemyX < minPos) {
             minPos = enemyX;

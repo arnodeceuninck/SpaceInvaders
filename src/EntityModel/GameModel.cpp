@@ -2,6 +2,7 @@
 // Created by arno on 14/12/2019.
 //
 
+#include <iostream>
 #include "GameModel.h"
 #include "../Loader/LevelLoader.h"
 #include "WorldModel.h"
@@ -15,7 +16,7 @@ const std::shared_ptr<spaceinvaders::Dimensions> &spaceinvaders::model::GameMode
 }
 
 void spaceinvaders::model::GameModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-    // std::cout << "Event received" << std::endl;
+    std::cout << "Event received" << std::endl;
 }
 
 spaceinvaders::model::GameModel::GameModel() {

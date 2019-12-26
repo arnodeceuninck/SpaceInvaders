@@ -9,7 +9,7 @@
 #include "../Events/EntityCreatedEvent.h"
 
 void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel,
-                                                 std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation) {
+                                                 std::string spriteFile) {
     // Read the file
     rapidjson::Document input = getDocument();
 
@@ -21,7 +21,6 @@ void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::
         shipModel->setHeight(height);
     }
 
-    std::string spriteFile;
     if(auto sprite = input["sprite"].GetString()){
         spriteFile = sprite;
     }
@@ -37,11 +36,6 @@ void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::
     if (auto speed = input["speed"].GetDouble()) {
         shipModel->setSpeed(speed);
     }
-
-    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
-            shipModel, spriteFile);
-    notifyObservers(
-            event); // TODO: GameModel MUST observe LevelLoader, LevelLodader must observe shipLoader (for redirecting event to levelLoader),  worldModel & GameRepresentation must observe GameModel, so the eventCreated can be forwarded to all places requiring it
 }
 
 spaceinvaders::loader::ShipLoader::ShipLoader(const std::string &filename) : Loader(filename) {}

@@ -19,8 +19,7 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::loader {
     class ShipLoader : public Loader {
     public:
-        void loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel,
-                      std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation);
+        void loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel, std::string spriteFile);
 
         ShipLoader(const std::string &filename);
     };
