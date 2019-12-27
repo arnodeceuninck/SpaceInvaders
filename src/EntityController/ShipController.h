@@ -15,7 +15,7 @@ namespace spaceinvaders::controller {
 
         virtual void fire();
 
-        ShipController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
+        ShipController();
     };
 }
 

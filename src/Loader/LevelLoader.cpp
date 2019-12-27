@@ -35,7 +35,7 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
         // Create a player ship, it's representation and it's controller
         auto playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
-        auto shipController = std::make_shared<spaceinvaders::controller::PlayerController>(playerShip);
+        auto shipController = std::make_shared<spaceinvaders::controller::PlayerController>();
 
         // Load the contents of the player file to the ship
         ShipLoader shipLoader{playerFile};
@@ -60,8 +60,7 @@ void spaceinvaders::loader::LevelLoader::loadInto(
     double minPos = std::numeric_limits<double>::infinity();
     double maxPos = -std::numeric_limits<double>::infinity();
 
-    auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>(
-            nullptr); // TODO: remvoe entity from controller, only work with events
+    auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>();
 
     for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
 

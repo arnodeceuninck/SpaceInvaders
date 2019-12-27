@@ -63,6 +63,9 @@ void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
     double distance = getSpeed() * elapsedSeconds;
     Coordinate directedDistance = getSpeedDirection() * distance;
     setPosition(getPosition() + directedDistance);
+    if (outsideWindow()) {
+        selfDestroy();
+    }
 }
 
 void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
@@ -87,4 +90,11 @@ void spaceinvaders::model::MovingEntity::selfDestroy() {
     std::shared_ptr<MovingEntity> me = std::dynamic_pointer_cast<MovingEntity>(shared_from_this());
     std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::DestroyedEvent>(me);
     notifyObservers(event);
+}
+
+bool spaceinvaders::model::MovingEntity::outsideWindow() {
+    return (getPosition().getY() - getHeight() / 2 > 3 or
+            getPosition().getY() + getHeight() / 3 < -3 or
+            getPosition().getX() - getWidth() / 2 > 4 or
+            getPosition().getX() + getWidth() / 2 < -4);
 }

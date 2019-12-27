@@ -69,7 +69,6 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
     }
 }
 
-spaceinvaders::controller::PlayerController::PlayerController(
-        const std::shared_ptr<spaceinvaders::model::EntityModel> &model) : ShipController(model) {}
+spaceinvaders::controller::PlayerController::PlayerController() {}
 
 

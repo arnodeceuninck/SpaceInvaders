@@ -24,9 +24,8 @@ void spaceinvaders::controller::EnemiesController::handleEvent(std::shared_ptr<s
 //    }
 }
 
-spaceinvaders::controller::EnemiesController::EnemiesController(
-        const std::shared_ptr<spaceinvaders::model::EntityModel> &model) : ShipController(model), direction(right),
-                                                                           previousDirection(down) {
+spaceinvaders::controller::EnemiesController::EnemiesController() : direction(right),
+                                                                    previousDirection(down) {
     go(Coordinate(1, 0));
 }
 

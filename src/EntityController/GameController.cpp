@@ -14,8 +14,7 @@ namespace spaceinvaders::controller {
 //        notifyObservers(controlEvent);
     }
 
-    GameController::GameController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model) : EntityController(
-            model) {}
+    GameController::GameController() {}
 
     void GameController::update(double elapsedSeconds) {
         checkInput();
@@ -24,8 +23,8 @@ namespace spaceinvaders::controller {
         notifyObservers(event);
     }
 
-    GameController::GameController(const std::shared_ptr<spaceinvaders::GameWindow> &gameWindow) : EntityController(
-            nullptr), gameWindow(gameWindow) {
+    GameController::GameController(const std::shared_ptr<spaceinvaders::GameWindow> &gameWindow) : gameWindow(
+            gameWindow) {
     }
 
     void GameController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {

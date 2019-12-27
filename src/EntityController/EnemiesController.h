@@ -32,7 +32,7 @@ namespace spaceinvaders::controller {
 
         void setRightMostEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy);
 
-        EnemiesController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
+        EnemiesController();
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 

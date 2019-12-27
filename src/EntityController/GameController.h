@@ -19,7 +19,7 @@ namespace spaceinvaders::controller {
 
         void addController(std::shared_ptr<EntityController> controller);
 
-        GameController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
+        GameController();
 
         GameController(const std::shared_ptr<spaceinvaders::GameWindow> &gameWindow);
 

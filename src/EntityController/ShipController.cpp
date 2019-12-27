@@ -18,5 +18,4 @@ void spaceinvaders::controller::ShipController::fire() {
     notifyObservers(event);
 }
 
-spaceinvaders::controller::ShipController::ShipController(
-        const std::shared_ptr<spaceinvaders::model::EntityModel> &model) : EntityController(model) {}
+spaceinvaders::controller::ShipController::ShipController() : EntityController() {}
