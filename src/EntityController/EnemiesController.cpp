@@ -85,6 +85,7 @@ void spaceinvaders::controller::EnemiesController::fire() {
 }
 
 void spaceinvaders::controller::EnemiesController::addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy) {
-    enemies.push_back(enemy);
+//    enemies.push_back(enemy);
+    addObserver(enemy);
     enemy->setSpeedDirection(Coordinate(1, 0));
 }

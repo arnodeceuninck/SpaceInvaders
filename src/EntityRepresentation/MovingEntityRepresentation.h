@@ -25,6 +25,8 @@ namespace spaceinvaders::view {
                                    const std::shared_ptr<Transformation> &transformation);
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
+        virtual ~MovingEntityRepresentation();
     };
 }
 

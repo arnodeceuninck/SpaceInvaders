@@ -63,3 +63,7 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
 spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(
         const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, const std::shared_ptr<GameWindow> &window,
         const std::shared_ptr<Transformation> &transformation) : EntityRepresentation(entity, window, transformation) {}
+
+spaceinvaders::view::MovingEntityRepresentation::~MovingEntityRepresentation() {
+    std::cout << "DESTROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOY" << std::endl;
+}

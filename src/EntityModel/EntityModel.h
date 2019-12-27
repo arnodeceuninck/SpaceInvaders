@@ -18,7 +18,7 @@ namespace spaceinvaders::model {
 
     class EntityModel
             : public observer::Observer,
-              public observer::Observable {
+              public observer::Observable, public std::enable_shared_from_this<EntityModel> {
     public:
         virtual void update(double elapsedSeconds) = 0;
 

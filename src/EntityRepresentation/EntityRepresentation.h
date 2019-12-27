@@ -16,7 +16,7 @@ namespace spaceinvaders::view {
     class GameRepresentation;
 
 class EntityRepresentation : public observer::Observer,
-                             public observer::Observable {
+                             public observer::Observable, public std::enable_shared_from_this<EntityRepresentation> {
     std::string spriteFile;
     sf::Texture texture;
     sf::Sprite sprite;

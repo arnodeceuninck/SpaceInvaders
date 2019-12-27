@@ -39,6 +39,7 @@ namespace spaceinvaders::controller {
 
         void goDown(double elapsedTime);
 
+
         bool enemyCloseToRightBorder();
 
         bool enemyCloseToLeftBorder();
