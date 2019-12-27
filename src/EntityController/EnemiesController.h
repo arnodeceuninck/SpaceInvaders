@@ -16,21 +16,16 @@ namespace spaceinvaders::controller {
     };
 
     class EnemiesController : public ShipController {
+        std::list<std::weak_ptr<spaceinvaders::model::EnemyShip>> enemies;
         Direction direction;
         double downTime;
         Direction previousDirection;
-        std::weak_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy;
-        std::weak_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
     public:
-        void setLeftMostEnemy(const std::weak_ptr<spaceinvaders::model::EnemyShip> &leftMostEnemy);
-
         void go(Coordinate coordinate);
 
         void fire();
 
         void addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy);
-
-        void setRightMostEnemy(const std::weak_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy);
 
         EnemiesController();
 

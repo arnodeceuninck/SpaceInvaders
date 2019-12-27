@@ -64,19 +64,25 @@ void spaceinvaders::controller::EnemiesController::setRightMostEnemy(
 }
 
 bool spaceinvaders::controller::EnemiesController::enemyCloseToRightBorder() {
-    if (auto rme = rightMostEnemy.lock()) {
-        return rme->getPosition().getX() + rme->getWidth() / 2 > 3.90;
-    } else {
-        std::cerr << "RightMostEnemy is dead" << std::endl;
+    for (auto enemy: enemies) {
+        if (auto enemySP = enemy.lock()) {
+            if (enemySP->getPosition().getX() + enemySP->getWidth() / 2 > 3.90) {
+                return true;
+            }
+        }
     }
+    return false;
 }
 
 bool spaceinvaders::controller::EnemiesController::enemyCloseToLeftBorder() {
-    if (auto lme = leftMostEnemy.lock()) {
-        return lme->getPosition().getX() - lme->getWidth() / 2 < -3.90;
-    } else {
-        std::cerr << "LeftMostEnemy is dead" << std::endl;
+    for (auto enemy: enemies) {
+        if (auto enemySP = enemy.lock()) {
+            if (enemySP->getPosition().getX() - enemySP->getWidth() / 2 < -3.90) {
+                return true;
+            }
+        }
     }
+    return false;
 }
 
 void spaceinvaders::controller::EnemiesController::go(spaceinvaders::Coordinate coordinate) {
@@ -91,7 +97,7 @@ void spaceinvaders::controller::EnemiesController::fire() {
 }
 
 void spaceinvaders::controller::EnemiesController::addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy) {
-//    enemies.push_back(enemy);
+    enemies.push_back(enemy);
     addObserver(enemy);
     enemy->setSpeedDirection(Coordinate(1, 0));
 }

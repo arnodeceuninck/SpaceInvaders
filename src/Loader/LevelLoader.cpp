@@ -56,11 +56,6 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
     rapidjson::Value &enemiesValue = input["enemies"];
 
-    std::weak_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy; // TODO: add function findLeftMostEnemy to update these once an enemy get destroyed
-    std::weak_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
-    double minPos = std::numeric_limits<double>::infinity();
-    double maxPos = -std::numeric_limits<double>::infinity();
-
     auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>();
 
     for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
@@ -87,15 +82,6 @@ void spaceinvaders::loader::LevelLoader::loadInto(
         notifyObservers(
                 event);
 
-        if (enemyX < minPos) {
-            minPos = enemyX;
-            leftMostEnemy = enemyShip;
-        }
-        if (enemyX > maxPos) {
-            maxPos = enemyX;
-            rightMostEnemy = enemyShip;
-        }
-
         gameController->addController(enemyController);
         enemyController->addObserver(enemyShip);
 
@@ -103,9 +89,6 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
     gameController->addController(enemiesController);
     enemiesController->addObserver(gameController);
-
-    enemiesController->setLeftMostEnemy(leftMostEnemy);
-    enemiesController->setRightMostEnemy(rightMostEnemy);
 
 }
 
