@@ -6,6 +6,7 @@
 #include "../Events/UpdateEvent.h"
 #include "../EntityModel/EnemyShip.h"
 #include "../Events/GoDirection.h"
+#include "../Events/FireBullet.h"
 
 void spaceinvaders::controller::EnemiesController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::UpdateEvent>(event)) {
@@ -77,11 +78,8 @@ void spaceinvaders::controller::EnemiesController::go(spaceinvaders::Coordinate 
 }
 
 void spaceinvaders::controller::EnemiesController::fire() {
-    for (auto enemy: enemies) {
-        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(enemy)) {
-            ship->fire();
-        }
-    }
+    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::FireBullet>();
+    notifyObservers(event);
 }
 
 void spaceinvaders::controller::EnemiesController::addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy) {

@@ -34,7 +34,7 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
     else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
         notifyObservers(event); // Let the observers check for collisions
     } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(event)) {
-        removeObserver(de->getEntity());
+        movingEntities.remove(de->getEntity());
     }
 }
 

@@ -14,6 +14,8 @@ namespace spaceinvaders::model {
 
 namespace spaceinvaders::event {
     class RocketPositionUpdated : public Event {
+
+    private:
         std::shared_ptr<spaceinvaders::model::RocketModel> rocket;
     public:
         const std::shared_ptr<spaceinvaders::model::RocketModel> &getRocket() const;

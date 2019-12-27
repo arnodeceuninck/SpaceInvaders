@@ -16,7 +16,6 @@ namespace spaceinvaders::controller {
     };
 
     class EnemiesController : public ShipController {
-        std::vector<std::shared_ptr<spaceinvaders::model::EnemyShip>> enemies;
         Direction direction;
         double downTime;
         Direction previousDirection;

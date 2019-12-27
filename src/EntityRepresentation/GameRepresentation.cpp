@@ -67,8 +67,8 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
 
     } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::ReprDestroyEvent>(event)) {
         // TODO: Just remove of the list, since observers should contain weak pointers
-        if (auto entity = de->getEntity().lock())
-            representationEntities.remove(std::dynamic_pointer_cast<EntityRepresentation>(entity));
+//        if (auto entity = de->getEntity().lock())
+        representationEntities.remove(std::dynamic_pointer_cast<EntityRepresentation>(de->getEntity()));
     }
 }
 

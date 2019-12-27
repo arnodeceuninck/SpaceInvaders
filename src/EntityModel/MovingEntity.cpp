@@ -75,6 +75,7 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
             rocketTop.getY() < getPosition().getY() + getHeight() / 2) {
             std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
             selfDestroy();
+            rpu->getRocket()->selfDestroy();
         }
 
     } else if (auto dirEvent = std::dynamic_pointer_cast<spaceinvaders::event::GoDirection>(event)) {

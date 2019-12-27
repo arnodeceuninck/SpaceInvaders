@@ -83,7 +83,7 @@ namespace spaceinvaders {
 
             gameRepresentation->update(); // Update the window
 
-            if (i >= 150) {
+            if (i >= 1500) {
                 gameRunning = false; // TODO: Remove this line
             }
         }
