@@ -44,17 +44,20 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
             event)) { // From EntityModel
         if (std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entityEvent->getEntity())) {
             std::cout << "Generating representation for entity" << std::endl;
-            std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> representation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
-                    entityEvent->getEntity(), getWindow(),
-                    getTransformation());
+
+            std::string sprite;
             if (!entityEvent->getPrefferedSprite().empty()) {
-                representation->setSpriteFile(entityEvent->getPrefferedSprite());
+                sprite = entityEvent->getPrefferedSprite();
             } else {
                 if (auto entity = std::dynamic_pointer_cast<spaceinvaders::model::RocketModel>(
                         entityEvent->getEntity())) {
-                    representation->setSpriteFile("Bullet.png");
+                    sprite = "Bullet.png";
                 }
             }
+
+            std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> representation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
+                    entityEvent->getEntity(), getWindow(),
+                    getTransformation(), sprite);
 
             representationEntities.emplace_back(representation);
             std::cout << "#Representations: " << representationEntities.size() << std::endl;

@@ -104,7 +104,7 @@ void spaceinvaders::controller::EnemiesController::checkFirstRowEnemies() {
         auto spController = enemy.second.lock();
         auto spCheckingEnemy = enemy.first.lock();
         if (spController && spCheckingEnemy && !spController->isFirstRow()) {
-            Coordinate inFront = spCheckingEnemy->getPosition() - Coordinate(0, spCheckingEnemy->getHeight());
+            Coordinate inFront = spCheckingEnemy->getPosition() - Coordinate(0, spCheckingEnemy->getHeight() * 1.5);
             bool firstRow = true;
             for (auto enemy2: enemies) {
                 auto spEnemy = enemy2.first.lock();

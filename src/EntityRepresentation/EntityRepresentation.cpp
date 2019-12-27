@@ -93,5 +93,7 @@ spaceinvaders::view::EntityRepresentation::setEntity(const std::shared_ptr<space
 
 spaceinvaders::view::EntityRepresentation::EntityRepresentation(
         const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, const std::shared_ptr<GameWindow> &window,
-        const std::shared_ptr<Transformation> &transformation) : entity(entity), window(window),
-                                                                 transformation(transformation) {}
+        const std::shared_ptr<Transformation> &transformation, std::string sprite) : entity(entity), window(window),
+                                                                                     transformation(transformation) {
+    setSpriteFile(sprite);
+}

@@ -8,6 +8,7 @@
 #include "RocketModel.h"
 #include "../Events/DestroyedEvent.h"
 #include "../Events/GoDirection.h"
+#include "../Events/PositionUpdated.h"
 
 double spaceinvaders::model::MovingEntity::getWidth() const {
     return width;
@@ -65,6 +66,10 @@ void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
     setPosition(getPosition() + directedDistance);
     if (outsideWindow()) {
         selfDestroy();
+    } else {
+        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::PositionUpdated>(
+                getPosition());
+        notifyObservers(event);
     }
 }
 
