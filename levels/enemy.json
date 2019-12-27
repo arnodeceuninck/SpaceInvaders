@@ -1,6 +1,6 @@
 {
   "width": 0.75,
-  "height": 0.75,
+  "height": 0.70,
   "speed": 0.75,
   "sprite": "Enemy.png",
   "health": 20,

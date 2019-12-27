@@ -51,7 +51,7 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
             } else {
                 if (auto entity = std::dynamic_pointer_cast<spaceinvaders::model::RocketModel>(
                         entityEvent->getEntity())) {
-                    sprite = "Bullet.png";
+                    sprite = "Bullet2.png";
                 }
             }
 
