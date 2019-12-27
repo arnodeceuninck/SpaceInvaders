@@ -7,6 +7,7 @@
 #include "../Events/RocketPositionUpdated.h"
 #include "RocketModel.h"
 #include "../Events/DestroyedEvent.h"
+#include "../Events/GoDirection.h"
 
 double spaceinvaders::model::MovingEntity::getWidth() const {
     return width;
@@ -76,6 +77,8 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
             selfDestroy();
         }
 
+    } else if (auto dirEvent = std::dynamic_pointer_cast<spaceinvaders::event::GoDirection>(event)) {
+        setSpeedDirection(dirEvent->getDirection());
     }
 }
 

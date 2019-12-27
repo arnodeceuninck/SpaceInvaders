@@ -11,3 +11,11 @@ spaceinvaders::event::Event::Event() {
 spaceinvaders::event::Event::~Event() {
 
 }
+
+bool spaceinvaders::event::Event::isHandledByGameModel() const {
+    return handledByGameModel;
+}
+
+void spaceinvaders::event::Event::setHandledByGameModel(bool handledByGameModel) {
+    Event::handledByGameModel = handledByGameModel;
+}

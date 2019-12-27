@@ -8,14 +8,14 @@
 #include "SFML/Graphics.hpp"
 #include "../Events/DrawUpdate.h"
 #include "../EntityModel/GameModel.h"
-#include "../Events/BulletFired.h"
+#include "../Events/FireBullet.h"
 #include "MovingEntityRepresentation.h"
 #include "../Events/EntityCreatedEvent.h"
 #include "../Events/ReprDestroyEvent.h"
 
-spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel)
-        : EntityRepresentation(
-        std::make_shared<GameWindow>(800, 600)) {
+spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel,
+                                                            std::shared_ptr<GameWindow> gameWindow)
+        : EntityRepresentation(gameWindow) {
 
     auto gwD = getWindow()->getDimensions();
     auto gmD = gameModel->getDimensions();
@@ -42,6 +42,7 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
     if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
             event)) { // From EntityModel
         if (std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entityEvent->getEntity())) {
+            std::cout << "Generating representation for entity" << std::endl;
             auto representation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
                     entityEvent->getEntity(), getWindow(),
                     getTransformation());
@@ -61,17 +62,6 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
 
         }
 
-    } else if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::BulletFired>(event)) {
-        // TODO; remove: this should all be done in EntityCreatedEvent;
-        std::shared_ptr<MovingEntityRepresentation> rocket = std::make_shared<MovingEntityRepresentation>(
-                ev->getRocket(), getWindow(),
-                getTransformation());
-        rocket->setSpriteFile("Bullet.png");
-        addObserver(rocket);
-        ev->getRocket()->addObserver(rocket);
-
-        std::cout << "FIREEEEEEEEEEEEEEEEEEEEBAAAALLLLL" << std::endl;
-//        std::shared_ptr<>();
     } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::ReprDestroyEvent>(event)) {
         // TODO: Just remove of the list, since observers should contain weak pointers
         removeObserver(de->getEntity());

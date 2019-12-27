@@ -1,0 +1,3 @@
+An entity gets created
+The instance that created the entity notifies GameModel of this and adds a controller for it
+GameModel notifies gameWorld and gameRepresantation

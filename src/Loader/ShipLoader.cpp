@@ -9,7 +9,7 @@
 #include "../Events/EntityCreatedEvent.h"
 
 void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel,
-                                                 std::string spriteFile) {
+                                                 std::string &spriteFile) {
     // Read the file
     rapidjson::Document input = getDocument();
 

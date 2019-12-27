@@ -7,7 +7,12 @@
 
 namespace spaceinvaders::event {
     class Event {
+        bool handledByGameModel = false;
     public:
+        bool isHandledByGameModel() const;
+
+        void setHandledByGameModel(bool handledByGameModel);
+
         Event();
 
         virtual ~Event();

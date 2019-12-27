@@ -14,6 +14,7 @@ namespace spaceinvaders::event {
     private:
         std::shared_ptr<spaceinvaders::model::EntityModel> entity;
         std::string prefferedSprite;
+
     public:
         const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
 

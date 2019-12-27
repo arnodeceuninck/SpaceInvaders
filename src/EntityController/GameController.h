@@ -6,6 +6,9 @@
 #define SPACEINVADERS_GAMECONTROLLER_H
 
 #include "EntityController.h"
+#include "../GameWindow.h"
+
+#include <list>
 
 namespace spaceinvaders::controller {
     class GameController : public EntityController {
@@ -14,9 +17,17 @@ namespace spaceinvaders::controller {
 
         void update(double elapsedSeconds);
 
+        void addController(std::shared_ptr<EntityController> controller);
+
         GameController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
 
+        GameController(const std::shared_ptr<spaceinvaders::GameWindow> &gameWindow);
+
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+
     private:
+        std::list<std::shared_ptr<EntityController>> controlEntities;
+        std::shared_ptr<spaceinvaders::GameWindow> gameWindow;
     };
 }
 

@@ -4,17 +4,18 @@
 
 #include "ShipController.h"
 #include "../EntityModel/Ship.h"
+#include "../Events/GoDirection.h"
+#include "../Events/FireBullet.h"
 
 void spaceinvaders::controller::ShipController::go(spaceinvaders::Coordinate coordinate) {
-    if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getModel())) {
-        ship->setSpeedDirection(coordinate);
-    }
+    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::GoDirection>(
+            coordinate);
+    notifyObservers(event);
 }
 
 void spaceinvaders::controller::ShipController::fire() {
-    if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(getModel())) {
-        ship->fire();
-    }
+    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::FireBullet>();
+    notifyObservers(event);
 }
 
 spaceinvaders::controller::ShipController::ShipController(

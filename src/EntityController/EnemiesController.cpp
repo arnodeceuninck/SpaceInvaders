@@ -5,6 +5,7 @@
 #include "EnemiesController.h"
 #include "../Events/UpdateEvent.h"
 #include "../EntityModel/EnemyShip.h"
+#include "../Events/GoDirection.h"
 
 void spaceinvaders::controller::EnemiesController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::UpdateEvent>(event)) {
@@ -70,11 +71,9 @@ bool spaceinvaders::controller::EnemiesController::enemyCloseToLeftBorder() {
 }
 
 void spaceinvaders::controller::EnemiesController::go(spaceinvaders::Coordinate coordinate) {
-    for (auto enemy: enemies) {
-        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::Ship>(enemy)) {
-            ship->setSpeedDirection(coordinate);
-        }
-    }
+    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::GoDirection>(
+            coordinate);
+    notifyObservers(event);
 }
 
 void spaceinvaders::controller::EnemiesController::fire() {

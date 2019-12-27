@@ -9,6 +9,8 @@
 #include "EntityController/GameController.h"
 #include "EntityModel/GameModel.h"
 
+#include "GameWindow.h"
+
 #include "Stopwatch.h"
 #include "EntityController/PlayerController.h"
 #include "Loader/LevelLoader.h"
@@ -38,20 +40,18 @@ namespace spaceinvaders {
 
     void Game::initModel() {
         gameModel = std::make_shared<model::GameModel>();
+        gameModel->getGameWorld()->addObserver(gameModel);
     }
 
     void Game::initView() {
-        gameRepresentation = std::make_shared<view::GameRepresentation>(gameModel);
+        gameWindow = std::make_shared<GameWindow>(800, 600);
+        gameRepresentation = std::make_shared<view::GameRepresentation>(gameModel, gameWindow);
+        gameModel->addObserver(gameRepresentation);
     }
 
     void Game::initController() {
-        gameController = std::make_shared<controller::GameController>(gameModel);
-//        gameController->addObserver(
-//                weak_from_this()); // Because appearently there isn't an immediate way to convert a raw pointer to a weak pointer
-        // TODO: Is it possible to cast raw pointer (this) to shared pointer?
-//        gameRepresentation->getWindow()->addObserver(std::make_shared<spaceinvaders::controller::PlayerController>());
-//        wcl.addObserver(static_cast<const std::shared_ptr<Observer < sf::Event>>>(this));
-//        gameWindow.addObserver();
+        gameController = std::make_shared<controller::GameController>(gameWindow);
+        gameWindow->addObserver(gameController);
     }
 
     void Game::gameLoop() {
@@ -77,13 +77,13 @@ namespace spaceinvaders {
 
             // The game loop itself
             gameController->update(elapsedSeconds);
-            gameRepresentation->getWindow()->checkInput();
+//            gameRepresentation->getWindow()->checkInput();
             gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
 
             gameRepresentation->update(); // Update the window
 
-            if (i >= 150) {
+            if (i >= 1500) {
                 gameRunning = false; // TODO: Remove this line
             }
         }

@@ -35,7 +35,8 @@ namespace spaceinvaders::view {
 
         void update();
 
-        GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel);
+        GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel,
+                           std::shared_ptr<GameWindow> gameWindow);
 
         void checkInput();
 

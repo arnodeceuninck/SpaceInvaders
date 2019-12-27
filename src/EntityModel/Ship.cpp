@@ -6,7 +6,7 @@
 #include "Ship.h"
 #include "../Events/UpdateEvent.h"
 #include "RocketModel.h"
-#include "../Events/BulletFired.h"
+#include "../Events/FireBullet.h"
 #include "../Events/EntityCreatedEvent.h"
 
 spaceinvaders::model::Ship::Ship(double x, double y) : MovingEntity(0, 0, 2, Coordinate(0, 0), Coordinate(x, y)) {
@@ -26,13 +26,9 @@ void spaceinvaders::model::Ship::update(double elapsedSeconds) {
 void spaceinvaders::model::Ship::fire() {
     if (readyToFire()) {
         auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, getShootingDirection(), getShipFront());
-        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::BulletFired>(
+        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
                 rocket);
         notifyObservers(event);
-
-        std::shared_ptr<spaceinvaders::event::Event> entityCreatedEvent = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
-                rocket);
-        rocket->notifyObservers(entityCreatedEvent);
 
         fireTimeout = 2; // Wait 2 seconds before you can fire again
     }
@@ -40,6 +36,9 @@ void spaceinvaders::model::Ship::fire() {
 
 void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     MovingEntity::handleEvent(event);
+    if (auto fireEvent = std::dynamic_pointer_cast<spaceinvaders::event::FireBullet>(event)) {
+        fire();
+    }
 }
 
 double spaceinvaders::model::Ship::getHealth() const {

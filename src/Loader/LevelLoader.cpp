@@ -96,12 +96,12 @@ void spaceinvaders::loader::LevelLoader::loadInto(
             rightMostEnemy = enemyShip;
         }
 
-        gameController->addObserver(enemyController);
+        gameController->addController(enemyController);
         enemyController->addObserver(enemyShip);
 
     }
 
-    gameController->addObserver(enemiesController);
+    gameController->addController(enemiesController);
     enemiesController->addObserver(gameController);
 
     enemiesController->setLeftMostEnemy(leftMostEnemy);
