@@ -1,0 +1,15 @@
+{
+  "player": "player.json",
+  "enemies": [
+    {
+      "enemy": "enemy.json",
+      "x": 0,
+      "y": 2
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 0,
+      "y": 1
+    }
+  ]
+}

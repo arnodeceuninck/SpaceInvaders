@@ -6,6 +6,9 @@
 #include "../Events/UpdateEvent.h"
 
 void spaceinvaders::controller::EnemyController::checkFire(double elapsedTime) {
+    if (!firstRow) {
+        return;
+    }
     firetime -= elapsedTime;
     if (firetime < 0) {
         fire();
@@ -20,4 +23,12 @@ void spaceinvaders::controller::EnemyController::handleEvent(std::shared_ptr<spa
     if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::UpdateEvent>(event)) {
         checkFire(ev->getElapsedSeconds());
     }
+}
+
+bool spaceinvaders::controller::EnemyController::isFirstRow() const {
+    return firstRow;
+}
+
+void spaceinvaders::controller::EnemyController::setFirstRow(bool firstRow) {
+    EnemyController::firstRow = firstRow;
 }

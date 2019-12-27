@@ -8,6 +8,7 @@
 #include "../EntityModel/EnemyShip.h"
 #include "../Events/GoDirection.h"
 #include "../Events/FireBullet.h"
+#include "EnemyController.h"
 
 void spaceinvaders::controller::EnemiesController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     if (auto ev = std::dynamic_pointer_cast<spaceinvaders::event::UpdateEvent>(event)) {
@@ -21,6 +22,8 @@ void spaceinvaders::controller::EnemiesController::handleEvent(std::shared_ptr<s
         } else if (enemyCloseToLeftBorder()) {
             goDown(ev->getElapsedSeconds());
         }
+
+        checkFirstRowEnemies();
     }
 //    }
 }
@@ -53,19 +56,10 @@ void spaceinvaders::controller::EnemiesController::goDown(double elapsedTime) {
     }
 }
 
-void spaceinvaders::controller::EnemiesController::setLeftMostEnemy(
-        const std::weak_ptr<spaceinvaders::model::EnemyShip> &leftMostEnemy) {
-    EnemiesController::leftMostEnemy = leftMostEnemy;
-}
-
-void spaceinvaders::controller::EnemiesController::setRightMostEnemy(
-        const std::weak_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy) {
-    EnemiesController::rightMostEnemy = rightMostEnemy;
-}
 
 bool spaceinvaders::controller::EnemiesController::enemyCloseToRightBorder() {
     for (auto enemy: enemies) {
-        if (auto enemySP = enemy.lock()) {
+        if (auto enemySP = enemy.first.lock()) {
             if (enemySP->getPosition().getX() + enemySP->getWidth() / 2 > 3.90) {
                 return true;
             }
@@ -76,7 +70,7 @@ bool spaceinvaders::controller::EnemiesController::enemyCloseToRightBorder() {
 
 bool spaceinvaders::controller::EnemiesController::enemyCloseToLeftBorder() {
     for (auto enemy: enemies) {
-        if (auto enemySP = enemy.lock()) {
+        if (auto enemySP = enemy.first.lock()) {
             if (enemySP->getPosition().getX() - enemySP->getWidth() / 2 < -3.90) {
                 return true;
             }
@@ -96,8 +90,35 @@ void spaceinvaders::controller::EnemiesController::fire() {
     notifyObservers(event);
 }
 
-void spaceinvaders::controller::EnemiesController::addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy) {
-    enemies.push_back(enemy);
+void spaceinvaders::controller::EnemiesController::addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy,
+                                                            std::shared_ptr<EnemyController> controller) {
+    enemies.emplace_back(
+            std::pair<std::weak_ptr<spaceinvaders::model::EnemyShip>, std::weak_ptr<EnemyController>>(enemy,
+                                                                                                      controller));
     addObserver(enemy);
     enemy->setSpeedDirection(Coordinate(1, 0));
 }
+
+void spaceinvaders::controller::EnemiesController::checkFirstRowEnemies() {
+    for (auto enemy: enemies) {
+        auto spController = enemy.second.lock();
+        auto spCheckingEnemy = enemy.first.lock();
+        if (spController && spCheckingEnemy && !spController->isFirstRow()) {
+            Coordinate inFront = spCheckingEnemy->getPosition() - Coordinate(0, spCheckingEnemy->getHeight());
+            bool firstRow = true;
+            for (auto enemy2: enemies) {
+                auto spEnemy = enemy2.first.lock();
+                if (spEnemy == spCheckingEnemy) {
+                    continue;
+                }
+                if (spEnemy && spEnemy->isCollision(inFront)) {
+                    firstRow = false;
+                }
+            }
+            if (firstRow) {
+                spController->setFirstRow(true);
+            }
+        }
+    }
+}
+

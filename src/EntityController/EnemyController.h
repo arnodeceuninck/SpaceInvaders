@@ -11,7 +11,13 @@
 namespace spaceinvaders::controller {
     class EnemyController : public ShipController {
         double firetime;
+        bool firstRow = false;
+    public:
+        bool isFirstRow() const;
 
+        void setFirstRow(bool firstRow);
+
+    private:
         void checkFire(double elapsedTime);
 
     public:

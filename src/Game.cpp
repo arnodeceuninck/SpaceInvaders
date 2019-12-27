@@ -29,7 +29,7 @@ namespace spaceinvaders {
         initController();
 
 
-        loader::LevelLoader loader{"lvl0.json"};
+        loader::LevelLoader loader{"lvl3.json"};
         loader.addObserver(gameModel);
         loader.loadInto(gameRepresentation, gameController);
 
@@ -83,7 +83,7 @@ namespace spaceinvaders {
 
             gameRepresentation->update(); // Update the window
 
-            if (i >= 1500) {
+            if (i >= 15000) {
                 gameRunning = false; // TODO: Remove this line
             }
         }

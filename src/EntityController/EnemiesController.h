@@ -7,6 +7,7 @@
 
 #include "ShipController.h"
 #include "../EntityModel/EnemyShip.h"
+#include "EnemyController.h"
 
 #include <vector>
 
@@ -16,7 +17,7 @@ namespace spaceinvaders::controller {
     };
 
     class EnemiesController : public ShipController {
-        std::list<std::weak_ptr<spaceinvaders::model::EnemyShip>> enemies;
+        std::list<std::pair<std::weak_ptr<spaceinvaders::model::EnemyShip>, std::weak_ptr<EnemyController>>> enemies;
         Direction direction;
         double downTime;
         Direction previousDirection;
@@ -25,7 +26,8 @@ namespace spaceinvaders::controller {
 
         void fire();
 
-        void addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy);
+        void
+        addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy, std::shared_ptr<EnemyController> controller);
 
         EnemiesController();
 
@@ -37,6 +39,8 @@ namespace spaceinvaders::controller {
         bool enemyCloseToRightBorder();
 
         bool enemyCloseToLeftBorder();
+
+        void checkFirstRowEnemies();
     };
 }
 

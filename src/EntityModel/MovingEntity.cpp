@@ -72,10 +72,7 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
     EntityModel::handleEvent(event);
     if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
         Coordinate rocketTop{rpu->getRocket()->getTop()};
-        if (rocketTop.getX() > getPosition().getX() - getWidth() / 2 &&
-            rocketTop.getX() < getPosition().getX() + getWidth() / 2 &&
-            rocketTop.getY() > getPosition().getY() - getHeight() / 2 &&
-            rocketTop.getY() < getPosition().getY() + getHeight() / 2) {
+        if (isCollision(rocketTop)) {
             std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
             selfDestroy();
             rpu->getRocket()->selfDestroy();
@@ -84,6 +81,13 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
     } else if (auto dirEvent = std::dynamic_pointer_cast<spaceinvaders::event::GoDirection>(event)) {
         setSpeedDirection(dirEvent->getDirection());
     }
+}
+
+bool spaceinvaders::model::MovingEntity::isCollision(const spaceinvaders::Coordinate &coordinate) {
+    return coordinate.getX() > this->getPosition().getX() - this->getWidth() / 2 &&
+           coordinate.getX() < this->getPosition().getX() + this->getWidth() / 2 &&
+           coordinate.getY() > this->getPosition().getY() - this->getHeight() / 2 &&
+           coordinate.getY() < this->getPosition().getY() + this->getHeight() / 2;
 }
 
 void spaceinvaders::model::MovingEntity::selfDestroy() {

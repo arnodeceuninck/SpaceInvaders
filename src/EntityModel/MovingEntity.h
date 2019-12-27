@@ -46,6 +46,8 @@ public:
     void selfDestroy();
 
     bool outsideWindow();
+
+    bool isCollision(const spaceinvaders::Coordinate &coordinate);
 };
 }
 
