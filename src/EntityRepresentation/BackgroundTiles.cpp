@@ -9,9 +9,6 @@ spaceinvaders::view::BackgroundTiles::BackgroundTiles(std::string filename, std:
         : EntityRepresentation(window) {
     texture.loadFromFile(filename);
     texture.setRepeated(true);
-}
-
-void spaceinvaders::view::BackgroundTiles::draw() {
 
     std::shared_ptr<sf::RenderWindow> sfmlWindow = getWindow()->getSfmlWindow();
 
@@ -20,14 +17,18 @@ void spaceinvaders::view::BackgroundTiles::draw() {
     sf::FloatRect fBounds(0.f, 0.f, 1000.f, 1000.f); // TODO: How to span over entire window?
 
     sf::IntRect iBounds(fBounds);
-    sf::Sprite Sprite(texture, iBounds);
+    sf::Sprite sprite(texture, iBounds);
 
     // move sprite 'up' by its height except the view height for start:
-    Sprite.setPosition(fBounds.left, fBounds.top - 1000.f + view.getSize().y);
+    sprite.setPosition(fBounds.left, fBounds.top - 1000.f + view.getSize().y);
 
     sfmlWindow->setView(view);
-    sfmlWindow->draw(Sprite);
-    sfmlWindow->display();
+    setSprite(sprite);
+}
+
+void spaceinvaders::view::BackgroundTiles::draw() {
+    getWindow()->getSfmlWindow()->draw(getSprite());
+//    sfmlWindow->display();
 }
 
 void spaceinvaders::view::BackgroundTiles::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
