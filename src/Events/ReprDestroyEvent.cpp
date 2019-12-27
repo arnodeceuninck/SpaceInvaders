@@ -4,11 +4,11 @@
 
 #include "ReprDestroyEvent.h"
 
-const std::shared_ptr<spaceinvaders::observer::Observer> &
+const std::weak_ptr<spaceinvaders::observer::Observer> &
 spaceinvaders::event::ReprDestroyEvent::getEntity() const {
     return entity;
 }
 
 spaceinvaders::event::ReprDestroyEvent::ReprDestroyEvent(
-        std::shared_ptr<observer::Observer> entity)
+        std::weak_ptr<observer::Observer> entity)
         : entity(entity) {}

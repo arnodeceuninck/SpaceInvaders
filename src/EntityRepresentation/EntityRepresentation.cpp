@@ -26,9 +26,8 @@ void spaceinvaders::view::EntityRepresentation::handleEvent(std::shared_ptr<spac
 //        entity = entityEvent->getEntity();
     } else if (auto destroyEvent = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(
             event)) { // From EntityModel
-        auto me = shared_from_this(); // Weird, there must exist one since it is an observer, and there is always a shared pointer from observable to observer
-        std::shared_ptr<spaceinvaders::event::Event> ev = std::make_shared<spaceinvaders::event::ReprDestroyEvent>(
-                std::dynamic_pointer_cast<observer::Observer>(me));
+        auto me = weak_from_this(); // Weird, there must exist one since it is an observer, and there is always a shared pointer from observable to observer
+        std::shared_ptr<spaceinvaders::event::Event> ev = std::make_shared<spaceinvaders::event::ReprDestroyEvent>(me);
         notifyObservers(ev); // To GameRepresentation
     }
 }

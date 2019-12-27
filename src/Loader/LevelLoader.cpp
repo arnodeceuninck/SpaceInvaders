@@ -48,7 +48,7 @@ void spaceinvaders::loader::LevelLoader::loadInto(
                 event); // TODO: GameModel MUST observe LevelLoader, LevelLodader must observe shipLoader (for redirecting event to levelLoader),  worldModel & GameRepresentation must observe GameModel, so the eventCreated can be forwarded to all places requiring it
 
 
-        gameController->addObserver(
+        gameController->addController(
                 shipController); // TODO: GameController should submit keyEvents to all their observers, meaning gameController is an observer of GameWindow
         shipController->addObserver(playerShip);
     }

@@ -8,6 +8,8 @@
 #include "ShipController.h"
 #include "../EntityModel/EnemyShip.h"
 
+#include <vector>
+
 namespace spaceinvaders::controller {
     enum Direction {
         left, right, down
