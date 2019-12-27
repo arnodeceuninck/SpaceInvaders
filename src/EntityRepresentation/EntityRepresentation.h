@@ -20,7 +20,7 @@ class EntityRepresentation : public observer::Observer,
     std::string spriteFile;
     sf::Texture texture;
     sf::Sprite sprite;
-    std::shared_ptr<spaceinvaders::model::EntityModel> entity;
+    std::weak_ptr<spaceinvaders::model::EntityModel> entity;
     std::shared_ptr<GameWindow> window;
     std::shared_ptr<Transformation> transformation;
     bool init = false;
@@ -49,7 +49,7 @@ public:
 
     EntityRepresentation(const std::shared_ptr<GameWindow> &window);
 
-    const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
+    const std::weak_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
 
     std::shared_ptr<GameWindow> &getWindow();
 

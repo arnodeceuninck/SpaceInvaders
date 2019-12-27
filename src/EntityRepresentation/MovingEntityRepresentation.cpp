@@ -32,17 +32,19 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
         sprite324.setTexture(texture324);
 //    sprite324.setOrigin(0.f, 0.f);
         sprite324.setOrigin(sprite324.getTextureRect().width / 2, sprite324.getTextureRect().height / 2);
-        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(getEntity())) {
-            float spriteWidth = sprite324.getTextureRect().width;
-            float spriteHeight = sprite324.getTextureRect().height;
-            float shipWidth = ship->getWidth();
-            float shipHeight = ship->getHeight();
-            getTransformation()->transform(shipWidth, shipHeight);
-            sprite324.scale(shipWidth / spriteWidth, shipHeight / spriteHeight);
+        if (auto entitySP = getEntity().lock()) {
+            if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entitySP)) {
+                float spriteWidth = sprite324.getTextureRect().width;
+                float spriteHeight = sprite324.getTextureRect().height;
+                float shipWidth = ship->getWidth();
+                float shipHeight = ship->getHeight();
+                getTransformation()->transform(shipWidth, shipHeight);
+                sprite324.scale(shipWidth / spriteWidth, shipHeight / spriteHeight);
 
 
-        } else {
-            throw std::logic_error("Entity is not a ship");
+            } else {
+                throw std::logic_error("Entity is not a ship");
+            }
         }
 
         setSprite(sprite324);
@@ -50,9 +52,11 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
         setInit(true);
     }
 
-    if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(getEntity())) {
-        Coordinate position = getTransformation()->transform(ship->getPosition());
-        sprite324.setPosition(position.getX(), position.getY());
+    if (auto entitySP = getEntity().lock()) {
+        if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entitySP)) {
+            Coordinate position = getTransformation()->transform(ship->getPosition());
+            sprite324.setPosition(position.getX(), position.getY());
+        }
     }
 //    sprite.setScale(0.5);
 

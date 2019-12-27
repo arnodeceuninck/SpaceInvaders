@@ -36,7 +36,7 @@ void spaceinvaders::view::EntityRepresentation::handleEvent(std::shared_ptr<spac
     }
 }
 
-const std::shared_ptr<spaceinvaders::model::EntityModel> &spaceinvaders::view::EntityRepresentation::getEntity() const {
+const std::weak_ptr<spaceinvaders::model::EntityModel> &spaceinvaders::view::EntityRepresentation::getEntity() const {
     return entity;
 }
 

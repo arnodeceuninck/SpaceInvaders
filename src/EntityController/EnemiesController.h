@@ -19,10 +19,10 @@ namespace spaceinvaders::controller {
         Direction direction;
         double downTime;
         Direction previousDirection;
-        std::shared_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy;
-        std::shared_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
+        std::weak_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy;
+        std::weak_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
     public:
-        void setLeftMostEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &leftMostEnemy);
+        void setLeftMostEnemy(const std::weak_ptr<spaceinvaders::model::EnemyShip> &leftMostEnemy);
 
         void go(Coordinate coordinate);
 
@@ -30,7 +30,7 @@ namespace spaceinvaders::controller {
 
         void addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy);
 
-        void setRightMostEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy);
+        void setRightMostEnemy(const std::weak_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy);
 
         EnemiesController();
 

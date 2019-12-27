@@ -2,6 +2,7 @@
 // Created by arno on 25/12/2019.
 //
 
+#include <iostream>
 #include "EnemiesController.h"
 #include "../Events/UpdateEvent.h"
 #include "../EntityModel/EnemyShip.h"
@@ -53,21 +54,29 @@ void spaceinvaders::controller::EnemiesController::goDown(double elapsedTime) {
 }
 
 void spaceinvaders::controller::EnemiesController::setLeftMostEnemy(
-        const std::shared_ptr<spaceinvaders::model::EnemyShip> &leftMostEnemy) {
+        const std::weak_ptr<spaceinvaders::model::EnemyShip> &leftMostEnemy) {
     EnemiesController::leftMostEnemy = leftMostEnemy;
 }
 
 void spaceinvaders::controller::EnemiesController::setRightMostEnemy(
-        const std::shared_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy) {
+        const std::weak_ptr<spaceinvaders::model::EnemyShip> &rightMostEnemy) {
     EnemiesController::rightMostEnemy = rightMostEnemy;
 }
 
 bool spaceinvaders::controller::EnemiesController::enemyCloseToRightBorder() {
-    return rightMostEnemy->getPosition().getX() + rightMostEnemy->getWidth() / 2 > 3.90;
+    if (auto rme = rightMostEnemy.lock()) {
+        return rme->getPosition().getX() + rme->getWidth() / 2 > 3.90;
+    } else {
+        std::cerr << "RightMostEnemy is dead" << std::endl;
+    }
 }
 
 bool spaceinvaders::controller::EnemiesController::enemyCloseToLeftBorder() {
-    return leftMostEnemy->getPosition().getX() - rightMostEnemy->getWidth() / 2 < -3.90;
+    if (auto lme = leftMostEnemy.lock()) {
+        return lme->getPosition().getX() - lme->getWidth() / 2 < -3.90;
+    } else {
+        std::cerr << "LeftMostEnemy is dead" << std::endl;
+    }
 }
 
 void spaceinvaders::controller::EnemiesController::go(spaceinvaders::Coordinate coordinate) {

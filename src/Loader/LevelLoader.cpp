@@ -2,6 +2,7 @@
 // Created by arno on 23/12/2019.
 //
 
+#include <iostream>
 #include "LevelLoader.h"
 #include "ShipLoader.h"
 #include "../EntityModel/PlayerShip.h"
@@ -55,8 +56,8 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
     rapidjson::Value &enemiesValue = input["enemies"];
 
-    std::shared_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy; // TODO: add function findLeftMostEnemy to update these once an enemy get destroyed
-    std::shared_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
+    std::weak_ptr<spaceinvaders::model::EnemyShip> leftMostEnemy; // TODO: add function findLeftMostEnemy to update these once an enemy get destroyed
+    std::weak_ptr<spaceinvaders::model::EnemyShip> rightMostEnemy;
     double minPos = std::numeric_limits<double>::infinity();
     double maxPos = -std::numeric_limits<double>::infinity();
 
