@@ -10,6 +10,9 @@
 #include "../EntityModel/RocketModel.h"
 
 namespace spaceinvaders::event {
+    /**
+     * Request the model to fire a bullet
+     */
     class FireBullet : public Event {
     };
 }

@@ -8,6 +8,9 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
+    /**
+     * Request the draw elements to update (draw on the window)
+     */
     class DrawUpdate : public Event {
 
     };

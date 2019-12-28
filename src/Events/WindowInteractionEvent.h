@@ -12,8 +12,16 @@ namespace spaceinvaders::event {
     class WindowInteractionEvent : public ControllerEvent {
         sf::Event event;
     public:
+        /**
+         * Constructor
+         * @param event sf::event corresponding to the interaction
+         */
         explicit WindowInteractionEvent(const sf::Event &event);
 
+        /**
+         * Get the corresponding sf::Event
+         * @return the event
+         */
         [[nodiscard]] const sf::Event &getEvent() const;
     };
 }

@@ -11,9 +11,16 @@ namespace spaceinvaders::event {
     class UpdateEvent : public Event {
         double elapsedSeconds;
     public:
+        /**
+         * Get the passed seconds
+         * @return seconds
+         */
         [[nodiscard]] double getElapsedSeconds() const;
 
-    public:
+        /**
+         * Constructor
+         * @param elapsedSeconds Seconds to be updated
+         */
         explicit UpdateEvent(double elapsedSeconds);
     };
 }

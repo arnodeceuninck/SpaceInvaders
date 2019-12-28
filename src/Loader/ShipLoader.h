@@ -19,8 +19,17 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::loader {
     class ShipLoader : public Loader {
     public:
+        /**
+         * Load the contents of your file in a model
+         * @param shipModel The shipmodel to load the contents in
+         * @param spriteFile Returns the spritefile described in the json
+         */
         void loadInto(const std::shared_ptr<spaceinvaders::model::Ship> &shipModel, std::string &spriteFile);
 
+        /**
+         * Make a loader for a specific file
+         * @param filename The json file with the specifications of the ship (in the levels folder)
+         */
         explicit ShipLoader(const std::string &filename);
     };
 }

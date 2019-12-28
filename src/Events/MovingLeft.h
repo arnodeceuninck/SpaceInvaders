@@ -8,6 +8,9 @@
 #include "MovingEntityEvent.h"
 
 namespace spaceinvaders::event {
+    /**
+     * Notify the model it should move left
+     */
     class MovingLeft : public MovingEntityEvent {
 
     };

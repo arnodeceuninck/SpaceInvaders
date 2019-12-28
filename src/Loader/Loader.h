@@ -15,10 +15,22 @@ namespace spaceinvaders::loader {
     private:
         std::string filename;
     public:
+        /**
+         * Create a loader for a specific file
+         * @param filename The json file you want to read  (in the levels folder)
+         */
         explicit Loader(const std::string &filename);
 
+        /**
+         * Get a rapidjson document for the file
+         * @return Rapidjson document corresponding to the provided json file
+         */
         [[nodiscard]] rapidjson::Document getDocument() const;
 
+        /**
+         * Get the provided json file
+         * @return a string containing the name of the file
+         */
         [[nodiscard]] const std::string &getFilename() const;
     };
 }

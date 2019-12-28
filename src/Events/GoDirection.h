@@ -12,8 +12,16 @@ namespace spaceinvaders::event {
     class GoDirection : public Event {
         Coordinate direction;
     public:
+        /**
+         * Request observer (model) to go a specific direction
+         * @param direction A normalized vector pointing to the new direction
+         */
         explicit GoDirection(const Coordinate &direction);
 
+        /**
+         * Get the new direction
+         * @return normalized vector pointing to the new direction
+         */
         [[nodiscard]] const Coordinate &getDirection() const;
     };
 }

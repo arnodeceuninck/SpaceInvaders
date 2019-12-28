@@ -15,8 +15,16 @@ namespace spaceinvaders::event {
     class ControllerCreated : public Event {
         std::shared_ptr<spaceinvaders::controller::EntityController> controller;
     public:
+        /**
+         * Notify a controller has been created
+         * @param controller The controller
+         */
         explicit ControllerCreated(std::shared_ptr<spaceinvaders::controller::EntityController> controller);
 
+        /**
+         * Get the created controller
+         * @return
+         */
         [[nodiscard]] const std::shared_ptr<spaceinvaders::controller::EntityController> &getController() const;
     };
 }

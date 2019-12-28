@@ -12,8 +12,16 @@ namespace spaceinvaders::event {
     class LoadLevel : public Event {
         std::string level;
     public:
+        /**
+         * Request a specific level to be loaded
+         * @param level The level to be loaded (filename)
+         */
         explicit LoadLevel(std::string level);
 
+        /**
+         * Get the level that should be loaded
+         * @return filename of the level (in the levels folder)
+         */
         [[nodiscard]] const std::string &getLevel() const;
     };
 }

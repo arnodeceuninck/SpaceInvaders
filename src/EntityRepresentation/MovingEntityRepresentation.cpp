@@ -51,8 +51,6 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
                 Transformation::getInstance().transform(shipWidth, shipHeight);
                 sprite324.scale(static_cast<float>(shipWidth) / spriteWidth,
                                 static_cast<float >(shipHeight) / spriteHeight);
-
-
             } else {
                 throw std::logic_error("Entity is not a ship");
             }

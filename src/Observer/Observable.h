@@ -17,8 +17,16 @@ namespace spaceinvaders::observer {
 
     public:
 
+        /**
+         * Add an observer to which your events get broadcasted
+         * @param observer a shared_ptr to this observer
+         */
         void addObserver(const std::shared_ptr<Observer> &observer);
 
+        /**
+         * Broadcast an event to your observers
+         * @param event The event being broadcasted
+         */
         void notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event);
     };
 

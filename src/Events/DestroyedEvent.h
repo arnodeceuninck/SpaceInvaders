@@ -15,12 +15,21 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::event {
     class DestroyedEvent : public Event {
     public:
+        /**
+         * Notify an entity has been destroyed
+         * @param entity The destroyed entity
+         */
         explicit DestroyedEvent(std::shared_ptr<spaceinvaders::model::MovingEntity> entity);
+
+        /**
+         * Get the destroyed entity
+         * @return the entity
+         */
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::MovingEntity> &getEntity() const;
 
     private:
         std::shared_ptr<spaceinvaders::model::MovingEntity> entity;
-    public:
-        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::MovingEntity> &getEntity() const;
+
     };
 }
 
