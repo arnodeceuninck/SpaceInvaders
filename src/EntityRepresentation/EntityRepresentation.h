@@ -22,7 +22,6 @@ class EntityRepresentation : public observer::Observer,
     sf::Sprite sprite;
     std::weak_ptr<spaceinvaders::model::EntityModel> entity;
     std::shared_ptr<GameWindow> window;
-    std::shared_ptr<Transformation> transformation;
     bool init = false;
 public:
     sf::Texture &getTexture();
@@ -35,8 +34,6 @@ public:
 
     void setInit(bool init);
 
-    void setTransformation(const std::shared_ptr<Transformation> &transformation);
-
     void setEntity(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity);
 
 
@@ -44,8 +41,6 @@ public:
     void setTexture(const sf::Texture &texture);
 
     void setSprite(const sf::Sprite &sprite);
-
-    EntityRepresentation(std::shared_ptr<GameWindow> window, std::shared_ptr<Transformation> transformation);
 
     explicit EntityRepresentation(std::shared_ptr<GameWindow> window);
 
@@ -62,8 +57,7 @@ public:
     virtual void draw() = 0;
 
     EntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
-                         std::shared_ptr<GameWindow> window,
-                         std::shared_ptr<Transformation> transformation, const std::string &sprite);
+                         std::shared_ptr<GameWindow> window, const std::string &sprite);
 };
 }
 

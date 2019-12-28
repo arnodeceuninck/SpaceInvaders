@@ -21,8 +21,7 @@ namespace spaceinvaders::view {
 //        MovingEntityRepresentation(std::shared_ptr<GameWindow> window, std::shared_ptr<Transformation> transformation);
 
         MovingEntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
-                                   const std::shared_ptr<GameWindow> &window,
-                                   const std::shared_ptr<Transformation> &transformation, const std::string &sprite);
+                                   const std::shared_ptr<GameWindow> &window, const std::string &sprite);
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 

@@ -20,8 +20,9 @@ spaceinvaders::view::GameRepresentation::GameRepresentation(
 
     auto gwD = getWindow()->getDimensions();
     auto gmD = gameModel->getDimensions();
-    auto transf = std::make_shared<Transformation>(gwD, gmD);
-    setTransformation(transf);
+
+    Transformation::getInstance().setGameDimensions(gmD);
+    Transformation::getInstance().setViewDimensions(gwD);
 
 }
 
@@ -46,8 +47,7 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
 
 
             std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> representation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
-                    entityEvent->getEntity(), getWindow(),
-                    getTransformation(), sprite);
+                    entityEvent->getEntity(), getWindow(), sprite);
 
             representationEntities.emplace_back(representation);
             std::cout << "#Representations: " << representationEntities.size() << std::endl;

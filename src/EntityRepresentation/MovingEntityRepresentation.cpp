@@ -18,7 +18,7 @@ void spaceinvaders::view::MovingEntityRepresentation::handleEvent(std::shared_pt
     EntityRepresentation::handleEvent(event);
     if (auto posEvent = std::dynamic_pointer_cast<spaceinvaders::event::PositionUpdated>(event)) {
         auto sprite324 = getSprite();
-        Coordinate position = getTransformation()->transform(posEvent->getNewPosition());
+        Coordinate position = Transformation::getInstance().transform(posEvent->getNewPosition());
         sprite324.setPosition(static_cast<float>(position.getX()), static_cast<float>(position.getY()));
         setSprite(sprite324);
     }
@@ -48,7 +48,7 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
                 float spriteHeight = sprite324.getTextureRect().height;
                 auto shipWidth = ship->getWidth();
                 auto shipHeight = ship->getHeight();
-                getTransformation()->transform(shipWidth, shipHeight);
+                Transformation::getInstance().transform(shipWidth, shipHeight);
                 sprite324.scale(static_cast<float>(shipWidth) / spriteWidth,
                                 static_cast<float >(shipHeight) / spriteHeight);
 
@@ -78,10 +78,9 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
 
 spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(
         const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, const std::shared_ptr<GameWindow> &window,
-        const std::shared_ptr<Transformation> &transformation, const std::string &sprite) : EntityRepresentation(entity,
-                                                                                                                 window,
-                                                                                                                 transformation,
-                                                                                                                 sprite) {
+        const std::string &sprite) : EntityRepresentation(entity,
+                                                          window,
+                                                          sprite) {
 
 //    sf::Sprite sprite324 = getSprite();
 //    sf::Texture texture324 = getTexture();

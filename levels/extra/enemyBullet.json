@@ -1,0 +1,7 @@
+{
+  "width": 0.4,
+  "height": 0.9,
+  "speed": 3,
+  "sprite": "extra/ArrowR.png",
+  "damage": 10
+}

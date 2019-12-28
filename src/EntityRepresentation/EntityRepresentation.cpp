@@ -46,23 +46,10 @@ std::shared_ptr<spaceinvaders::GameWindow> &spaceinvaders::view::EntityRepresent
     return window;
 }
 
-spaceinvaders::view::EntityRepresentation::EntityRepresentation(std::shared_ptr<GameWindow> window,
-                                                                std::shared_ptr<Transformation> transformation)
+spaceinvaders::view::EntityRepresentation::EntityRepresentation(std::shared_ptr<GameWindow> window)
         : window(std::move(
-        window)), transformation(std::move(std::move(transformation))) {}
-
-const std::shared_ptr<spaceinvaders::view::Transformation> &
-spaceinvaders::view::EntityRepresentation::getTransformation() const {
-    return transformation;
-}
-
-void
-spaceinvaders::view::EntityRepresentation::setTransformation(const std::shared_ptr<Transformation> &transformation) {
-    EntityRepresentation::transformation = transformation;
-}
-
-spaceinvaders::view::EntityRepresentation::EntityRepresentation(std::shared_ptr<GameWindow> window) : window(std::move(
         window)) {}
+
 
 bool spaceinvaders::view::EntityRepresentation::isInit() const {
     return init;
@@ -95,9 +82,7 @@ spaceinvaders::view::EntityRepresentation::setEntity(const std::shared_ptr<space
 
 spaceinvaders::view::EntityRepresentation::EntityRepresentation(
         const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, std::shared_ptr<GameWindow> window,
-        std::shared_ptr<Transformation> transformation, const std::string &sprite) : entity(entity),
-                                                                                     window(std::move(window)),
-                                                                                     transformation(std::move(
-                                                                                             transformation)) {
+        const std::string &sprite) : entity(entity),
+                                     window(std::move(window)) {
     setSpriteFile(sprite);
 }

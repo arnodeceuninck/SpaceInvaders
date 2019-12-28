@@ -14,6 +14,10 @@ namespace spaceinvaders {
     class Stopwatch {
     public:
 
+        /**
+         * Get an instance of the Stopwatch (singleton)
+         * @return static stopwatch instance
+         */
         static Stopwatch &getInstance();
 
         /**
