@@ -19,7 +19,7 @@ void spaceinvaders::view::MovingEntityRepresentation::handleEvent(std::shared_pt
     if (auto posEvent = std::dynamic_pointer_cast<spaceinvaders::event::PositionUpdated>(event)) {
         auto sprite324 = getSprite();
         Coordinate position = getTransformation()->transform(posEvent->getNewPosition());
-        sprite324.setPosition(position.getX(), position.getY());
+        sprite324.setPosition(static_cast<float>(position.getX()), static_cast<float>(position.getY()));
         setSprite(sprite324);
     }
 }
@@ -40,15 +40,17 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
 //    sf::Sprite sprite;
         sprite324.setTexture(texture324);
 //    sprite324.setOrigin(0.f, 0.f);
-        sprite324.setOrigin(sprite324.getTextureRect().width / 2, sprite324.getTextureRect().height / 2);
+        sprite324.setOrigin(static_cast<float >(sprite324.getTextureRect().width) / 2,
+                            static_cast<float>(sprite324.getTextureRect().height) / 2);
         if (auto entitySP = getEntity().lock()) {
             if (auto ship = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entitySP)) {
                 float spriteWidth = sprite324.getTextureRect().width;
                 float spriteHeight = sprite324.getTextureRect().height;
-                float shipWidth = ship->getWidth();
-                float shipHeight = ship->getHeight();
+                auto shipWidth = ship->getWidth();
+                auto shipHeight = ship->getHeight();
                 getTransformation()->transform(shipWidth, shipHeight);
-                sprite324.scale(shipWidth / spriteWidth, shipHeight / spriteHeight);
+                sprite324.scale(static_cast<float>(shipWidth) / spriteWidth,
+                                static_cast<float >(shipHeight) / spriteHeight);
 
 
             } else {
@@ -76,10 +78,10 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
 
 spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(
         const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, const std::shared_ptr<GameWindow> &window,
-        const std::shared_ptr<Transformation> &transformation, std::string sprite) : EntityRepresentation(entity,
-                                                                                                          window,
-                                                                                                          transformation,
-                                                                                                          sprite) {
+        const std::shared_ptr<Transformation> &transformation, const std::string &sprite) : EntityRepresentation(entity,
+                                                                                                                 window,
+                                                                                                                 transformation,
+                                                                                                                 sprite) {
 
 //    sf::Sprite sprite324 = getSprite();
 //    sf::Texture texture324 = getTexture();

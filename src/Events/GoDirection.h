@@ -12,9 +12,9 @@ namespace spaceinvaders::event {
     class GoDirection : public Event {
         Coordinate direction;
     public:
-        GoDirection(const Coordinate &direction);
+        explicit GoDirection(const Coordinate &direction);
 
-        const Coordinate &getDirection() const;
+        [[nodiscard]] const Coordinate &getDirection() const;
     };
 }
 

@@ -13,12 +13,12 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
     if (auto wiEvent = std::dynamic_pointer_cast<spaceinvaders::event::WindowInteractionEvent>(event)) {
         if (wiEvent->getEvent().type == sf::Event::KeyPressed) {
             const auto &sfKeyEvent = wiEvent->getEvent().key.code;
-            std::shared_ptr<spaceinvaders::event::Event> event;
+            std::shared_ptr<spaceinvaders::event::Event> moveEvent;
             switch (sfKeyEvent) {
                 case sf::Keyboard::Left:
                 case sf::Keyboard::A:
                     go(Coordinate(-1, 0));
-                    event = std::make_shared<spaceinvaders::event::MovingLeft>();
+                    moveEvent = std::make_shared<spaceinvaders::event::MovingLeft>();
                     std::cout << "Moving left" << std::endl;
                     break;
                 case sf::Keyboard::Right:
@@ -37,16 +37,16 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
                 default:
                     return;
             }
-            notifyObservers(event);
+            notifyObservers(moveEvent);
         } else if (wiEvent->getEvent().type == sf::Event::KeyReleased) {
             const auto &sfKeyEvent = wiEvent->getEvent().key.code;
-            std::shared_ptr<spaceinvaders::event::Event> event;
+            std::shared_ptr<spaceinvaders::event::Event> stopMoveEvent;
             switch (sfKeyEvent) {
                 case sf::Keyboard::Left:
                 case sf::Keyboard::A:
                     go(Coordinate(0, 0));
-                    event = std::make_shared<spaceinvaders::event::StoppedMovingLeft>();
-                    notifyObservers(event);
+                    stopMoveEvent = std::make_shared<spaceinvaders::event::StoppedMovingLeft>();
+                    notifyObservers(stopMoveEvent);
                     std::cout << "Stopped moving left" << std::endl;
                     break;
                 case sf::Keyboard::Right:
@@ -64,11 +64,11 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
                 default:
                     return;
             }
-            notifyObservers(event);
+            notifyObservers(stopMoveEvent);
         }
     }
 }
 
-spaceinvaders::controller::PlayerController::PlayerController() {}
+spaceinvaders::controller::PlayerController::PlayerController() = default;
 
 

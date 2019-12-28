@@ -19,15 +19,18 @@ namespace spaceinvaders::controller {
     class EnemiesController : public ShipController {
         std::list<std::pair<std::weak_ptr<spaceinvaders::model::EnemyShip>, std::weak_ptr<EnemyController>>> enemies;
         Direction direction;
-        double downTime;
+        double downTime{};
         Direction previousDirection;
     public:
-        void go(Coordinate coordinate);
+        void go(Coordinate coordinate) override;
 
-        void fire();
+        void setStartDirection();
+
+        void fire() override;
 
         void
-        addEnemy(std::shared_ptr<spaceinvaders::model::EnemyShip> enemy, std::shared_ptr<EnemyController> controller);
+        addEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &enemy,
+                 const std::shared_ptr<EnemyController> &controller);
 
         EnemiesController();
 

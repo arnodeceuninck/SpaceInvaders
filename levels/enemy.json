@@ -4,6 +4,6 @@
   "speed": 0.75,
   "sprite": "Enemy.png",
   "health": 10,
-  "damage": 10,
+  "bullet": "bullet.json",
   "timebetweenfire": 5
 }

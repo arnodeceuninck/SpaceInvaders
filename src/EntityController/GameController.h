@@ -19,11 +19,11 @@ namespace spaceinvaders::controller {
 
         void update(double elapsedSeconds);
 
-        void addController(std::shared_ptr<EntityController> controller);
+        void addController(const std::shared_ptr<EntityController> &controller);
 
         GameController();
 
-        GameController(const std::shared_ptr<spaceinvaders::GameWindow> &gameWindow);
+        explicit GameController(std::shared_ptr<spaceinvaders::GameWindow> gameWindow);
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 

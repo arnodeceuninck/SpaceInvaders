@@ -65,7 +65,7 @@ void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
     Coordinate directedDistance = getSpeedDirection() * distance;
     setPosition(getPosition() + directedDistance);
     if (outsideWindow()) {
-        selfDestroy(std::numeric_limits<double>::infinity());
+        selfDestroy();
     } else {
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::PositionUpdated>(
                 getPosition());
@@ -80,7 +80,7 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
         if (isCollision(rocketTop)) {
             std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
             selfDestroy(rpu->getRocket()->getDamage());
-            rpu->getRocket()->selfDestroy(std::numeric_limits<double>::infinity());
+            rpu->getRocket()->selfDestroy(0);
         }
 
     } else if (auto dirEvent = std::dynamic_pointer_cast<spaceinvaders::event::GoDirection>(event)) {
@@ -95,7 +95,7 @@ bool spaceinvaders::model::MovingEntity::isCollision(const spaceinvaders::Coordi
            coordinate.getY() < this->getPosition().getY() + this->getHeight() / 2;
 }
 
-void spaceinvaders::model::MovingEntity::selfDestroy(double bulletDamage) {
+void spaceinvaders::model::MovingEntity::selfDestroy() {
     std::shared_ptr<MovingEntity> me = std::dynamic_pointer_cast<MovingEntity>(shared_from_this());
     std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::DestroyedEvent>(me);
     notifyObservers(event);
@@ -107,3 +107,7 @@ bool spaceinvaders::model::MovingEntity::outsideWindow() {
             getPosition().getX() - getWidth() / 2 > 4 or
             getPosition().getX() + getWidth() / 2 < -4);
 }
+
+spaceinvaders::model::MovingEntity::MovingEntity(const spaceinvaders::Coordinate &speedDirection,
+                                                 const spaceinvaders::Coordinate &position) : speedDirection(
+        speedDirection), position(position) {}

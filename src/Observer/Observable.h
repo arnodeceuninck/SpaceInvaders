@@ -17,9 +17,7 @@ namespace spaceinvaders::observer {
 
     public:
 
-        void addObserver(std::shared_ptr<Observer> observer);
-
-        void removeObserver(std::shared_ptr<Observer> observer);
+        void addObserver(const std::shared_ptr<Observer> &observer);
 
         void notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event);
     };

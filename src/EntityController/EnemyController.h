@@ -14,7 +14,7 @@ namespace spaceinvaders::controller {
         bool firstRow = false;
         double timeBetweenFire;
     public:
-        bool isFirstRow() const;
+        [[nodiscard]] bool isFirstRow() const;
 
         void setFirstRow(bool firstRow);
 
@@ -24,7 +24,7 @@ namespace spaceinvaders::controller {
     public:
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        EnemyController(double timeBetweenFire);
+        explicit EnemyController(double timeBetweenFire);
 
         double randomNextFire();
     };

@@ -8,19 +8,11 @@
 #include "../Observer/Observable.h"
 #include "../Events/ControllerEvent.h"
 
-namespace sf {
-    class Event;
-}
-
 namespace spaceinvaders::model {
     class EntityModel;
 }
 namespace spaceinvaders::controller {
-    class ControllerEvent;
-
     class EntityController : public observer::Observer, public observer::Observable {
-//        virtual void checkInput() = 0; // TODO: checkinput should be runned on GameWindow from game loop
-//        std::shared_ptr<spaceinvaders::model::EntityModel> model;
     public:
         EntityController();
 

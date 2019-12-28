@@ -9,8 +9,6 @@
 #include <memory>
 
 namespace sf {
-    class Event;
-
     class RenderWindow;
 }
 
@@ -55,11 +53,11 @@ namespace spaceinvaders {
 
         void initView();
 
-        void loadLevel(std::string level);
+        void loadLevel(const std::string &level);
 
         void initController();
 
-        bool gameRunning;
+        bool gameRunning{};
 
         void gameLoop();
     };

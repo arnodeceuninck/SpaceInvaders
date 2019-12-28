@@ -8,6 +8,7 @@
 #include "RocketModel.h"
 #include "../Events/FireBullet.h"
 #include "../Events/EntityCreatedEvent.h"
+#include "../Loader/RocketLoader.h"
 
 spaceinvaders::model::Ship::Ship(double x, double y) : MovingEntity(0, 0, 2, Coordinate(0, 0), Coordinate(x, y)) {
 
@@ -25,9 +26,12 @@ void spaceinvaders::model::Ship::update(double elapsedSeconds) {
 
 void spaceinvaders::model::Ship::fire() {
     if (readyToFire()) {
-        auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, getShootingDirection(), getShipFront(), damage);
+        auto rocket = std::make_shared<RocketModel>(getShootingDirection(), getShipFront());
+        spaceinvaders::loader::RocketLoader rocketLoader{bulletFile};
+        std::string file;
+        rocketLoader.loadInto(rocket, file);
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
-                rocket);
+                rocket, file);
         notifyObservers(event);
 
         fireTimeout = timeBetweenFire; // Wait some seconds before you can fire again
@@ -56,7 +60,7 @@ double spaceinvaders::model::Ship::getDamage() const {
 void spaceinvaders::model::Ship::selfDestroy(double bulletDamage) {
     health -= bulletDamage;
     if (health <= 0) {
-        MovingEntity::selfDestroy(bulletDamage);
+        MovingEntity::selfDestroy();
     }
 }
 
@@ -74,4 +78,12 @@ double spaceinvaders::model::Ship::getTimeBetweenFire() const {
 
 void spaceinvaders::model::Ship::setTimeBetweenFire(double timeBetweenFire) {
     Ship::timeBetweenFire = timeBetweenFire;
+}
+
+const std::string &spaceinvaders::model::Ship::getBulletFile() const {
+    return bulletFile;
+}
+
+void spaceinvaders::model::Ship::setBulletFile(const std::string &bulletFile) {
+    Ship::bulletFile = bulletFile;
 }

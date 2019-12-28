@@ -4,13 +4,9 @@
 
 #include "Event.h"
 
-spaceinvaders::event::Event::Event() {
+spaceinvaders::event::Event::Event() = default;
 
-}
-
-spaceinvaders::event::Event::~Event() {
-
-}
+spaceinvaders::event::Event::~Event() = default;
 
 bool spaceinvaders::event::Event::isHandledByGameModel() const {
     return handledByGameModel;

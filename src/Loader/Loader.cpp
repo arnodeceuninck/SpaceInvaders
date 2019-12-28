@@ -6,7 +6,6 @@
 
 #include <fstream>
 
-#include "../../rapidjson/stringbuffer.h"
 #include "../../rapidjson/istreamwrapper.h"
 
 

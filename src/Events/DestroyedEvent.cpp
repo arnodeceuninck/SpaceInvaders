@@ -4,9 +4,11 @@
 
 #include "DestroyedEvent.h"
 
+#include <utility>
+
 const std::shared_ptr<spaceinvaders::model::MovingEntity> &spaceinvaders::event::DestroyedEvent::getEntity() const {
     return entity;
 }
 
-spaceinvaders::event::DestroyedEvent::DestroyedEvent(const std::shared_ptr<spaceinvaders::model::MovingEntity> &entity)
-        : entity(entity) {}
+spaceinvaders::event::DestroyedEvent::DestroyedEvent(std::shared_ptr<spaceinvaders::model::MovingEntity> entity)
+        : entity(std::move(entity)) {}

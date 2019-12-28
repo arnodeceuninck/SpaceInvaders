@@ -5,6 +5,4 @@
 #include "ControllerEvent.h"
 
 
-spaceinvaders::event::ControllerEvent::ControllerEvent() {
-
-}
+spaceinvaders::event::ControllerEvent::ControllerEvent() = default;

@@ -21,13 +21,11 @@ namespace spaceinvaders::model {
 
         GameModel();
 
-        void gameLoop();
-
         void load();
 
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        void update(double elapsedSeconds);
+        void update(double elapsedSeconds) override;
 
         const std::shared_ptr<Dimensions> &getDimensions() const;
 
@@ -41,7 +39,7 @@ namespace spaceinvaders::model {
 
         std::string currentLevel;
 
-        void readLevels(std::string levelFile);
+        void readLevels(const std::string &levelFile);
     };
 }
 

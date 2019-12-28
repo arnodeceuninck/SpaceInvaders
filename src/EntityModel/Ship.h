@@ -10,10 +10,16 @@
 
 namespace spaceinvaders::model {
     class Ship : public MovingEntity {
-        double health;
-        double damage;
+        double health{};
+        double damage{};
         double fireTimeout = 0;
-        double timeBetweenFire;
+        double timeBetweenFire{};
+        std::string bulletFile;
+    public:
+        const std::string &getBulletFile() const;
+
+        void setBulletFile(const std::string &bulletFile);
+
     public:
         double getTimeBetweenFire() const;
 

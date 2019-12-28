@@ -15,12 +15,12 @@ namespace spaceinvaders::observer {
 namespace spaceinvaders::event {
     class ReprDestroyEvent : public Event {
     public:
-        ReprDestroyEvent(std::shared_ptr<observer::Observer> entity);
+        explicit ReprDestroyEvent(std::shared_ptr<observer::Observer> entity);
 
     private:
         std::shared_ptr<spaceinvaders::observer::Observer> entity;
     public:
-        const std::shared_ptr<spaceinvaders::observer::Observer> &getEntity() const;
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::observer::Observer> &getEntity() const;
     };
 }
 

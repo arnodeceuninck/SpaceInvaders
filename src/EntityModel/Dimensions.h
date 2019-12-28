@@ -16,9 +16,9 @@ namespace spaceinvaders {
 
         double getHeight();
 
-        const Coordinate &getMin() const;
+        [[nodiscard]] const Coordinate &getMin() const;
 
-        const Coordinate &getMax() const;
+        [[nodiscard]] const Coordinate &getMax() const;
 
     private:
         Coordinate min;

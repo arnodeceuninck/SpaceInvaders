@@ -18,10 +18,10 @@ namespace spaceinvaders::event {
     private:
         std::shared_ptr<spaceinvaders::model::RocketModel> rocket;
     public:
-        const std::shared_ptr<spaceinvaders::model::RocketModel> &getRocket() const;
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::RocketModel> &getRocket() const;
 
     public:
-        RocketPositionUpdated(const std::shared_ptr<spaceinvaders::model::RocketModel> &rocket);
+        explicit RocketPositionUpdated(std::shared_ptr<spaceinvaders::model::RocketModel> rocket);
     };
 }
 

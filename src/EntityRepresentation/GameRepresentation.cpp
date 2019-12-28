@@ -13,8 +13,9 @@
 #include "../Events/EntityCreatedEvent.h"
 #include "../Events/ReprDestroyEvent.h"
 
-spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel,
-                                                            std::shared_ptr<GameWindow> gameWindow)
+spaceinvaders::view::GameRepresentation::GameRepresentation(
+        const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
+        const std::shared_ptr<GameWindow> &gameWindow)
         : EntityRepresentation(gameWindow) {
 
     auto gwD = getWindow()->getDimensions();
@@ -27,8 +28,7 @@ spaceinvaders::view::GameRepresentation::GameRepresentation(std::shared_ptr<spac
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {
-    sf::Event event;
-//    while (window->pollEvent(event)){
+    //    while (window->pollEvent(event)){
 //        // Notify the observers of this event
 //    };
 }
@@ -44,15 +44,8 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
         if (std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entityEvent->getEntity())) {
             std::cout << "Generating representation for entity" << std::endl;
 
-            std::string sprite;
-            if (!entityEvent->getPrefferedSprite().empty()) {
-                sprite = entityEvent->getPrefferedSprite();
-            } else {
-                if (auto entity = std::dynamic_pointer_cast<spaceinvaders::model::RocketModel>(
-                        entityEvent->getEntity())) {
-                    sprite = "Bullet2.png";
-                }
-            }
+            std::string sprite = entityEvent->getPrefferedSprite();
+
 
             std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> representation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
                     entityEvent->getEntity(), getWindow(),
@@ -103,7 +96,7 @@ void spaceinvaders::view::GameRepresentation::reset() {
     messageText = "";
 }
 
-void spaceinvaders::view::GameRepresentation::showMessage(std::string message) {
+void spaceinvaders::view::GameRepresentation::showMessage(const std::string &message) {
 
     reset();
     makeBackground();
@@ -134,8 +127,8 @@ void spaceinvaders::view::GameRepresentation::showMessage(std::string message) {
     text.setStyle(sf::Text::Bold);
 
 
-    text.setPosition(getWindow()->getWidth() / 2 - text.getGlobalBounds().width / 2,
-                     getWindow()->getHeight() / 2 - text.getGlobalBounds().height / 2);
+    text.setPosition(static_cast<float>(getWindow()->getWidth()) / 2 - text.getGlobalBounds().width / 2,
+                     static_cast<float>(getWindow()->getHeight()) / 2 - text.getGlobalBounds().height / 2);
 
     getWindow()->getSfmlWindow()->clear();
 

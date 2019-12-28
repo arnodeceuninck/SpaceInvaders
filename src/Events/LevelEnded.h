@@ -10,9 +10,9 @@
 namespace spaceinvaders::event {
     class LevelEnded : public Event {
     public:
-        LevelEnded(bool win);
+        explicit LevelEnded(bool win);
 
-        bool isWin() const;
+        [[nodiscard]] bool isWin() const;
 
     private:
         bool win;

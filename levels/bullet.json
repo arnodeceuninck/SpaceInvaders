@@ -1,0 +1,7 @@
+{
+  "width": 0.2,
+  "height": 0.3,
+  "speed": 4,
+  "sprite": "Bullet2.png",
+  "damage": 10
+}

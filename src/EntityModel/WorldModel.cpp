@@ -54,10 +54,10 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
             }
         }
         if (levelEnded) {
-            std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::LevelEnded>(
+            std::shared_ptr<spaceinvaders::event::Event> eventLE = std::make_shared<spaceinvaders::event::LevelEnded>(
                     enemyCount == 0);
             reset();
-            notifyObservers(event);
+            notifyObservers(eventLE);
         }
     }
 }

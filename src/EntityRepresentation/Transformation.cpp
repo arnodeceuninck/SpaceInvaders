@@ -4,10 +4,15 @@
 
 #include "Transformation.h"
 
+#include <utility>
+
+
 spaceinvaders::view::Transformation::Transformation(std::shared_ptr<Dimensions> gameWindow,
-                                                    std::shared_ptr<Dimensions> gameModel) : gameDimensions(gameModel),
-                                                                                             viewDimensions(
-                                                                                                     gameWindow) {}
+                                                    std::shared_ptr<Dimensions> gameModel) : gameDimensions(
+        std::move(std::move(gameModel))),
+                                                                                             viewDimensions(std::move(
+                                                                                                     std::move(
+                                                                                                             gameWindow))) {}
 
 spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spaceinvaders::Coordinate coordinate) {
 
@@ -27,7 +32,7 @@ spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spacein
     return coordinate;
 }
 
-void spaceinvaders::view::Transformation::transform(float &width, float &height) {
+void spaceinvaders::view::Transformation::transform(double &width, double &height) {
     width *= viewDimensions->getWidth() / gameDimensions->getWidth();
     height *= viewDimensions->getHeight() / gameDimensions->getHeight();
 }

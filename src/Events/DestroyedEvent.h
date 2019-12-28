@@ -15,12 +15,12 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::event {
     class DestroyedEvent : public Event {
     public:
-        DestroyedEvent(const std::shared_ptr<spaceinvaders::model::MovingEntity> &entity);
+        explicit DestroyedEvent(std::shared_ptr<spaceinvaders::model::MovingEntity> entity);
 
     private:
         std::shared_ptr<spaceinvaders::model::MovingEntity> entity;
     public:
-        const std::shared_ptr<spaceinvaders::model::MovingEntity> &getEntity() const;
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::MovingEntity> &getEntity() const;
     };
 }
 

@@ -6,7 +6,8 @@
 #include "Events/WindowInteractionEvent.h"
 
 spaceinvaders::GameWindow::GameWindow(int width, int height) : width(width), height(height) {
-    sfmlWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Space Invaders");
+    sfmlWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(static_cast<unsigned int>(width),
+                                                                  static_cast<unsigned int>(height)), "Space Invaders");
 }
 
 

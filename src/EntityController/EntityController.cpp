@@ -9,5 +9,5 @@ void spaceinvaders::controller::EntityController::handleEvent(std::shared_ptr<sp
 
 }
 
-spaceinvaders::controller::EntityController::EntityController() {}
+spaceinvaders::controller::EntityController::EntityController() = default;
 

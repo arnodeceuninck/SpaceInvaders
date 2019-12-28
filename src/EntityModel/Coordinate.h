@@ -11,9 +11,9 @@ namespace spaceinvaders {
     public:
         Coordinate(double x, double y);
 
-        double getX() const;
+        [[nodiscard]] double getX() const;
 
-        double getY() const;
+        [[nodiscard]] double getY() const;
 
         Coordinate operator+(const Coordinate &rhs) const;
 

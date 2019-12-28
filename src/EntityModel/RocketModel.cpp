@@ -5,13 +5,10 @@
 #include "RocketModel.h"
 #include "../Events/RocketPositionUpdated.h"
 
-spaceinvaders::model::RocketModel::RocketModel(double width, double height, double speed,
-                                               const spaceinvaders::Coordinate &speedDirection,
-                                               const spaceinvaders::Coordinate &position, double damage) : MovingEntity(
-        width, height,
-        speed,
-        speedDirection,
-        position), damage(damage) {}
+spaceinvaders::model::RocketModel::RocketModel(const spaceinvaders::Coordinate &speedDirection,
+                                               const spaceinvaders::Coordinate &position) : MovingEntity(speedDirection,
+                                                                                                         position),
+                                                                                            damage(damage) {}
 
 void spaceinvaders::model::RocketModel::update(double elapsedSeconds) {
     MovingEntity::update(elapsedSeconds);
@@ -28,4 +25,14 @@ spaceinvaders::Coordinate spaceinvaders::model::RocketModel::getTop() {
 
 double spaceinvaders::model::RocketModel::getDamage() const {
     return damage;
+}
+
+void spaceinvaders::model::RocketModel::setDamage(double damage) {
+    RocketModel::damage = damage;
+}
+
+void spaceinvaders::model::RocketModel::selfDestroy(double bulletDamage) {
+    if (bulletDamage == 0) {
+        MovingEntity::selfDestroy();
+    }
 }

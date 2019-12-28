@@ -28,8 +28,8 @@
 // ( ) EntityController -> GameController : Required for internal control changes (e.g. update, ...) // Does LevelLoader
 
 void spaceinvaders::loader::LevelLoader::loadInto(
-        std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation,
-        std::shared_ptr<spaceinvaders::controller::GameController> gameController) {
+        const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
+        const std::shared_ptr<spaceinvaders::controller::GameController> &gameController) {
     rapidjson::Document input = getDocument();
 
     if (auto playerFile = input["player"].GetString()) {

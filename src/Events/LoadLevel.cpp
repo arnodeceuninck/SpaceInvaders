@@ -4,8 +4,10 @@
 
 #include "LoadLevel.h"
 
+#include <utility>
+
 const std::string &spaceinvaders::event::LoadLevel::getLevel() const {
     return level;
 }
 
-spaceinvaders::event::LoadLevel::LoadLevel(const std::string &level) : level(level) {}
+spaceinvaders::event::LoadLevel::LoadLevel(std::string level) : level(std::move(level)) {}

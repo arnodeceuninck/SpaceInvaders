@@ -23,7 +23,7 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::view {
     class GameRepresentation : public EntityRepresentation {
     public:
-        void showMessage(std::string message);
+        void showMessage(const std::string &message);
 
         void makeBackground();
 
@@ -35,18 +35,16 @@ namespace spaceinvaders::view {
         std::string messageText;
     public:
 
-        void clear();
-
         void draw() override;
 
         void update();
 
-        GameRepresentation(std::shared_ptr<spaceinvaders::model::GameModel> gameModel,
-                           std::shared_ptr<GameWindow> gameWindow);
+        GameRepresentation(const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
+                           const std::shared_ptr<GameWindow> &gameWindow);
 
         void checkInput();
 
-        void checkEvent();
+        static void checkEvent();
 
     private:
     };

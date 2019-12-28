@@ -14,18 +14,18 @@ namespace spaceinvaders {
     public:
         GameWindow(int width, int height);
 
-        int getWidth() const;
+        [[nodiscard]] int getWidth() const;
 
-        int getHeight() const;
+        [[nodiscard]] int getHeight() const;
 
         std::shared_ptr<Dimensions> getDimensions();
 
         void checkInput();
 
-        const std::shared_ptr<sf::RenderWindow> &getSfmlWindow() const;
+        [[nodiscard]] const std::shared_ptr<sf::RenderWindow> &getSfmlWindow() const;
 
     private:
-        sf::Event lastEvent;
+        sf::Event lastEvent{};
         int width;
         int height;
         std::shared_ptr<sf::RenderWindow> sfmlWindow;

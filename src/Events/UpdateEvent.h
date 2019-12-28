@@ -11,10 +11,10 @@ namespace spaceinvaders::event {
     class UpdateEvent : public Event {
         double elapsedSeconds;
     public:
-        double getElapsedSeconds() const;
+        [[nodiscard]] double getElapsedSeconds() const;
 
     public:
-        UpdateEvent(double elapsedSeconds);
+        explicit UpdateEvent(double elapsedSeconds);
     };
 }
 

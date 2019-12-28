@@ -59,7 +59,7 @@ void spaceinvaders::model::GameModel::load() {
     }
 }
 
-void spaceinvaders::model::GameModel::readLevels(std::string levelFile) {
+void spaceinvaders::model::GameModel::readLevels(const std::string &levelFile) {
     std::ifstream inputStream(levelFile);
     rapidjson::IStreamWrapper inputStreamWrapper(inputStream);
     rapidjson::Document input;
@@ -67,9 +67,9 @@ void spaceinvaders::model::GameModel::readLevels(std::string levelFile) {
 
     rapidjson::Value &levelsValue = input["levels"];
 
-    for (int i = levelsValue.Size() - 1; i >= 0; i--) {
+    for (unsigned int i = levelsValue.Size(); i > 0; i--) {
 
-        rapidjson::Value &obj = levelsValue[i];
+        rapidjson::Value &obj = levelsValue[i - 1];
         std::string file = obj["file"].GetString();
         levels.push(file);
     }

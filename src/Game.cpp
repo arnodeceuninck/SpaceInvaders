@@ -2,25 +2,22 @@
 // Created by arno on 14/12/2019.
 //
 
-#include <iostream>
 #include "Game.h"
 
 #include "EntityRepresentation/GameRepresentation.h"
 #include "EntityController/GameController.h"
 #include "EntityModel/GameModel.h"
 
-#include "GameWindow.h"
-
 #include "Stopwatch.h"
-#include "EntityController/PlayerController.h"
-#include "Loader/LevelLoader.h"
-#include "Events/LoadLevel.h"
 #include "Events/GameEnded.h"
 #include "Events/LevelEnded.h"
+#include "Events/LoadLevel.h"
 
-//#define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
-#define MAX_CYCLES_PER_SECOND 30
-#define MIN_TIME_PER_CYCLE 1000000000.0 / MAX_CYCLES_PER_SECOND // The minimum required time in seconds as double between each clock cycle
+#include "EntityModel/WorldModel.h"
+#include "Loader/LevelLoader.h"
+
+#define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
+#define MIN_TIME_PER_CYCLE (1000000000.0 / MAX_CYCLES_PER_SECOND) // The minimum required time in seconds as double between each clock cycle
 
 namespace spaceinvaders {
 
@@ -119,7 +116,7 @@ namespace spaceinvaders {
         }
     }
 
-    void Game::loadLevel(std::string level) {
+    void Game::loadLevel(const std::string &level) {
 
         gameRepresentation->reset();
         gameController->reset();

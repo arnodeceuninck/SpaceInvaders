@@ -12,9 +12,9 @@ namespace spaceinvaders::event {
     class LoadLevel : public Event {
         std::string level;
     public:
-        LoadLevel(const std::string &level);
+        explicit LoadLevel(std::string level);
 
-        const std::string &getLevel() const;
+        [[nodiscard]] const std::string &getLevel() const;
     };
 }
 

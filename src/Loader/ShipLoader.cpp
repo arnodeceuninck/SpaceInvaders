@@ -5,10 +5,9 @@
 #include "ShipLoader.h"
 
 #include "../EntityModel/Ship.h"
-#include "../EntityRepresentation/MovingEntityRepresentation.h"
 #include "../Events/EntityCreatedEvent.h"
 
-void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::model::Ship> shipModel,
+void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinvaders::model::Ship> &shipModel,
                                                  std::string &spriteFile) {
     // Read the file
     rapidjson::Document input = getDocument();
@@ -29,12 +28,12 @@ void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::
         shipModel->setHealth(health);
     }
 
-    if (auto damage = input["damage"].GetDouble()) {
-        shipModel->setDamage(damage);
-    }
-
     if (auto speed = input["speed"].GetDouble()) {
         shipModel->setSpeed(speed);
+    }
+
+    if (auto bullet = input["bullet"].GetString()) {
+        shipModel->setBulletFile(bullet);
     }
 
     if (auto timebetweenfire = input["timebetweenfire"].GetDouble()) {

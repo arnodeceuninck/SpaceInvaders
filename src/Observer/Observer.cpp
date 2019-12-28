@@ -4,6 +4,4 @@
 
 #include "Observer.h"
 
-spaceinvaders::observer::Observer::~Observer() {
-
-}
+spaceinvaders::observer::Observer::~Observer() = default;

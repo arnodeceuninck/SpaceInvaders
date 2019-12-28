@@ -12,9 +12,9 @@ namespace spaceinvaders::event {
     class PositionUpdated : public Event {
         Coordinate newPosition;
     public:
-        PositionUpdated(const Coordinate &newPosition);
+        explicit PositionUpdated(const Coordinate &newPosition);
 
-        const Coordinate &getNewPosition() const;
+        [[nodiscard]] const Coordinate &getNewPosition() const;
     };
 }
 

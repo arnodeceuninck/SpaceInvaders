@@ -70,6 +70,41 @@
       "enemy": "enemy.json",
       "x": 3,
       "y": 1
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -3,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -2,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -1,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 1,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 3,
+      "y": 0
     }
   ]
 }

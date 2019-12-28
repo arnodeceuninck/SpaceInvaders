@@ -27,10 +27,10 @@ namespace spaceinvaders::controller {
 namespace spaceinvaders::loader {
     class LevelLoader : public Loader {
     public:
-        LevelLoader(const std::string &filename);
+        explicit LevelLoader(const std::string &filename);
 
-        void loadInto(std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation,
-                      std::shared_ptr<spaceinvaders::controller::GameController> gameController);
+        void loadInto(const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
+                      const std::shared_ptr<spaceinvaders::controller::GameController> &gameController);
     };
 }
 

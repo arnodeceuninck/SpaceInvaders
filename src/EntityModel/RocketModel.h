@@ -12,15 +12,17 @@ namespace spaceinvaders::model {
 class RocketModel : public MovingEntity {
     double damage;
 public:
+    void selfDestroy(double bulletDamage) override;
+
     double getDamage() const;
 
+    void setDamage(double damage);
+
 public:
+
     void update(double elapsedSeconds) override;
 
-    RocketModel();
-
-    RocketModel(double width, double height, double speed, const Coordinate &speedDirection,
-                const Coordinate &position, double damage);
+    RocketModel(const Coordinate &position, const Coordinate &shootingDirection);
 
     Coordinate getTop();
 };

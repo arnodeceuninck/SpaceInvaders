@@ -5,7 +5,8 @@
 #include "BackgroundTiles.h"
 
 
-spaceinvaders::view::BackgroundTiles::BackgroundTiles(std::string filename, std::shared_ptr<GameWindow> window)
+spaceinvaders::view::BackgroundTiles::BackgroundTiles(const std::string &filename,
+                                                      const std::shared_ptr<GameWindow> &window)
         : EntityRepresentation(window) {
     texture.loadFromFile(filename);
     texture.setRepeated(true);

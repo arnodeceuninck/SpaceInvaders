@@ -15,11 +15,11 @@ namespace spaceinvaders::loader {
     private:
         std::string filename;
     public:
-        Loader(const std::string &filename);
+        explicit Loader(const std::string &filename);
 
-        rapidjson::Document getDocument() const;
+        [[nodiscard]] rapidjson::Document getDocument() const;
 
-        const std::string &getFilename() const;
+        [[nodiscard]] const std::string &getFilename() const;
     };
 }
 

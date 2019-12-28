@@ -10,20 +10,22 @@
 namespace spaceinvaders::model {
 class MovingEntity : public EntityModel {
 private:
-    double width;
-    double height;
-    double speed; // num per second, field is 8 num
+    double width{};
+    double height{};
+    double speed{}; // num per second, field is 8 num
     Coordinate speedDirection;
     Coordinate position;
 public:
+    MovingEntity(const Coordinate &speedDirection, const Coordinate &position);
+
     MovingEntity(double width, double height, double speed, const Coordinate &speedDirection,
                  const Coordinate &position);
 
-        Coordinate &getPosition();
+    Coordinate &getPosition();
 
-        void setPosition(const Coordinate &position);
+    void setPosition(const Coordinate &position);
 
-        double getWidth() const;
+    double getWidth() const;
 
     void setWidth(double width);
 
@@ -43,7 +45,9 @@ public:
 
     void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-    virtual void selfDestroy(double bulletDamage);
+    virtual void selfDestroy(double bulletDamage) = 0;
+
+    virtual void selfDestroy();
 
     bool outsideWindow();
 

@@ -45,9 +45,9 @@ public:
 
     void setSprite(const sf::Sprite &sprite);
 
-    EntityRepresentation(const std::shared_ptr<GameWindow> &window, std::shared_ptr<Transformation> transformation);
+    EntityRepresentation(std::shared_ptr<GameWindow> window, std::shared_ptr<Transformation> transformation);
 
-    EntityRepresentation(const std::shared_ptr<GameWindow> &window);
+    explicit EntityRepresentation(std::shared_ptr<GameWindow> window);
 
     const std::weak_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
 
@@ -55,15 +55,15 @@ public:
 
     const std::string &getSpriteFile() const;
 
-    virtual void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
     void setSpriteFile(const std::string &spriteFile);
 
     virtual void draw() = 0;
 
     EntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
-                         const std::shared_ptr<GameWindow> &window,
-                         const std::shared_ptr<Transformation> &transformation, std::string sprite);
+                         std::shared_ptr<GameWindow> window,
+                         std::shared_ptr<Transformation> transformation, const std::string &sprite);
 };
 }
 
