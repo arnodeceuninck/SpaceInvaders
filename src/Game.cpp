@@ -63,15 +63,12 @@ namespace spaceinvaders {
         // Keep track of the elapsed time after each loop
         Stopwatch clock{};
 
-        int i = 0;
         while (gameRunning) {
 
             // Check whether enough time has passed to start the next cycle
             if (clock.elapsedTime() < MIN_TIME_PER_CYCLE) {
                 continue;
             }
-            i++;
-//            std::cout << ++i << std::endl;
 
             // Remember the elapsed time for the calculations
             double elapsedSeconds = clock.elapsedTime() / 1000000000;
@@ -98,9 +95,6 @@ namespace spaceinvaders {
                 gameRepresentation->update(); // Update the window
             }
 
-            if (i >= 15000) {
-                gameRunning = false; // TODO: Remove this line
-            }
         }
     }
 

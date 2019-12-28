@@ -6,6 +6,7 @@
 #include "../Events/UpdateEvent.h"
 #include "../Events/WindowInteractionEvent.h"
 #include "../Events/ControllerCreated.h"
+#include "../Events/GameEnded.h"
 
 namespace spaceinvaders::controller {
     void GameController::checkInput() {
@@ -30,7 +31,12 @@ namespace spaceinvaders::controller {
     void GameController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
         EntityController::handleEvent(event);
         if (auto wie = std::dynamic_pointer_cast<spaceinvaders::event::WindowInteractionEvent>(event)) {
-            notifyObservers(event);
+            if (wie->getEvent().type == sf::Event::Closed) {
+                std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::GameEnded>();
+                notifyObservers(event);
+            } else {
+                notifyObservers(event);
+            }
         }
     }
 
