@@ -1,0 +1,9 @@
+{
+  "width": 2,
+  "height": 2,
+  "speed": 0.75,
+  "sprite": "Enemy.png",
+  "health": 30,
+  "damage": 10,
+  "timebetweenfire": 1
+}

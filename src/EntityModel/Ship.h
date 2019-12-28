@@ -13,6 +13,11 @@ namespace spaceinvaders::model {
         double health;
         double damage;
         double fireTimeout = 0;
+        double timeBetweenFire;
+    public:
+        double getTimeBetweenFire() const;
+
+        void setTimeBetweenFire(double timeBetweenFire);
 
     private:
         void update(double elapsedSeconds) override;
@@ -34,9 +39,12 @@ namespace spaceinvaders::model {
 
         void fire();
 
+
         virtual Coordinate getShootingDirection() = 0;
 
         virtual Coordinate getShipFront() = 0;
+
+        void selfDestroy(double bulletDamage) override;
     };
 }
 

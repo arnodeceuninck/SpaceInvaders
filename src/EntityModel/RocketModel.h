@@ -10,6 +10,9 @@
 
 namespace spaceinvaders::model {
 class RocketModel : public MovingEntity {
+    double damage;
+public:
+    double getDamage() const;
 
 public:
     void update(double elapsedSeconds) override;
@@ -17,7 +20,7 @@ public:
     RocketModel();
 
     RocketModel(double width, double height, double speed, const Coordinate &speedDirection,
-                const Coordinate &position);
+                const Coordinate &position, double damage);
 
     Coordinate getTop();
 };

@@ -3,6 +3,7 @@
   "height": 0.70,
   "speed": 0.75,
   "sprite": "Enemy.png",
-  "health": 20,
-  "damage": 10
+  "health": 10,
+  "damage": 10,
+  "timebetweenfire": 5
 }

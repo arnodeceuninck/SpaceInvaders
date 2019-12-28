@@ -23,6 +23,10 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::view {
     class GameRepresentation : public EntityRepresentation {
     public:
+        void makeBackground();
+
+        void reset();
+
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
         std::list<std::shared_ptr<EntityRepresentation>> representationEntities; // Holds a seperate list, so observer can be implemented with weak_ptrs and to assure there is always a shared pointer for shared_from_this
@@ -43,7 +47,6 @@ namespace spaceinvaders::view {
         void checkEvent();
 
     private:
-
     };
 }
 

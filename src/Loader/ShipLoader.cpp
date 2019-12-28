@@ -36,6 +36,10 @@ void spaceinvaders::loader::ShipLoader::loadInto(std::shared_ptr<spaceinvaders::
     if (auto speed = input["speed"].GetDouble()) {
         shipModel->setSpeed(speed);
     }
+
+    if (auto timebetweenfire = input["timebetweenfire"].GetDouble()) {
+        shipModel->setTimeBetweenFire(timebetweenfire);
+    }
 }
 
 spaceinvaders::loader::ShipLoader::ShipLoader(const std::string &filename) : Loader(filename) {}

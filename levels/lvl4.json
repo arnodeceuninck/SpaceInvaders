@@ -2,29 +2,39 @@
   "player": "player.json",
   "enemies": [
     {
-      "enemy": "enemy.json",
+      "enemy": "boss.json",
       "x": 0,
-      "y": 2
+      "y": 1
     },
     {
       "enemy": "enemy.json",
       "x": -2,
-      "y": 2
+      "y": 1
     },
     {
       "enemy": "enemy.json",
       "x": 2,
-      "y": 2
-    },
-    {
-      "enemy": "enemy.json",
-      "x": -1,
       "y": 1
     },
     {
       "enemy": "enemy.json",
       "x": 1,
-      "y": 1
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -1,
+      "y": 0
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -1,
+      "y": 2
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 1,
+      "y": 2
     }
   ]
 }

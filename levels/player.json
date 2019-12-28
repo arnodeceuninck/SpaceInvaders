@@ -1,8 +1,9 @@
 {
   "width": 0.75,
   "height": 0.70,
-  "speed": 2,
+  "speed": 1,
   "sprite": "Player.png",
-  "health": 50,
-  "damage": 20
+  "health": 30,
+  "damage": 10,
+  "timebetweenfire": 1
 }

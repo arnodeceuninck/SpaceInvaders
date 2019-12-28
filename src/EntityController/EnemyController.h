@@ -12,6 +12,7 @@ namespace spaceinvaders::controller {
     class EnemyController : public ShipController {
         double firetime;
         bool firstRow = false;
+        double timeBetweenFire;
     public:
         bool isFirstRow() const;
 
@@ -23,7 +24,9 @@ namespace spaceinvaders::controller {
     public:
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        EnemyController(const std::shared_ptr<spaceinvaders::model::EntityModel> &model);
+        EnemyController(double timeBetweenFire);
+
+        double randomNextFire();
     };
 }
 

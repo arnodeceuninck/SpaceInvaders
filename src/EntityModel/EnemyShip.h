@@ -17,6 +17,8 @@ namespace spaceinvaders::model {
 
         Coordinate getShootingDirection() override;
 
+        bool inFireRange(Coordinate coordinate, double bulletSize);
+
         Coordinate getShipFront() override;
     };
 }

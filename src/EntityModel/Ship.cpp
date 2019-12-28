@@ -25,12 +25,12 @@ void spaceinvaders::model::Ship::update(double elapsedSeconds) {
 
 void spaceinvaders::model::Ship::fire() {
     if (readyToFire()) {
-        auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, getShootingDirection(), getShipFront());
+        auto rocket = std::make_shared<RocketModel>(0.3, 0.3, 2.0, getShootingDirection(), getShipFront(), damage);
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
                 rocket);
         notifyObservers(event);
 
-        fireTimeout = 2; // Wait 2 seconds before you can fire again
+        fireTimeout = timeBetweenFire; // Wait some seconds before you can fire again
     }
 }
 
@@ -53,10 +53,25 @@ double spaceinvaders::model::Ship::getDamage() const {
     return damage;
 }
 
+void spaceinvaders::model::Ship::selfDestroy(double bulletDamage) {
+    health -= bulletDamage;
+    if (health <= 0) {
+        MovingEntity::selfDestroy(bulletDamage);
+    }
+}
+
 void spaceinvaders::model::Ship::setDamage(double damage) {
     Ship::damage = damage;
 }
 
 bool spaceinvaders::model::Ship::readyToFire() {
     return fireTimeout <= 0;
+}
+
+double spaceinvaders::model::Ship::getTimeBetweenFire() const {
+    return timeBetweenFire;
+}
+
+void spaceinvaders::model::Ship::setTimeBetweenFire(double timeBetweenFire) {
+    Ship::timeBetweenFire = timeBetweenFire;
 }

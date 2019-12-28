@@ -7,10 +7,11 @@
 
 spaceinvaders::model::RocketModel::RocketModel(double width, double height, double speed,
                                                const spaceinvaders::Coordinate &speedDirection,
-                                               const spaceinvaders::Coordinate &position) : MovingEntity(width, height,
-                                                                                                         speed,
-                                                                                                         speedDirection,
-                                                                                                         position) {}
+                                               const spaceinvaders::Coordinate &position, double damage) : MovingEntity(
+        width, height,
+        speed,
+        speedDirection,
+        position), damage(damage) {}
 
 void spaceinvaders::model::RocketModel::update(double elapsedSeconds) {
     MovingEntity::update(elapsedSeconds);
@@ -23,4 +24,8 @@ void spaceinvaders::model::RocketModel::update(double elapsedSeconds) {
 spaceinvaders::Coordinate spaceinvaders::model::RocketModel::getTop() {
     return spaceinvaders::Coordinate(getPosition().getX(),
                                      getPosition().getY() + getSpeedDirection().getY() * getHeight() / 2);
+}
+
+double spaceinvaders::model::RocketModel::getDamage() const {
+    return damage;
 }

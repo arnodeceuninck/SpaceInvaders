@@ -38,4 +38,8 @@ namespace spaceinvaders::controller {
         controlEntities.emplace_back(controller);
         addObserver(controller);
     }
+
+    void GameController::reset() {
+        controlEntities.clear();
+    }
 }

@@ -14,6 +14,9 @@
 #include "Stopwatch.h"
 #include "EntityController/PlayerController.h"
 #include "Loader/LevelLoader.h"
+#include "Events/LoadLevel.h"
+#include "Events/GameEnded.h"
+#include "Events/LevelEnded.h"
 
 //#define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
 #define MAX_CYCLES_PER_SECOND 30
@@ -23,15 +26,14 @@ namespace spaceinvaders {
 
     void Game::Start() {
 
+        auto wptr = std::shared_ptr<Game>(this, [](Game *) {});
+
         // Initialise the game Model, View & Controller
         initModel();
         initView();
         initController();
 
-
-        loader::LevelLoader loader{"lvl3.json"};
-        loader.addObserver(gameModel);
-        loader.loadInto(gameRepresentation, gameController);
+        gameModel->load();
 
         gameRunning = true;
 
@@ -41,6 +43,7 @@ namespace spaceinvaders {
     void Game::initModel() {
         gameModel = std::make_shared<model::GameModel>();
         gameModel->getGameWorld()->addObserver(gameModel);
+        gameModel->addObserver(shared_from_this());
     }
 
     void Game::initView() {
@@ -94,7 +97,23 @@ namespace spaceinvaders {
     }
 
     void Game::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-        gameRunning = false;
+        if (auto ll = std::dynamic_pointer_cast<spaceinvaders::event::LoadLevel>(event)) {
+            loadLevel(ll->getLevel());
+        } else if (auto ge = std::dynamic_pointer_cast<spaceinvaders::event::GameEnded>(event)) {
+            gameRunning = false;
+        } else if (auto le = std::dynamic_pointer_cast<spaceinvaders::event::LevelEnded>(event)) {
+            gameModel->load();
+        }
+    }
+
+    void Game::loadLevel(std::string level) {
+
+        gameRepresentation->reset();
+        gameController->reset();
+
+        loader::LevelLoader loader{level};
+        loader.addObserver(gameModel);
+        loader.loadInto(gameRepresentation, gameController);
     }
 
 }

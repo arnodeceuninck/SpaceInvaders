@@ -52,6 +52,8 @@ namespace spaceinvaders {
 
         void initView();
 
+        void loadLevel(std::string level);
+
         void initController();
 
         bool gameRunning;

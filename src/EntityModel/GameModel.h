@@ -7,6 +7,9 @@
 
 
 #include "EntityModel.h"
+#include "../EntityRepresentation/GameRepresentation.h"
+#include "../EntityController/GameController.h"
+#include <stack>
 
 namespace spaceinvaders::model {
     class WorldModel;
@@ -20,6 +23,8 @@ namespace spaceinvaders::model {
 
         void gameLoop();
 
+        void load();
+
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
         void update(double elapsedSeconds);
@@ -29,6 +34,14 @@ namespace spaceinvaders::model {
     private:
         std::shared_ptr<WorldModel> gameWorld;
         std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(Coordinate(-4, -3), Coordinate(4, 3));
+        std::stack<std::string> levels;
+
+        std::shared_ptr<view::GameRepresentation> gameRepresentation;
+        std::shared_ptr<controller::GameController> gameController;
+
+        std::string currentLevel;
+
+        void readLevels(std::string levelFile);
     };
 }
 

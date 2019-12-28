@@ -13,6 +13,8 @@
 namespace spaceinvaders::controller {
     class GameController : public EntityController {
     public:
+        void reset();
+
         void checkInput();
 
         void update(double elapsedSeconds);

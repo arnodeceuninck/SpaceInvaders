@@ -43,7 +43,7 @@ public:
 
     void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-    void selfDestroy();
+    virtual void selfDestroy(double bulletDamage);
 
     bool outsideWindow();
 

@@ -20,3 +20,12 @@ spaceinvaders::Coordinate spaceinvaders::model::EnemyShip::getShipFront() {
                       getHeight() / 2);
 }
 
+bool spaceinvaders::model::EnemyShip::inFireRange(spaceinvaders::Coordinate coordinate, double bulleSize) {
+    return getPosition().getY() - getHeight() / 2 < coordinate.getY() && // Enemy head is under bulletHead
+           coordinate.getX() - bulleSize / 2 < getPosition().getX() + getWidth() / 2 &&
+           // Left side of the bullet is smaller then right side of ship
+           coordinate.getX() + bulleSize / 2 >
+           getPosition().getX() - getWidth() / 2; // Right side of bullet is greater then left side of ship
+}
+
+

@@ -1,0 +1,90 @@
+{
+  "player": "player.json",
+  "enemies": [
+    {
+      "enemy": "boss.json",
+      "x": 0,
+      "y": 1
+    },
+    {
+      "enemy": "boss.json",
+      "x": -2,
+      "y": 1
+    },
+    {
+      "enemy": "boss.json",
+      "x": 2,
+      "y": 1
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -3,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -2,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -1,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 0,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 1,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 2,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 3,
+      "y": 2.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -3,
+      "y": -0.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -2,
+      "y": -0.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": -1,
+      "y": -0.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 0,
+      "y": -0.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 1,
+      "y": -0.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 2,
+      "y": -0.3
+    },
+    {
+      "enemy": "enemy.json",
+      "x": 3,
+      "y": -0.3
+    }
+  ]
+}

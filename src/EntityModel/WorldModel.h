@@ -18,6 +18,10 @@ namespace spaceinvaders::model {
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
         void update(double elapsedSeconds) override;
+
+        void reset();
+
+        int enemyCount = 0;
     };
 
 }

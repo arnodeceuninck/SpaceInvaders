@@ -68,14 +68,16 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
         // Create a player ship, it's representation and it's controller
         auto enemyShip = std::make_shared<spaceinvaders::model::EnemyShip>(enemyX, enemyY);
-        auto enemyController = std::make_shared<spaceinvaders::controller::EnemyController>(enemyShip);
-        enemiesController->addEnemy(enemyShip, enemyController);
-        enemyController->addObserver(enemyShip);
 
         // Load the contents of the player file to the ship
         ShipLoader shipLoader{enemyJson};
         std::string spriteFile;
         shipLoader.loadInto(enemyShip, spriteFile);
+
+        auto enemyController = std::make_shared<spaceinvaders::controller::EnemyController>(
+                enemyShip->getTimeBetweenFire());
+        enemiesController->addEnemy(enemyShip, enemyController);
+        enemyController->addObserver(enemyShip);
 
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
                 enemyShip, spriteFile);
