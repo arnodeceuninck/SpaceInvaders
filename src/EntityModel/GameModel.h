@@ -29,6 +29,8 @@ namespace spaceinvaders::model {
 
         const std::shared_ptr<Dimensions> &getDimensions() const;
 
+        void addLevel(std::string level);
+
     private:
         std::shared_ptr<WorldModel> gameWorld;
         std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(Coordinate(-4, -3), Coordinate(4, 3));

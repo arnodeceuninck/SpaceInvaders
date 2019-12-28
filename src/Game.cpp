@@ -15,6 +15,7 @@
 
 #include "EntityModel/WorldModel.h"
 #include "Loader/LevelLoader.h"
+#include "Loader/LevelsLoader.h"
 
 #define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
 #define MIN_TIME_PER_CYCLE (1000000000.0 / MAX_CYCLES_PER_SECOND) // The minimum required time in seconds as double between each clock cycle
@@ -29,6 +30,9 @@ namespace spaceinvaders {
         initModel();
         initView();
         initController();
+
+        spaceinvaders::loader::LevelsLoader loader{"extra/levels.json"};
+        loader.loadInto(gameModel, gameRepresentation);
 
         gameModel->load();
 
@@ -58,20 +62,20 @@ namespace spaceinvaders {
     void Game::gameLoop() {
 
         // Keep track of the elapsed time after each loop
-        Stopwatch clock{};
+        Stopwatch::getInstance().reset();
 
         while (gameRunning) {
 
             // Check whether enough time has passed to start the next cycle
-            if (clock.elapsedTime() < MIN_TIME_PER_CYCLE) {
+            if (Stopwatch::getInstance().elapsedTime() < MIN_TIME_PER_CYCLE) {
                 continue;
             }
 
             // Remember the elapsed time for the calculations
-            double elapsedSeconds = clock.elapsedTime() / 1000000000;
+            double elapsedSeconds = Stopwatch::getInstance().elapsedTime() / 1000000000;
 
             // Restart the timer
-            clock.reset();
+            Stopwatch::getInstance().reset();
 
             if (showingMessage) {
                 messageTime -= elapsedSeconds;

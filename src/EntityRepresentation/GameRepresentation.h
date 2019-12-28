@@ -46,7 +46,10 @@ namespace spaceinvaders::view {
 
         static void checkEvent();
 
+        void setBackground(std::string background);
+
     private:
+        std::string bground;
     };
 }
 

@@ -29,3 +29,4 @@
 1. Dibling, J. (2013). *modulus is not working when using doubles in c++ [duplicate]*. Visited on December 28, 2019 via https://stackoverflow.com/questions/19503083/modulus-is-not-working-when-using-doubles-in-c.
 1. Adams, V. (s.d.). *Seymour One*. Visited on December 28, 2019 via https://fonts.google.com/specimen/Seymour+One.
 1. Gomila, L. (s.d.). *Texts and fonts*. Visited on December 28, 2019 via https://www.sfml-dev.org/tutorials/2.5/graphics-text.php. 
+1. York, M. (2009). *C++ Singleton design pattern*. Visited on December 28, 2019 via https://stackoverflow.com/questions/1008019/c-singleton-design-pattern. 

@@ -1,4 +1,5 @@
 {
+  "background": "Background.jpg",
   "levels": [
     {
       "file": "lvl0.json"

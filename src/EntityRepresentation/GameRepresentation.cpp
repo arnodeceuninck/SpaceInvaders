@@ -23,8 +23,6 @@ spaceinvaders::view::GameRepresentation::GameRepresentation(
     auto transf = std::make_shared<Transformation>(gwD, gmD);
     setTransformation(transf);
 
-    makeBackground();
-
 }
 
 void spaceinvaders::view::GameRepresentation::checkEvent() {
@@ -84,22 +82,17 @@ void spaceinvaders::view::GameRepresentation::update() {
 
 }
 
-void spaceinvaders::view::GameRepresentation::makeBackground() {
-    auto background = std::make_shared<BackgroundTiles>("res/Background.jpg", getWindow());
-    addObserver(background);
-    representationEntities.emplace_back(background);
-}
 
 void spaceinvaders::view::GameRepresentation::reset() {
     representationEntities.clear();
-    makeBackground();
+    setBackground(bground);
     messageText = "";
 }
 
 void spaceinvaders::view::GameRepresentation::showMessage(const std::string &message) {
 
     reset();
-    makeBackground();
+    setBackground(bground);
 
     sf::Font myFont;
 
@@ -138,5 +131,12 @@ void spaceinvaders::view::GameRepresentation::showMessage(const std::string &mes
     getWindow()->getSfmlWindow()->draw(text);
     getWindow()->getSfmlWindow()->display();
 
+}
+
+void spaceinvaders::view::GameRepresentation::setBackground(std::string background) {
+    bground = background;
+    auto backgroundTiles = std::make_shared<BackgroundTiles>("res/" + background, getWindow());
+    addObserver(backgroundTiles);
+    representationEntities.emplace_back(backgroundTiles);
 }
 

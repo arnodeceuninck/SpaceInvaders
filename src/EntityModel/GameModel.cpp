@@ -38,8 +38,6 @@ spaceinvaders::model::GameModel::GameModel() {
     gameWorld = std::make_shared<WorldModel>();
     addObserver(gameWorld);
 
-    readLevels("levels/levels.json");
-
 }
 
 const std::shared_ptr<spaceinvaders::model::WorldModel> &spaceinvaders::model::GameModel::getGameWorld() const {
@@ -59,19 +57,7 @@ void spaceinvaders::model::GameModel::load() {
     }
 }
 
-void spaceinvaders::model::GameModel::readLevels(const std::string &levelFile) {
-    std::ifstream inputStream(levelFile);
-    rapidjson::IStreamWrapper inputStreamWrapper(inputStream);
-    rapidjson::Document input;
-    input.ParseStream(inputStreamWrapper);
-
-    rapidjson::Value &levelsValue = input["levels"];
-
-    for (unsigned int i = levelsValue.Size(); i > 0; i--) {
-
-        rapidjson::Value &obj = levelsValue[i - 1];
-        std::string file = obj["file"].GetString();
-        levels.push(file);
-    }
-
+void spaceinvaders::model::GameModel::addLevel(std::string level) {
+    levels.push(level);
 }
+

@@ -30,8 +30,15 @@ namespace spaceinvaders {
 
     class Game : public observer::Observer, public std::enable_shared_from_this<Game> {
     public:
+        /**
+         * Standard constructor for the game, sets everything up and starts the gameloop
+         */
         Game();
 
+        /**
+         * Handles following events: LoadLevel, LevelEnded and GameEnded
+         * @param event One of the events described above
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
 
@@ -43,8 +50,6 @@ namespace spaceinvaders {
         std::shared_ptr<controller::GameController> gameController;
 
         std::shared_ptr<GameWindow> gameWindow;
-
-//        std::shared_ptr<sf::RenderWindow> window;
 
         bool showingMessage = false;
         double messageTime = 0;

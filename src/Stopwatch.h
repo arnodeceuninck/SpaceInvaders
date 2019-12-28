@@ -13,10 +13,8 @@
 namespace spaceinvaders {
     class Stopwatch {
     public:
-        /**
-         *  Start a new clock at the current time
-         */
-        Stopwatch();
+
+        static Stopwatch &getInstance();
 
         /**
          * Change the time from which the clock calculates it's duration to the currentTime
@@ -29,7 +27,24 @@ namespace spaceinvaders {
          */
         double elapsedTime();
 
+        /**
+         * Prevent copy-constructor
+         */
+        Stopwatch(Stopwatch const &) = delete;
+
+        /**
+         * Prevent assignment
+         */
+        void operator=(Stopwatch const &) = delete;
+
+
     private:
+
+        /**
+         *  Start a new clock at the current time
+         */
+        Stopwatch();
+
         std::chrono::system_clock::time_point startTime;
 
         static std::chrono::system_clock::time_point currentTime();

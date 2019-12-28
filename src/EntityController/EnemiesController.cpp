@@ -17,7 +17,7 @@ void spaceinvaders::controller::EnemiesController::handleEvent(std::shared_ptr<s
             goDown(ev->getElapsedSeconds());
         }
 
-        if (enemyCloseToRightBorder() or enemyCloseToLeftBorder()) {
+        if ((direction == right and enemyCloseToRightBorder()) or (direction == left and enemyCloseToLeftBorder())) {
             goDown(ev->getElapsedSeconds());
         }
 

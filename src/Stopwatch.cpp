@@ -19,3 +19,8 @@ double spaceinvaders::Stopwatch::elapsedTime() {
 std::chrono::system_clock::time_point spaceinvaders::Stopwatch::currentTime() {
     return std::chrono::system_clock::now();
 }
+
+spaceinvaders::Stopwatch &spaceinvaders::Stopwatch::getInstance() {
+    static Stopwatch instance;
+    return instance;
+}
