@@ -55,6 +55,7 @@ namespace spaceinvaders {
     void Game::initController() {
         gameController = std::make_shared<controller::GameController>(gameWindow);
         gameWindow->addObserver(gameController);
+        gameController->addObserver(shared_from_this());
     }
 
     void Game::gameLoop() {
@@ -78,13 +79,24 @@ namespace spaceinvaders {
             // Restart the timer
             clock.reset();
 
+            if (showingMessage) {
+                messageTime -= elapsedSeconds;
+                if (messageTime < 0) {
+                    gameModel->load();
+                    showingMessage = false;
+                }
+                continue;
+            }
+
             // The game loop itself
             gameController->update(elapsedSeconds);
 //            gameRepresentation->getWindow()->checkInput();
             gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
 
-            gameRepresentation->update(); // Update the window
+            if (!showingMessage) {
+                gameRepresentation->update(); // Update the window
+            }
 
             if (i >= 15000) {
                 gameRunning = false; // TODO: Remove this line
@@ -102,7 +114,14 @@ namespace spaceinvaders {
         } else if (auto ge = std::dynamic_pointer_cast<spaceinvaders::event::GameEnded>(event)) {
             gameRunning = false;
         } else if (auto le = std::dynamic_pointer_cast<spaceinvaders::event::LevelEnded>(event)) {
-            gameModel->load();
+            if (le->isWin()) {
+                gameRepresentation->showMessage("Victory");
+            } else {
+                gameRepresentation->showMessage("Dead");
+            }
+            messageTime = 2;
+            showingMessage = true;
+//            gameRepresentation->update();
         }
     }
 

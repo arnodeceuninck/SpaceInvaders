@@ -27,4 +27,5 @@
 1. Houx, P. (2015). *[Solution] Calling shared_from_this() in the constructor.*. Visited on December 27, 2019 via https://forum.libcinder.org/topic/solution-calling-shared-from-this-in-the-constructor.
 1. Willman, J. (2018). *laser_purple.png*. Visited on December 27, 2019 via http://redhulimachinelearning.com/wp-content/uploads/2018/11/laser_purple.png.
 1. Dibling, J. (2013). *modulus is not working when using doubles in c++ [duplicate]*. Visited on December 28, 2019 via https://stackoverflow.com/questions/19503083/modulus-is-not-working-when-using-doubles-in-c.
-
+1. Adams, V. (s.d.). *Seymour One*. Visited on December 28, 2019 via https://fonts.google.com/specimen/Seymour+One.
+1. Gomila, L. (s.d.). *Texts and fonts*. Visited on December 28, 2019 via https://www.sfml-dev.org/tutorials/2.5/graphics-text.php. 

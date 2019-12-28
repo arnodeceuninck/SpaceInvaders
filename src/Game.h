@@ -48,6 +48,9 @@ namespace spaceinvaders {
 
 //        std::shared_ptr<sf::RenderWindow> window;
 
+        bool showingMessage = false;
+        double messageTime = 0;
+
         void initModel();
 
         void initView();

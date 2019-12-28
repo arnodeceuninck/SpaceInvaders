@@ -3,7 +3,7 @@
   "height": 0.70,
   "speed": 1,
   "sprite": "Player.png",
-  "health": 30,
+  "health": 10,
   "damage": 10,
   "timebetweenfire": 1
 }

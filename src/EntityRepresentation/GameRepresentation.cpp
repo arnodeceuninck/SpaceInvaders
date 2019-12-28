@@ -76,7 +76,6 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
 
 void spaceinvaders::view::GameRepresentation::draw() {
 
-
 }
 
 void spaceinvaders::view::GameRepresentation::update() {
@@ -85,6 +84,8 @@ void spaceinvaders::view::GameRepresentation::update() {
 
     std::shared_ptr<spaceinvaders::event::Event> updateV = std::make_shared<spaceinvaders::event::DrawUpdate>();
     notifyObservers(updateV);
+
+    draw();
 
     getWindow()->getSfmlWindow()->display();
 
@@ -99,5 +100,50 @@ void spaceinvaders::view::GameRepresentation::makeBackground() {
 void spaceinvaders::view::GameRepresentation::reset() {
     representationEntities.clear();
     makeBackground();
+    messageText = "";
+}
+
+void spaceinvaders::view::GameRepresentation::showMessage(std::string message) {
+
+    reset();
+    makeBackground();
+
+    sf::Font myFont;
+
+// Load from a font file on disk
+    if (!myFont.loadFromFile("res/SeymourOne-Regular.ttf")) {
+        std::cerr << "Failed loading font" << std::endl;
+        // Error...
+    }
+
+    sf::Text text;
+
+    // select the font
+    text.setFont(myFont); // font is a sf::Font
+
+// set the string to display
+    text.setString(message);
+
+// set the character size
+    text.setCharacterSize(100); // in pixels, not points!
+
+// set the color
+    text.setFillColor(sf::Color::White);
+
+// set the text style
+    text.setStyle(sf::Text::Bold);
+
+
+    text.setPosition(getWindow()->getWidth() / 2 - text.getGlobalBounds().width / 2,
+                     getWindow()->getHeight() / 2 - text.getGlobalBounds().height / 2);
+
+    getWindow()->getSfmlWindow()->clear();
+
+    std::shared_ptr<spaceinvaders::event::Event> updateV = std::make_shared<spaceinvaders::event::DrawUpdate>();
+    notifyObservers(updateV);
+
+    getWindow()->getSfmlWindow()->draw(text);
+    getWindow()->getSfmlWindow()->display();
+
 }
 
