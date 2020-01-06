@@ -31,7 +31,7 @@ namespace spaceinvaders {
         initView();
         initController();
 
-        spaceinvaders::loader::LevelsLoader loader{"extra/levels.json"};
+        spaceinvaders::loader::LevelsLoader loader{"levels.json"};
         loader.loadInto(gameModel, gameRepresentation);
 
         gameModel->load();

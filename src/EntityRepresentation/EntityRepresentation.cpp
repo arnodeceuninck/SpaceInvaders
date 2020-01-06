@@ -75,10 +75,6 @@ void spaceinvaders::view::EntityRepresentation::setSprite(const sf::Sprite &spri
     EntityRepresentation::sprite = sprite;
 }
 
-void
-spaceinvaders::view::EntityRepresentation::setEntity(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity) {
-    EntityRepresentation::entity = entity;
-}
 
 spaceinvaders::view::EntityRepresentation::EntityRepresentation(
         const std::shared_ptr<spaceinvaders::model::EntityModel> &entity, std::shared_ptr<GameWindow> window,

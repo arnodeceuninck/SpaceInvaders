@@ -26,16 +26,6 @@ spaceinvaders::view::GameRepresentation::GameRepresentation(
 
 }
 
-void spaceinvaders::view::GameRepresentation::checkEvent() {
-    //    while (window->pollEvent(event)){
-//        // Notify the observers of this event
-//    };
-}
-
-void spaceinvaders::view::GameRepresentation::checkInput() {
-    getWindow()->checkInput();
-}
-
 void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     EntityRepresentation::handleEvent(event);
     if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
