@@ -86,5 +86,5 @@ spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(
 }
 
 spaceinvaders::view::MovingEntityRepresentation::~MovingEntityRepresentation() {
-    std::cout << "DESTROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOY" << std::endl;
+//    std::cout << "DESTROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOY" << std::endl;
 }

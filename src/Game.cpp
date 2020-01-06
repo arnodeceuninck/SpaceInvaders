@@ -2,6 +2,7 @@
 // Created by arno on 14/12/2019.
 //
 
+#include <iostream>
 #include "Game.h"
 
 #include "EntityRepresentation/GameRepresentation.h"
@@ -100,7 +101,11 @@ namespace spaceinvaders {
     }
 
     Game::Game() {
-        Start();
+        try {
+            Start();
+        } catch (...) {
+            std::cerr << "Something unknown went wrong :-(" << std::endl;
+        }
     }
 
     void Game::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {

@@ -19,12 +19,12 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
                 case sf::Keyboard::A:
                     go(Coordinate(-1, 0));
                     moveEvent = std::make_shared<spaceinvaders::event::MovingLeft>();
-                    std::cout << "Moving left" << std::endl;
+//                    std::cout << "Moving left" << std::endl;
                     break;
                 case sf::Keyboard::Right:
                 case sf::Keyboard::D:
                     go(Coordinate(1, 0));
-                    std::cout << "Moving right" << std::endl;
+//                    std::cout << "Moving right" << std::endl;
                     break;
                 case sf::Keyboard::Up:
                 case sf::Keyboard::Down:
@@ -32,7 +32,7 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
                 case sf::Keyboard::W:
                 case sf::Keyboard::S:
                     fire();
-                    std::cout << "Fire!" << std::endl;
+//                    std::cout << "Fire!" << std::endl;
                     break;
                 default:
                     return;
@@ -47,19 +47,19 @@ void spaceinvaders::controller::PlayerController::handleEvent(std::shared_ptr<sp
                     go(Coordinate(0, 0));
                     stopMoveEvent = std::make_shared<spaceinvaders::event::StoppedMovingLeft>();
                     notifyObservers(stopMoveEvent);
-                    std::cout << "Stopped moving left" << std::endl;
+//                    std::cout << "Stopped moving left" << std::endl;
                     break;
                 case sf::Keyboard::Right:
                 case sf::Keyboard::D:
                     go(Coordinate(0, 0));
-                    std::cout << "Stopped moving right" << std::endl;
+//                    std::cout << "Stopped moving right" << std::endl;
                     break;
                 case sf::Keyboard::Up:
                 case sf::Keyboard::Down:
                 case sf::Keyboard::Space:
                 case sf::Keyboard::W:
                 case sf::Keyboard::S:
-                    std::cout << "Stopped firing" << std::endl;
+//                    std::cout << "Stopped firing" << std::endl;
                     break;
                 default:
                     return;

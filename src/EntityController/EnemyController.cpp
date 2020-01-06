@@ -38,6 +38,6 @@ void spaceinvaders::controller::EnemyController::setFirstRow(bool firstRow) {
 
 double spaceinvaders::controller::EnemyController::randomNextFire() {
     double nextFire = std::fmod(static_cast<double>(random()) / 100, timeBetweenFire) + timeBetweenFire;
-    std::cout << "Next fire: " << nextFire << std::endl;
+//    std::cout << "Next fire: " << nextFire << std::endl;
     return nextFire;
 }

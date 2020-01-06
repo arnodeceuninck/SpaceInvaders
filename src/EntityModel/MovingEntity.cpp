@@ -78,7 +78,7 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
     if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
         Coordinate rocketTop{rpu->getRocket()->getTop()};
         if (isCollision(rocketTop)) {
-            std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
+//            std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
             selfDestroy(rpu->getRocket()->getDamage());
             rpu->getRocket()->selfDestroy(0);
         }

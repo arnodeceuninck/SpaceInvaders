@@ -21,7 +21,7 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
             return;
         }
         if (auto entity = std::dynamic_pointer_cast<spaceinvaders::model::MovingEntity>(entityEvent->getEntity())) {
-            std::cout << "Entity added to gameWorld" << std::endl;
+//            std::cout << "Entity added to gameWorld" << std::endl;
             addObserver(entity);
             entity->addObserver(shared_from_this());
             movingEntities.emplace_back(entity);
@@ -44,13 +44,13 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
         bool levelEnded = false;
         if (std::dynamic_pointer_cast<spaceinvaders::model::PlayerShip>(de->getEntity())) {
             levelEnded = true;
-            std::cout << "GAME OVER" << std::endl;
+//            std::cout << "GAME OVER" << std::endl;
         } else if (std::dynamic_pointer_cast<spaceinvaders::model::EnemyShip>(de->getEntity())) {
             --enemyCount;
-            std::cout << "Enemy killed: " << enemyCount << " left" << std::endl;
+//            std::cout << "Enemy killed: " << enemyCount << " left" << std::endl;
             if (enemyCount == 0) {
                 levelEnded = true;
-                std::cout << "VICTORY" << std::endl;
+//                std::cout << "VICTORY" << std::endl;
             }
         }
         if (levelEnded) {

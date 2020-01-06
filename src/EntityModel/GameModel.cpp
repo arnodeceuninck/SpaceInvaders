@@ -24,7 +24,7 @@ const std::shared_ptr<spaceinvaders::Dimensions> &spaceinvaders::model::GameMode
 void spaceinvaders::model::GameModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     event->setHandledByGameModel(true);
     if (auto ec = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(event)) {
-        std::cout << "Event received" << std::endl;
+//        std::cout << "Event received" << std::endl;
         notifyObservers(event);
     } else if (auto le = std::dynamic_pointer_cast<spaceinvaders::event::LevelEnded>(event)) {
         if (le->isWin()) {
