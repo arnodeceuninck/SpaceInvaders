@@ -13,19 +13,38 @@ namespace spaceinvaders::controller {
         double firetime;
         bool firstRow = false;
         double timeBetweenFire;
-    public:
-        [[nodiscard]] bool isFirstRow() const;
 
-        void setFirstRow(bool firstRow);
-
-    private:
         void checkFire(double elapsedTime);
 
     public:
+        /**
+         * Check whether the enemy it is controlling is on the first row
+         * @return
+         */
+        [[nodiscard]] bool isFirstRow() const;
+
+        /**
+         * Set whether the enemy is on the first row (to avoid checking it each update (intensive operation))
+         * @param firstRow
+         */
+        void setFirstRow(bool firstRow);
+
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
+        /**
+         * Constructor
+         * @param timeBetweenFire
+         */
         explicit EnemyController(double timeBetweenFire);
 
+        /**
+         * Generate a random time to fire again (in the interval [timeBetweenFire, 2*timeBetweenFire]
+         * @return
+         */
         double randomNextFire();
     };
 }

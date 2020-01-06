@@ -12,10 +12,16 @@
 
 namespace spaceinvaders::controller {
     class PlayerController : public ShipController {
-        std::shared_ptr<spaceinvaders::event::MovingEntityEvent> lastEvent;
     public:
+        /**
+         * Constructor
+         */
         PlayerController();
 
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }

@@ -14,10 +14,17 @@ namespace spaceinvaders::model {
 namespace spaceinvaders::controller {
     class EntityController : public observer::Observer, public observer::Observable {
     public:
+        /**
+         * Constructor
+         */
         EntityController();
 
 //        const std::shared_ptr<spaceinvaders::model::EntityModel> &getModel() const;
 
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 
