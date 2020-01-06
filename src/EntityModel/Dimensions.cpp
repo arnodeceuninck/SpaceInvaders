@@ -20,6 +20,6 @@ const spaceinvaders::Coordinate &spaceinvaders::Dimensions::getMin() const {
     return min;
 }
 
-const spaceinvaders::Coordinate &spaceinvaders::Dimensions::getMax() const {
-    return max;
-}
+//const spaceinvaders::Coordinate &spaceinvaders::Dimensions::getMax() const {
+//    return max;
+//}

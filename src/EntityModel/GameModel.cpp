@@ -53,7 +53,6 @@ void spaceinvaders::model::GameModel::load() {
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::LoadLevel>(
                 levels.top());
         notifyObservers(event);
-        currentLevel = levels.top();
     }
 }
 

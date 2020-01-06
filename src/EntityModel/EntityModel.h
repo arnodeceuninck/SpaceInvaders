@@ -20,9 +20,16 @@ namespace spaceinvaders::model {
             : public observer::Observer,
               public observer::Observable, public std::enable_shared_from_this<EntityModel> {
     public:
+        /**
+         * Update its position
+         * @param elapsedSeconds
+         */
         virtual void update(double elapsedSeconds) = 0;
 
-    public:
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 }

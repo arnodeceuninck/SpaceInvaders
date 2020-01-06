@@ -10,15 +10,36 @@
 namespace spaceinvaders {
     class Dimensions {
     public:
+        /**
+         * Constructor
+         * @param min Lower left corner
+         * @param max Upper right corner
+         */
         Dimensions(const Coordinate &min, const Coordinate &max);
 
+        /**
+         * Get the width
+         * @return
+         */
         double getWidth();
 
+        /**
+         * Get the height
+         * @return
+         */
         double getHeight();
 
+        /**
+         * Get the lower left corner
+         * @return
+         */
         [[nodiscard]] const Coordinate &getMin() const;
 
-        [[nodiscard]] const Coordinate &getMax() const;
+        /**
+         * Get the upper right corner
+         * @return
+         */
+//        [[nodiscard]] const Coordinate &getMax() const;
 
     private:
         Coordinate min;

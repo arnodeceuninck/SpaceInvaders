@@ -10,13 +10,27 @@
 namespace spaceinvaders::model {
     class PlayerShip : public Ship {
     public:
+        /**
+         * Constructor
+         */
         PlayerShip();
 
-    public:
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
+        /**
+         * Get the front of the ship
+         * @return
+         */
         Coordinate getShipFront() override;
 
+        /**
+         * Get the direction the ship shoots in
+         * @return
+         */
         Coordinate getShootingDirection() override;
     };
 }

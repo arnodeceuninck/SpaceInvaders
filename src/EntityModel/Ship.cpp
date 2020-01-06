@@ -45,27 +45,17 @@ void spaceinvaders::model::Ship::handleEvent(std::shared_ptr<spaceinvaders::even
     }
 }
 
-double spaceinvaders::model::Ship::getHealth() const {
-    return health;
-}
 
 void spaceinvaders::model::Ship::setHealth(double health) {
     Ship::health = health;
 }
 
-double spaceinvaders::model::Ship::getDamage() const {
-    return damage;
-}
 
 void spaceinvaders::model::Ship::selfDestroy(double bulletDamage) {
     health -= bulletDamage;
     if (health <= 0) {
         MovingEntity::selfDestroy();
     }
-}
-
-void spaceinvaders::model::Ship::setDamage(double damage) {
-    Ship::damage = damage;
 }
 
 bool spaceinvaders::model::Ship::readyToFire() {
@@ -80,9 +70,6 @@ void spaceinvaders::model::Ship::setTimeBetweenFire(double timeBetweenFire) {
     Ship::timeBetweenFire = timeBetweenFire;
 }
 
-const std::string &spaceinvaders::model::Ship::getBulletFile() const {
-    return bulletFile;
-}
 
 void spaceinvaders::model::Ship::setBulletFile(const std::string &bulletFile) {
     Ship::bulletFile = bulletFile;

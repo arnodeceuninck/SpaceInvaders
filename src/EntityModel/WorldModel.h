@@ -14,14 +14,25 @@ namespace spaceinvaders::model {
     class WorldModel : public EntityModel {
     private:
         std::list<std::shared_ptr<EntityModel>> movingEntities;
+        int enemyCount = 0;
     public:
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
+        /**
+         * Update things that happened during a given time period
+         * @param elapsedSeconds The elapsed time
+         */
         void update(double elapsedSeconds) override;
 
+        /**
+         * Reset the worldmodel (to prepare for a new level)
+         */
         void reset();
 
-        int enemyCount = 0;
     };
 
 }

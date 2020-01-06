@@ -17,31 +17,50 @@ namespace spaceinvaders::model {
     class GameModel : public EntityModel {
 
     public:
+        /**
+         * Get the Game Wold
+         * @return
+         */
         const std::shared_ptr<WorldModel> &getGameWorld() const;
 
+        /**
+         * Constructor
+         */
         GameModel();
 
+        /**
+         * Load the next level
+         */
         void load();
 
+        /**
+         * Handle an event
+         * @param event
+         */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
+        /**
+         * Update its position
+         * @param elapsedSeconds
+         */
         void update(double elapsedSeconds) override;
 
+        /**
+         * Get the game dimensions
+         * @return
+         */
         const std::shared_ptr<Dimensions> &getDimensions() const;
 
+        /**
+         * Add a level on the level stack
+         * @param level
+         */
         void addLevel(std::string level);
 
     private:
         std::shared_ptr<WorldModel> gameWorld;
         std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(Coordinate(-4, -3), Coordinate(4, 3));
         std::stack<std::string> levels;
-
-        std::shared_ptr<view::GameRepresentation> gameRepresentation;
-        std::shared_ptr<controller::GameController> gameController;
-
-        std::string currentLevel;
-
-        void readLevels(const std::string &levelFile);
     };
 }
 
