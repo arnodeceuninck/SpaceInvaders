@@ -7,13 +7,13 @@
 
 
 #include "EntityModel.h"
-#include <list>
+#include <set>
 
 namespace spaceinvaders::model {
 
     class WorldModel : public EntityModel {
     private:
-        std::list<std::shared_ptr<EntityModel>> movingEntities;
+        std::set<std::shared_ptr<EntityModel>> movingEntities;
         int enemyCount = 0;
     public:
         /**

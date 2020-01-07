@@ -43,7 +43,7 @@ namespace spaceinvaders::controller {
     }
 
     void GameController::addController(const std::shared_ptr<EntityController> &controller) {
-        controlEntities.emplace_back(controller);
+        controlEntities.insert(controller);
         addObserver(controller);
     }
 

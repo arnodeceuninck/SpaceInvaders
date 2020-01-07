@@ -32,7 +32,5 @@ void spaceinvaders::model::RocketModel::setDamage(double damage) {
 }
 
 void spaceinvaders::model::RocketModel::selfDestroy(double bulletDamage) {
-    if (bulletDamage == 0) {
-        MovingEntity::selfDestroy();
-    }
+    MovingEntity::selfDestroy(); // Must be implemented, since this is a Moving Entity, so I can't remove the unused bulletDamage variable
 }

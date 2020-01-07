@@ -8,7 +8,7 @@
 #include "../Observer/Observable.h"
 #include "EntityRepresentation.h"
 #include "Transformation.h"
-#include <list>
+#include <set>
 
 namespace sf {
     class RenderWindow;
@@ -40,7 +40,7 @@ namespace spaceinvaders::view {
          */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        std::list<std::shared_ptr<EntityRepresentation>> representationEntities; // Holds a seperate list, so observer can be implemented with weak_ptrs and to assure there is always a shared pointer for shared_from_this
+        std::set<std::shared_ptr<EntityRepresentation>> representationEntities; // Holds a seperate list, so observer can be implemented with weak_ptrs and to assure there is always a shared pointer for shared_from_this
         std::string messageText;
     public:
 

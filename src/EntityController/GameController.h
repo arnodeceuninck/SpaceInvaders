@@ -8,7 +8,7 @@
 #include "EntityController.h"
 #include "../GameWindow.h"
 
-#include <list>
+#include <set>
 
 namespace spaceinvaders::controller {
     class GameController : public EntityController {
@@ -53,7 +53,7 @@ namespace spaceinvaders::controller {
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
     private:
-        std::list<std::shared_ptr<EntityController>> controlEntities;
+        std::set<std::shared_ptr<EntityController>> controlEntities;
         std::shared_ptr<spaceinvaders::GameWindow> gameWindow;
     };
 }

@@ -39,7 +39,7 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
             std::shared_ptr<spaceinvaders::view::MovingEntityRepresentation> representation = std::make_shared<spaceinvaders::view::MovingEntityRepresentation>(
                     entityEvent->getEntity(), getWindow(), sprite);
 
-            representationEntities.emplace_back(representation);
+            representationEntities.insert(representation);
 //            std::cout << "#Representations: " << representationEntities.size() << std::endl;
 
             representation->addObserver(shared_from_this());
@@ -51,7 +51,7 @@ void spaceinvaders::view::GameRepresentation::handleEvent(std::shared_ptr<spacei
     } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::ReprDestroyEvent>(event)) {
         // TODO: Just remove of the list, since observers should contain weak pointers
 //        if (auto entity = de->getEntity().lock())
-        representationEntities.remove(std::dynamic_pointer_cast<EntityRepresentation>(de->getEntity()));
+        representationEntities.erase(std::dynamic_pointer_cast<EntityRepresentation>(de->getEntity()));
     }
 }
 
@@ -127,6 +127,6 @@ void spaceinvaders::view::GameRepresentation::setBackground(std::string backgrou
     bground = background;
     auto backgroundTiles = std::make_shared<BackgroundTiles>("res/" + background, getWindow());
     addObserver(backgroundTiles);
-    representationEntities.emplace_back(backgroundTiles);
+    representationEntities.insert(backgroundTiles);
 }
 
