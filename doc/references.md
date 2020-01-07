@@ -30,3 +30,4 @@
 1. Adams, V. (s.d.). *Seymour One*. Visited on December 28, 2019 via https://fonts.google.com/specimen/Seymour+One.
 1. Gomila, L. (s.d.). *Texts and fonts*. Visited on December 28, 2019 via https://www.sfml-dev.org/tutorials/2.5/graphics-text.php. 
 1. York, M. (2009). *C++ Singleton design pattern*. Visited on December 28, 2019 via https://stackoverflow.com/questions/1008019/c-singleton-design-pattern. 
+1. s.n. (2018). *LaTeX/Title Creation*. Visited on January 7, 2020 via https://en.wikibooks.org/wiki/LaTeX/Title_Creation.

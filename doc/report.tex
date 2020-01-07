@@ -1,0 +1,20 @@
+\documentclass{article}
+
+\usepackage{blindtext}
+\title{Space Invaders Report}
+\author{Arno Deceuninck\\ 2nd Bachelor Computer Sciences \\ University of Antwerp}
+
+\begin{document}
+    \maketitle
+
+    \section{Extensions}
+    \begin{itemize}
+        \item Travis-CI integration: The .travis.yml file is updated to be compatible with SFML.
+        \item Multiple levels: Once you've cleared the first level, the next level starts automatically after the "Victory" message.
+        \item Different types of enemies: In the last two levels, there's a boss enemy, which shoots faster and has more lives than normal enemies.
+    \end{itemize}
+    \section{Project Structure}
+    The game loop is in an external Game class, to be sure to seperate the contents of the MVC pattern. When you start a new game, all different levels get loaded from a levels file, and the first level is loaded using a LevelLoader. The GameModel is the entity which keeps track of which level is currently playing en what the next level will be. The GameWorld contains a shared pointer to all elements inside the game world. Since the observer pattern works with weak pointers, it is easy to completely remove an entity by just removing it from the list in GameWorld. The Controller and Representation have a similar list in GameController and GameRepresentation. \\
+    Each representation entity observes the corresponding model entity, so when they broadcast an event that their position is updated, the sprite in the representation gets immediately updated too, me
+
+\end{document}

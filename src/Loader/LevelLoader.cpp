@@ -46,11 +46,10 @@ void spaceinvaders::loader::LevelLoader::loadInto(
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
                 playerShip, spriteFile);
         notifyObservers(
-                event); // TODO: GameModel MUST observe LevelLoader, LevelLodader must observe shipLoader (for redirecting event to levelLoader),  worldModel & GameRepresentation must observe GameModel, so the eventCreated can be forwarded to all places requiring it
-
+                event);
 
         gameController->addController(
-                shipController); // TODO: GameController should submit keyEvents to all their observers, meaning gameController is an observer of GameWindow
+                shipController);
         shipController->addObserver(playerShip);
     }
 
