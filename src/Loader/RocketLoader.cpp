@@ -14,12 +14,12 @@ spaceinvaders::loader::RocketLoader::loadInto(const std::shared_ptr<spaceinvader
     rapidjson::Document input = getDocument();
 
     std::string attribute = "width";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto width = input[attribute.c_str()].GetDouble();
     rocketModel->setWidth(width);
 
     attribute = "height";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto height = input[attribute.c_str()].GetDouble();
     rocketModel->setHeight(height);
 
@@ -31,12 +31,12 @@ spaceinvaders::loader::RocketLoader::loadInto(const std::shared_ptr<spaceinvader
 
 
     attribute = "damage";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto damage = input[attribute.c_str()].GetDouble();
     rocketModel->setDamage(damage);
 
     attribute = "speed";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto speed = input[attribute.c_str()].GetDouble();
     rocketModel->setSpeed(speed);
 

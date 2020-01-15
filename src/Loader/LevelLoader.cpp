@@ -14,6 +14,7 @@
 #include "../EntityController/EnemiesController.h"
 #include "../EntityController/EnemyController.h"
 #include "../Exceptions/AttributeMissing.h"
+#include "../Exceptions/WrongObject.h"
 
 // Linking scheme
 
@@ -67,6 +68,9 @@ void spaceinvaders::loader::LevelLoader::loadInto(
 
         if (enemyObj["enemy"].IsNull() or enemyObj["x"].IsNull() or enemyObj["y"].IsNull())
             throw spaceinvaders::exception::AttributeMissing("enemy, x or y");
+
+        if (!enemyObj["x"].IsNumber() or !enemyObj["y"].IsNumber())
+            throw spaceinvaders::exception::WrongObject("double");
 
         std::string enemyJson = enemyObj["enemy"].GetString();
         double enemyX = enemyObj["x"].GetDouble();

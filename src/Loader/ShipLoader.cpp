@@ -14,12 +14,12 @@ void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinva
     rapidjson::Document input = getDocument();
 
     std::string attribute = "width";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto width = input[attribute.c_str()].GetDouble();
     shipModel->setWidth(width);
 
     attribute = "height";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto height = input[attribute.c_str()].GetDouble();
     shipModel->setHeight(height);
 
@@ -31,13 +31,13 @@ void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinva
 
 
     attribute = "health";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto health = input[attribute.c_str()].GetDouble();
     shipModel->setHealth(health);
 
 
     attribute = "speed";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto speed = input[attribute.c_str()].GetDouble();
     shipModel->setSpeed(speed);
 
@@ -49,7 +49,7 @@ void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinva
 
 
     attribute = "timebetweenfire";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, true);
     auto timebetweenfire = input[attribute.c_str()].GetDouble();
     shipModel->setTimeBetweenFire(timebetweenfire);
 }

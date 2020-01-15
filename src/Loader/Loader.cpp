@@ -10,6 +10,7 @@
 #include "../Exceptions/FileMissing.h"
 #include "../Exceptions/ObjectNullException.h"
 #include "../Exceptions/AttributeMissing.h"
+#include "../Exceptions/WrongObject.h"
 
 
 spaceinvaders::loader::Loader::Loader(const std::string &filename) : filename("levels/" + filename) {}
@@ -34,7 +35,17 @@ rapidjson::Document spaceinvaders::loader::Loader::getDocument() const {
     return input;
 }
 
-void spaceinvaders::loader::Loader::checkAttribute(const rapidjson::Document &input, std::string attributeName) {
+void spaceinvaders::loader::Loader::checkAttribute(const rapidjson::Document &input, std::string attributeName,
+                                                   bool checkNum, bool onlyCheckExists) {
     if (input[attributeName.c_str()].IsNull())
         throw spaceinvaders::exception::AttributeMissing(attributeName);
+
+    if (onlyCheckExists)
+        return;
+
+    if (checkNum && !input[attributeName.c_str()].IsNumber())
+        throw spaceinvaders::exception::WrongObject("double");
+
+    if (!checkNum && !input[attributeName.c_str()].IsString())
+        throw spaceinvaders::exception::WrongObject("string");
 }

@@ -38,7 +38,8 @@ namespace spaceinvaders::loader {
          * @param input The name of the rapidjson document
          * @param attributeName The name of the attribute
          */
-        void checkAttribute(const rapidjson::Document &input, std::string attributeName);
+        void checkAttribute(const rapidjson::Document &input, std::string attributeName, bool checkNum = false,
+                            bool onlyCheckExists = false);
     };
 }
 

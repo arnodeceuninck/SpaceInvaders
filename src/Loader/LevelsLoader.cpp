@@ -20,7 +20,7 @@ void spaceinvaders::loader::LevelsLoader::loadInto(std::shared_ptr<spaceinvaders
     gameRepresentation->setBackground(background);
 
     attribute = "levels";
-    checkAttribute(input, attribute);
+    checkAttribute(input, attribute, false, true);
     rapidjson::Value &levelsValue = input[attribute.c_str()];
 
     for (unsigned int i = levelsValue.Size(); i > 0; i--) {
