@@ -13,7 +13,9 @@ spaceinvaders::model::PlayerShip::PlayerShip() : Ship(0, -2.5) {}
 
 void spaceinvaders::model::PlayerShip::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     if (auto pu = std::dynamic_pointer_cast<spaceinvaders::event::EnemyPositionUpdated>(event)) {
-        if (isCollision(pu->getNewFront())) {
+        if (isCollision(pu->getNewFront())  // in case you've hit the ship
+            or getPosition().getY() >
+               pu->getNewFront().getY()) { // in case the ship was next to you, didn't hit you, but went on your level
             MovingEntity::selfDestroy();
         }
     }

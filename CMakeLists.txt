@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.12) # 3.16 not installed on lab pc's
 project(SpaceInvaders)
 
 # Extend the CMake module path to find the FindSFML.cmake
