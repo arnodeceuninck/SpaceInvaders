@@ -3,6 +3,7 @@
 //
 
 #include "EnemyShip.h"
+#include "../Events/EnemyPositionUpdated.h"
 
 spaceinvaders::model::EnemyShip::EnemyShip(double x, double y) : Ship(x, y) {}
 
@@ -28,4 +29,9 @@ bool spaceinvaders::model::EnemyShip::inFireRange(spaceinvaders::Coordinate coor
            getPosition().getX() - getWidth() / 2; // Right side of bullet is greater then left side of ship
 }
 
-
+void spaceinvaders::model::EnemyShip::update(double elapsedSeconds) {
+    MovingEntity::update(elapsedSeconds);
+    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EnemyPositionUpdated>(
+            getPosition() - Coordinate(0, getHeight() / 2));
+    notifyObservers(event);
+}

@@ -10,6 +10,7 @@
 #include "PlayerShip.h"
 #include "EnemyShip.h"
 #include "../Events/LevelEnded.h"
+#include "../Events/EnemyPositionUpdated.h"
 
 void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
     if (auto entityEvent = std::dynamic_pointer_cast<spaceinvaders::event::EntityCreatedEvent>(
@@ -29,7 +30,8 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
             }
         }
 
-    } else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
+    } else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event) or
+                          std::dynamic_pointer_cast<spaceinvaders::event::EnemyPositionUpdated>(event)) {
         notifyObservers(event); // Let the observers check for collisions
     } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(event)) {
         movingEntities.erase(de->getEntity());

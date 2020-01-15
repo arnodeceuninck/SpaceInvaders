@@ -43,6 +43,8 @@ namespace spaceinvaders::model {
          * @return
          */
         Coordinate getShipFront() override;
+
+        void update(double elapsedSeconds) override;
     };
 }
 
