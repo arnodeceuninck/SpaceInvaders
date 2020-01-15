@@ -32,6 +32,13 @@ namespace spaceinvaders::loader {
          * @return a string containing the name of the file
          */
         [[nodiscard]] const std::string &getFilename() const;
+
+        /**
+         * Check whether given attribute is in the document
+         * @param input The name of the rapidjson document
+         * @param attributeName The name of the attribute
+         */
+        void checkAttribute(const rapidjson::Document &input, std::string attributeName);
     };
 }
 

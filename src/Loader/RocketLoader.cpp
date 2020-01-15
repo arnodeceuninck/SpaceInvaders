@@ -13,24 +13,32 @@ spaceinvaders::loader::RocketLoader::loadInto(const std::shared_ptr<spaceinvader
     // Read the file
     rapidjson::Document input = getDocument();
 
-    if (auto width = input["width"].GetDouble()) {
-        rocketModel->setWidth(width);
-    }
+    std::string attribute = "width";
+    checkAttribute(input, attribute);
+    auto width = input[attribute.c_str()].GetDouble();
+    rocketModel->setWidth(width);
 
-    if (auto height = input["height"].GetDouble()) {
-        rocketModel->setHeight(height);
-    }
+    attribute = "height";
+    checkAttribute(input, attribute);
+    auto height = input[attribute.c_str()].GetDouble();
+    rocketModel->setHeight(height);
 
-    if (auto sprite = input["sprite"].GetString()) {
-        spriteFile = sprite;
-    }
 
-    if (auto damage = input["damage"].GetDouble()) {
-        rocketModel->setDamage(damage);
-    }
+    attribute = "sprite";
+    checkAttribute(input, attribute);
+    auto sprite = input[attribute.c_str()].GetString();
+    spriteFile = sprite;
 
-    if (auto speed = input["speed"].GetDouble()) {
-        rocketModel->setSpeed(speed);
-    }
+
+    attribute = "damage";
+    checkAttribute(input, attribute);
+    auto damage = input[attribute.c_str()].GetDouble();
+    rocketModel->setDamage(damage);
+
+    attribute = "speed";
+    checkAttribute(input, attribute);
+    auto speed = input[attribute.c_str()].GetDouble();
+    rocketModel->setSpeed(speed);
+
 
 }

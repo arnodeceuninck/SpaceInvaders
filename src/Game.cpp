@@ -17,6 +17,8 @@
 #include "EntityModel/WorldModel.h"
 #include "Loader/LevelLoader.h"
 #include "Loader/LevelsLoader.h"
+#include "Exceptions/SiExcecption.h"
+#include "Exceptions/ObjectNullException.h"
 
 #define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
 #define MIN_TIME_PER_CYCLE (1000000000.0 / MAX_CYCLES_PER_SECOND) // The minimum required time in seconds as double between each clock cycle
@@ -25,42 +27,68 @@ namespace spaceinvaders {
 
     void Game::Start() {
 
-        auto wptr = std::shared_ptr<Game>(this, [](Game *) {});
+        try {
 
-        // Initialise the game Model, View & Controller
-        initModel();
-        initView();
-        initController();
+            auto wptr = std::shared_ptr<Game>(this, [](Game *) {});
 
-        spaceinvaders::loader::LevelsLoader loader{"levels.json"};
-        loader.loadInto(gameModel, gameRepresentation);
+            // Initialise the game Model, View & Controller
+            initModel();
+            initView();
+            initController();
 
-        gameModel->load();
+            spaceinvaders::loader::LevelsLoader loader{"levels.json"};
+            loader.loadInto(gameModel, gameRepresentation);
 
-        gameRunning = true;
+            gameModel->load();
 
-        gameLoop();
+            gameRunning = true;
+
+            gameLoop();
+        } catch (spaceinvaders::exception::SiException &siExcecption) {
+            std::cerr << "An internal spaceinvaders exception occured: " << siExcecption.what() << std::endl;
+        } catch (...) {
+            std::cerr << "An unknown exception occured :-(" << std::endl;
+        }
     }
 
     void Game::initModel() {
         gameModel = std::make_shared<model::GameModel>();
+
+        if (gameModel == nullptr or gameModel->getGameWorld() == nullptr)
+            throw spaceinvaders::exception::ObjectNullException(
+                    "gameModel is not initialized correctly, leading to a nullptr");
+
         gameModel->getGameWorld()->addObserver(gameModel);
         gameModel->addObserver(shared_from_this());
     }
 
     void Game::initView() {
         gameWindow = std::make_shared<GameWindow>(800, 600);
+
+        if (gameModel == nullptr or gameWindow == nullptr)
+            throw spaceinvaders::exception::ObjectNullException(
+                    "gameModel or gameWindow is not initialized correctly, leading to a nullptr");
+
         gameRepresentation = std::make_shared<view::GameRepresentation>(gameModel, gameWindow);
         gameModel->addObserver(gameRepresentation);
     }
 
     void Game::initController() {
         gameController = std::make_shared<controller::GameController>(gameWindow);
+
+        if (gameController == nullptr or gameWindow == nullptr)
+            throw spaceinvaders::exception::ObjectNullException(
+                    "gameController or gameWindow is not initialized correctly, leading to a nullptr");
+
         gameWindow->addObserver(gameController);
         gameController->addObserver(shared_from_this());
     }
 
     void Game::gameLoop() {
+
+        if (gameModel == nullptr or gameRepresentation == nullptr or gameController == nullptr)
+            throw spaceinvaders::exception::ObjectNullException(
+                    "game not initialized correctly");
 
         // Keep track of the elapsed time after each loop
         Stopwatch::getInstance().reset();
@@ -104,7 +132,8 @@ namespace spaceinvaders {
         try {
             Start();
         } catch (...) {
-            std::cerr << "Something unknown went wrong :-(" << std::endl;
+            std::cerr << "Something unknown went wrong :-("
+                      << std::endl; // This is almost impossible to occur, since the Start() function also catches exceptions
         }
     }
 
@@ -126,6 +155,10 @@ namespace spaceinvaders {
     }
 
     void Game::loadLevel(const std::string &level) {
+
+        if (gameRepresentation == nullptr or gameController == nullptr)
+            throw spaceinvaders::exception::ObjectNullException(
+                    "game not initialized correctly");
 
         gameRepresentation->reset();
         gameController->reset();

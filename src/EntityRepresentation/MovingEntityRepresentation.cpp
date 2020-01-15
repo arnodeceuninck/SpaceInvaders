@@ -7,6 +7,9 @@
 #include "../EntityModel/Ship.h"
 #include "Transformation.h"
 #include "../Events/PositionUpdated.h"
+#include "../Exceptions/FileMissing.h"
+#include "../Exceptions/WrongObject.h"
+#include "../Exceptions/ObjectNullException.h"
 
 //spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(std::shared_ptr<GameWindow> window,
 //                                                                            std::shared_ptr<Transformation> transformation)
@@ -33,7 +36,7 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
 
 
         if (!texture324.loadFromFile(getSpriteFile())) {
-            throw std::ios_base::failure("File not found: " + getSpriteFile());
+            throw spaceinvaders::exception::FileMissing(getSpriteFile());
             // error...
         }
 
@@ -52,7 +55,7 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
                 sprite324.scale(static_cast<float>(shipWidth) / spriteWidth,
                                 static_cast<float >(shipHeight) / spriteHeight);
             } else {
-                throw std::logic_error("Entity is not a ship");
+                throw spaceinvaders::exception::WrongObject("ship");
             }
         }
 
@@ -69,6 +72,9 @@ void spaceinvaders::view::MovingEntityRepresentation::draw() {
 //        }
 //    }
 //    sprite.setScale(0.5);
+
+    if (getWindow() == nullptr and getWindow()->getSfmlWindow() == nullptr)
+        throw spaceinvaders::exception::ObjectNullException("Window missing in entity or sfmlWindow missing in window");
 
     getWindow()->getSfmlWindow()->draw(sprite324);
 //    std::cout << "Drawing ship" << std::endl;

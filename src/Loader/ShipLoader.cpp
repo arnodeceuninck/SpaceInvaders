@@ -6,39 +6,52 @@
 
 #include "../EntityModel/Ship.h"
 #include "../Events/EntityCreatedEvent.h"
+#include "../Exceptions/AttributeMissing.h"
 
 void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinvaders::model::Ship> &shipModel,
                                                  std::string &spriteFile) {
     // Read the file
     rapidjson::Document input = getDocument();
 
-    if (auto width = input["width"].GetDouble()) {
-        shipModel->setWidth(width);
-    }
+    std::string attribute = "width";
+    checkAttribute(input, attribute);
+    auto width = input[attribute.c_str()].GetDouble();
+    shipModel->setWidth(width);
 
-    if (auto height = input["height"].GetDouble()) {
-        shipModel->setHeight(height);
-    }
+    attribute = "height";
+    checkAttribute(input, attribute);
+    auto height = input[attribute.c_str()].GetDouble();
+    shipModel->setHeight(height);
 
-    if(auto sprite = input["sprite"].GetString()){
-        spriteFile = sprite;
-    }
 
-    if (auto health = input["health"].GetDouble()) {
-        shipModel->setHealth(health);
-    }
+    attribute = "sprite";
+    checkAttribute(input, attribute);
+    auto sprite = input[attribute.c_str()].GetString();
+    spriteFile = sprite;
 
-    if (auto speed = input["speed"].GetDouble()) {
-        shipModel->setSpeed(speed);
-    }
 
-    if (auto bullet = input["bullet"].GetString()) {
-        shipModel->setBulletFile(bullet);
-    }
+    attribute = "health";
+    checkAttribute(input, attribute);
+    auto health = input[attribute.c_str()].GetDouble();
+    shipModel->setHealth(health);
 
-    if (auto timebetweenfire = input["timebetweenfire"].GetDouble()) {
-        shipModel->setTimeBetweenFire(timebetweenfire);
-    }
+
+    attribute = "speed";
+    checkAttribute(input, attribute);
+    auto speed = input[attribute.c_str()].GetDouble();
+    shipModel->setSpeed(speed);
+
+
+    attribute = "bullet";
+    checkAttribute(input, attribute);
+    auto bullet = input[attribute.c_str()].GetString();
+    shipModel->setBulletFile(bullet);
+
+
+    attribute = "timebetweenfire";
+    checkAttribute(input, attribute);
+    auto timebetweenfire = input[attribute.c_str()].GetDouble();
+    shipModel->setTimeBetweenFire(timebetweenfire);
 }
 
 spaceinvaders::loader::ShipLoader::ShipLoader(const std::string &filename) : Loader(filename) {}

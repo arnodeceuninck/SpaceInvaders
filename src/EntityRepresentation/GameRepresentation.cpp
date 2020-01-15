@@ -12,6 +12,7 @@
 #include "MovingEntityRepresentation.h"
 #include "../Events/EntityCreatedEvent.h"
 #include "../Events/ReprDestroyEvent.h"
+#include "../Exceptions/FileMissing.h"
 
 spaceinvaders::view::GameRepresentation::GameRepresentation(
         const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
@@ -88,8 +89,7 @@ void spaceinvaders::view::GameRepresentation::showMessage(const std::string &mes
 
 // Load from a font file on disk
     if (!myFont.loadFromFile("res/SeymourOne-Regular.ttf")) {
-        std::cerr << "Failed loading font" << std::endl;
-        // Error...
+        throw spaceinvaders::exception::FileMissing("font res/SeymourOne-Regular.ttf");
     }
 
     sf::Text text;

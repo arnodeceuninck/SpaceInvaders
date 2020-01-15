@@ -13,6 +13,7 @@
 #include "../EntityController/GameController.h"
 #include "../EntityController/EnemiesController.h"
 #include "../EntityController/EnemyController.h"
+#include "../Exceptions/AttributeMissing.h"
 
 // Linking scheme
 
@@ -32,7 +33,9 @@ void spaceinvaders::loader::LevelLoader::loadInto(
         const std::shared_ptr<spaceinvaders::controller::GameController> &gameController) {
     rapidjson::Document input = getDocument();
 
-    if (auto playerFile = input["player"].GetString()) {
+    std::string attribute = "player";
+    checkAttribute(input, attribute);
+    if (auto playerFile = input[attribute.c_str()].GetString()) {
 
         // Create a player ship, it's representation and it's controller
         auto playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
@@ -53,6 +56,7 @@ void spaceinvaders::loader::LevelLoader::loadInto(
         shipController->addObserver(playerShip);
     }
 
+    // If null, it won't be looped through
     rapidjson::Value &enemiesValue = input["enemies"];
 
     auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>();
@@ -60,6 +64,9 @@ void spaceinvaders::loader::LevelLoader::loadInto(
     for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
 
         rapidjson::Value &enemyObj = enemiesValue[i];
+
+        if (enemyObj["enemy"].IsNull() or enemyObj["x"].IsNull() or enemyObj["y"].IsNull())
+            throw spaceinvaders::exception::AttributeMissing("enemy, x or y");
 
         std::string enemyJson = enemyObj["enemy"].GetString();
         double enemyX = enemyObj["x"].GetDouble();

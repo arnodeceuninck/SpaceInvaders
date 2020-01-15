@@ -4,6 +4,7 @@
 
 #include "GameWindow.h"
 #include "Events/WindowInteractionEvent.h"
+#include "Exceptions/ObjectNullException.h"
 
 spaceinvaders::GameWindow::GameWindow(int width, int height) : width(width), height(height) {
     sfmlWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(static_cast<unsigned int>(width),
@@ -24,6 +25,9 @@ const std::shared_ptr<sf::RenderWindow> &spaceinvaders::GameWindow::getSfmlWindo
 }
 
 void spaceinvaders::GameWindow::checkInput() {
+    if (sfmlWindow == nullptr)
+        throw spaceinvaders::exception::ObjectNullException("sfmlWindow shouldn't be NULL when calling this function");
+
     while (sfmlWindow->pollEvent(lastEvent)) {
         std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::WindowInteractionEvent>(
                 lastEvent);
