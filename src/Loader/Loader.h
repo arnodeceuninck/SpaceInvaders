@@ -37,6 +37,8 @@ namespace spaceinvaders::loader {
          * Check whether given attribute is in the document
          * @param input The name of the rapidjson document
          * @param attributeName The name of the attribute
+         * @param onlyCheckExists Check only if the attribute is not null
+         * @param checkNum Check whether the attribute is a number, else there will be checked whether the attribute is a string
          */
         void checkAttribute(const rapidjson::Document &input, std::string attributeName, bool checkNum = false,
                             bool onlyCheckExists = false);
