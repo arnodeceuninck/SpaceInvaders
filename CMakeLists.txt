@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.12)
 project(SpaceInvaders)
 
 # Extend the CMake module path to find the FindSFML.cmake
