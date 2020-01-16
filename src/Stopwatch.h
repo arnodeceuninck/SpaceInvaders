@@ -8,8 +8,6 @@
 
 #include <chrono>
 
-// TODO: Singelton pattern
-
 namespace spaceinvaders {
     class Stopwatch {
     public:
