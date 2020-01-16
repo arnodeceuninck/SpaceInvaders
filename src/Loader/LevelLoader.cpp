@@ -2,7 +2,6 @@
 // Created by arno on 23/12/2019.
 //
 
-#include <iostream>
 #include "LevelLoader.h"
 #include "ShipLoader.h"
 #include "../EntityModel/PlayerShip.h"

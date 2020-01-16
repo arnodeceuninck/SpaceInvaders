@@ -10,7 +10,7 @@
 namespace spaceinvaders::exception {
     class AttributeMissing : public SiException {
     public:
-        AttributeMissing(const std::string &problem);
+        explicit AttributeMissing(const std::string &problem);
     };
 }
 

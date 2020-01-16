@@ -3,8 +3,6 @@
 //
 
 #include "PlayerShip.h"
-#include "../Events/PositionUpdated.h"
-#include "EnemyShip.h"
 #include "../Events/EnemyPositionUpdated.h"
 #include "../Events/GameEnded.h"
 

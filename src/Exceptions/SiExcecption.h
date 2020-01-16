@@ -22,13 +22,13 @@ namespace spaceinvaders::exception {
          * Make an exception
          * @param problem The problem why the exception is thrown
          */
-        SiException(std::string problem);
+        explicit SiException(std::string problem);
 
         /**
          * Get the reason that caused the exception
          * @return a c string describing the cause of the exception
          */
-        [[nodiscard]] virtual const char *what() const noexcept override;
+        [[nodiscard]] const char *what() const noexcept override;
     };
 
 }

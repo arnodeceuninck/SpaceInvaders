@@ -4,7 +4,6 @@
 
 #include "Transformation.h"
 
-#include <utility>
 
 
 spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spaceinvaders::Coordinate coordinate) {
@@ -38,7 +37,7 @@ void spaceinvaders::view::Transformation::setViewDimensions(const std::shared_pt
     Transformation::viewDimensions = viewDimensions;
 }
 
-spaceinvaders::view::Transformation::Transformation() {}
+spaceinvaders::view::Transformation::Transformation() = default;
 
 spaceinvaders::view::Transformation &spaceinvaders::view::Transformation::getInstance() {
     static Transformation instance;

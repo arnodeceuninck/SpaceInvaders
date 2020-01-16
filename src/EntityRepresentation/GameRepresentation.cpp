@@ -2,7 +2,6 @@
 // Created by arno on 14/12/2019.
 //
 
-#include <iostream>
 #include "GameRepresentation.h"
 #include "BackgroundTiles.h"
 #include "SFML/Graphics.hpp"
@@ -123,7 +122,7 @@ void spaceinvaders::view::GameRepresentation::showMessage(const std::string &mes
 
 }
 
-void spaceinvaders::view::GameRepresentation::setBackground(std::string background) {
+void spaceinvaders::view::GameRepresentation::setBackground(const std::string &background) {
     bground = background;
     auto backgroundTiles = std::make_shared<BackgroundTiles>("res/" + background, getWindow());
     addObserver(backgroundTiles);

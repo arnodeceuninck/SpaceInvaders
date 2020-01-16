@@ -15,9 +15,9 @@ namespace spaceinvaders::event {
     class EnemyPositionUpdated : public Event {
         Coordinate newFront;
     public:
-        EnemyPositionUpdated(const Coordinate &newFront);
+        explicit EnemyPositionUpdated(const Coordinate &newFront);
 
-        const Coordinate &getNewFront() const;
+        [[nodiscard]] const Coordinate &getNewFront() const;
     };
 }
 

@@ -55,7 +55,7 @@ namespace spaceinvaders::model {
          * Add a level on the level stack
          * @param level
          */
-        void addLevel(std::string level);
+        void addLevel(const std::string &level);
 
     private:
         std::shared_ptr<WorldModel> gameWorld;

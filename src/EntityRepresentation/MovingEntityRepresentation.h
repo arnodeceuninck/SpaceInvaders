@@ -37,11 +37,6 @@ namespace spaceinvaders::view {
          * @param event
          */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
-
-        /**
-         * Destructor
-         */
-        ~MovingEntityRepresentation() override;
     };
 }
 

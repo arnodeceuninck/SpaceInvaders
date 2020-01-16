@@ -3,7 +3,6 @@
 //
 
 #include <cmath>
-#include <iostream>
 #include "EnemyController.h"
 #include "../Events/UpdateEvent.h"
 

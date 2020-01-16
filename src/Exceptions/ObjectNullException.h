@@ -11,7 +11,7 @@
 namespace spaceinvaders::exception {
     class ObjectNullException : public SiException {
     public:
-        ObjectNullException(const std::string &problem);
+        explicit ObjectNullException(const std::string &problem);
     };
 }
 

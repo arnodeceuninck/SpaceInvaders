@@ -66,7 +66,7 @@ namespace spaceinvaders::view {
          * Apply a tiles background
          * @param background The texture file of the background
          */
-        void setBackground(std::string background);
+        void setBackground(const std::string &background);
 
     private:
         std::string bground;

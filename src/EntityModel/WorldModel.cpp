@@ -30,8 +30,9 @@ void spaceinvaders::model::WorldModel::handleEvent(std::shared_ptr<spaceinvaders
             }
         }
 
-    } else if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event) or
-                          std::dynamic_pointer_cast<spaceinvaders::event::EnemyPositionUpdated>(event)) {
+    } else if (std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event) != nullptr or
+               // The nullptr check must be included to make clang happy
+               std::dynamic_pointer_cast<spaceinvaders::event::EnemyPositionUpdated>(event) != nullptr) {
         notifyObservers(event); // Let the observers check for collisions
     } else if (auto de = std::dynamic_pointer_cast<spaceinvaders::event::DestroyedEvent>(event)) {
         movingEntities.erase(de->getEntity());

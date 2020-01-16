@@ -20,15 +20,15 @@ namespace spaceinvaders::loader {
          * Make a loader for a levels json file
          * @param filename Name of the json file in the levels folder
          */
-        LevelsLoader(const std::string &filename);
+        explicit LevelsLoader(const std::string &filename);
 
         /**
          * Load the contents of the file in a gameModel and gameRepresentation
          * @param gameModel The model the levels will be added to
          * @param gameRepresentation The representation the background will be set on
          */
-        void loadInto(std::shared_ptr<spaceinvaders::model::GameModel> gameModel,
-                      std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation);
+        void loadInto(const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
+                      const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation);
     };
 }
 

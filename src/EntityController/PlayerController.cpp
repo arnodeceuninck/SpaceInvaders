@@ -2,7 +2,6 @@
 // Created by arno on 22/12/2019.
 //
 
-#include <iostream>
 #include "PlayerController.h"
 #include "../Events/WindowInteractionEvent.h"
 #include "../Events/MovingLeft.h"

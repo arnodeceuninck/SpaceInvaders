@@ -10,7 +10,7 @@
 namespace spaceinvaders::exception {
     class WrongObject : public SiException {
     public:
-        WrongObject(const std::string &shouldBeObject);
+        explicit WrongObject(const std::string &shouldBeObject);
     };
 }
 

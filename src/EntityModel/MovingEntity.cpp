@@ -2,7 +2,6 @@
 // Created by arno on 24/12/2019.
 //
 
-#include <iostream>
 #include "MovingEntity.h"
 #include "../Events/RocketPositionUpdated.h"
 #include "RocketModel.h"

@@ -30,7 +30,7 @@ bool spaceinvaders::model::EnemyShip::inFireRange(spaceinvaders::Coordinate coor
 }
 
 void spaceinvaders::model::EnemyShip::update(double elapsedSeconds) {
-    MovingEntity::update(elapsedSeconds);
+    spaceinvaders::model::Ship::update(elapsedSeconds);
     std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EnemyPositionUpdated>(
             getPosition() - Coordinate(0, getHeight() / 2));
     notifyObservers(event);

@@ -2,7 +2,6 @@
 // Created by arno on 22/12/2019.
 //
 
-#include <iostream>
 #include "MovingEntityRepresentation.h"
 #include "../EntityModel/Ship.h"
 #include "Transformation.h"
@@ -91,6 +90,3 @@ spaceinvaders::view::MovingEntityRepresentation::MovingEntityRepresentation(
 
 }
 
-spaceinvaders::view::MovingEntityRepresentation::~MovingEntityRepresentation() {
-//    std::cout << "DESTROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOY" << std::endl;
-}

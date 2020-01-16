@@ -35,7 +35,7 @@ rapidjson::Document spaceinvaders::loader::Loader::getDocument() const {
     return input;
 }
 
-void spaceinvaders::loader::Loader::checkAttribute(const rapidjson::Document &input, std::string attributeName,
+void spaceinvaders::loader::Loader::checkAttribute(const rapidjson::Document &input, const std::string &attributeName,
                                                    bool checkNum, bool onlyCheckExists) {
     if (input[attributeName.c_str()].IsNull())
         throw spaceinvaders::exception::AttributeMissing(attributeName);

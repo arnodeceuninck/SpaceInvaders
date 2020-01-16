@@ -17,7 +17,7 @@ namespace spaceinvaders::exception {
          * Constructor
          * @param filename The name of the missing file
          */
-        FileMissing(const std::string &filename);
+        explicit FileMissing(const std::string &filename);
     };
 }
 

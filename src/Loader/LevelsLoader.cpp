@@ -4,13 +4,12 @@
 
 #include "LevelsLoader.h"
 #include "../EntityModel/GameModel.h"
-#include "../EntityRepresentation/GameRepresentation.h"
 #include "../Exceptions/AttributeMissing.h"
 
 spaceinvaders::loader::LevelsLoader::LevelsLoader(const std::string &filename) : Loader(filename) {}
 
-void spaceinvaders::loader::LevelsLoader::loadInto(std::shared_ptr<spaceinvaders::model::GameModel> gameModel,
-                                                   std::shared_ptr<spaceinvaders::view::GameRepresentation> gameRepresentation) {
+void spaceinvaders::loader::LevelsLoader::loadInto(const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
+                                                   const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation) {
 
     rapidjson::Document input = getDocument();
 

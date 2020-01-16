@@ -2,16 +2,12 @@
 // Created by arno on 14/12/2019.
 //
 
-#include <iostream>
-#include <fstream>
 #include "GameModel.h"
-#include "../Loader/LevelLoader.h"
 #include "WorldModel.h"
 #include "../Events/EntityCreatedEvent.h"
 #include "../Events/LoadLevel.h"
 #include "../Events/LevelEnded.h"
 #include "../Events/GameEnded.h"
-#include "../../rapidjson/istreamwrapper.h"
 
 void spaceinvaders::model::GameModel::update(double elapsedSeconds) {
     gameWorld->update(elapsedSeconds);
@@ -56,7 +52,7 @@ void spaceinvaders::model::GameModel::load() {
     }
 }
 
-void spaceinvaders::model::GameModel::addLevel(std::string level) {
+void spaceinvaders::model::GameModel::addLevel(const std::string &level) {
     levels.push(level);
 }
 

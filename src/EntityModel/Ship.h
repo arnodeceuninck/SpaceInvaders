@@ -16,9 +16,13 @@ namespace spaceinvaders::model {
         double timeBetweenFire{};
         std::string bulletFile;
 
+    public:
+        /**
+         * Apply changes that happend in the past second
+         * @param elapsedSeconds The time that has passed (in seconds)
+         */
         void update(double elapsedSeconds) override;
 
-    public:
         /**
          * Set the json file which describes the type of bullets this ship fires
          * @param bulletFile
