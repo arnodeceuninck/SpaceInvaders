@@ -10,28 +10,29 @@
 
 namespace spaceinvaders::model {
 
-class WorldModel : public EntityModel {
+class WorldModel : public EntityModel
+{
 private:
-    std::set<std::shared_ptr<EntityModel>> movingEntities;
-    int enemyCount = 0;
+        std::set<std::shared_ptr<EntityModel>> movingEntities;
+        int enemyCount = 0;
 
 public:
-    /**
-     * Handle an event
-     * @param event
-     */
-    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        /**
+         * Handle an event
+         * @param event
+         */
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
-    /**
-     * Update things that happened during a given time period
-     * @param elapsedSeconds The elapsed time
-     */
-    void update(double elapsedSeconds) override;
+        /**
+         * Update things that happened during a given time period
+         * @param elapsedSeconds The elapsed time
+         */
+        void update(double elapsedSeconds) override;
 
-    /**
-     * Reset the worldmodel (to prepare for a new level)
-     */
-    void reset();
+        /**
+         * Reset the worldmodel (to prepare for a new level)
+         */
+        void reset();
 };
 
 } // namespace spaceinvaders::model

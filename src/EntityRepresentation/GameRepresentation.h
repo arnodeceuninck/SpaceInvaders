@@ -11,23 +11,24 @@
 #include <set>
 
 namespace sf {
-    class RenderWindow;
+class RenderWindow;
 }
 
 namespace spaceinvaders::model {
-    class ModelChangedEvent;
+class ModelChangedEvent;
 
-    class GameModel;
+class GameModel;
 } // namespace spaceinvaders::model
 
 namespace spaceinvaders::view {
-    class GameRepresentation : public EntityRepresentation {
-    public:
+class GameRepresentation : public EntityRepresentation
+{
+public:
         /**
          * Show a string on the screen (only the background and the string itself will be rendered)
          * @param message The message you want to display
          */
-        void showMessage(const std::string &message);
+        void showMessage(const std::string& message);
 
         /**
          * Reset the view (to prepare for a new level)
@@ -38,14 +39,14 @@ namespace spaceinvaders::view {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
         std::set<std::shared_ptr<EntityRepresentation>>
-                representationEntities; // Holds a seperate list, so observer can be implemented with weak_ptrs and to
+            representationEntities; // Holds a seperate list, so observer can be implemented with weak_ptrs and to
         // assure there is always a shared pointer for shared_from_this
         std::string messageText;
 
-    public:
+public:
         /**
          * Draw itself on the window
          */
@@ -61,18 +62,18 @@ namespace spaceinvaders::view {
          * @param gameModel The model it wil represent
          * @param gameWindow The window it will draw on
          */
-        GameRepresentation(const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
-                           const std::shared_ptr<GameWindow> &gameWindow);
+        GameRepresentation(const std::shared_ptr<spaceinvaders::model::GameModel>& gameModel,
+                           const std::shared_ptr<GameWindow>& gameWindow);
 
         /**
          * Apply a tiles background
          * @param background The texture file of the background
          */
-        void setBackground(const std::string &background);
+        void setBackground(const std::string& background);
 
-    private:
+private:
         std::string bground;
-    };
+};
 } // namespace spaceinvaders::view
 
 #endif // SPACEINVADERS_GAMEREPRESENTATION_H

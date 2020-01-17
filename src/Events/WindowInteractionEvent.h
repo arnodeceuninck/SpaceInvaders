@@ -9,22 +9,23 @@
 #include <SFML/Window/Event.hpp>
 
 namespace spaceinvaders::event {
-    class WindowInteractionEvent : public ControllerEvent {
+class WindowInteractionEvent : public ControllerEvent
+{
         sf::Event event;
 
-    public:
+public:
         /**
          * Constructor
          * @param event sf::event corresponding to the interaction
          */
-        explicit WindowInteractionEvent(const sf::Event &event);
+        explicit WindowInteractionEvent(const sf::Event& event);
 
         /**
          * Get the corresponding sf::Event
          * @return the event
          */
-        [[nodiscard]] const sf::Event &getEvent() const;
-    };
+        [[nodiscard]] const sf::Event& getEvent() const;
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_WINDOWINTERACTIONEVENT_H

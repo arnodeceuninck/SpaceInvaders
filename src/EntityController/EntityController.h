@@ -9,11 +9,12 @@
 #include "../Observer/Observable.h"
 
 namespace spaceinvaders::model {
-    class EntityModel;
+class EntityModel;
 }
 namespace spaceinvaders::controller {
-    class EntityController : public observer::Observer, public observer::Observable {
-    public:
+class EntityController : public observer::Observer, public observer::Observable
+{
+public:
         /**
          * Constructor
          */
@@ -25,8 +26,8 @@ namespace spaceinvaders::controller {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
-    };
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
+};
 
 } // namespace spaceinvaders::controller
 

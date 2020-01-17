@@ -13,22 +13,23 @@ namespace spaceinvaders::exception {
 /**
  * Default exception type of errors occured in spaceinvaders
  */
-class SiException : public std::exception {
+class SiException : public std::exception
+{
 private:
-    std::string problem;
+        std::string problem;
 
 public:
-    /**
-     * Make an exception
-     * @param problem The problem why the exception is thrown
-     */
-    explicit SiException(std::string problem);
+        /**
+         * Make an exception
+         * @param problem The problem why the exception is thrown
+         */
+        explicit SiException(std::string problem);
 
-    /**
-     * Get the reason that caused the exception
-     * @return a c string describing the cause of the exception
-     */
-    [[nodiscard]] const char *what() const noexcept override;
+        /**
+         * Get the reason that caused the exception
+         * @return a c string describing the cause of the exception
+         */
+        [[nodiscard]] const char* what() const noexcept override;
 };
 
 } // namespace spaceinvaders::exception

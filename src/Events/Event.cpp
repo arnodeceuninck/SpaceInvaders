@@ -10,6 +10,7 @@ spaceinvaders::event::Event::~Event() = default;
 
 bool spaceinvaders::event::Event::isHandledByGameModel() const { return handledByGameModel; }
 
-void spaceinvaders::event::Event::setHandledByGameModel(bool handledByGameModel) {
-    Event::handledByGameModel = handledByGameModel;
+void spaceinvaders::event::Event::setHandledByGameModel(bool handledByGameModel)
+{
+        Event::handledByGameModel = handledByGameModel;
 }

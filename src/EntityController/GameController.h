@@ -11,8 +11,9 @@
 #include <set>
 
 namespace spaceinvaders::controller {
-    class GameController : public EntityController {
-    public:
+class GameController : public EntityController
+{
+public:
         /**
          * Resets all controllers (to load a new level)
          */
@@ -33,7 +34,7 @@ namespace spaceinvaders::controller {
          * Add a controller
          * @param controller
          */
-        void addController(const std::shared_ptr<EntityController> &controller);
+        void addController(const std::shared_ptr<EntityController>& controller);
 
         /**
          * Constructor
@@ -50,12 +51,12 @@ namespace spaceinvaders::controller {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
-    private:
+private:
         std::set<std::shared_ptr<EntityController>> controlEntities;
         std::shared_ptr<spaceinvaders::GameWindow> gameWindow;
-    };
+};
 } // namespace spaceinvaders::controller
 
 #endif // SPACEINVADERS_GAMECONTROLLER_H

@@ -10,23 +10,24 @@
 #include <memory>
 
 namespace spaceinvaders::event {
-    class EntityCreatedEvent : public Event {
-    private:
+class EntityCreatedEvent : public Event
+{
+private:
         std::shared_ptr<spaceinvaders::model::EntityModel> entity;
         std::string prefferedSprite;
 
-    public:
+public:
         /**
          * Get the created entity
          * @return the entity
          */
-        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::EntityModel>& getEntity() const;
 
         /**
          * Get the preferred sprite
          * @return The sprite file specified in the .json
          */
-        [[nodiscard]] const std::string &getPrefferedSprite() const;
+        [[nodiscard]] const std::string& getPrefferedSprite() const;
 
         /**
          * Notify observers an entity has been created
@@ -40,7 +41,7 @@ namespace spaceinvaders::event {
          * @param entity The created entity
          */
         explicit EntityCreatedEvent(std::shared_ptr<spaceinvaders::model::EntityModel> entity);
-    };
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_ENTITYCREATEDEVENT_H

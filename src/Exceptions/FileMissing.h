@@ -11,14 +11,15 @@ namespace spaceinvaders::exception {
 /**
  * Class for when one of the required input files is missing
  */
-    class FileMissing : public SiException {
-    public:
+class FileMissing : public SiException
+{
+public:
         /**
          * Constructor
          * @param filename The name of the missing file
          */
-        explicit FileMissing(const std::string &filename);
-    };
+        explicit FileMissing(const std::string& filename);
+};
 } // namespace spaceinvaders::exception
 
 #endif // SPACEINVADERS_FILEMISSING_H

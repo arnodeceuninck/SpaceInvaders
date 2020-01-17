@@ -9,22 +9,23 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    class GoDirection : public Event {
+class GoDirection : public Event
+{
         Coordinate direction;
 
-    public:
+public:
         /**
          * Request observer (model) to go a specific direction
          * @param direction A normalized vector pointing to the new direction
          */
-        explicit GoDirection(const Coordinate &direction);
+        explicit GoDirection(const Coordinate& direction);
 
         /**
          * Get the new direction
          * @return normalized vector pointing to the new direction
          */
-        [[nodiscard]] const Coordinate &getDirection() const;
-    };
+        [[nodiscard]] const Coordinate& getDirection() const;
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_GODIRECTION_H

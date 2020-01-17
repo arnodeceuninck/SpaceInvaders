@@ -6,6 +6,6 @@
 
 #include <utility>
 
-const std::string &spaceinvaders::event::LoadLevel::getLevel() const { return level; }
+const std::string& spaceinvaders::event::LoadLevel::getLevel() const { return level; }
 
 spaceinvaders::event::LoadLevel::LoadLevel(std::string level) : level(std::move(level)) {}

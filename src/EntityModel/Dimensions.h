@@ -8,19 +8,20 @@
 #include "Coordinate.h"
 
 namespace spaceinvaders {
-class Dimensions {
+class Dimensions
+{
 public:
-    /**
-     * Constructor
-     * @param min Lower left corner
-     * @param max Upper right corner
-     */
-    Dimensions(const Coordinate &min, const Coordinate &max);
+        /**
+         * Constructor
+         * @param min Lower left corner
+         * @param max Upper right corner
+         */
+        Dimensions(const Coordinate& min, const Coordinate& max);
 
-    /**
-     * Get the width
-     * @return
-     */
+        /**
+         * Get the width
+         * @return
+         */
         double getWidth();
 
         /**
@@ -29,21 +30,21 @@ public:
          */
         double getHeight();
 
-    /**
-     * Get the lower left corner
-     * @return
-     */
-    [[nodiscard]] const Coordinate &getMin() const;
+        /**
+         * Get the lower left corner
+         * @return
+         */
+        [[nodiscard]] const Coordinate& getMin() const;
 
-    /**
-     * Get the upper right corner
-     * @return
-     */
-    //        [[nodiscard]] const Coordinate &getMax() const;
+        /**
+         * Get the upper right corner
+         * @return
+         */
+        //        [[nodiscard]] const Coordinate &getMax() const;
 
 private:
-    Coordinate min;
-    Coordinate max;
+        Coordinate min;
+        Coordinate max;
 };
 } // namespace spaceinvaders
 

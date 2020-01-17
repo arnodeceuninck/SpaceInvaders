@@ -8,18 +8,19 @@
 #include <chrono>
 
 namespace spaceinvaders {
-class Stopwatch {
+class Stopwatch
+{
 public:
-    /**
-     * Get an instance of the Stopwatch (singleton)
-     * @return static stopwatch instance
-     */
-    static Stopwatch &getInstance();
+        /**
+         * Get an instance of the Stopwatch (singleton)
+         * @return static stopwatch instance
+         */
+        static Stopwatch& getInstance();
 
-    /**
-     * Change the time from which the clock calculates it's duration to the currentTime
-     */
-    void reset();
+        /**
+         * Change the time from which the clock calculates it's duration to the currentTime
+         */
+        void reset();
 
         /**
          * Get the duration between the last reset point (or creation of the clock) till the current time
@@ -27,25 +28,25 @@ public:
          */
         double elapsedTime();
 
-    /**
-     * Prevent copy-constructor
-     */
-    Stopwatch(Stopwatch const &) = delete;
+        /**
+         * Prevent copy-constructor
+         */
+        Stopwatch(Stopwatch const&) = delete;
 
-    /**
-     * Prevent assignment
-     */
-    void operator=(Stopwatch const &) = delete;
+        /**
+         * Prevent assignment
+         */
+        void operator=(Stopwatch const&) = delete;
 
 private:
-    /**
-     *  Start a new clock at the current time
-     */
-    Stopwatch();
+        /**
+         *  Start a new clock at the current time
+         */
+        Stopwatch();
 
-    std::chrono::system_clock::time_point startTime;
+        std::chrono::system_clock::time_point startTime;
 
-    static std::chrono::system_clock::time_point currentTime();
+        static std::chrono::system_clock::time_point currentTime();
 };
 } // namespace spaceinvaders
 

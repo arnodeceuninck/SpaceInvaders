@@ -4,4 +4,4 @@
 
 #include "ObjectNullException.h"
 
-spaceinvaders::exception::ObjectNullException::ObjectNullException(const std::string &problem) : SiException(problem) {}
+spaceinvaders::exception::ObjectNullException::ObjectNullException(const std::string& problem) : SiException(problem) {}

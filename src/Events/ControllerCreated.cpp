@@ -6,12 +6,14 @@
 
 #include <utility>
 
-const std::shared_ptr<spaceinvaders::controller::EntityController> &
-spaceinvaders::event::ControllerCreated::getController() const {
-    return controller;
+const std::shared_ptr<spaceinvaders::controller::EntityController>&
+spaceinvaders::event::ControllerCreated::getController() const
+{
+        return controller;
 }
 
 spaceinvaders::event::ControllerCreated::ControllerCreated(
-        std::shared_ptr<spaceinvaders::controller::EntityController> controller)
-        : controller(std::move(controller)) {
+    std::shared_ptr<spaceinvaders::controller::EntityController> controller)
+    : controller(std::move(controller))
+{
 }

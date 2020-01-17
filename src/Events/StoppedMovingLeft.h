@@ -8,8 +8,9 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    class StoppedMovingLeft : public Event {
-    };
+class StoppedMovingLeft : public Event
+{
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_STOPPEDMOVINGLEFT_H

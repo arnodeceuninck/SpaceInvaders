@@ -4,6 +4,7 @@
 
 #include "AttributeMissing.h"
 
-spaceinvaders::exception::AttributeMissing::AttributeMissing(const std::string &attribute)
-        : SiException("Attribute " + attribute + " missing") {
+spaceinvaders::exception::AttributeMissing::AttributeMissing(const std::string& attribute)
+    : SiException("Attribute " + attribute + " missing")
+{
 }

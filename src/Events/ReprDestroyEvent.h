@@ -9,11 +9,12 @@
 #include <memory>
 
 namespace spaceinvaders::observer {
-    class Observer;
+class Observer;
 }
 namespace spaceinvaders::event {
-    class ReprDestroyEvent : public Event {
-    public:
+class ReprDestroyEvent : public Event
+{
+public:
         /**
          * Constructor: Destroy a reprEntity
          * @param entity The representation event that got destroyed
@@ -24,11 +25,11 @@ namespace spaceinvaders::event {
          * Get the destroyed entity
          * @return the entity
          */
-        [[nodiscard]] const std::shared_ptr<spaceinvaders::observer::Observer> &getEntity() const;
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::observer::Observer>& getEntity() const;
 
-    private:
+private:
         std::shared_ptr<spaceinvaders::observer::Observer> entity;
-    };
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_REPRDESTROYEDEVENT_H

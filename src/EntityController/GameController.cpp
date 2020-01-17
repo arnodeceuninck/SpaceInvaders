@@ -11,42 +11,47 @@
 #include <utility>
 
 namespace spaceinvaders::controller {
-    void GameController::checkInput() {
+void GameController::checkInput()
+{
         gameWindow->checkInput();
         //        std::shared_ptr<spaceinvaders::event::Event> controlEvent =
         //        std::make_shared<spaceinvaders::event::ControllerEvent>(); notifyObservers(controlEvent);
-    }
+}
 
-    GameController::GameController() = default;
+GameController::GameController() = default;
 
-    void GameController::update(double elapsedSeconds) {
+void GameController::update(double elapsedSeconds)
+{
         checkInput();
         std::shared_ptr<spaceinvaders::event::Event> event =
-                std::make_shared<spaceinvaders::event::UpdateEvent>(elapsedSeconds);
+            std::make_shared<spaceinvaders::event::UpdateEvent>(elapsedSeconds);
         notifyObservers(event);
-    }
+}
 
-    GameController::GameController(std::shared_ptr<spaceinvaders::GameWindow> gameWindow)
-            : gameWindow(std::move(gameWindow)) {
-    }
+GameController::GameController(std::shared_ptr<spaceinvaders::GameWindow> gameWindow)
+    : gameWindow(std::move(gameWindow))
+{
+}
 
-    void GameController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
+void GameController::handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event)
+{
         EntityController::handleEvent(event);
         if (auto wie = std::dynamic_pointer_cast<spaceinvaders::event::WindowInteractionEvent>(event)) {
-            if (wie->getEvent().type == sf::Event::Closed) {
-                std::shared_ptr<spaceinvaders::event::Event> gameEnded =
-                        std::make_shared<spaceinvaders::event::GameEnded>();
-                notifyObservers(gameEnded);
-            } else {
-                notifyObservers(event);
-            }
+                if (wie->getEvent().type == sf::Event::Closed) {
+                        std::shared_ptr<spaceinvaders::event::Event> gameEnded =
+                            std::make_shared<spaceinvaders::event::GameEnded>();
+                        notifyObservers(gameEnded);
+                } else {
+                        notifyObservers(event);
+                }
         }
-    }
+}
 
-    void GameController::addController(const std::shared_ptr<EntityController> &controller) {
+void GameController::addController(const std::shared_ptr<EntityController>& controller)
+{
         controlEntities.insert(controller);
         addObserver(controller);
-    }
+}
 
-    void GameController::reset() { controlEntities.clear(); }
+void GameController::reset() { controlEntities.clear(); }
 } // namespace spaceinvaders::controller

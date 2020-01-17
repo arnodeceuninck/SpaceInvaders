@@ -9,21 +9,22 @@
 #include <memory>
 
 namespace spaceinvaders::model {
-    class RocketModel;
+class RocketModel;
 }
 
 namespace spaceinvaders::event {
-    class RocketPositionUpdated : public Event {
+class RocketPositionUpdated : public Event
+{
 
-    private:
+private:
         std::shared_ptr<spaceinvaders::model::RocketModel> rocket;
 
-    public:
-        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::RocketModel> &getRocket() const;
+public:
+        [[nodiscard]] const std::shared_ptr<spaceinvaders::model::RocketModel>& getRocket() const;
 
-    public:
+public:
         explicit RocketPositionUpdated(std::shared_ptr<spaceinvaders::model::RocketModel> rocket);
-    };
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_ROCKETPOSITIONUPDATED_H

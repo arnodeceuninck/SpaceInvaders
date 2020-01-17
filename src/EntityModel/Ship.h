@@ -9,25 +9,26 @@
 #include "MovingEntity.h"
 
 namespace spaceinvaders::model {
-class Ship : public MovingEntity {
-    double health{};
-    double damage{};
-    double fireTimeout = 0;
-    double timeBetweenFire{};
-    std::string bulletFile;
+class Ship : public MovingEntity
+{
+        double health{};
+        double damage{};
+        double fireTimeout = 0;
+        double timeBetweenFire{};
+        std::string bulletFile;
 
 public:
-    /**
-     * Apply changes that happend in the past second
-     * @param elapsedSeconds The time that has passed (in seconds)
-     */
-    void update(double elapsedSeconds) override;
+        /**
+         * Apply changes that happend in the past second
+         * @param elapsedSeconds The time that has passed (in seconds)
+         */
+        void update(double elapsedSeconds) override;
 
-    /**
-     * Set the json file which describes the type of bullets this ship fires
-     * @param bulletFile
-     */
-    void setBulletFile(const std::string &bulletFile);
+        /**
+         * Set the json file which describes the type of bullets this ship fires
+         * @param bulletFile
+         */
+        void setBulletFile(const std::string& bulletFile);
 
         /**
          * Get the cooldown time between two bullets
@@ -53,11 +54,11 @@ public:
          */
         void setHealth(double health);
 
-    /**
-     * Handle an event
-     * @param event
-     */
-    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        /**
+         * Handle an event
+         * @param event
+         */
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
         /**
          * Constructor
@@ -77,17 +78,17 @@ public:
          */
         virtual Coordinate getShootingDirection() = 0;
 
-    /**
-     * Get the position of the front of the ship
-     * @return
-     */
-    virtual Coordinate getShipFront() = 0;
+        /**
+         * Get the position of the front of the ship
+         * @return
+         */
+        virtual Coordinate getShipFront() = 0;
 
-    /**
-     * Take damage and destroy itself when necessarily
-     * @param bulletDamage
-     */
-    void selfDestroy(double bulletDamage) override;
+        /**
+         * Take damage and destroy itself when necessarily
+         * @param bulletDamage
+         */
+        void selfDestroy(double bulletDamage) override;
 };
 } // namespace spaceinvaders::model
 

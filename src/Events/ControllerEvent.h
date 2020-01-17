@@ -11,13 +11,14 @@ namespace spaceinvaders::event {
 /**
  * An event from the controller
  */
-    class ControllerEvent : public Event {
-    public:
+class ControllerEvent : public Event
+{
+public:
         /**
          * Constructor
          */
         ControllerEvent();
-    };
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_CONTROLLEREVENT_H

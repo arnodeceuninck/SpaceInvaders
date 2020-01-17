@@ -8,8 +8,9 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    class MovingEntityEvent : public Event {
-    };
+class MovingEntityEvent : public Event
+{
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_MOVINGENTITYEVENT_H

@@ -12,22 +12,24 @@
 #include <vector>
 
 namespace spaceinvaders::controller {
-    enum Direction {
+enum Direction
+{
         left,
         right,
         down
-    };
+};
 
 /**
  * Control a group of enemies
  */
-    class EnemiesController : public ShipController {
+class EnemiesController : public ShipController
+{
         std::list<std::pair<std::weak_ptr<spaceinvaders::model::EnemyShip>, std::weak_ptr<EnemyController>>> enemies;
         Direction direction;
         double downTime{};
         Direction previousDirection;
 
-    public:
+public:
         /**
          * Change direction
          * @param coordinate normalized direction vector
@@ -49,8 +51,8 @@ namespace spaceinvaders::controller {
          * @param enemy Model of the enemy
          * @param controller Individual controller
          */
-        void addEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &enemy,
-                      const std::shared_ptr<EnemyController> &controller);
+        void addEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip>& enemy,
+                      const std::shared_ptr<EnemyController>& controller);
 
         /**
          * constructor
@@ -61,7 +63,7 @@ namespace spaceinvaders::controller {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
         /**
          * Go down
@@ -85,7 +87,7 @@ namespace spaceinvaders::controller {
          * Update for all individual enemy controllers whether they are on the first row
          */
         void checkFirstRowEnemies();
-    };
+};
 } // namespace spaceinvaders::controller
 
 #endif // SPACEINVADERS_ENEMIESCONTROLLER_H

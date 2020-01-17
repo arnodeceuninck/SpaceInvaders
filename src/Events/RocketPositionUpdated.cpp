@@ -7,11 +7,12 @@
 #include <utility>
 
 spaceinvaders::event::RocketPositionUpdated::RocketPositionUpdated(
-        std::shared_ptr<spaceinvaders::model::RocketModel> rocket)
-        : rocket(std::move(rocket)) {
+    std::shared_ptr<spaceinvaders::model::RocketModel> rocket)
+    : rocket(std::move(rocket))
+{
 }
 
-const std::shared_ptr<spaceinvaders::model::RocketModel> &
-spaceinvaders::event::RocketPositionUpdated::getRocket() const {
-    return rocket;
+const std::shared_ptr<spaceinvaders::model::RocketModel>& spaceinvaders::event::RocketPositionUpdated::getRocket() const
+{
+        return rocket;
 }

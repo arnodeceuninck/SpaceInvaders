@@ -6,29 +6,30 @@
 #include "../EntityModel/GameModel.h"
 #include "../Exceptions/AttributeMissing.h"
 
-spaceinvaders::loader::LevelsLoader::LevelsLoader(const std::string &filename) : Loader(filename) {}
+spaceinvaders::loader::LevelsLoader::LevelsLoader(const std::string& filename) : Loader(filename) {}
 
 void spaceinvaders::loader::LevelsLoader::loadInto(
-        const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
-        const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation) {
+    const std::shared_ptr<spaceinvaders::model::GameModel>& gameModel,
+    const std::shared_ptr<spaceinvaders::view::GameRepresentation>& gameRepresentation)
+{
 
-    rapidjson::Document input = getDocument();
+        rapidjson::Document input = getDocument();
 
-    std::string attribute = "background";
-    checkAttribute(input, attribute);
-    std::string background = input[attribute.c_str()].GetString();
-    gameRepresentation->setBackground(background);
+        std::string attribute = "background";
+        checkAttribute(input, attribute);
+        std::string background = input[attribute.c_str()].GetString();
+        gameRepresentation->setBackground(background);
 
-    attribute = "levels";
-    checkAttribute(input, attribute, false, true);
-    rapidjson::Value &levelsValue = input[attribute.c_str()];
+        attribute = "levels";
+        checkAttribute(input, attribute, false, true);
+        rapidjson::Value& levelsValue = input[attribute.c_str()];
 
-    for (unsigned int i = levelsValue.Size(); i > 0; i--) {
+        for (unsigned int i = levelsValue.Size(); i > 0; i--) {
 
-        rapidjson::Value &obj = levelsValue[i - 1];
-        if (obj["file"].IsNull())
-            throw spaceinvaders::exception::AttributeMissing("file");
-        std::string file = obj["file"].GetString();
-        gameModel->addLevel(file);
-    }
+                rapidjson::Value& obj = levelsValue[i - 1];
+                if (obj["file"].IsNull())
+                        throw spaceinvaders::exception::AttributeMissing("file");
+                std::string file = obj["file"].GetString();
+                gameModel->addLevel(file);
+        }
 }

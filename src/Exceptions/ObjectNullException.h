@@ -8,10 +8,11 @@
 #include "SiExcecption.h"
 
 namespace spaceinvaders::exception {
-    class ObjectNullException : public SiException {
-    public:
-        explicit ObjectNullException(const std::string &problem);
-    };
+class ObjectNullException : public SiException
+{
+public:
+        explicit ObjectNullException(const std::string& problem);
+};
 } // namespace spaceinvaders::exception
 
 #endif // SPACEINVADERS_OBJECTNULLEXCEPTION_H

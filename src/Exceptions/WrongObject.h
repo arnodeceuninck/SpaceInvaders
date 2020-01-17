@@ -8,10 +8,11 @@
 #include "SiExcecption.h"
 
 namespace spaceinvaders::exception {
-    class WrongObject : public SiException {
-    public:
-        explicit WrongObject(const std::string &shouldBeObject);
-    };
+class WrongObject : public SiException
+{
+public:
+        explicit WrongObject(const std::string& shouldBeObject);
+};
 } // namespace spaceinvaders::exception
 
 #endif // SPACEINVADERS_WRONGOBJECT_H

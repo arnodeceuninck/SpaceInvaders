@@ -30,73 +30,74 @@
 // -> GameController : Required for internal control changes (e.g. update, ...) // Does LevelLoader
 
 void spaceinvaders::loader::LevelLoader::loadInto(
-        const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
-        const std::shared_ptr<spaceinvaders::controller::GameController> &gameController) {
-    rapidjson::Document input = getDocument();
+    const std::shared_ptr<spaceinvaders::view::GameRepresentation>& gameRepresentation,
+    const std::shared_ptr<spaceinvaders::controller::GameController>& gameController)
+{
+        rapidjson::Document input = getDocument();
 
-    std::string attribute = "player";
-    checkAttribute(input, attribute);
-    if (auto playerFile = input[attribute.c_str()].GetString()) {
+        std::string attribute = "player";
+        checkAttribute(input, attribute);
+        if (auto playerFile = input[attribute.c_str()].GetString()) {
 
-        // Create a player ship, it's representation and it's controller
-        auto playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
-        auto shipController = std::make_shared<spaceinvaders::controller::PlayerController>();
+                // Create a player ship, it's representation and it's controller
+                auto playerShip = std::make_shared<spaceinvaders::model::PlayerShip>();
+                auto shipController = std::make_shared<spaceinvaders::controller::PlayerController>();
 
-        // Load the contents of the player file to the ship
-        ShipLoader shipLoader{playerFile};
-        std::string spriteFile;
-        shipLoader.loadInto(playerShip, spriteFile);
+                // Load the contents of the player file to the ship
+                ShipLoader shipLoader{playerFile};
+                std::string spriteFile;
+                shipLoader.loadInto(playerShip, spriteFile);
 
-        std::shared_ptr<spaceinvaders::event::Event> event =
-                std::make_shared<spaceinvaders::event::EntityCreatedEvent>(playerShip, spriteFile);
-        notifyObservers(event);
+                std::shared_ptr<spaceinvaders::event::Event> event =
+                    std::make_shared<spaceinvaders::event::EntityCreatedEvent>(playerShip, spriteFile);
+                notifyObservers(event);
 
-        gameController->addController(shipController);
-        shipController->addObserver(playerShip);
-    }
+                gameController->addController(shipController);
+                shipController->addObserver(playerShip);
+        }
 
-    // If null, it won't be looped through
-    rapidjson::Value &enemiesValue = input["enemies"];
+        // If null, it won't be looped through
+        rapidjson::Value& enemiesValue = input["enemies"];
 
-    auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>();
+        auto enemiesController = std::make_shared<spaceinvaders::controller::EnemiesController>();
 
-    for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
+        for (rapidjson::SizeType i = 0; i < enemiesValue.Size(); i++) {
 
-        rapidjson::Value &enemyObj = enemiesValue[i];
+                rapidjson::Value& enemyObj = enemiesValue[i];
 
-        if (enemyObj["enemy"].IsNull() or enemyObj["x"].IsNull() or enemyObj["y"].IsNull())
-            throw spaceinvaders::exception::AttributeMissing("enemy, x or y");
+                if (enemyObj["enemy"].IsNull() or enemyObj["x"].IsNull() or enemyObj["y"].IsNull())
+                        throw spaceinvaders::exception::AttributeMissing("enemy, x or y");
 
-        if (!enemyObj["x"].IsNumber() or !enemyObj["y"].IsNumber())
-            throw spaceinvaders::exception::WrongObject("double");
+                if (!enemyObj["x"].IsNumber() or !enemyObj["y"].IsNumber())
+                        throw spaceinvaders::exception::WrongObject("double");
 
-        std::string enemyJson = enemyObj["enemy"].GetString();
-        double enemyX = enemyObj["x"].GetDouble();
-        double enemyY = enemyObj["y"].GetDouble();
+                std::string enemyJson = enemyObj["enemy"].GetString();
+                double enemyX = enemyObj["x"].GetDouble();
+                double enemyY = enemyObj["y"].GetDouble();
 
-        // Create a player ship, it's representation and it's controller
-        auto enemyShip = std::make_shared<spaceinvaders::model::EnemyShip>(enemyX, enemyY);
+                // Create a player ship, it's representation and it's controller
+                auto enemyShip = std::make_shared<spaceinvaders::model::EnemyShip>(enemyX, enemyY);
 
-        // Load the contents of the player file to the ship
-        ShipLoader shipLoader{enemyJson};
-        std::string spriteFile;
-        shipLoader.loadInto(enemyShip, spriteFile);
+                // Load the contents of the player file to the ship
+                ShipLoader shipLoader{enemyJson};
+                std::string spriteFile;
+                shipLoader.loadInto(enemyShip, spriteFile);
 
-        auto enemyController =
-                std::make_shared<spaceinvaders::controller::EnemyController>(enemyShip->getTimeBetweenFire());
-        enemiesController->addEnemy(enemyShip, enemyController);
-        enemyController->addObserver(enemyShip);
+                auto enemyController =
+                    std::make_shared<spaceinvaders::controller::EnemyController>(enemyShip->getTimeBetweenFire());
+                enemiesController->addEnemy(enemyShip, enemyController);
+                enemyController->addObserver(enemyShip);
 
-        std::shared_ptr<spaceinvaders::event::Event> event =
-                std::make_shared<spaceinvaders::event::EntityCreatedEvent>(enemyShip, spriteFile);
-        notifyObservers(event);
+                std::shared_ptr<spaceinvaders::event::Event> event =
+                    std::make_shared<spaceinvaders::event::EntityCreatedEvent>(enemyShip, spriteFile);
+                notifyObservers(event);
 
-        gameController->addController(enemyController);
-        enemyController->addObserver(enemyShip);
-    }
+                gameController->addController(enemyController);
+                enemyController->addObserver(enemyShip);
+        }
 
-    gameController->addController(enemiesController);
-    enemiesController->addObserver(gameController);
+        gameController->addController(enemiesController);
+        enemiesController->addObserver(gameController);
 }
 
-spaceinvaders::loader::LevelLoader::LevelLoader(const std::string &filename) : Loader(filename) {}
+spaceinvaders::loader::LevelLoader::LevelLoader(const std::string& filename) : Loader(filename) {}

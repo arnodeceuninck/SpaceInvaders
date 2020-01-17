@@ -14,22 +14,23 @@ class RenderWindow;
 
 namespace spaceinvaders {
 
-    namespace model {
-        class GameModel;
-    }
+namespace model {
+class GameModel;
+}
 
-    namespace view {
-        class GameRepresentation;
-    }
+namespace view {
+class GameRepresentation;
+}
 
-    namespace controller {
-        class GameController;
-    }
+namespace controller {
+class GameController;
+}
 
-    class GameWindow;
+class GameWindow;
 
-    class Game : public observer::Observer, public std::enable_shared_from_this<Game> {
-    public:
+class Game : public observer::Observer, public std::enable_shared_from_this<Game>
+{
+public:
         /**
          * Standard constructor for the game, sets everything up and starts the gameloop
          */
@@ -39,9 +40,9 @@ namespace spaceinvaders {
          * Handles following events: LoadLevel, LevelEnded and GameEnded
          * @param event One of the events described above
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
-    private:
+private:
         void Start();
 
         std::shared_ptr<model::GameModel> gameModel;
@@ -57,14 +58,14 @@ namespace spaceinvaders {
 
         void initView();
 
-        void loadLevel(const std::string &level);
+        void loadLevel(const std::string& level);
 
         void initController();
 
         bool gameRunning{};
 
         void gameLoop();
-    };
+};
 
 } // namespace spaceinvaders
 

@@ -13,8 +13,9 @@ namespace spaceinvaders::event {
 /**
  * Request the model to fire a bullet
  */
-    class FireBullet : public Event {
-    };
+class FireBullet : public Event
+{
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_FIREBULLET_H

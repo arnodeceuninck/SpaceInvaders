@@ -11,8 +11,9 @@ namespace spaceinvaders::event {
 /**
  * Notify everyone the game has ended
  */
-    class GameEnded : public Event {
-    };
+class GameEnded : public Event
+{
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_GAMEENDED_H

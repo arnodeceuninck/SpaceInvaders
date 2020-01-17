@@ -11,16 +11,17 @@
 #include <stack>
 
 namespace spaceinvaders::model {
-    class WorldModel;
+class WorldModel;
 
-    class GameModel : public EntityModel {
+class GameModel : public EntityModel
+{
 
-    public:
+public:
         /**
          * Get the Game Wold
          * @return
          */
-        const std::shared_ptr<WorldModel> &getGameWorld() const;
+        const std::shared_ptr<WorldModel>& getGameWorld() const;
 
         /**
          * Constructor
@@ -36,7 +37,7 @@ namespace spaceinvaders::model {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
         /**
          * Update its position
@@ -48,19 +49,19 @@ namespace spaceinvaders::model {
          * Get the game dimensions
          * @return
          */
-        const std::shared_ptr<Dimensions> &getDimensions() const;
+        const std::shared_ptr<Dimensions>& getDimensions() const;
 
         /**
          * Add a level on the level stack
          * @param level
          */
-        void addLevel(const std::string &level);
+        void addLevel(const std::string& level);
 
-    private:
+private:
         std::shared_ptr<WorldModel> gameWorld;
         std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(Coordinate(-4, -3), Coordinate(4, 3));
         std::stack<std::string> levels;
-    };
+};
 } // namespace spaceinvaders::model
 
 #endif // SPACEINVADERS_GAMEMODEL_H

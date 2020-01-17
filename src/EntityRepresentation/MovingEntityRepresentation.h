@@ -12,10 +12,11 @@ class Ship;
 }
 
 namespace spaceinvaders::view {
-    class MovingEntityRepresentation : public EntityRepresentation,
-                                       public std::enable_shared_from_this<MovingEntityRepresentation> {
+class MovingEntityRepresentation : public EntityRepresentation,
+                                   public std::enable_shared_from_this<MovingEntityRepresentation>
+{
 
-    public:
+public:
         /**
          * Draw the entityu on the view
          */
@@ -30,15 +31,15 @@ namespace spaceinvaders::view {
          * @param window The window to draw on
          * @param sprite The filename of the texture file that will be used
          */
-        MovingEntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
-                                   const std::shared_ptr<GameWindow> &window, const std::string &sprite);
+        MovingEntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel>& entity,
+                                   const std::shared_ptr<GameWindow>& window, const std::string& sprite);
 
         /**
          * Handle an incoming event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
-    };
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
+};
 } // namespace spaceinvaders::view
 
 #endif // SPACEINVADERS_MOVINGENTITYREPRESENTATION_H

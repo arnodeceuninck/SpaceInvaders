@@ -8,10 +8,11 @@
 #include "SiExcecption.h"
 
 namespace spaceinvaders::exception {
-    class AttributeMissing : public SiException {
-    public:
-        explicit AttributeMissing(const std::string &problem);
-    };
+class AttributeMissing : public SiException
+{
+public:
+        explicit AttributeMissing(const std::string& problem);
+};
 } // namespace spaceinvaders::exception
 
 #endif // SPACEINVADERS_ATTRIBUTEMISSING_H

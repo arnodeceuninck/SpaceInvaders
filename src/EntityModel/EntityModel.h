@@ -11,15 +11,16 @@
 #include <memory>
 
 namespace spaceinvaders::controller {
-    class ControllerEvent;
+class ControllerEvent;
 }
 namespace spaceinvaders::model {
-    class ModelChangedEvent;
+class ModelChangedEvent;
 
-    class EntityModel : public observer::Observer,
-                        public observer::Observable,
-                        public std::enable_shared_from_this<EntityModel> {
-    public:
+class EntityModel : public observer::Observer,
+                    public observer::Observable,
+                    public std::enable_shared_from_this<EntityModel>
+{
+public:
         /**
          * Update its position
          * @param elapsedSeconds
@@ -30,8 +31,8 @@ namespace spaceinvaders::model {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
-    };
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
+};
 } // namespace spaceinvaders::model
 
 #endif // SPACEINVADERS_ENTITYMODEL_H

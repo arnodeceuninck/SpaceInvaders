@@ -9,10 +9,11 @@
 #include <string>
 
 namespace spaceinvaders::event {
-    class LoadLevel : public Event {
+class LoadLevel : public Event
+{
         std::string level;
 
-    public:
+public:
         /**
          * Request a specific level to be loaded
          * @param level The level to be loaded (filename)
@@ -23,8 +24,8 @@ namespace spaceinvaders::event {
          * Get the level that should be loaded
          * @return filename of the level (in the levels folder)
          */
-        [[nodiscard]] const std::string &getLevel() const;
-    };
+        [[nodiscard]] const std::string& getLevel() const;
+};
 } // namespace spaceinvaders::event
 
 #endif // SPACEINVADERS_LOADLEVEL_H

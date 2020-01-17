@@ -9,28 +9,29 @@
 #include <string>
 
 namespace spaceinvaders::view {
-class BackgroundTiles : public EntityRepresentation {
+class BackgroundTiles : public EntityRepresentation
+{
 public:
-    /**
-     * Constructor
-     * @param filename containing the background texture
-     * @param window to draw on
-     */
-    BackgroundTiles(const std::string &filename, const std::shared_ptr<GameWindow> &window);
+        /**
+         * Constructor
+         * @param filename containing the background texture
+         * @param window to draw on
+         */
+        BackgroundTiles(const std::string& filename, const std::shared_ptr<GameWindow>& window);
 
-    /**
-     * Handle an event
-     * @param event
-     */
-    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        /**
+         * Handle an event
+         * @param event
+         */
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
 
-    /**
-     * Draw itself on the screen
-     */
-    void draw() override;
+        /**
+         * Draw itself on the screen
+         */
+        void draw() override;
 
 private:
-    sf::Texture texture;
+        sf::Texture texture;
 };
 } // namespace spaceinvaders::view
 

@@ -9,23 +9,24 @@
 #include "EntityController.h"
 
 namespace spaceinvaders::controller {
-class ShipController : public EntityController {
+class ShipController : public EntityController
+{
 public:
-    /**
-     * Request a ship to change it's direction
-     * @param coordinate The direction you want the ship to go in (normalized)
-     */
-    virtual void go(Coordinate coordinate);
+        /**
+         * Request a ship to change it's direction
+         * @param coordinate The direction you want the ship to go in (normalized)
+         */
+        virtual void go(Coordinate coordinate);
 
-    /**
-     * Request a ship to fire
-     */
-    virtual void fire();
+        /**
+         * Request a ship to fire
+         */
+        virtual void fire();
 
-    /**
-     * Constructor
-     */
-    ShipController();
+        /**
+         * Constructor
+         */
+        ShipController();
 };
 } // namespace spaceinvaders::controller
 

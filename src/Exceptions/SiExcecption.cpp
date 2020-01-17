@@ -6,6 +6,6 @@
 
 #include <utility>
 
-const char *spaceinvaders::exception::SiException::what() const noexcept { return problem.c_str(); }
+const char* spaceinvaders::exception::SiException::what() const noexcept { return problem.c_str(); }
 
 spaceinvaders::exception::SiException::SiException(std::string problem) : problem(std::move(problem)) {}

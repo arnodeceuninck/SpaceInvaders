@@ -10,11 +10,13 @@ void spaceinvaders::Stopwatch::reset() { startTime = std::chrono::system_clock::
 
 double spaceinvaders::Stopwatch::elapsedTime() { return (currentTime() - startTime).count(); }
 
-std::chrono::system_clock::time_point spaceinvaders::Stopwatch::currentTime() {
-    return std::chrono::system_clock::now();
+std::chrono::system_clock::time_point spaceinvaders::Stopwatch::currentTime()
+{
+        return std::chrono::system_clock::now();
 }
 
-spaceinvaders::Stopwatch &spaceinvaders::Stopwatch::getInstance() {
-    static Stopwatch instance;
-    return instance;
+spaceinvaders::Stopwatch& spaceinvaders::Stopwatch::getInstance()
+{
+        static Stopwatch instance;
+        return instance;
 }

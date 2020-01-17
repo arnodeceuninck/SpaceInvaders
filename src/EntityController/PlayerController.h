@@ -11,8 +11,9 @@
 #include "ShipController.h"
 
 namespace spaceinvaders::controller {
-    class PlayerController : public ShipController {
-    public:
+class PlayerController : public ShipController
+{
+public:
         /**
          * Constructor
          */
@@ -22,8 +23,8 @@ namespace spaceinvaders::controller {
          * Handle an event
          * @param event
          */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
-    };
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event>& event) override;
+};
 } // namespace spaceinvaders::controller
 
 #endif // SPACEINVADERS_PLAYERCONTROLLER_H

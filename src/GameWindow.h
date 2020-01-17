@@ -10,8 +10,9 @@
 #include "SFML/Graphics.hpp"
 
 namespace spaceinvaders {
-    class GameWindow : public observer::Observable {
-    public:
+class GameWindow : public observer::Observable
+{
+public:
         /**
          * Initialise a GameWindow (also initializes the sfml window)
          * @param width The width of the window
@@ -46,14 +47,14 @@ namespace spaceinvaders {
          * Get the sfml window
          * @return sfml window
          */
-        [[nodiscard]] const std::shared_ptr<sf::RenderWindow> &getSfmlWindow() const;
+        [[nodiscard]] const std::shared_ptr<sf::RenderWindow>& getSfmlWindow() const;
 
-    private:
+private:
         sf::Event lastEvent{};
         int width;
         int height;
         std::shared_ptr<sf::RenderWindow> sfmlWindow;
-    };
+};
 } // namespace spaceinvaders
 
 #endif // SPACEINVADERS_GAMEWINDOW_H
