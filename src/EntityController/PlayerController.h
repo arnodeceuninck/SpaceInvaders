@@ -5,9 +5,9 @@
 #ifndef SPACEINVADERS_PLAYERCONTROLLER_H
 #define SPACEINVADERS_PLAYERCONTROLLER_H
 
-#include "EntityController.h"
-#include "../Events/MovingEntityEvent.h"
 #include "../EntityModel/Coordinate.h"
+#include "../Events/MovingEntityEvent.h"
+#include "EntityController.h"
 #include "ShipController.h"
 
 namespace spaceinvaders::controller {
@@ -24,7 +24,6 @@ namespace spaceinvaders::controller {
          */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
-}
+} // namespace spaceinvaders::controller
 
-
-#endif //SPACEINVADERS_PLAYERCONTROLLER_H
+#endif // SPACEINVADERS_PLAYERCONTROLLER_H

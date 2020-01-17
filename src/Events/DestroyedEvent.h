@@ -5,9 +5,8 @@
 #ifndef SPACEINVADERS_DESTROYEDEVENT_H
 #define SPACEINVADERS_DESTROYEDEVENT_H
 
-
-#include <memory>
 #include "Event.h"
+#include <memory>
 
 namespace spaceinvaders::model {
     class MovingEntity;
@@ -29,9 +28,7 @@ namespace spaceinvaders::event {
 
     private:
         std::shared_ptr<spaceinvaders::model::MovingEntity> entity;
-
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_DESTROYEDEVENT_H
+#endif // SPACEINVADERS_DESTROYEDEVENT_H

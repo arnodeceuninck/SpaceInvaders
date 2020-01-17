@@ -4,9 +4,8 @@
 
 #include "EnemyPositionUpdated.h"
 
-spaceinvaders::event::EnemyPositionUpdated::EnemyPositionUpdated(const spaceinvaders::Coordinate &newFront) : newFront(
-        newFront) {}
-
-const spaceinvaders::Coordinate &spaceinvaders::event::EnemyPositionUpdated::getNewFront() const {
-    return newFront;
+spaceinvaders::event::EnemyPositionUpdated::EnemyPositionUpdated(const spaceinvaders::Coordinate &newFront)
+        : newFront(newFront) {
 }
+
+const spaceinvaders::Coordinate &spaceinvaders::event::EnemyPositionUpdated::getNewFront() const { return newFront; }

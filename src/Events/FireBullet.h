@@ -5,17 +5,16 @@
 #ifndef SPACEINVADERS_FIREBULLET_H
 #define SPACEINVADERS_FIREBULLET_H
 
-#include <memory>
-#include "Event.h"
 #include "../EntityModel/RocketModel.h"
+#include "Event.h"
+#include <memory>
 
 namespace spaceinvaders::event {
-    /**
-     * Request the model to fire a bullet
-     */
+/**
+ * Request the model to fire a bullet
+ */
     class FireBullet : public Event {
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_FIREBULLET_H
+#endif // SPACEINVADERS_FIREBULLET_H

@@ -5,8 +5,8 @@
 #ifndef SPACEINVADERS_ENTITYCONTROLLER_H
 #define SPACEINVADERS_ENTITYCONTROLLER_H
 
-#include "../Observer/Observable.h"
 #include "../Events/ControllerEvent.h"
+#include "../Observer/Observable.h"
 
 namespace spaceinvaders::model {
     class EntityModel;
@@ -19,7 +19,7 @@ namespace spaceinvaders::controller {
          */
         EntityController();
 
-//        const std::shared_ptr<spaceinvaders::model::EntityModel> &getModel() const;
+        //        const std::shared_ptr<spaceinvaders::model::EntityModel> &getModel() const;
 
         /**
          * Handle an event
@@ -28,7 +28,6 @@ namespace spaceinvaders::controller {
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
 
-}
+} // namespace spaceinvaders::controller
 
-
-#endif //SPACEINVADERS_ENTITYCONTROLLER_H
+#endif // SPACEINVADERS_ENTITYCONTROLLER_H

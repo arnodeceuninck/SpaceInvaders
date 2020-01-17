@@ -6,6 +6,4 @@
 
 spaceinvaders::event::GoDirection::GoDirection(const spaceinvaders::Coordinate &direction) : direction(direction) {}
 
-const spaceinvaders::Coordinate &spaceinvaders::event::GoDirection::getDirection() const {
-    return direction;
-}
+const spaceinvaders::Coordinate &spaceinvaders::event::GoDirection::getDirection() const { return direction; }

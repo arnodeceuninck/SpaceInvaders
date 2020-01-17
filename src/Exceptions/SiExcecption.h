@@ -8,30 +8,29 @@
 #include <exception>
 #include <string>
 
-
 namespace spaceinvaders::exception {
 
 /**
  * Default exception type of errors occured in spaceinvaders
  */
-    class SiException : public std::exception {
-    private:
-        std::string problem;
-    public:
-        /**
-         * Make an exception
-         * @param problem The problem why the exception is thrown
-         */
-        explicit SiException(std::string problem);
+class SiException : public std::exception {
+private:
+    std::string problem;
 
-        /**
-         * Get the reason that caused the exception
-         * @return a c string describing the cause of the exception
-         */
-        [[nodiscard]] const char *what() const noexcept override;
-    };
+public:
+    /**
+     * Make an exception
+     * @param problem The problem why the exception is thrown
+     */
+    explicit SiException(std::string problem);
 
-}
+    /**
+     * Get the reason that caused the exception
+     * @return a c string describing the cause of the exception
+     */
+    [[nodiscard]] const char *what() const noexcept override;
+};
 
+} // namespace spaceinvaders::exception
 
-#endif //SPACEINVADERS_SIEXCECPTION_H
+#endif // SPACEINVADERS_SIEXCECPTION_H

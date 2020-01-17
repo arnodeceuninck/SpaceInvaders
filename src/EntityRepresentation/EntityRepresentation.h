@@ -10,107 +10,108 @@
 #include <memory>
 
 namespace spaceinvaders::model {
-    class EntityModel;
+class EntityModel;
 }
 namespace spaceinvaders::view {
     class GameRepresentation;
 
-class EntityRepresentation : public observer::Observer,
-                             public observer::Observable, public std::enable_shared_from_this<EntityRepresentation> {
-    std::string spriteFile;
-    sf::Texture texture;
-    sf::Sprite sprite;
-    std::weak_ptr<spaceinvaders::model::EntityModel> entity;
-    std::shared_ptr<GameWindow> window;
-    bool init = false;
-public:
-    /**
-     * Get the texture file of the entity
-     * @return the texture
-     */
-    sf::Texture &getTexture();
+    class EntityRepresentation : public observer::Observer,
+                                 public observer::Observable,
+                                 public std::enable_shared_from_this<EntityRepresentation> {
+        std::string spriteFile;
+        sf::Texture texture;
+        sf::Sprite sprite;
+        std::weak_ptr<spaceinvaders::model::EntityModel> entity;
+        std::shared_ptr<GameWindow> window;
+        bool init = false;
 
-    /**
-     * Get the sprite of the file
-     * @return the sprite
-     */
-    sf::Sprite &getSprite();
+    public:
+        /**
+         * Get the texture file of the entity
+         * @return the texture
+         */
+        sf::Texture &getTexture();
 
-    /**
-     * Check whether the draw function has been initialized
-     * @return whether it is initialized
-     */
-    bool isInit() const;
+        /**
+         * Get the sprite of the file
+         * @return the sprite
+         */
+        sf::Sprite &getSprite();
 
-    /**
-     * Let the representation know it has been initialised
-     * @param init Whether it has been initialized
-     */
-    void setInit(bool init);
+        /**
+         * Check whether the draw function has been initialized
+         * @return whether it is initialized
+         */
+        bool isInit() const;
 
-    /**
-     * Apply a texture to an entity
-     * @param texture the file to the texture you want to apply
-     */
-    void setTexture(const sf::Texture &texture);
+        /**
+         * Let the representation know it has been initialised
+         * @param init Whether it has been initialized
+         */
+        void setInit(bool init);
 
-    /**
-     * Update the sprite
-     * @param sprite
-     */
-    void setSprite(const sf::Sprite &sprite);
+        /**
+         * Apply a texture to an entity
+         * @param texture the file to the texture you want to apply
+         */
+        void setTexture(const sf::Texture &texture);
 
-    /**
-     * Constructor
-     * @param window
-     */
-    explicit EntityRepresentation(std::shared_ptr<GameWindow> window);
+        /**
+         * Update the sprite
+         * @param sprite
+         */
+        void setSprite(const sf::Sprite &sprite);
 
-    /**
-     * Get the model entity it is representing
-     * @return the entity
-     */
-    const std::weak_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
+        /**
+         * Constructor
+         * @param window
+         */
+        explicit EntityRepresentation(std::shared_ptr<GameWindow> window);
 
-    /**
-     * Get the window that is being drawn on
-     * @return
-     */
-    std::shared_ptr<GameWindow> &getWindow();
+        /**
+         * Get the model entity it is representing
+         * @return the entity
+         */
+        const std::weak_ptr<spaceinvaders::model::EntityModel> &getEntity() const;
 
-    /**
-     * Get the sprite file
-     * @return The sprite file
-     */
-    const std::string &getSpriteFile() const;
+        /**
+         * Get the window that is being drawn on
+         * @return
+         */
+        std::shared_ptr<GameWindow> &getWindow();
 
-    /**
-     * Handle an spaceinvaders::event::Event
-     * @param event
-     */
-    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+        /**
+         * Get the sprite file
+         * @return The sprite file
+         */
+        const std::string &getSpriteFile() const;
 
-    /**
-     * Update the sprite file
-     * @param spriteFile
-     */
-    void setSpriteFile(const std::string &spriteFile);
+        /**
+         * Handle an spaceinvaders::event::Event
+         * @param event
+         */
+        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-    /**
-     * Draw itself on the gamewindow
-     */
-    virtual void draw() = 0;
+        /**
+         * Update the sprite file
+         * @param spriteFile
+         */
+        void setSpriteFile(const std::string &spriteFile);
 
-    /**
-     * Constructor
-     * @param entity Model it is representing
-     * @param window GameWindow to draw on
-     * @param sprite
-     */
-    EntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
-                         std::shared_ptr<GameWindow> window, const std::string &sprite);
-};
-}
+        /**
+         * Draw itself on the gamewindow
+         */
+        virtual void draw() = 0;
 
+        /**
+         * Constructor
+         * @param entity Model it is representing
+         * @param window GameWindow to draw on
+         * @param sprite
+         */
+        EntityRepresentation(const std::shared_ptr<spaceinvaders::model::EntityModel> &entity,
+                             std::shared_ptr<GameWindow> window, const std::string &sprite);
+    };
+} // namespace spaceinvaders::view
 
-#endif //SPACEINVADERS_ENTITYREPRESENTATION_H
+#endif // SPACEINVADERS_ENTITYREPRESENTATION_H

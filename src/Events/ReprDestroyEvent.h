@@ -5,9 +5,8 @@
 #ifndef SPACEINVADERS_REPRDESTROYEDEVENT_H
 #define SPACEINVADERS_REPRDESTROYEDEVENT_H
 
-
-#include <memory>
 #include "Event.h"
+#include <memory>
 
 namespace spaceinvaders::observer {
     class Observer;
@@ -30,7 +29,6 @@ namespace spaceinvaders::event {
     private:
         std::shared_ptr<spaceinvaders::observer::Observer> entity;
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_REPRDESTROYEDEVENT_H
+#endif // SPACEINVADERS_REPRDESTROYEDEVENT_H

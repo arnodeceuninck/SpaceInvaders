@@ -4,5 +4,6 @@
 
 #include "WrongObject.h"
 
-spaceinvaders::exception::WrongObject::WrongObject(const std::string &shouldBeObject) : SiException(
-        "Wrong object: should be a " + shouldBeObject) {}
+spaceinvaders::exception::WrongObject::WrongObject(const std::string &shouldBeObject)
+        : SiException("Wrong object: should be a " + shouldBeObject) {
+}

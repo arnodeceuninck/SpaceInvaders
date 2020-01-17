@@ -7,17 +7,14 @@
 #include <fstream>
 
 #include "../../rapidjson/istreamwrapper.h"
+#include "../Exceptions/AttributeMissing.h"
 #include "../Exceptions/FileMissing.h"
 #include "../Exceptions/ObjectNullException.h"
-#include "../Exceptions/AttributeMissing.h"
 #include "../Exceptions/WrongObject.h"
-
 
 spaceinvaders::loader::Loader::Loader(const std::string &filename) : filename("levels/" + filename) {}
 
-const std::string &spaceinvaders::loader::Loader::getFilename() const {
-    return filename;
-}
+const std::string &spaceinvaders::loader::Loader::getFilename() const { return filename; }
 
 rapidjson::Document spaceinvaders::loader::Loader::getDocument() const {
 

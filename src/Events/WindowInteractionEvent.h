@@ -5,12 +5,13 @@
 #ifndef SPACEINVADERS_WINDOWINTERACTIONEVENT_H
 #define SPACEINVADERS_WINDOWINTERACTIONEVENT_H
 
-#include <SFML/Window/Event.hpp>
 #include "ControllerEvent.h"
+#include <SFML/Window/Event.hpp>
 
 namespace spaceinvaders::event {
     class WindowInteractionEvent : public ControllerEvent {
         sf::Event event;
+
     public:
         /**
          * Constructor
@@ -24,7 +25,6 @@ namespace spaceinvaders::event {
          */
         [[nodiscard]] const sf::Event &getEvent() const;
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_WINDOWINTERACTIONEVENT_H
+#endif // SPACEINVADERS_WINDOWINTERACTIONEVENT_H

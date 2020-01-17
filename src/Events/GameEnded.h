@@ -8,13 +8,11 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    /**
-     * Notify everyone the game has ended
-     */
+/**
+ * Notify everyone the game has ended
+ */
     class GameEnded : public Event {
-
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_GAMEENDED_H
+#endif // SPACEINVADERS_GAMEENDED_H

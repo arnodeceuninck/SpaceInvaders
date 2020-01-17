@@ -9,22 +9,22 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    class PositionUpdated : public Event {
-        Coordinate newPosition;
-    public:
-        /**
-         * Constructor, notify observers your position has changed
-         * @param newPosition The new position (duhh)
-         */
-        explicit PositionUpdated(const Coordinate &newPosition);
+class PositionUpdated : public Event {
+    Coordinate newPosition;
 
-        /**
-         * Get the new position
-         * @return the new position
-         */
-        [[nodiscard]] const Coordinate &getNewPosition() const;
-    };
-}
+public:
+    /**
+     * Constructor, notify observers your position has changed
+     * @param newPosition The new position (duhh)
+     */
+    explicit PositionUpdated(const Coordinate &newPosition);
 
+    /**
+     * Get the new position
+     * @return the new position
+     */
+    [[nodiscard]] const Coordinate &getNewPosition() const;
+};
+} // namespace spaceinvaders::event
 
-#endif //SPACEINVADERS_POSITIONUPDATED_H
+#endif // SPACEINVADERS_POSITIONUPDATED_H

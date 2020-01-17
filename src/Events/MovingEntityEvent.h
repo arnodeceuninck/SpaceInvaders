@@ -9,9 +9,7 @@
 
 namespace spaceinvaders::event {
     class MovingEntityEvent : public Event {
-
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_MOVINGENTITYEVENT_H
+#endif // SPACEINVADERS_MOVINGENTITYEVENT_H

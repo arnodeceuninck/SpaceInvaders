@@ -5,25 +5,28 @@
 #ifndef SPACEINVADERS_ENEMIESCONTROLLER_H
 #define SPACEINVADERS_ENEMIESCONTROLLER_H
 
-#include "ShipController.h"
 #include "../EntityModel/EnemyShip.h"
 #include "EnemyController.h"
+#include "ShipController.h"
 
 #include <vector>
 
 namespace spaceinvaders::controller {
     enum Direction {
-        left, right, down
+        left,
+        right,
+        down
     };
 
-    /**
-     * Control a group of enemies
-     */
+/**
+ * Control a group of enemies
+ */
     class EnemiesController : public ShipController {
         std::list<std::pair<std::weak_ptr<spaceinvaders::model::EnemyShip>, std::weak_ptr<EnemyController>>> enemies;
         Direction direction;
         double downTime{};
         Direction previousDirection;
+
     public:
         /**
          * Change direction
@@ -46,9 +49,8 @@ namespace spaceinvaders::controller {
          * @param enemy Model of the enemy
          * @param controller Individual controller
          */
-        void
-        addEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &enemy,
-                 const std::shared_ptr<EnemyController> &controller);
+        void addEnemy(const std::shared_ptr<spaceinvaders::model::EnemyShip> &enemy,
+                      const std::shared_ptr<EnemyController> &controller);
 
         /**
          * constructor
@@ -67,7 +69,6 @@ namespace spaceinvaders::controller {
          */
         void goDown(double elapsedTime);
 
-
         /**
          * Check whether an enemy is close to the right border
          * @return
@@ -85,7 +86,6 @@ namespace spaceinvaders::controller {
          */
         void checkFirstRowEnemies();
     };
-}
+} // namespace spaceinvaders::controller
 
-
-#endif //SPACEINVADERS_ENEMIESCONTROLLER_H
+#endif // SPACEINVADERS_ENEMIESCONTROLLER_H

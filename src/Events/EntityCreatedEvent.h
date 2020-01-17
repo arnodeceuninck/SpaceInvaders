@@ -5,9 +5,9 @@
 #ifndef SPACEINVADERS_ENTITYCREATEDEVENT_H
 #define SPACEINVADERS_ENTITYCREATEDEVENT_H
 
-#include <memory>
-#include "Event.h"
 #include "../EntityModel/EntityModel.h"
+#include "Event.h"
+#include <memory>
 
 namespace spaceinvaders::event {
     class EntityCreatedEvent : public Event {
@@ -33,8 +33,7 @@ namespace spaceinvaders::event {
          * @param entity The created entity
          * @param prefferedSprite The sprite specified in the json file
          */
-        EntityCreatedEvent(std::shared_ptr<spaceinvaders::model::EntityModel> entity,
-                           std::string prefferedSprite);
+        EntityCreatedEvent(std::shared_ptr<spaceinvaders::model::EntityModel> entity, std::string prefferedSprite);
 
         /**
          * Notify an event has been created
@@ -42,7 +41,6 @@ namespace spaceinvaders::event {
          */
         explicit EntityCreatedEvent(std::shared_ptr<spaceinvaders::model::EntityModel> entity);
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_ENTITYCREATEDEVENT_H
+#endif // SPACEINVADERS_ENTITYCREATEDEVENT_H

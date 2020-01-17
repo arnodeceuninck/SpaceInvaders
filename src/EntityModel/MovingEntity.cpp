@@ -3,36 +3,23 @@
 //
 
 #include "MovingEntity.h"
-#include "../Events/RocketPositionUpdated.h"
-#include "RocketModel.h"
 #include "../Events/DestroyedEvent.h"
 #include "../Events/GoDirection.h"
 #include "../Events/PositionUpdated.h"
+#include "../Events/RocketPositionUpdated.h"
+#include "RocketModel.h"
 
-double spaceinvaders::model::MovingEntity::getWidth() const {
-    return width;
-}
+double spaceinvaders::model::MovingEntity::getWidth() const { return width; }
 
-void spaceinvaders::model::MovingEntity::setWidth(double width) {
-    MovingEntity::width = width;
-}
+void spaceinvaders::model::MovingEntity::setWidth(double width) { MovingEntity::width = width; }
 
-double spaceinvaders::model::MovingEntity::getHeight() const {
-    return height;
-}
+double spaceinvaders::model::MovingEntity::getHeight() const { return height; }
 
-void spaceinvaders::model::MovingEntity::setHeight(double height) {
-    MovingEntity::height = height;
-}
+void spaceinvaders::model::MovingEntity::setHeight(double height) { MovingEntity::height = height; }
 
+double spaceinvaders::model::MovingEntity::getSpeed() const { return speed; }
 
-double spaceinvaders::model::MovingEntity::getSpeed() const {
-    return speed;
-}
-
-void spaceinvaders::model::MovingEntity::setSpeed(double speed) {
-    MovingEntity::speed = speed;
-}
+void spaceinvaders::model::MovingEntity::setSpeed(double speed) { MovingEntity::speed = speed; }
 
 const spaceinvaders::Coordinate &spaceinvaders::model::MovingEntity::getSpeedDirection() const {
     return speedDirection;
@@ -42,9 +29,7 @@ void spaceinvaders::model::MovingEntity::setSpeedDirection(const spaceinvaders::
     MovingEntity::speedDirection = speedDirection;
 }
 
-spaceinvaders::Coordinate &spaceinvaders::model::MovingEntity::getPosition() {
-    return position;
-}
+spaceinvaders::Coordinate &spaceinvaders::model::MovingEntity::getPosition() { return position; }
 
 void spaceinvaders::model::MovingEntity::setPosition(const spaceinvaders::Coordinate &position) {
     MovingEntity::position = position;
@@ -52,12 +37,9 @@ void spaceinvaders::model::MovingEntity::setPosition(const spaceinvaders::Coordi
 
 spaceinvaders::model::MovingEntity::MovingEntity(double width, double height, double speed,
                                                  const spaceinvaders::Coordinate &speedDirection,
-                                                 const spaceinvaders::Coordinate &position) : width(width),
-                                                                                              height(height),
-                                                                                              speed(speed),
-                                                                                              speedDirection(
-                                                                                                      speedDirection),
-                                                                                              position(position) {}
+                                                 const spaceinvaders::Coordinate &position)
+        : width(width), height(height), speed(speed), speedDirection(speedDirection), position(position) {
+}
 
 void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
     double distance = getSpeed() * elapsedSeconds;
@@ -66,8 +48,8 @@ void spaceinvaders::model::MovingEntity::update(double elapsedSeconds) {
     if (outsideWindow()) {
         selfDestroy();
     } else {
-        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::PositionUpdated>(
-                getPosition());
+        std::shared_ptr<spaceinvaders::event::Event> event =
+                std::make_shared<spaceinvaders::event::PositionUpdated>(getPosition());
         notifyObservers(event);
     }
 }
@@ -77,7 +59,7 @@ void spaceinvaders::model::MovingEntity::handleEvent(std::shared_ptr<spaceinvade
     if (auto rpu = std::dynamic_pointer_cast<spaceinvaders::event::RocketPositionUpdated>(event)) {
         Coordinate rocketTop{rpu->getRocket()->getTop()};
         if (isCollision(rocketTop)) {
-//            std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
+            //            std::cout << "COLISSSSIOOOOOOOOOOOOOOOOOOOON" << std::endl;
             selfDestroy(rpu->getRocket()->getDamage());
             rpu->getRocket()->selfDestroy(0);
         }
@@ -101,12 +83,11 @@ void spaceinvaders::model::MovingEntity::selfDestroy() {
 }
 
 bool spaceinvaders::model::MovingEntity::outsideWindow() {
-    return (getPosition().getY() - getHeight() / 2 > 3 or
-            getPosition().getY() + getHeight() / 3 < -3 or
-            getPosition().getX() - getWidth() / 2 > 4 or
-            getPosition().getX() + getWidth() / 2 < -4);
+    return (getPosition().getY() - getHeight() / 2 > 3 or getPosition().getY() + getHeight() / 3 < -3 or
+            getPosition().getX() - getWidth() / 2 > 4 or getPosition().getX() + getWidth() / 2 < -4);
 }
 
 spaceinvaders::model::MovingEntity::MovingEntity(const spaceinvaders::Coordinate &speedDirection,
-                                                 const spaceinvaders::Coordinate &position) : speedDirection(
-        speedDirection), position(position) {}
+                                                 const spaceinvaders::Coordinate &position)
+        : speedDirection(speedDirection), position(position) {
+}

@@ -4,13 +4,9 @@
 
 #include "Coordinate.h"
 
-double spaceinvaders::Coordinate::getX() const {
-    return x;
-}
+double spaceinvaders::Coordinate::getX() const { return x; }
 
-double spaceinvaders::Coordinate::getY() const {
-    return y;
-}
+double spaceinvaders::Coordinate::getY() const { return y; }
 
 spaceinvaders::Coordinate spaceinvaders::Coordinate::operator+(const spaceinvaders::Coordinate &rhs) const {
     double x2 = x + rhs.getX();
@@ -50,20 +46,12 @@ spaceinvaders::Coordinate spaceinvaders::Coordinate::operator*=(const double &k)
 
 spaceinvaders::Coordinate::Coordinate(double x, double y) : x(x), y(y) {}
 
-void spaceinvaders::Coordinate::mulY(const double &k) {
-    y *= k;
-}
+void spaceinvaders::Coordinate::mulY(const double &k) { y *= k; }
 
-void spaceinvaders::Coordinate::mulX(const double &k) {
-    x *= k;
-}
+void spaceinvaders::Coordinate::mulX(const double &k) { x *= k; }
 
-void spaceinvaders::Coordinate::setX(double x) {
-    Coordinate::x = x;
-}
+void spaceinvaders::Coordinate::setX(double x) { Coordinate::x = x; }
 
-//void spaceinvaders::Coordinate::setY(double y) {
+// void spaceinvaders::Coordinate::setY(double y) {
 //    Coordinate::y = y;
 //}
-
-

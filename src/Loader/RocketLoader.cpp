@@ -7,9 +7,8 @@
 
 spaceinvaders::loader::RocketLoader::RocketLoader(const std::string &filename) : Loader(filename) {}
 
-void
-spaceinvaders::loader::RocketLoader::loadInto(const std::shared_ptr<spaceinvaders::model::RocketModel> &rocketModel,
-                                              std::string &spriteFile) {
+void spaceinvaders::loader::RocketLoader::loadInto(
+        const std::shared_ptr<spaceinvaders::model::RocketModel> &rocketModel, std::string &spriteFile) {
     // Read the file
     rapidjson::Document input = getDocument();
 
@@ -23,12 +22,10 @@ spaceinvaders::loader::RocketLoader::loadInto(const std::shared_ptr<spaceinvader
     auto height = input[attribute.c_str()].GetDouble();
     rocketModel->setHeight(height);
 
-
     attribute = "sprite";
     checkAttribute(input, attribute);
     auto sprite = input[attribute.c_str()].GetString();
     spriteFile = sprite;
-
 
     attribute = "damage";
     checkAttribute(input, attribute, true);
@@ -39,6 +36,4 @@ spaceinvaders::loader::RocketLoader::loadInto(const std::shared_ptr<spaceinvader
     checkAttribute(input, attribute, true);
     auto speed = input[attribute.c_str()].GetDouble();
     rocketModel->setSpeed(speed);
-
-
 }

@@ -4,11 +4,10 @@
 
 #include "Transformation.h"
 
-
-
 spaceinvaders::Coordinate spaceinvaders::view::Transformation::transform(spaceinvaders::Coordinate coordinate) {
 
-    // Convert x and y to a coordinate system with same width and height as gameDimensions, but with (0, 0) as starting point
+    // Convert x and y to a coordinate system with same width and height as gameDimensions, but with (0, 0) as
+    // starting point
     coordinate -= gameDimensions->getMin();
 
     // Scale x and y to the viewDimensions
@@ -43,4 +42,3 @@ spaceinvaders::view::Transformation &spaceinvaders::view::Transformation::getIns
     static Transformation instance;
     return instance;
 }
-

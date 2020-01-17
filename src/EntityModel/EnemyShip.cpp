@@ -11,14 +11,10 @@ void spaceinvaders::model::EnemyShip::handleEvent(std::shared_ptr<spaceinvaders:
     Ship::handleEvent(event);
 }
 
-spaceinvaders::Coordinate spaceinvaders::model::EnemyShip::getShootingDirection() {
-    return Coordinate(0, -1);
-}
+spaceinvaders::Coordinate spaceinvaders::model::EnemyShip::getShootingDirection() { return Coordinate(0, -1); }
 
 spaceinvaders::Coordinate spaceinvaders::model::EnemyShip::getShipFront() {
-    return Coordinate(getPosition().getX(),
-                      getPosition().getY() -
-                      getHeight() / 2);
+    return Coordinate(getPosition().getX(), getPosition().getY() - getHeight() / 2);
 }
 
 bool spaceinvaders::model::EnemyShip::inFireRange(spaceinvaders::Coordinate coordinate, double bulleSize) {
@@ -31,7 +27,8 @@ bool spaceinvaders::model::EnemyShip::inFireRange(spaceinvaders::Coordinate coor
 
 void spaceinvaders::model::EnemyShip::update(double elapsedSeconds) {
     spaceinvaders::model::Ship::update(elapsedSeconds);
-    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EnemyPositionUpdated>(
-            getPosition() - Coordinate(0, getHeight() / 2));
+    std::shared_ptr<spaceinvaders::event::Event> event =
+            std::make_shared<spaceinvaders::event::EnemyPositionUpdated>(getPosition() -
+                                                                         Coordinate(0, getHeight() / 2));
     notifyObservers(event);
 }

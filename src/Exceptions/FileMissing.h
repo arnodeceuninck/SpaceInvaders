@@ -8,9 +8,9 @@
 #include "SiExcecption.h"
 
 namespace spaceinvaders::exception {
-    /**
-     * Class for when one of the required input files is missing
-     */
+/**
+ * Class for when one of the required input files is missing
+ */
     class FileMissing : public SiException {
     public:
         /**
@@ -19,6 +19,6 @@ namespace spaceinvaders::exception {
          */
         explicit FileMissing(const std::string &filename);
     };
-}
+} // namespace spaceinvaders::exception
 
-#endif //SPACEINVADERS_FILEMISSING_H
+#endif // SPACEINVADERS_FILEMISSING_H

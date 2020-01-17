@@ -12,4 +12,6 @@ spaceinvaders::event::ControllerCreated::getController() const {
 }
 
 spaceinvaders::event::ControllerCreated::ControllerCreated(
-        std::shared_ptr<spaceinvaders::controller::EntityController> controller) : controller(std::move(controller)) {}
+        std::shared_ptr<spaceinvaders::controller::EntityController> controller)
+        : controller(std::move(controller)) {
+}

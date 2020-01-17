@@ -4,12 +4,12 @@
 
 #include "ShipController.h"
 #include "../EntityModel/Ship.h"
-#include "../Events/GoDirection.h"
 #include "../Events/FireBullet.h"
+#include "../Events/GoDirection.h"
 
 void spaceinvaders::controller::ShipController::go(spaceinvaders::Coordinate coordinate) {
-    std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::GoDirection>(
-            coordinate);
+    std::shared_ptr<spaceinvaders::event::Event> event =
+            std::make_shared<spaceinvaders::event::GoDirection>(coordinate);
     notifyObservers(event);
 }
 

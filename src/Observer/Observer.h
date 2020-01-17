@@ -8,7 +8,7 @@
 #include <memory>
 
 namespace spaceinvaders::event {
-    class Event;
+class Event;
 }
 
 namespace spaceinvaders::observer {
@@ -26,7 +26,6 @@ namespace spaceinvaders::observer {
          */
         virtual ~Observer();
     };
-}
+} // namespace spaceinvaders::observer
 
-
-#endif //SPACEINVADERS_OBSERVER_H
+#endif // SPACEINVADERS_OBSERVER_H

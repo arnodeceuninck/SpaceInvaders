@@ -9,7 +9,7 @@
 #include <memory>
 
 namespace sf {
-    class RenderWindow;
+class RenderWindow;
 }
 
 namespace spaceinvaders {
@@ -41,7 +41,6 @@ namespace spaceinvaders {
          */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-
     private:
         void Start();
 
@@ -67,6 +66,6 @@ namespace spaceinvaders {
         void gameLoop();
     };
 
-}
+} // namespace spaceinvaders
 
-#endif //SPACEINVADERS_GAME_H
+#endif // SPACEINVADERS_GAME_H

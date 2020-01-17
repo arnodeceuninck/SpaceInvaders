@@ -5,9 +5,6 @@
 #include "EntityController.h"
 #include "../EntityModel/EntityModel.h"
 
-void spaceinvaders::controller::EntityController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {
-
-}
+void spaceinvaders::controller::EntityController::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {}
 
 spaceinvaders::controller::EntityController::EntityController() = default;
-

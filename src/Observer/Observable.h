@@ -11,12 +11,11 @@
 
 namespace spaceinvaders::observer {
 
-    // aka Subject
+// aka Subject
     class Observable {
         std::list<std::weak_ptr<Observer>> observers; // Can't be placed in a set, since wp's don't have operator<
 
     public:
-
         /**
          * Add an observer to which your events get broadcasted
          * @param observer a shared_ptr to this observer
@@ -30,7 +29,6 @@ namespace spaceinvaders::observer {
         void notifyObservers(std::shared_ptr<spaceinvaders::event::Event> &event);
     };
 
-}
+} // namespace spaceinvaders::observer
 
-
-#endif //SPACEINVADERS_OBSERVABLE_H
+#endif // SPACEINVADERS_OBSERVABLE_H

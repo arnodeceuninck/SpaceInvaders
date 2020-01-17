@@ -2,9 +2,9 @@
 // Created by arno on 25/12/2019.
 //
 
-#include <cmath>
 #include "EnemyController.h"
 #include "../Events/UpdateEvent.h"
+#include <cmath>
 
 void spaceinvaders::controller::EnemyController::checkFire(double elapsedTime) {
     if (!firstRow) {
@@ -27,16 +27,12 @@ void spaceinvaders::controller::EnemyController::handleEvent(std::shared_ptr<spa
     }
 }
 
-bool spaceinvaders::controller::EnemyController::isFirstRow() const {
-    return firstRow;
-}
+bool spaceinvaders::controller::EnemyController::isFirstRow() const { return firstRow; }
 
-void spaceinvaders::controller::EnemyController::setFirstRow(bool firstRow) {
-    EnemyController::firstRow = firstRow;
-}
+void spaceinvaders::controller::EnemyController::setFirstRow(bool firstRow) { EnemyController::firstRow = firstRow; }
 
 double spaceinvaders::controller::EnemyController::randomNextFire() {
     double nextFire = std::fmod(static_cast<double>(random()) / 100, timeBetweenFire) + timeBetweenFire;
-//    std::cout << "Next fire: " << nextFire << std::endl;
+    //    std::cout << "Next fire: " << nextFire << std::endl;
     return nextFire;
 }

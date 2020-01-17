@@ -4,9 +4,8 @@
 
 #include "PositionUpdated.h"
 
-const spaceinvaders::Coordinate &spaceinvaders::event::PositionUpdated::getNewPosition() const {
-    return newPosition;
-}
+const spaceinvaders::Coordinate &spaceinvaders::event::PositionUpdated::getNewPosition() const { return newPosition; }
 
-spaceinvaders::event::PositionUpdated::PositionUpdated(const spaceinvaders::Coordinate &newPosition) : newPosition(
-        newPosition) {}
+spaceinvaders::event::PositionUpdated::PositionUpdated(const spaceinvaders::Coordinate &newPosition)
+        : newPosition(newPosition) {
+}

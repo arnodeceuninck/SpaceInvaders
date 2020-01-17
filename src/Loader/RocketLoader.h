@@ -8,7 +8,7 @@
 #include "Loader.h"
 
 namespace spaceinvaders::model {
-    class RocketModel;
+class RocketModel;
 }
 namespace spaceinvaders::loader {
     class RocketLoader : public Loader {
@@ -26,7 +26,6 @@ namespace spaceinvaders::loader {
          */
         void loadInto(const std::shared_ptr<spaceinvaders::model::RocketModel> &rocketModel, std::string &spriteFile);
     };
-}
+} // namespace spaceinvaders::loader
 
-
-#endif //SPACEINVADERS_ROCKETLOADER_H
+#endif // SPACEINVADERS_ROCKETLOADER_H

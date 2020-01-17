@@ -9,9 +9,7 @@
 
 namespace spaceinvaders::event {
     class StoppedMovingLeft : public Event {
-
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_STOPPEDMOVINGLEFT_H
+#endif // SPACEINVADERS_STOPPEDMOVINGLEFT_H

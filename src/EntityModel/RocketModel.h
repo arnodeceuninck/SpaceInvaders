@@ -11,6 +11,7 @@
 namespace spaceinvaders::model {
 class RocketModel : public MovingEntity {
     double damage;
+
 public:
     /**
      * Destroys itself (if bullet damage is 0)
@@ -48,7 +49,6 @@ public:
      */
     Coordinate getTop();
 };
-}
+} // namespace spaceinvaders::model
 
-
-#endif //SPACEINVADERS_ROCKETMODEL_H
+#endif // SPACEINVADERS_ROCKETMODEL_H

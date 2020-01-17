@@ -7,13 +7,14 @@
 
 //#include <bits/shared_ptr.h>
 
-#include <memory>
-#include "Event.h"
 #include "../EntityController/EntityController.h"
+#include "Event.h"
+#include <memory>
 
 namespace spaceinvaders::event {
     class ControllerCreated : public Event {
         std::shared_ptr<spaceinvaders::controller::EntityController> controller;
+
     public:
         /**
          * Notify a controller has been created
@@ -27,7 +28,6 @@ namespace spaceinvaders::event {
          */
         [[nodiscard]] const std::shared_ptr<spaceinvaders::controller::EntityController> &getController() const;
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_CONTROLLERCREATED_H
+#endif // SPACEINVADERS_CONTROLLERCREATED_H

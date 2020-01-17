@@ -4,7 +4,6 @@
 
 #include "BackgroundTiles.h"
 
-
 spaceinvaders::view::BackgroundTiles::BackgroundTiles(const std::string &filename,
                                                       const std::shared_ptr<GameWindow> &window)
         : EntityRepresentation(window) {
@@ -29,7 +28,7 @@ spaceinvaders::view::BackgroundTiles::BackgroundTiles(const std::string &filenam
 
 void spaceinvaders::view::BackgroundTiles::draw() {
     getWindow()->getSfmlWindow()->draw(getSprite());
-//    sfmlWindow->display();
+    //    sfmlWindow->display();
 }
 
 void spaceinvaders::view::BackgroundTiles::handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) {

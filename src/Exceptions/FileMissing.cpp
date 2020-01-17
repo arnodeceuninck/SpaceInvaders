@@ -4,5 +4,6 @@
 
 #include "FileMissing.h"
 
-spaceinvaders::exception::FileMissing::FileMissing(const std::string &filename) : SiException(
-        "File " + filename + " missing") {}
+spaceinvaders::exception::FileMissing::FileMissing(const std::string &filename)
+        : SiException("File " + filename + " missing") {
+}

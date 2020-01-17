@@ -12,7 +12,6 @@ namespace spaceinvaders::exception {
     public:
         explicit WrongObject(const std::string &shouldBeObject);
     };
-}
+} // namespace spaceinvaders::exception
 
-
-#endif //SPACEINVADERS_WRONGOBJECT_H
+#endif // SPACEINVADERS_WRONGOBJECT_H

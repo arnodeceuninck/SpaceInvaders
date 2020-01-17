@@ -5,8 +5,8 @@
 #ifndef SPACEINVADERS_SHIPLOADER_H
 #define SPACEINVADERS_SHIPLOADER_H
 
-#include <memory>
 #include "Loader.h"
+#include <memory>
 
 namespace spaceinvaders::view {
     class GameRepresentation;
@@ -32,7 +32,6 @@ namespace spaceinvaders::loader {
          */
         explicit ShipLoader(const std::string &filename);
     };
-}
+} // namespace spaceinvaders::loader
 
-
-#endif //SPACEINVADERS_SHIPLOADER_H
+#endif // SPACEINVADERS_SHIPLOADER_H

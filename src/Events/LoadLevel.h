@@ -5,12 +5,13 @@
 #ifndef SPACEINVADERS_LOADLEVEL_H
 #define SPACEINVADERS_LOADLEVEL_H
 
-#include <string>
 #include "Event.h"
+#include <string>
 
 namespace spaceinvaders::event {
     class LoadLevel : public Event {
         std::string level;
+
     public:
         /**
          * Request a specific level to be loaded
@@ -24,7 +25,6 @@ namespace spaceinvaders::event {
          */
         [[nodiscard]] const std::string &getLevel() const;
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_LOADLEVEL_H
+#endif // SPACEINVADERS_LOADLEVEL_H

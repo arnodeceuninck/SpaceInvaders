@@ -5,10 +5,9 @@
 #ifndef SPACEINVADERS_GAMEMODEL_H
 #define SPACEINVADERS_GAMEMODEL_H
 
-
-#include "EntityModel.h"
-#include "../EntityRepresentation/GameRepresentation.h"
 #include "../EntityController/GameController.h"
+#include "../EntityRepresentation/GameRepresentation.h"
+#include "EntityModel.h"
 #include <stack>
 
 namespace spaceinvaders::model {
@@ -62,7 +61,6 @@ namespace spaceinvaders::model {
         std::shared_ptr<Dimensions> dimensions = std::make_shared<Dimensions>(Coordinate(-4, -3), Coordinate(4, 3));
         std::stack<std::string> levels;
     };
-}
+} // namespace spaceinvaders::model
 
-
-#endif //SPACEINVADERS_GAMEMODEL_H
+#endif // SPACEINVADERS_GAMEMODEL_H

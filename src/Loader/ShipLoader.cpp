@@ -23,30 +23,25 @@ void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinva
     auto height = input[attribute.c_str()].GetDouble();
     shipModel->setHeight(height);
 
-
     attribute = "sprite";
     checkAttribute(input, attribute);
     auto sprite = input[attribute.c_str()].GetString();
     spriteFile = sprite;
-
 
     attribute = "health";
     checkAttribute(input, attribute, true);
     auto health = input[attribute.c_str()].GetDouble();
     shipModel->setHealth(health);
 
-
     attribute = "speed";
     checkAttribute(input, attribute, true);
     auto speed = input[attribute.c_str()].GetDouble();
     shipModel->setSpeed(speed);
 
-
     attribute = "bullet";
     checkAttribute(input, attribute);
     auto bullet = input[attribute.c_str()].GetString();
     shipModel->setBulletFile(bullet);
-
 
     attribute = "timebetweenfire";
     checkAttribute(input, attribute, true);
@@ -55,4 +50,3 @@ void spaceinvaders::loader::ShipLoader::loadInto(const std::shared_ptr<spaceinva
 }
 
 spaceinvaders::loader::ShipLoader::ShipLoader(const std::string &filename) : Loader(filename) {}
-

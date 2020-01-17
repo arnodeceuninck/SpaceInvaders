@@ -2,26 +2,28 @@
 // Created by arno on 14/12/2019.
 //
 
-#include <iostream>
 #include "Game.h"
+#include <iostream>
 
-#include "EntityRepresentation/GameRepresentation.h"
 #include "EntityController/GameController.h"
 #include "EntityModel/GameModel.h"
+#include "EntityRepresentation/GameRepresentation.h"
 
-#include "Stopwatch.h"
 #include "Events/GameEnded.h"
 #include "Events/LevelEnded.h"
 #include "Events/LoadLevel.h"
+#include "Stopwatch.h"
 
 #include "EntityModel/WorldModel.h"
+#include "Exceptions/ObjectNullException.h"
+#include "Exceptions/SiExcecption.h"
 #include "Loader/LevelLoader.h"
 #include "Loader/LevelsLoader.h"
-#include "Exceptions/SiExcecption.h"
-#include "Exceptions/ObjectNullException.h"
 
 #define MAX_CYCLES_PER_SECOND 30 // The number of max game loops allowed in one second
-#define MIN_TIME_PER_CYCLE (1000000000.0 / MAX_CYCLES_PER_SECOND) // The minimum required time in seconds as double between each clock cycle
+#define MIN_TIME_PER_CYCLE                                                                                             \
+        (1000000000.0 /                                                                                                \
+         MAX_CYCLES_PER_SECOND) // The minimum required time in seconds as double between each clock cycle
 
 namespace spaceinvaders {
 
@@ -87,8 +89,7 @@ namespace spaceinvaders {
     void Game::gameLoop() {
 
         if (gameModel == nullptr or gameRepresentation == nullptr or gameController == nullptr)
-            throw spaceinvaders::exception::ObjectNullException(
-                    "game not initialized correctly");
+            throw spaceinvaders::exception::ObjectNullException("game not initialized correctly");
 
         // Keep track of the elapsed time after each loop
         Stopwatch::getInstance().reset();
@@ -117,14 +118,13 @@ namespace spaceinvaders {
 
             // The game loop itself
             gameController->update(elapsedSeconds);
-//            gameRepresentation->getWindow()->checkInput();
+            //            gameRepresentation->getWindow()->checkInput();
             gameModel->update(elapsedSeconds);
             // gameView will get updated while observing the gameModel
 
             if (!showingMessage) {
                 gameRepresentation->update(); // Update the window
             }
-
         }
     }
 
@@ -133,7 +133,8 @@ namespace spaceinvaders {
             Start();
         } catch (...) {
             std::cerr << "Something unknown went wrong :-("
-                      << std::endl; // This is almost impossible to occur, since the Start() function also catches exceptions
+                      << std::endl; // This is almost impossible to occur, since the Start() function also catches
+            // exceptions
         }
     }
 
@@ -150,15 +151,14 @@ namespace spaceinvaders {
             }
             messageTime = 2;
             showingMessage = true;
-//            gameRepresentation->update();
+            //            gameRepresentation->update();
         }
     }
 
     void Game::loadLevel(const std::string &level) {
 
         if (gameRepresentation == nullptr or gameController == nullptr)
-            throw spaceinvaders::exception::ObjectNullException(
-                    "game not initialized correctly");
+            throw spaceinvaders::exception::ObjectNullException("game not initialized correctly");
 
         gameRepresentation->reset();
         gameController->reset();
@@ -168,4 +168,4 @@ namespace spaceinvaders {
         loader.loadInto(gameRepresentation, gameController);
     }
 
-}
+} // namespace spaceinvaders

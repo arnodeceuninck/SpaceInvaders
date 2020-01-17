@@ -8,9 +8,9 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    /**
-     * An event from the controller
-     */
+/**
+ * An event from the controller
+ */
     class ControllerEvent : public Event {
     public:
         /**
@@ -18,7 +18,6 @@ namespace spaceinvaders::event {
          */
         ControllerEvent();
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_CONTROLLEREVENT_H
+#endif // SPACEINVADERS_CONTROLLEREVENT_H

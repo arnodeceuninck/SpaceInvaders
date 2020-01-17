@@ -8,32 +8,31 @@
 #include "Ship.h"
 
 namespace spaceinvaders::model {
-    class PlayerShip : public Ship {
-    public:
-        /**
-         * Constructor
-         */
-        PlayerShip();
+class PlayerShip : public Ship {
+public:
+    /**
+     * Constructor
+     */
+    PlayerShip();
 
-        /**
-         * Handle an event
-         * @param event
-         */
-        void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
+    /**
+     * Handle an event
+     * @param event
+     */
+    void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
 
-        /**
-         * Get the front of the ship
-         * @return
-         */
-        Coordinate getShipFront() override;
+    /**
+     * Get the front of the ship
+     * @return
+     */
+    Coordinate getShipFront() override;
 
-        /**
-         * Get the direction the ship shoots in
-         * @return
-         */
-        Coordinate getShootingDirection() override;
-    };
-}
+    /**
+     * Get the direction the ship shoots in
+     * @return
+     */
+    Coordinate getShootingDirection() override;
+};
+} // namespace spaceinvaders::model
 
-
-#endif //SPACEINVADERS_PLAYERSHIP_H
+#endif // SPACEINVADERS_PLAYERSHIP_H

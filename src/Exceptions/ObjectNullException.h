@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_OBJECTNULLEXCEPTION_H
 #define SPACEINVADERS_OBJECTNULLEXCEPTION_H
 
-
 #include "SiExcecption.h"
 
 namespace spaceinvaders::exception {
@@ -13,6 +12,6 @@ namespace spaceinvaders::exception {
     public:
         explicit ObjectNullException(const std::string &problem);
     };
-}
+} // namespace spaceinvaders::exception
 
-#endif //SPACEINVADERS_OBJECTNULLEXCEPTION_H
+#endif // SPACEINVADERS_OBJECTNULLEXCEPTION_H

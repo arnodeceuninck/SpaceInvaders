@@ -8,25 +8,23 @@
 #include "Event.h"
 
 namespace spaceinvaders::event {
-    class LevelEnded : public Event {
-    public:
-        /**
-         * Notify the level has ended
-         * @param win Are all enemies killed?
-         */
-        explicit LevelEnded(bool win);
+class LevelEnded : public Event {
+public:
+    /**
+     * Notify the level has ended
+     * @param win Are all enemies killed?
+     */
+    explicit LevelEnded(bool win);
 
-        /**
-         * Check whether all enemies are killed
-         * @return true when victory
-         */
-        [[nodiscard]] bool isWin() const;
+    /**
+     * Check whether all enemies are killed
+     * @return true when victory
+     */
+    [[nodiscard]] bool isWin() const;
 
-    private:
-        bool win;
+private:
+    bool win;
+};
+} // namespace spaceinvaders::event
 
-    };
-}
-
-
-#endif //SPACEINVADERS_LEVELENDED_H
+#endif // SPACEINVADERS_LEVELENDED_H

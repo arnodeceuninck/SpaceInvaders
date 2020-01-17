@@ -8,8 +8,9 @@
 
 spaceinvaders::loader::LevelsLoader::LevelsLoader(const std::string &filename) : Loader(filename) {}
 
-void spaceinvaders::loader::LevelsLoader::loadInto(const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
-                                                   const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation) {
+void spaceinvaders::loader::LevelsLoader::loadInto(
+        const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
+        const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation) {
 
     rapidjson::Document input = getDocument();
 

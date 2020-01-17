@@ -4,5 +4,4 @@
 
 #include "ControllerEvent.h"
 
-
 spaceinvaders::event::ControllerEvent::ControllerEvent() = default;

@@ -5,9 +5,9 @@
 #ifndef SPACEINVADERS_GAMEWINDOW_H
 #define SPACEINVADERS_GAMEWINDOW_H
 
+#include "EntityModel/Dimensions.h"
 #include "Observer/Observable.h"
 #include "SFML/Graphics.hpp"
-#include "EntityModel/Dimensions.h"
 
 namespace spaceinvaders {
     class GameWindow : public observer::Observable {
@@ -54,7 +54,6 @@ namespace spaceinvaders {
         int height;
         std::shared_ptr<sf::RenderWindow> sfmlWindow;
     };
-}
+} // namespace spaceinvaders
 
-
-#endif //SPACEINVADERS_GAMEWINDOW_H
+#endif // SPACEINVADERS_GAMEWINDOW_H

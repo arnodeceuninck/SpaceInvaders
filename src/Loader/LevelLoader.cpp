@@ -3,30 +3,31 @@
 //
 
 #include "LevelLoader.h"
-#include "ShipLoader.h"
-#include "../EntityModel/PlayerShip.h"
-#include "../Events/EntityCreatedEvent.h"
-#include "../EntityRepresentation/GameRepresentation.h"
-#include "../EntityController/PlayerController.h"
-#include "../EntityModel/EnemyShip.h"
-#include "../EntityController/GameController.h"
 #include "../EntityController/EnemiesController.h"
 #include "../EntityController/EnemyController.h"
+#include "../EntityController/GameController.h"
+#include "../EntityController/PlayerController.h"
+#include "../EntityModel/EnemyShip.h"
+#include "../EntityModel/PlayerShip.h"
+#include "../EntityRepresentation/GameRepresentation.h"
+#include "../Events/EntityCreatedEvent.h"
 #include "../Exceptions/AttributeMissing.h"
 #include "../Exceptions/WrongObject.h"
+#include "ShipLoader.h"
 
 // Linking scheme
 
-// NOTE: (Not anymore required, since observers will work with weak_ptr's) All observers also have a pointer to their observable, for easily removing themselves
+// NOTE: (Not anymore required, since observers will work with weak_ptr's) All observers also have a pointer to their
+// observable, for easily removing themselves
 
 // RequiredLinks: (observer -> observable)
-// ( ) EntityRepresentation -> GameRepresentation : Required for inside representation changes (e.g. windowResize, ...) // Does Gamerepresentation
-// ( ) GameRepresentation -> EntityRepresentation // Does GameRepresentation
-// ( ) EntityRepresentation -> EntityModel : Required for inside model changes (e.g. modelDestroyed, position changed, ...) // Does ShipLoader
-// ( ) EntityModel -> EntityController : Required for control events (e.g. moving left, ...) // Does LevelLoader
-// ( ) EntityModel -> GameWorld : Required for inside model changes (e.g. update, ...) NOTE: GameModel is for controlling next level, ... // Does GameModel
-// ( ) GameWorld -> EntityModel // Does GameModel
-// ( ) EntityController -> GameController : Required for internal control changes (e.g. update, ...) // Does LevelLoader
+// ( ) EntityRepresentation -> GameRepresentation : Required for inside representation changes (e.g. windowResize, ...)
+// // Does Gamerepresentation ( ) GameRepresentation -> EntityRepresentation // Does GameRepresentation ( )
+// EntityRepresentation -> EntityModel : Required for inside model changes (e.g. modelDestroyed, position changed, ...)
+// // Does ShipLoader ( ) EntityModel -> EntityController : Required for control events (e.g. moving left, ...) // Does
+// LevelLoader ( ) EntityModel -> GameWorld : Required for inside model changes (e.g. update, ...) NOTE: GameModel is
+// for controlling next level, ... // Does GameModel ( ) GameWorld -> EntityModel // Does GameModel ( ) EntityController
+// -> GameController : Required for internal control changes (e.g. update, ...) // Does LevelLoader
 
 void spaceinvaders::loader::LevelLoader::loadInto(
         const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation,
@@ -46,13 +47,11 @@ void spaceinvaders::loader::LevelLoader::loadInto(
         std::string spriteFile;
         shipLoader.loadInto(playerShip, spriteFile);
 
-        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
-                playerShip, spriteFile);
-        notifyObservers(
-                event);
+        std::shared_ptr<spaceinvaders::event::Event> event =
+                std::make_shared<spaceinvaders::event::EntityCreatedEvent>(playerShip, spriteFile);
+        notifyObservers(event);
 
-        gameController->addController(
-                shipController);
+        gameController->addController(shipController);
         shipController->addObserver(playerShip);
     }
 
@@ -83,25 +82,21 @@ void spaceinvaders::loader::LevelLoader::loadInto(
         std::string spriteFile;
         shipLoader.loadInto(enemyShip, spriteFile);
 
-        auto enemyController = std::make_shared<spaceinvaders::controller::EnemyController>(
-                enemyShip->getTimeBetweenFire());
+        auto enemyController =
+                std::make_shared<spaceinvaders::controller::EnemyController>(enemyShip->getTimeBetweenFire());
         enemiesController->addEnemy(enemyShip, enemyController);
         enemyController->addObserver(enemyShip);
 
-        std::shared_ptr<spaceinvaders::event::Event> event = std::make_shared<spaceinvaders::event::EntityCreatedEvent>(
-                enemyShip, spriteFile);
-        notifyObservers(
-                event);
+        std::shared_ptr<spaceinvaders::event::Event> event =
+                std::make_shared<spaceinvaders::event::EntityCreatedEvent>(enemyShip, spriteFile);
+        notifyObservers(event);
 
         gameController->addController(enemyController);
         enemyController->addObserver(enemyShip);
-
     }
 
     gameController->addController(enemiesController);
     enemiesController->addObserver(gameController);
-
 }
-
 
 spaceinvaders::loader::LevelLoader::LevelLoader(const std::string &filename) : Loader(filename) {}

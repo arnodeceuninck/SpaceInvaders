@@ -5,8 +5,8 @@
 #ifndef SPACEINVADERS_GAMECONTROLLER_H
 #define SPACEINVADERS_GAMECONTROLLER_H
 
-#include "EntityController.h"
 #include "../GameWindow.h"
+#include "EntityController.h"
 
 #include <set>
 
@@ -56,7 +56,6 @@ namespace spaceinvaders::controller {
         std::set<std::shared_ptr<EntityController>> controlEntities;
         std::shared_ptr<spaceinvaders::GameWindow> gameWindow;
     };
-}
+} // namespace spaceinvaders::controller
 
-
-#endif //SPACEINVADERS_GAMECONTROLLER_H
+#endif // SPACEINVADERS_GAMECONTROLLER_H

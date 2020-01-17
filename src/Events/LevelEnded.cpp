@@ -4,8 +4,6 @@
 
 #include "LevelEnded.h"
 
-bool spaceinvaders::event::LevelEnded::isWin() const {
-    return win;
-}
+bool spaceinvaders::event::LevelEnded::isWin() const { return win; }
 
 spaceinvaders::event::LevelEnded::LevelEnded(bool win) : win(win) {}

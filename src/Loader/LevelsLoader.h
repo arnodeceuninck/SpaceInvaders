@@ -8,7 +8,7 @@
 #include "Loader.h"
 
 namespace spaceinvaders::view {
-    class GameRepresentation;
+class GameRepresentation;
 }
 namespace spaceinvaders::model {
     class GameModel;
@@ -30,7 +30,6 @@ namespace spaceinvaders::loader {
         void loadInto(const std::shared_ptr<spaceinvaders::model::GameModel> &gameModel,
                       const std::shared_ptr<spaceinvaders::view::GameRepresentation> &gameRepresentation);
     };
-}
+} // namespace spaceinvaders::loader
 
-
-#endif //SPACEINVADERS_LEVELSLOADER_H
+#endif // SPACEINVADERS_LEVELSLOADER_H

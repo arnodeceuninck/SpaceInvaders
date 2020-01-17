@@ -11,4 +11,5 @@ const std::shared_ptr<spaceinvaders::model::MovingEntity> &spaceinvaders::event:
 }
 
 spaceinvaders::event::DestroyedEvent::DestroyedEvent(std::shared_ptr<spaceinvaders::model::MovingEntity> entity)
-        : entity(std::move(entity)) {}
+        : entity(std::move(entity)) {
+}

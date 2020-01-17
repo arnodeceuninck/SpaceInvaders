@@ -15,6 +15,7 @@ private:
     double speed{}; // num per second, field is 8 num
     Coordinate speedDirection;
     Coordinate position;
+
 public:
     /**
      * Constructor
@@ -129,7 +130,6 @@ public:
      */
     bool isCollision(const spaceinvaders::Coordinate &coordinate);
 };
-}
+} // namespace spaceinvaders::model
 
-
-#endif //SPACEINVADERS_MOVINGENTITY_H
+#endif // SPACEINVADERS_MOVINGENTITY_H

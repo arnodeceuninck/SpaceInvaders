@@ -5,12 +5,13 @@
 #ifndef SPACEINVADERS_GODIRECTION_H
 #define SPACEINVADERS_GODIRECTION_H
 
-#include "Event.h"
 #include "../EntityModel/Coordinate.h"
+#include "Event.h"
 
 namespace spaceinvaders::event {
     class GoDirection : public Event {
         Coordinate direction;
+
     public:
         /**
          * Request observer (model) to go a specific direction
@@ -24,7 +25,6 @@ namespace spaceinvaders::event {
          */
         [[nodiscard]] const Coordinate &getDirection() const;
     };
-}
+} // namespace spaceinvaders::event
 
-
-#endif //SPACEINVADERS_GODIRECTION_H
+#endif // SPACEINVADERS_GODIRECTION_H

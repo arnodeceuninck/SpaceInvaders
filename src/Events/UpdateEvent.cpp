@@ -6,6 +6,4 @@
 
 spaceinvaders::event::UpdateEvent::UpdateEvent(double elapsedSeconds) : elapsedSeconds(elapsedSeconds) {}
 
-double spaceinvaders::event::UpdateEvent::getElapsedSeconds() const {
-    return elapsedSeconds;
-}
+double spaceinvaders::event::UpdateEvent::getElapsedSeconds() const { return elapsedSeconds; }

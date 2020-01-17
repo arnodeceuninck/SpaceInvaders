@@ -8,12 +8,12 @@
 #include "EntityRepresentation.h"
 
 namespace spaceinvaders::model {
-    class Ship;
+class Ship;
 }
 
 namespace spaceinvaders::view {
-    class MovingEntityRepresentation
-            : public EntityRepresentation, public std::enable_shared_from_this<MovingEntityRepresentation> {
+    class MovingEntityRepresentation : public EntityRepresentation,
+                                       public std::enable_shared_from_this<MovingEntityRepresentation> {
 
     public:
         /**
@@ -21,7 +21,8 @@ namespace spaceinvaders::view {
          */
         void draw() override;
 
-//        MovingEntityRepresentation(std::shared_ptr<GameWindow> window, std::shared_ptr<Transformation> transformation);
+        //        MovingEntityRepresentation(std::shared_ptr<GameWindow> window, std::shared_ptr<Transformation>
+        //        transformation);
 
         /**
          * Create a new representation
@@ -38,7 +39,6 @@ namespace spaceinvaders::view {
          */
         void handleEvent(std::shared_ptr<spaceinvaders::event::Event> &event) override;
     };
-}
+} // namespace spaceinvaders::view
 
-
-#endif //SPACEINVADERS_MOVINGENTITYREPRESENTATION_H
+#endif // SPACEINVADERS_MOVINGENTITYREPRESENTATION_H

@@ -12,7 +12,6 @@ namespace spaceinvaders::exception {
     public:
         explicit AttributeMissing(const std::string &problem);
     };
-}
+} // namespace spaceinvaders::exception
 
-
-#endif //SPACEINVADERS_ATTRIBUTEMISSING_H
+#endif // SPACEINVADERS_ATTRIBUTEMISSING_H
